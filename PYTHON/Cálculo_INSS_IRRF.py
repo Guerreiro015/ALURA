@@ -10,21 +10,22 @@ sal=int(input('Digite o valor do Salário........ ..: '))
 fal=int(input('Digite Valor das faltas e atrasos. .: '))
 pen=int(input('Digite o valor da Pensão............: '))
 dep=int(input('Digite a Quant. de Dependentes. IR..: '))
+
+tetoinss = 876.95
 dep=dep*189.59
 deducao_simplicada = 528.00
 
 #------------------------------------------------------------
-basesalario = [1.320, 2571.29, 3856.94, 7507.49]
+basesalario = [1320, 2571.29, 3856.94, 7507.49]
 
 aliquotainss = [7.5, 9, 12, 14]
 
 deducaoinss = [0, 19.8, 96.94, 174.08]
 
-tetoinss = 876.95
-
+#-----------------------------------------------------
 baseir = [2112.01, 2826.66, 3751.06, 5000000]
 
-aliquotair = [7.5, 15, 22.5, 27.5]
+aliquotair = [0,7.5, 15, 22.5, 27.5]
 
 parceladeduzir = [158.4, 370.4, 651.73, 884.96]
 
@@ -32,27 +33,23 @@ deducaodependenteir = 189.59
 
 valordeducaoir = deducaodependenteir*dep
 
-print(len(basesalario))
 #------------------------------------------------------------
 sal=(sal-fal)
 fgts=sal*0.08
 inss=0
 cont = 0
 
-print(basesalario[3])
-print(sal)
-for i in range(cont < len(basesalario)):
-    if sal > basesalario[3]:
-      inss = tetoinss
-      break
-    
-    else:
-        if sal < basesalario[cont]:
-            inss = (sal*aliquotainss[cont])-parceladeduzir[cont]
-            
-            break
-    cont = cont+1
 
+for i in range(cont,len(basesalario)):
+      if sal > basesalario[3]:
+        inss = tetoinss
+        break
+      
+      if sal < basesalario[cont]:
+        inss = (sal*(aliquotainss[cont]/100))-deducaoinss[cont]
+        break
+      else:
+        cont = cont+1
 
 print("="*50)
 print(f'Valor base do INSS é : {sal:,.2f}')
