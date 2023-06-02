@@ -1,6 +1,10 @@
-print("*"*50)
+def listra(): 
+    print ("*"*50) 
+
+
+listra()
 print("* Bem vindo ao jogo de Adivinhação *".center(50))
-print("*"*50)
+listra()
 tentativas=1     
 while(tentativas !=0 ):
     num = 42
