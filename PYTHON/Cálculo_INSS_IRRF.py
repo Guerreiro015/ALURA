@@ -50,8 +50,7 @@ for i in range(cont,len(basesalario)):
         break
       else:
         cont = cont+1
-print(aliquotainss[cont])
-print(deducaoinss[cont])
+
 print("="*50)
 print(f'Valor base do INSS é : {sal:,.2f}')
 print(f'O valor do INSS será..: {inss:,.2f}')
@@ -76,11 +75,6 @@ for i in range(cont,len(baseir)):
     break
   else:
     cont=cont+1
-
-print(base_deducao_ir)
-print(aliquotair[cont])
-print(parceladeduzir[cont])
-
 
 
 print(f'O Valor do FGTS é ....: {fgts:,.2f}')

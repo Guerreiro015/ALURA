@@ -5,13 +5,23 @@ def listra():
 listra()
 print("* Bem vindo ao jogo de Adivinhação *".center(50))
 listra()
+
+import random
+num = round(random.random()*100)
+num2 = round(random.randrange(101))
+num3 = round(random.randrange(1,101))
+print (num)
+print (num2)
+print (num3)
+
 tentativas=1     
-while(tentativas !=0 ):
-    num = 42
+while(tentativas !=0 ): 
+
     chute = input("Digite o seu CHUTE ..:  ")
     chute = int(chute)
     if chute > 100 or chute < 0:
-         continue # serve para retornar para inicio do while deste ponto
+         print(("Digite um nuero de 1 a 100") )
+         continue# serve para retornar para inicio do while deste ponto
 
 
     if (chute == num):
