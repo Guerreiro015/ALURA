@@ -9,8 +9,8 @@ listra()
 import random
 num = round(random.random()*100)
 num2 = round(random.randrange(101))
-num3 = round(random.randrange(1,101))
-print (num)
+num3 = round(random.randrange(1,5))
+#print (num)
 print (num2)
 print (num3)
 
