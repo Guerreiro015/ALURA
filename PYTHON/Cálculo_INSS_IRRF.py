@@ -25,7 +25,7 @@ deducaoinss = [0, 19.8, 96.94, 174.08]
 #-----------------------------------------------------
 baseir = [2112.01, 2826.66, 3751.06, 5000000]
 
-aliquotair = [0,7.5, 15, 22.5, 27.5]
+aliquotair = [7.5, 15, 22.5, 27.5]
 
 parceladeduzir = [158.4, 370.4, 651.73, 884.96]
 
@@ -58,25 +58,26 @@ print("="*50)
 #--------------------------------------------------------
 
 base_deducao_ir = (pen+dep+inss)
-if (base_deducao_ir > deducao_simplicada):
-        base_deducao_ir = deducao_simplicada
-        
-baseir=sal-base_deducao_ir
+cont = 0
+for i in range(cont,len(baseir)):
+  if (base_deducao_ir > deducao_simplicada):
+          base_deducao_ir = deducao_simplicada
+    
+  salarioir=sal-base_deducao_ir
 
-if baseir<2112.01:
-  ir=0
-elif baseir<2826.66:
-  ir=baseir*0.075-142.8
-elif baseir<3751.06:
-  ir=baseir*0.15-354.8
-elif baseir<4664.69:
-  ir=baseir*0.225-636.13
-else:
-  ir=baseir*0.275-869.36
+  if salarioir<baseir[0]:
+    ir=0
+    break
+  
+  if salarioir < baseir[cont]:
+    ir=(salarioir*(aliquotair[cont]/100)) - parceladeduzir[cont]
+    break
+  else:
+    cont=cont+1
 
 
 print(f'O Valor do FGTS é ....: {fgts:,.2f}')
 print("="*50)
-print(f'O Base do IRRF  é ....: {baseir:,.2f}')
+print(f'O Base do IRRF  é ....: {salarioir:,.2f}')
 print(f'O valor do IRRF é ....: {ir:,.2f}')
 print("="*50)
