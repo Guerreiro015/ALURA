@@ -6,10 +6,25 @@ print("-"*50)
 print("CÁLCULO DE INSS - FGTS - IRRF ".center(50))
 print("-"*50)
 print("="*50)
-sal=int(input('Digite o valor do Salário........ ..: '))
-fal=int(input('Digite Valor das faltas e atrasos. .: '))
-pen=int(input('Digite o valor da Pensão............: '))
-dep=int(input('Digite a Quant. de Dependentes. IR..: '))
+sal=input('Digite o valor do Salário........ ..: ')
+if sal == "":
+  sal=0
+sal=int(sal)
+fal=input('Digite Valor das faltas e atrasos. .: ')
+if fal == "":
+  fal=0
+fal=int(fal)
+pen=input('Digite o valor da Pensão............: ')
+if pen == "":
+  pen=0
+pen=int(pen)
+dep=input('Digite a Quant. de Dependentes. IR..: ')
+if dep == "":
+  dep=0
+dep=int(dep)
+
+  
+print(sal,fal,pen,dep)
 
 tetoinss = 876.95
 dep=dep*189.59
@@ -36,6 +51,8 @@ valordeducaoir = deducaodependenteir*dep
 #------------------------------------------------------------
 sal=(sal-fal)
 fgts=sal*0.08
+if fgts <=0:
+   fgts=0
 inss=0
 cont = 0
 
@@ -65,6 +82,8 @@ for i in range(cont,len(baseir)):
           base_deducao_ir = deducao_simplicada
     
   salarioir=sal-base_deducao_ir
+  if salarioir <= 0:
+    salarioir = 0
 
   if salarioir<baseir[0]:
     ir=0
