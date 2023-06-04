@@ -1,9 +1,15 @@
 def listra(): 
     print ("*"*50) 
 
+# A funcao menu abaixo será usado como teste no programa advinhacao_menu
+def menu():
+    print("*"*50)
+    print("****  MENU DOS JOGOS DE ADVINHAR!  *****".center(50))
+    print("*"*50)
+
 
 listra()
-print("* Bem vindo ao jogo de Adivinhação *".center(50))
+print("* Bem vindo ao jogo de Adivinhação RANDOM *".center(50))
 listra()
 
 import random
@@ -39,3 +45,4 @@ while(tentativas !=0 ):
                 tentativas=tentativas+1
     else:
                 print('erro desconhecido....')
+

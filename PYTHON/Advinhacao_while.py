@@ -3,7 +3,7 @@ def listra():
 
 
 listra()
-print("* Bem vindo ao jogo de Adivinhação *".center(50))
+print("* Bem vindo ao jogo de Adivinhação WHILE *".center(50))
 listra()
 tentativas=1     
 while(tentativas !=0 ):
