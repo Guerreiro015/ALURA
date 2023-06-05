@@ -6,6 +6,11 @@ def jogar():
     palavra = "banana"
     enforcou = False
     acertou = False
+    maiusculo = palavra.upper()# Transformar em maisculos
+    minusculo = palavra.lower()# Transformar em minúsculo
+    print(maiusculo)
+    print(minusculo)
+
     index = 0
 
     while(not enforcou and not acertou):
@@ -16,8 +21,9 @@ def jogar():
                 print(f"A letra ( {letra} ) digitada foi encontrda na posição ( {index} )")
                 index=index+1
             else:
-                print(f"A letra ( {chute}) digitada, não tem na palavra secreta")
+               # print(f"A letra ( {chute}) digitada, não tem na palavra secreta")
                 index=index+1
+                continue
         acertou = True
     print("Fim do jogo")
         
