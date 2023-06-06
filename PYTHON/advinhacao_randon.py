@@ -1,3 +1,5 @@
+import os
+os.sistem("cls")
 def listra(): 
     print ("*"*50) 
 
