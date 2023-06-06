@@ -1,4 +1,5 @@
 def forca():
+    import titulo_menu
     import os
     os.system('cls') or None
 
@@ -7,39 +8,48 @@ def forca():
     print('*****************************************')
 
     index = 0
-    palavra = "abobora"
+    palavra = "caramelo"
     tamanho = len(palavra)
     lista = []
     for i in range(tamanho):
-        lista.append("a")
+        lista.append("_")
         
-    tentativa = 0
+    tentativa = 1
     palavra = palavra.upper()# Transformar em maisculos
     palavra = palavra.lower()# Transformar em minúsculo
     palavra = palavra.strip() # tira espaços no inicio e fim
     #palavra = palavra.capitalize() # Primeira letra em maiúscula
-     
-    banana = list(palavra)
-    print(banana,tamanho)
+    #o funcao " ".join serve para imprimir um lista sem os colchetes
+    fruta = list(palavra)
+    print(" ".join(fruta),tamanho)
 
     
-    while(banana != lista):
-        print(lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],"\n")
-        print("Acerte a palavra acima...")
-        chute = input("Qual chute? ")
+    while(fruta != lista):
+        os.system('cls') or None
+        titulo_menu.menu()
+
+        print(" ".join(lista))
+        print("\n Acerte a palavra acima...")
+        chute = input(f"{tentativa}ª Tentativa,  Qual o seu chute? ")
+
         chute = chute.strip()
         chute = chute.lower()
-
+        if chute not in(fruta):
+           print(f"A letra digitada, não tem na palavra secreta") 
+           tentativa = tentativa + 1
+           input('')
+           continue
         for letra in (palavra):
             if (chute.lower() == letra.lower()):
-                print(f"A letra ( {letra} ) digitada foi encontrda na posição ( {index} )")
                 lista[index] = chute
+                print(" ".join(lista))
+                print(f" A letra  digitada foi encontrada na posição ( {index} )",input(''))
+                                
                 index=index+1
                 
             else:
-               # print(f"A letra ( {chute}) digitada, não tem na palavra secreta")
                 index=index+1
-                continue
+               
     
         tentativa = tentativa + 1
         index=0   
