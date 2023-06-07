@@ -21,7 +21,7 @@ cont = True
 while cont == True:
     os.system("cls" or None)
     print("*"*50)
-    print("****  MENU DOS JOGOS DE ADVINHAR!  *****".center(50))
+    print("****  MENU DE JOGOS!  *****".center(50))
     print("*"*50)
 
     print("-"*50)
@@ -32,7 +32,8 @@ while cont == True:
     print("-"*50)
 
     opcao = input("\n Escolha qual jogo você quer jogar ..: ")
-
+    opcao= int(opcao)
+    
     if opcao == "":
         continue
     opcao = int(opcao)
