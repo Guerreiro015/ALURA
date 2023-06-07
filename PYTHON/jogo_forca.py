@@ -8,10 +8,10 @@ def forca():
     print('*****************************************')
 
     index = 0
-    palavra = "caramelo"
+    palavra = "maracuja"
     tamanho = len(palavra)
     lista = []
-    for i in range(tamanho):
+    for i in range(tamanho):# adiconar _ na lista
         lista.append("_")
         
     tentativa = 1
@@ -42,21 +42,21 @@ def forca():
         for letra in (palavra):
             if (chute.lower() == letra.lower()):
                 lista[index] = chute
+                print(f" A letra  digitada foi encontrada na posição ( {index} )")
                 print(" ".join(lista))
-                print(f" A letra  digitada foi encontrada na posição ( {index} )",input(''))
-                                
+                input('')            
                 index=index+1
                 
             else:
                 index=index+1
-               
-    
+           
         tentativa = tentativa + 1
         index=0   
-
-    print(f"Parabeens voce acertou em {tentativa} tentativas \n")  
-    print(f"A palavra era {palavra} \n")
-    print("Fim do jogo")
+    print("="*50)
+    print(f"PARABENS, voce acertou em {tentativa} tentativas \n")  
+    print(f"A palavra é {palavra.upper()}")
+    print("="*50)
+    print("\n Fim do jogo\n")
         
 
 if(__name__ == '__main__'):

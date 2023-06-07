@@ -1,5 +1,6 @@
 import os
-os.sistem("cls")
+os.system('cls') or None
+
 def listra(): 
     print ("*"*50) 
 
@@ -15,7 +16,7 @@ print("* Bem vindo ao jogo de Adivinhação RANDOM *".center(50))
 listra()
 
 import random
-num = round(random.random()*100)
+num = round(random.random()*10)
 num2 = round(random.randrange(101))
 num3 = round(random.randrange(1,5))
 #print (num)
