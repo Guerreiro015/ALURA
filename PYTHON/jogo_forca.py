@@ -7,8 +7,8 @@ def forca():
     print('****** Bem-vindo ao jogo da Forca *******')
     print('*****************************************')
 
-    index = 0
-    palavra = "maracuja"
+    posicao = 0
+    palavra = "coco"
     tamanho = len(palavra)
     lista = []
     for i in range(tamanho):# adiconar _ na lista
@@ -18,8 +18,15 @@ def forca():
     palavra = palavra.upper()# Transformar em maisculos
     palavra = palavra.lower()# Transformar em minúsculo
     palavra = palavra.strip() # tira espaços no inicio e fim
+    
+    #palavra.index(item, inicio, fim) Para saber a posicao de um item dentro da lista
+
     #palavra = palavra.capitalize() # Primeira letra em maiúscula
-    #o funcao " ".join serve para imprimir um lista sem os colchetes
+
+    #A funcao " ".join serve para imprimir um lista sem os colchetes
+
+    #A função .count() contar o número de ocorrências de um determinado elemento em uma lista.
+
     fruta = list(palavra)
     print(" ".join(fruta),tamanho)
 
@@ -41,20 +48,20 @@ def forca():
            continue
         for letra in (palavra):
             if (chute.lower() == letra.lower()):
-                lista[index] = chute
-                print(f" A letra  digitada foi encontrada na posição ( {index} )")
+                lista[posicao] = chute
+                print(f" A letra  digitada foi encontrada na posição ( {posicao} )")
                 print(" ".join(lista))
                 input('')            
-                index=index+1
+                posicao=posicao+1
                 
             else:
-                index=index+1
+                posicao=posicao+1
            
         tentativa = tentativa + 1
-        index=0   
+        posicao=0   
     print("="*50)
     print(f"PARABENS, voce acertou em {tentativa} tentativas \n")  
-    print(f"A palavra é {palavra.upper()}")
+    print(f"A palavra é - {palavra.upper()} -".center(50))
     print("="*50)
     print("\n Fim do jogo\n")
         
