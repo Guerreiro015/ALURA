@@ -4,6 +4,17 @@ def forca():
     os.system('cls') or None
     titulo_menu.menu()
     
+    def perdeu():
+        print("="*50)
+        print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
+        print('Você foi Enforcado'.center(50))  
+        print(f"\nA palavra é - {palavra.upper()} -".center(50))
+        print("="*50)
+        print("\n Fim do jogo\n")
+        print("="*50)
+        fruta == lista  
+       
+    
     posicao = 0
     palavra = "maracuja".upper()
     tamanho = len(palavra)
@@ -44,13 +55,7 @@ def forca():
            print(f"A letra digitada, não tem na palavra secreta") 
            tentativa += 1
            if tentativa > 5:
-               print("="*50)
-               print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")  
-               print(f"A palavra é - {palavra.upper()} -".center(50))
-               print("="*50)
-               print("\n Fim do jogo\n")
-               fruta == lista
-               input('')
+               perdeu()
                break
            else:
             input('')
@@ -72,6 +77,7 @@ def forca():
             print(f"A palavra é - {palavra.upper()} -".center(50))
             print("="*50)
             print("\n Fim do jogo\n")
+            print("="*50)
             break
         
         tentativa += 1
