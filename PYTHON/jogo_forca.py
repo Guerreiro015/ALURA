@@ -43,8 +43,18 @@ def forca():
         if chute not in(fruta):
            print(f"A letra digitada, não tem na palavra secreta") 
            tentativa += 1
-           input('')
-           continue
+           if tentativa > 5:
+               print("="*50)
+               print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")  
+               print(f"A palavra é - {palavra.upper()} -".center(50))
+               print("="*50)
+               print("\n Fim do jogo\n")
+               fruta == lista
+               input('')
+               break
+           else:
+            input('')
+            continue
         for letra in (palavra):
             if (chute.upper() == letra.upper()):
                 lista[posicao] = chute
@@ -54,24 +64,19 @@ def forca():
                 posicao += 1
                 
             else:
-                posicao=posicao+1
-           
-        tentativa += 1
-        if tentativa > 5:
+                posicao +=1
+        if fruta == lista:
+
             print("="*50)
-            print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")  
+            print(f"PARABENS, voce acertou em {tentativa-1} tentativas \n")  
             print(f"A palavra é - {palavra.upper()} -".center(50))
             print("="*50)
             print("\n Fim do jogo\n")
-            fruta == lista
-        else:
-            posicao=0   
-    print("="*50)
-    print(f"PARABENS, voce acertou em {tentativa-1} tentativas \n")  
-    print(f"A palavra é - {palavra.upper()} -".center(50))
-    print("="*50)
-    print("\n Fim do jogo\n")
+            break
         
+        tentativa += 1
+                  
+        posicao=0   
 
 if(__name__ == '__main__'):
     forca()
