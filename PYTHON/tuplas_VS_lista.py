@@ -1,3 +1,6 @@
+import os
+os.system("cls")
+
 dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
 semana = ("Domingo", "Segunda", "Terça", "Terça", "Quinta", "Sexta", "Sábado")
 num = range(0,10)
@@ -18,6 +21,15 @@ print(num[5])
 print(semana.index("Quinta"))
 print(semana.count("Terça"))
 
+sem = tuple(dias) # Transformar lista em tupla
+print(sem,"\n")
+dia = list(semana) # Transformar tupla em lista
+print(dia,"\n")
+
+dias.append(semana) # Incluindo uma tupla dentro da lista
+print(dias)
+
+
 # Não podemos usar del, remove(), pop() ou clear() com uma tupla
 # podemos usar com lista
 
@@ -34,6 +46,21 @@ print(dias)
 
 dias.clear() # limpa tudo
 print(dias)
+
+# Alem de lista e tupla existe também o SET - USAMOS CHAVES {}
+# O set não aceita  incluir valores duplicado
+# No set usamos add ao invés de append
+
+colecao = {111, 222, 333}
+print (colecao)
+
+colecao.add(444)
+print (colecao)
+
+# Um set é uma coleção não ordenada de elementos. Cada elemento é único, isso significa que não existem elementos duplicados dentro do set.
+
+# Respire fundo e fique tranquilo pois o set será abordado ainda com mais detalhe em outros cursos. Vamos continuar?
+
 
 
 
