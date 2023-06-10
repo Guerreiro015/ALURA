@@ -1,0 +1,40 @@
+# >>> arquivo = open("palavras.txt", "w")  - CRIA UM ARQUIVO, SE EXISTE O ARQUIVO CO ESTE NOME ELA SOBREPOE
+
+# Vale lembrar que o w sobrescreve o arquivo, se o mesmo existir. Se só quisermos adicionar conteúdo ao arquivo, utilizamos o ("palavras.txt", "a")
+
+#Agora que temos o arquivo, como escrevemos nele? Basta chamar no arquivo a função write, passando para ela o que queremos escrever no arquivo:
+
+# >>> arquivo.write("banana")
+
+# >>> arquivo.write("melancia")
+
+# Quando estamos trabalhando com arquivos, devemos nos preocupar em fechá-lo. Assim como abrimos um arquivo, devemos fechá-los, chamando a função close:
+
+# >>> arquivo.close()
+
+# >>> arquivo = open("palavras.txt", "a")
+# Podemos escrever novamente no arquivo, mas dessa vez com a preocupação de criar uma nova linha após o que vamos escrever. Para representar uma nova linha em código, adicionamos o \n ao final do que queremos escrever:
+
+# >>> arquivo.write("morango\n")
+
+# >>> arquivo.write("manga\n")
+
+# arquivo = open("entrada.txt")
+# Nesse caso será utilizado o modo de leitura (r) por padrão.
+
+
+
+# Além do r, w e a existe o modificador b que devemos utilizar quando queremos trabalhar no modo binário. Para abrir uma imagem devemos usar:
+
+# imagem = open("foto.jpg", "rb")
+# Por exemplo, o código abaixo cria uma cópia de uma imagem:
+
+# #arquivo copia.py
+# logo = open('python-logo.png', 'rb')
+# data = logo.read()
+# logo.close()
+
+# logo2 = open('python-logo2.png', 'wb')
+# logo2.write(data)
+# logo2.close()
+

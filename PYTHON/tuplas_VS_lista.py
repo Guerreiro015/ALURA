@@ -57,10 +57,30 @@ print (colecao)
 colecao.add(444)
 print (colecao)
 
+print("="*50)
+
 # Um set é uma coleção não ordenada de elementos. Cada elemento é único, isso significa que não existem elementos duplicados dentro do set.
 
 # Respire fundo e fique tranquilo pois o set será abordado ainda com mais detalhe em outros cursos. Vamos continuar?
 
+# compreenson lista - for simplificado direto
+
+palavra = "banana".upper()
+listas = ["A" for letra in palavra]
+
+print(listas,"\n")
+
+frutas = ["maçã", "banana", "laranja", "melancia"] # Transformar em maíusculas
+lista = []
+for fruta in frutas:
+    lista.append(fruta.upper())
+
+lote = [indice.upper() for indice in frutas]
+
+print(listas,"\n")
+print(lote,"\n")
+
+print("="*50)
 
 
 

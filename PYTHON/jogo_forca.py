@@ -20,8 +20,12 @@ def forca():
     palavra = "abacaxi".upper()
     tamanho = len(palavra)
     lista = []
+
+   
+
     for i in range(tamanho):  # adiconar _ na lista
         lista.append("_")
+
 
     tentativa = 0
     palavra = palavra.lower()  # Transformar em maisculos
