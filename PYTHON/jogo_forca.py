@@ -10,20 +10,54 @@ def forca():
     def perdeu():
         print("=" * 50)
         print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
-        print("Você foi Enforcado".center(50))
-        print(f"\nA palavra é - {palavra.upper()} -".center(50))
+        print(f"A palavra é - {palavra.upper()} -".center(50))
         print("=" * 50)
-        print("\n Fim do jogo\n")
+        
+        print(" você foi enforcado! ".center(50))
+        print("    _______________         ")
+        print("   /               \       ")
+        print("  /                 \      ")
+        print("//                   \/\  ")
+        print("\|   XXXX     XXXX   | /   ")
+        print(" |   XXXX     XXXX   |/     ")
+        print(" |   XXX       XXX   |      ")
+        print(" |                   |      ")
+        print(" \__      XXX      __/     ")
+        print("   |\     XXX     /|       ")
+        print("   | |           | |        ")
+        print("   | I I I I I I I |        ")
+        print("   |  I I I I I I  |        ")
+        print("   \_             _/       ")
+        print("     \_         _/         ")
+        print("       \_______/           ")
+
+        print("Fim do jogo".center(50))
         print("=" * 50)
         fruta == lista
-   
+    def ganhou():
+            print("=" * 50)
+
+            print("       ___________      ")
+            print("      '._==_==_=_.'     ")
+            print("      .-\\:      /-.    ")
+            print("     | (|:.     |) |    ")
+            print("      '-|:.     |-'     ")
+            print("        \\::.    /      ")
+            print("         '::. .'        ")
+            print("           ) (          ")
+            print("         _.' '._        ")
+            print("        '-------'       ")
+
+            print("=" * 50)
+            print(f"PARABENS, voce acertou em {tentativa} tentativas".center(50))
+            print(f"A palavra é - {palavra.upper()} -".center(50))
+            print("=" * 50)
+            print(" Fim do jogo".center(50))
+            print("=" * 50)
+
    # SELECIONANDO PALAVRA
    #============================================
-    with open("lista_frutas.txt","r") as lista:
-        ler = lista.readlines()
-    tamanho = len(ler)
-    numero = random.randrange(0,tamanho)
-    palavra = ler[numero]
+    palavra = palavra_forca.palavra_secreta()
    #==============================================
     posicao = 0
     digitada = []
@@ -86,18 +120,13 @@ def forca():
             else:
                 posicao += 1
         if fruta == lista:
-            print("=" * 50)
-            print(f"PARABENS, voce acertou em {tentativa} tentativas \n")
-            print(f"A palavra é - {palavra.upper()} -".center(50))
-            print("=" * 50)
-            print(" Fim do jogo".center(50))
-            print("=" * 50)
-            break
-
+          ganhou()
+          break  
         # tentativa += 1
 
         posicao = 0
 
+       
 
 if __name__ == "__main__":
     forca()

@@ -9,7 +9,8 @@ def palavra_secreta():
     numero = random.randrange(0,tamanho)
 
     palavra = ler[numero]
-  
+    return palavra
+
     print(tamanho)
     print(palavra)
     for linha in ler:
