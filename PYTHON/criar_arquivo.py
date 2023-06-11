@@ -90,9 +90,9 @@ print(men,"\n")
 
 with open("senha.txt","a") as arquivo_senha: ### ADICIONAR VALOR A SENHA
     arquivo_senha.write("\nTESTANDO\nSenha NOVA\nPARECE QUE\nFUNCIONOU") # write para alerar vor do arquivo senha.txt
-
+    arquivo_senha.write("\nAbriu mesmo")
 with open("senha.txt","r") as arquivo_senha: 
-   men = arquivo_senha.read() # .read PARA LER O ARQUIVO
+   men = arquivo_senha.read() # .read PARA LER O ARQUIVO de uma vez
 print(men,"\n")
 
 with open("senha.txt","r") as verificar:
@@ -101,15 +101,24 @@ for linha in ler:
     if "QUE" in linha:
         print(linha)
 
+for linha in ler:
+    if "mesmo" in linha:
+        print(linha)
 
+os.system("cls")
 
+with open("lista_frutas.txt","w") as arquivo:
+ arquivo.write("banana\nmelancia\nmanga\nabacaxi\nmaracuja\nmorango")
 
-
-
-
-
-
-
+import random
+with open("lista_frutas.txt","r") as lista:
+    ler = lista.readlines()
+tamanho = len(ler)
+numero = random.randrange(0,tamanho)
+print(tamanho)
+for linha in ler:
+    if linha == ler[numero]:
+        print(linha)
 
 
 

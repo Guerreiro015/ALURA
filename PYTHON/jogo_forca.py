@@ -1,5 +1,7 @@
 def forca():
     import titulo_menu
+    import random
+    import palavra_forca
     import os
 
     os.system("cls") or None
@@ -14,16 +16,24 @@ def forca():
         print("\n Fim do jogo\n")
         print("=" * 50)
         fruta == lista
-
+   
+   # SELECIONANDO PALAVRA
+   #============================================
+    with open("lista_frutas.txt","r") as lista:
+        ler = lista.readlines()
+    tamanho = len(ler)
+    numero = random.randrange(0,tamanho)
+    palavra = ler[numero]
+   #==============================================
     posicao = 0
     digitada = []
-    palavra = "abacaxi".upper()
+    #palavra = "abacaxi".upper()
     tamanho = len(palavra)
     lista = []
 
    
 
-    for i in range(tamanho):  # adiconar _ na lista
+    for i in range(tamanho-1):  # adiconar _ na lista
         lista.append("_")
 
 
@@ -51,8 +61,8 @@ def forca():
         os.system("cls") or None
         titulo_menu.menu()
 
-        print("PALAVRA SECRETA =>  ", " ".join(lista))
-        print("LETRAS CHUTADAS =>  ", " ".join(digitada))
+        print("LETRAS ACERTADAS =>  ", " ".join(lista))
+        print("LETRAS CHUTADAS  =>  ", " ".join(digitada))
         print("\nAcerte a palavra acima...")
         print("-" * 50)
         chute = input(f"{tentativa}ª Tentativa,  Qual o seu chute? ")
