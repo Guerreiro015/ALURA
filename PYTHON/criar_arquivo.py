@@ -87,12 +87,23 @@ with open("senha.txt","w") as arquivo_senha: ### ALTERAR VALOR DA SENHA
 with open("senha.txt","r") as arquivo_senha: 
    men = arquivo_senha.read() # .read mostra novo arquivo senha
 print(men,"\n")
+
 with open("senha.txt","a") as arquivo_senha: ### ADICIONAR VALOR A SENHA
-    arquivo_senha.write("\nTESTANDO\nSenha NOVA") # write para alerar vor do arquivo senha.txt
+    arquivo_senha.write("\nTESTANDO\nSenha NOVA\nPARECE QUE\nFUNCIONOU") # write para alerar vor do arquivo senha.txt
 
 with open("senha.txt","r") as arquivo_senha: 
    men = arquivo_senha.read() # .read PARA LER O ARQUIVO
 print(men,"\n")
+
+with open("senha.txt","r") as verificar:
+    ler = verificar.readlines()
+for linha in ler:
+    if "QUE" in linha:
+        print(linha)
+
+
+
+
 
 
 
