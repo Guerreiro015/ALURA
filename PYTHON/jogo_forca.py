@@ -44,11 +44,9 @@ def forca():
         tentativa += 1
 
         if tentativa > 10:
-            print("=" * 50)
-            print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
-            print(f"A palavra é - {palavra.upper()} -".center(50))
-            print("=" * 50)
-            desenho_forca.perdeu()
+          
+            desenho_forca.perdeu(tentativa,palavra)
+
             fruta == lista  
             break
 
@@ -82,11 +80,8 @@ def forca():
             else:
                 posicao += 1
         if fruta == lista:
-            print("=" * 50)
-            print(f"PARABENS, voce acertou em {tentativa} tentativas".center(50))
-            print(f"A palavra é - {palavra.upper()} -".center(50))
-            print("=" * 50)
-            desenho_forca.ganhou()
+            
+            desenho_forca.ganhou(tentativa,palavra)
             break  
         
         posicao = 0

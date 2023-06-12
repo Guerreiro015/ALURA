@@ -1,5 +1,11 @@
-def perdeu():
+def perdeu(x,y):
     
+    print("=" * 50)
+    print(f"INFELIZMENTE, voce NÃO acertou nas {x-1} tentativas \n")
+    print(f"A palavra é - {y.upper()} -".center(50))
+    print("=" * 50)
+
+
     print("  _______     ".center(50))
     print(" |/      |    ".center(50))
     print(" |    __(_)__ ".center(50))
@@ -31,8 +37,11 @@ def perdeu():
     print("=" * 50)
 
 
-def ganhou():
-
+def ganhou(tent,pala):
+    print("=" * 50)
+    print(f"PARABENS, voce acertou em {tent} tentativas".center(50))
+    print(f"A palavra é - {pala.upper()} -".center(50))
+    print("=" * 50)
                
     print("       ___________      ")
     print("      '._==_==_=_.'     ")
