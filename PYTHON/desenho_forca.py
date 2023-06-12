@@ -1,7 +1,15 @@
 def perdeu():
-               
-    print(" você foi enforcado! ".center(50))
-    print("    _______________         ")
+    
+    print("  _______     ".center(50))
+    print(" |/      |    ".center(50))
+    print(" |    __(_)__ ".center(50))
+    print(" |   ENFORCADO".center(50))
+    print(" |            ".center(50))
+    print(" |            ".center(50))
+    print(" |            ".center(50))
+
+    #print(" você foi enforcado! ".center(50))
+    print("\n    _______________         ")
     print("   /               \       ")
     print("  /                 \      ")
     print("//                   \/\  ")
@@ -40,54 +48,85 @@ def ganhou():
     print(" Fim do jogo".center(50))
     print("=" * 50)      
 
-def desenha_forca(erros):
-    print("  _______     ")
-    print(" |/      |    ")
+def enforcar(tentativa):
+    tentativa = tentativa-1
+    if(tentativa == 0):
+        print("  _______     ")
+        print(" |/           ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+    
+    if(tentativa == 1):
+        print("  _______     ")
+        print(" |/      |    ")
+        print(" |           ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
 
-    if(erros == 1):
+    if(tentativa == 2):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |            ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 2):
+    if(tentativa == 3):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \     ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 3):
+    if(tentativa == 4):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \|    ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 4):
+    if(tentativa == 5):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 5):
+    if(tentativa == 6):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |            ")
 
-    if(erros == 6):
+    if(tentativa == 7):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |      /     ")
 
-    if (erros == 7):
+    if (tentativa == 8):
+        print("  _______     ")
+        print(" |/      |    ")
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |      / \   ")
-
-    print(" |            ")
-    print("_|___         ")
-    print()
-
+    if (tentativa == 9):
+        print("  _______     ")
+        print(" |/      |    ")
+        print(" |    __(_)__ ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
     
+        

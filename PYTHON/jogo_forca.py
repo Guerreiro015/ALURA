@@ -54,7 +54,9 @@ def forca():
 
         os.system("cls") or None
         titulo_menu.menu()
-
+                     
+        desenho_forca.enforcar(tentativa)
+        
         print("LETRAS ACERTADAS =>  ", " ".join(lista))
         print("LETRAS CHUTADAS  =>  ", " ".join(digitada))
         print("\nAcerte a palavra acima...")
