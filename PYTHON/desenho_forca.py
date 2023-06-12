@@ -32,7 +32,8 @@ def perdeu():
 
 
 def ganhou():
-           
+
+               
     print("       ___________      ")
     print("      '._==_==_=_.'     ")
     print("      .-\\:      /-.    ")
