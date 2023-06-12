@@ -2,6 +2,7 @@ def forca():
     import titulo_menu
     import random
     import palavra_forca
+    import desenho_forca
     import os
 
     os.system("cls") or None
@@ -47,7 +48,7 @@ def forca():
             print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
             print(f"A palavra é - {palavra.upper()} -".center(50))
             print("=" * 50)
-            palavra_forca.perdeu()
+            desenho_forca.perdeu()
             fruta == lista  
             break
 
@@ -83,7 +84,7 @@ def forca():
             print(f"PARABENS, voce acertou em {tentativa} tentativas".center(50))
             print(f"A palavra é - {palavra.upper()} -".center(50))
             print("=" * 50)
-            palavra_forca.ganhou()
+            desenho_forca.ganhou()
             break  
         
         posicao = 0
