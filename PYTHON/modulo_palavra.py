@@ -1,6 +1,6 @@
 def palavra_secreta():
     with open("lista_frutas.txt","w") as arquivo:
-        arquivo.write("banana\nmelancia\nmanga\nabacaxi\nmaracuja\nmorango\nameixa\ngoiaba\ncaju\npera\ncarambola\nlaranja\ncaqui\nabacate\nmamao\n")
+        arquivo.write("groselha\nbanana\nmelancia\nmanga\nabacaxi\nmaracuja\nmorango\nameixa\ngoiaba\ncaju\npera\ncarambola\nlaranja\ncaqui\nabacate\nmamao\n")
 
     import random
     with open("lista_frutas.txt","r") as lista:
@@ -11,10 +11,5 @@ def palavra_secreta():
     palavra = ler[numero]
     return palavra
 
-    print(tamanho)
-    print(palavra)
-    for linha in ler:
-        print(linha)
-
-
+    
 

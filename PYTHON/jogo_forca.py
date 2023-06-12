@@ -1,16 +1,16 @@
 def forca():
-    import titulo_menu
+    import modulo_titulo
     import random
-    import palavra_forca
-    import desenho_forca
+    import modulo_palavra
+    import modulo_forca
     import os
 
     os.system("cls") or None
-    titulo_menu.menu()
+    modulo_titulo.menu()
 
     # SELECIONANDO PALAVRA
    #============================================
-    palavra = palavra_forca.palavra_secreta()
+    palavra = modulo_palavra.palavra_secreta()
    #==============================================
     posicao = 0
     digitada = []
@@ -45,15 +45,15 @@ def forca():
 
         if tentativa > 10:
           
-            desenho_forca.perdeu(tentativa,palavra)
+            modulo_forca.perdeu(tentativa,palavra)
 
             fruta == lista  
             break
 
         os.system("cls") or None
-        titulo_menu.menu()
+        modulo_titulo.menu()
                      
-        desenho_forca.enforcar(tentativa)
+        modulo_forca.enforcar(tentativa)
         
         print("LETRAS ACERTADAS =>  ", " ".join(lista))
         print("LETRAS CHUTADAS  =>  ", " ".join(digitada))
@@ -81,7 +81,7 @@ def forca():
                 posicao += 1
         if fruta == lista:
             
-            desenho_forca.ganhou(tentativa,palavra)
+            modulo_forca.ganhou(tentativa,palavra)
             break  
         
         posicao = 0
