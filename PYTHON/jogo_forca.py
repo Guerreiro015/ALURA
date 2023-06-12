@@ -7,55 +7,7 @@ def forca():
     os.system("cls") or None
     titulo_menu.menu()
 
-    def perdeu():
-        print("=" * 50)
-        print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
-        print(f"A palavra é - {palavra.upper()} -".center(50))
-        print("=" * 50)
-        
-        print(" você foi enforcado! ".center(50))
-        print("    _______________         ")
-        print("   /               \       ")
-        print("  /                 \      ")
-        print("//                   \/\  ")
-        print("\|   XXXX     XXXX   | /   ")
-        print(" |   XXXX     XXXX   |/     ")
-        print(" |   XXX       XXX   |      ")
-        print(" |                   |      ")
-        print(" \__      XXX      __/     ")
-        print("   |\     XXX     /|       ")
-        print("   | |           | |        ")
-        print("   | I I I I I I I |        ")
-        print("   |  I I I I I I  |        ")
-        print("   \_             _/       ")
-        print("     \_         _/         ")
-        print("       \_______/           ")
-
-        print("Fim do jogo".center(50))
-        print("=" * 50)
-        fruta == lista
-    def ganhou():
-            print("=" * 50)
-
-            print("       ___________      ")
-            print("      '._==_==_=_.'     ")
-            print("      .-\\:      /-.    ")
-            print("     | (|:.     |) |    ")
-            print("      '-|:.     |-'     ")
-            print("        \\::.    /      ")
-            print("         '::. .'        ")
-            print("           ) (          ")
-            print("         _.' '._        ")
-            print("        '-------'       ")
-
-            print("=" * 50)
-            print(f"PARABENS, voce acertou em {tentativa} tentativas".center(50))
-            print(f"A palavra é - {palavra.upper()} -".center(50))
-            print("=" * 50)
-            print(" Fim do jogo".center(50))
-            print("=" * 50)
-
-   # SELECIONANDO PALAVRA
+    # SELECIONANDO PALAVRA
    #============================================
     palavra = palavra_forca.palavra_secreta()
    #==============================================
@@ -89,9 +41,16 @@ def forca():
 
     while fruta != lista:
         tentativa += 1
+
         if tentativa > 10:
-            perdeu()
+            print("=" * 50)
+            print(f"INFELIZMENTE, voce NÃO acertou nas {tentativa-1} tentativas \n")
+            print(f"A palavra é - {palavra.upper()} -".center(50))
+            print("=" * 50)
+            palavra_forca.perdeu()
+            fruta == lista  
             break
+
         os.system("cls") or None
         titulo_menu.menu()
 
@@ -120,13 +79,16 @@ def forca():
             else:
                 posicao += 1
         if fruta == lista:
-          ganhou()
-          break  
-        # tentativa += 1
-
+            print("=" * 50)
+            print(f"PARABENS, voce acertou em {tentativa} tentativas".center(50))
+            print(f"A palavra é - {palavra.upper()} -".center(50))
+            print("=" * 50)
+            palavra_forca.ganhou()
+            break  
+        
         posicao = 0
 
-       
+   
 
 if __name__ == "__main__":
-    forca()
+  forca()
