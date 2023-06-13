@@ -1,13 +1,12 @@
-from objeto1 import cria_conta
+from objeto1 import cria_conta,deposito,saque,extrato
 
 conta = cria_conta(333,"antonio",500,10000)
 
-print(conta)
+#print(conta)
 
-conta = cria_conta(444,"francisca",100,1000)
+deposito(conta,400)
 
-print(conta)
+extrato(conta)
 
-conta = cria_conta(555,"Lucas",200,3000)
+saque(conta,500)
 
-print(conta)
