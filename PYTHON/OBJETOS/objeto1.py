@@ -10,10 +10,14 @@ def cria_conta(num,nom,sal,lim):
      conta = {"numero": num, "titular": nom, "saldo": sal, "limite": lim}
      return conta
 
-teste = cria_conta(123,"antonio",1500,5000)
+def deposita(conta,valor):
+     conta["saldo"] += valor
 
-print(teste)
+def saca(conta,valor):
+     conta["saldo"] -= valor
 
+def estrato(conta,valor):
+     print(saldo)
 
 
 
