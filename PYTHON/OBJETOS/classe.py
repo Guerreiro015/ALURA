@@ -10,7 +10,7 @@ class funci():
         if self.vendas > meta:
             print(f" A meta do {self.nome}, era {meta} e o mesmo fez {self.vendas} então ele bateu meta")
         else:
-             print(f" A meta do {self.nome},era {meta} e o mesmo fez {self.vendas} então ele NÃO bateu meta")
+             print(f" A meta do {self.nome}, era {meta} e o mesmo fez {self.vendas} então ele NÃO bateu meta")
 
 vendedor0 = funci("Francisca")
 vendedor0.vendeu(200)
