@@ -17,30 +17,30 @@ class cliente:
             self.plano = novo_plano
             print(f" o cliente {self.nome} mudou para o plano {self.plano}")
         else:
-            print("Erro no nome do plano, nome não é válido")    
+            print("Não foi possível alterar o plano, nome do plano não é válido")    
 
 
     def filmes(self,filme,plano):
-        if plano == criar.plano or criar.plano == self.listas_planos[2]:
+        if plano == cliente01.plano or cliente01.plano == self.listas_planos[2]:
             print(f"O cliente {self.nome} Pode assistir o filme - { filme} - \n")
 
         else:
             print(f"O cliente {self.nome} Nâo pode assistir o filme - {filme} - Precisa alterar o plano\n")
 
 
-criar = cliente("antonio","antonio@email","basic")
-print(criar.nome)
-print(criar.plano)
+cliente01 = cliente("antonio","antonio@email","basic")
+print(cliente01.nome)
+print(cliente01.plano)
 
-print(f" O cliente {criar.nome} foi cadastrado com sucesso no plano {criar.plano}\n")
+print(f" O cliente {cliente01.nome} foi cadastrado com sucesso no plano {cliente01.plano}\n")
 
-criar.filmes("Amor De Noite","premium")
+cliente01.filmes("Amor De Noite","top")
 
-criar.mudar_plano("to")
+cliente01.mudar_plano("premium")
 
-print(f"\n O Novo plano do {criar.nome} e o plano {criar.plano}\n")
+print(f"\n O Novo plano do {cliente01.nome} e o plano {cliente01.plano}\n")
 
-criar.filmes("Amor De Noite","premium")
+cliente01.filmes("Amor De Noite","premium")
 
 
 
