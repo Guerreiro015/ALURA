@@ -2,13 +2,24 @@
 class banco:
     def __init__(self,nome,numero,saldo,limite):
         self.nome = nome
-        self.CC = numero
+        self.numero = numero
         self.saldo = saldo
         self.limite = limite
 
-    def cria_conta(numero, nome, saldo, limite):
-        conta = {"numero": numero, "nome": nome , "saldo": saldo, "limite": limite}
-        return conta
 
-    def cadastro(nome):
-        print("O cliente {} foi cadastrado com sucesso ".format(nome))
+    def deposito(self,deposito):
+        if deposito > 500:
+            print("saldo positivo")
+        elif deposito < 500:
+            print("saldo negativo")
+
+
+cliente1 = banco("antonio",111,100,500)
+print(cliente1.nome)
+cliente1.deposito(600)
+cliente2 = banco("lucas",222,1000,5050)
+print(cliente2.nome)
+cliente2.deposito(200)
+
+
+
