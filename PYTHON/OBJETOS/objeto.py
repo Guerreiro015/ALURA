@@ -1,7 +1,7 @@
 import os
 os.system("cls")
 
-from teste_objeto import cria_conta, deposita, saca, extrato
+from dados_objeto import cria_conta, deposita, saca, extrato
 conta1 = cria_conta(111, "Antonio", 55.0, 1000.0)
 conta2 = cria_conta(222,"LUCAS",855,600)
 

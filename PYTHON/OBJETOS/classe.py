@@ -1,24 +1,16 @@
-class funci():
-    def __init__(self,nome):
-        self.nome = nome
-        self.vendas = 0
+import os
+os.system("cls")
 
-    def vendeu(self,vendas):
-        self.vendas = vendas
+from base_classe import funci
 
-    def meta(self,meta):
-        if self.vendas > meta:
-            print(f" A meta do {self.nome}, era {meta} e o mesmo fez {self.vendas} então ele bateu meta")
-        else:
-             print(f" A meta do {self.nome}, era {meta} e o mesmo fez {self.vendas} então ele NÃO bateu meta")
+vendedor1 = funci("Antonio")
+vendedor1.vendeu(1000)
+vendedor1.meta(600)
 
-vendedor0 = funci("Francisca")
-vendedor0.vendeu(200)
-vendedor0.meta(500)
+vendedor2 = funci("Luana")
+vendedor2.vendeu(400)
+vendedor2.meta(500)
 
-
-
-
-
-
-
+office = funci("Lucas")
+office.vendeu(2000)
+office.meta(1500)
