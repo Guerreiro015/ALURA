@@ -18,12 +18,19 @@ gato = banco("Romeu",444,630,1000)
 print (f"O cliente {gato.nome} abriu a conta com R$: {gato.saldo}")
 
 deposito_gato = int(input(f"Digite o valor de dposito para {gato.nome} R$: " ))
-
 gato.deposito(deposito_gato)
-
 print(f"O cliente {gato.nome} fez um deposito de R$: {deposito_gato} e seu saldo agora é {gato.saldo} \n")
 
+saque_gato = int(input(f"O cliente {gato.nome} sacou R$ "))
+gato.sacar(saque_gato)
+print(f"O cliente {gato.nome} fez um saque de R$: {saque_gato} e seu saldo agora é {gato.saldo} \n")
  
+transfix = int(input(f"O cliente {gato.nome} tranferiu R$ "))
+
+banco.transferir(500,gato,cliente3)
+
+print(f"\nsaldo luana {cliente3.saldo}\n")
+print(f"\nsaldo luana {gato.saldo}\n")
 
 
 

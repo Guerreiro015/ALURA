@@ -12,29 +12,29 @@ class banco:
     def deposito(self,depositado):
         self.depositado = depositado
         self.saldo += depositado
+    
+    def sacar(self,valor):
+        self.valor = valor
+        self.saldo -= self.valor
+
+    def transferir(self,valor,origem,destino):
+        banco.origem.sacar(valor)
+        banco.destino.depositar(valor)
+
         
 
-cliente1 = banco("Antonio",111,5000,500) # Criando a conta
-
-print(f"O cliente {cliente1.nome} abriu a conta com R$: {cliente1.saldo}")
-
-deposito_cliente1 = int(input(f"Digite o Valor do depósito para o {cliente1.nome}, R$: "))# fazendo o depósito
-
-cliente1.deposito(deposito_cliente1)
-
-print(f"O cliente {cliente1.nome} depositou R$: {deposito_cliente1} e ficou com R$: {cliente1.saldo} de saldo\n")# verificando o saldo
 
 #/////////////////////////////////////////
 
-cliente2 = banco("lucas",222,1000,5050) # Criando a conta
+# cliente2 = banco("lucas",222,1000,5050) # Criando a conta
 
-print(f"O cliente {cliente2.nome} abriu a conta com R$: {cliente2.saldo}") # fazendo o depósito
+# print(f"O cliente {cliente2.nome} abriu a conta com R$: {cliente2.saldo}") # fazendo o depósito
 
-deposito_cliente2 = int(input(f"Digite o Valor do depósito para o {cliente2.nome}, R$: ")) # verificando o saldo
+# deposito_cliente2 = int(input(f"Digite o Valor do depósito para o {cliente2.nome}, R$: ")) # verificando o saldo
 
-cliente2.deposito(deposito_cliente2)
+# cliente2.deposito(deposito_cliente2)
 
-print(f"O cliente {cliente2.nome} depositou R$: {deposito_cliente2} e ficou com R$: {cliente2.saldo} de saldo\n")
+# print(f"O cliente {cliente2.nome} depositou R$: {deposito_cliente2} e ficou com R$: {cliente2.saldo} de saldo\n")
 
 
 
