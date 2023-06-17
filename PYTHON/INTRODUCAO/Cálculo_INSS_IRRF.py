@@ -104,3 +104,5 @@ print("="*50)
 print(f'O Base do IRRF  é ....: {salarioir:,.2f}')
 print(f'O valor do IRRF é ....: {ir:,.2f}')
 print("="*50)
+fim = input("FIM")
+
