@@ -25,12 +25,19 @@ saque_gato = int(input(f"O cliente {gato.nome} sacou R$ "))
 gato.sacar(saque_gato)
 print(f"O cliente {gato.nome} fez um saque de R$: {saque_gato} e seu saldo agora é {gato.saldo} \n")
  
-transfix = int(input(f"O cliente {gato.nome} tranferiu R$ "))
+transfix = int(input(f"O cliente {gato.nome} tranferiu para {cliente3.nome} o valor de R$ "))
 
-banco.transferir(500,gato,cliente3)
+gato.transferir(transfix,cliente3)
 
-print(f"\nsaldo luana {cliente3.saldo}\n")
-print(f"\nsaldo luana {gato.saldo}\n")
+print(f"\nNovo saldo da luana é {cliente3.saldo}\n")
+print(f"\nNovo saldo do Romeu é {gato.saldo}\n")
+
+transfix = int(input(f"O cliente {cliente3.nome} tranferiu para {gato.nome} o valor de R$ "))
+
+cliente3.transferir(transfix,gato)
+
+print(f"\nNovo saldo da luana é {cliente3.saldo}\n")
+print(f"\nNovo saldo do Romeu é {gato.saldo}\n")
 
 
 

@@ -17,9 +17,9 @@ class banco:
         self.valor = valor
         self.saldo -= self.valor
 
-    def transferir(self,valor,origem,destino):
-        banco.origem.sacar(valor)
-        banco.destino.depositar(valor)
+    def transferir(self,valor,destino):
+        self.sacar(valor)
+        destino.deposito(valor)
 
         
 
