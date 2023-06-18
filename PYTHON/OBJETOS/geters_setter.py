@@ -1,28 +1,28 @@
 #PROPIEDADES OS GETTERS E SETTER SERVEM PARA ADICIONAR PROPIEDADES AOS OBJETOS
 
 
+from msilib.schema import Property
+
+
 class banco:
     import os
     os.system("cls")
     def __init__(self,numero,titular,saldo,limite):
-        self._titular = titular
-        self._numero = numero
-        self._saldo = saldo
-        self._limite = limite
+        self.__titular = titular
+        self.__numero = numero
+        self.__saldo = saldo
+        self.__limite = limite
        
     
-       
-   
-
-    def pega_saldo(self,saldo):
-        return self._limite
-
-    def devolve_titular(self):
+         
+    @Property
+    def titular(self):
         return self.__titular
-
-    def retorna_limite(self):
+    @property
+    def limite(self):
         return self.__limite
 
+    
 
 
 conta = banco(123, "Nico", 55.5, 1000.0)
