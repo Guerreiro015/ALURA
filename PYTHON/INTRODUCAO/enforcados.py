@@ -57,8 +57,8 @@ def forca():
                      
         enforcar(tentativa)
         
-        print("LETRAS ACERTADAS =>  ", " ".join(lista))
-        print("LETRAS CHUTADAS  =>  ", " ".join(digitada))
+        print("\33[1;34m LETRAS ACERTADAS =>  ", " ".join(lista))
+        print("\33[1;33m LETRAS CHUTADAS  =>  ", " ".join(digitada))
         print("\nAcerte a palavra acima...")
         print("-" * 50)
         chute = input(f"{tentativa}ª Tentativa,  Qual o seu chute? ")
@@ -113,7 +113,7 @@ def menu():
 def perdeu(x,y):
     
     print("=" * 50)
-    print(f"INFELIZMENTE, voce NÃO acertou nas {x-1} tentativas \n")
+    print(f"\033[1,31 INFELIZMENTE, voce NÃO acertou nas {x-1} tentativas \n")
     print(f"A palavra é - {y.upper()} -".center(50))
     print("=" * 50)
 
