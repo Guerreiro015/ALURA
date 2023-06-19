@@ -1,39 +1,59 @@
 #PROPIEDADES OS GETTERS E SETTER SERVEM PARA ADICIONAR PROPIEDADES AOS OBJETOS
+import os
+os.system("cls")
 
+class Persona:
+    def __init__(self, name,limite):
+        self._name = name
+        self._limite = limite
 
-from msilib.schema import Property
+    @property
+    def name(self):
+        print('\nMostrando o name')
+        return self._name
 
-
-class banco:
-    import os
-    os.system("cls")
-    def __init__(self,numero,nome,saldo,limite):
-        self.__nome = nome
-        self.__numero = numero
-        self.__saldo = saldo
-       # self.__limite = limite
-       
-    
-         
-    @Property
-    def nome(self):
-        return self.__nome
-    
-    @nome.setter 
-    def nome(self,valor):
-        if type(valor) == type(str()):
-            print("Deve ser um vaor numerico")
+    @name.setter
+    def name(self, value):
+        if type(value) != type(str()):
+            print(" O nome não pode ser mumero ")
         else:
-        self.__nome = valor
+            print('\nTrocando name para ',value)
+            self._name = value
 
-    
+    # @name.deleter
+    # def name(self):
+    #     print('Deleting name')
+    #     del self._name
 
 
-conta = banco(123, "Nico", 55.5, 1000.0)
 
-conta.pega_saldo()
+    @property
+    def limite(self):
+        print('\nMostrando o limite')
+        return self._limite
 
-conta.devolve_nome()
+    @limite.setter
+    def limite(self, value):
+        if type(value) == type(str()):
+            print(" O nome não pode ser mumero ")
+        else:
+            print('\nTrocando limite para ',value)
+            self._limite = value
 
-conta.retorna_limite()
+li = Persona('Luana',0)
+print('The limite is:', li.limite)
+li.limite = 50
+print('The o limite is:', li.limite)
+#del p.name
 
+pessoa = Persona('Luana',0)
+print('O nome é :', pessoa.name)
+pessoa.name = 50
+print('O nome é :', pessoa.name)
+pessoa.name = "Francsica"
+print('O nome á : ', pessoa.name)
+#del p.name
+
+
+
+ 
