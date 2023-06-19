@@ -7,20 +7,24 @@ from msilib.schema import Property
 class banco:
     import os
     os.system("cls")
-    def __init__(self,numero,titular,saldo,limite):
-        self.__titular = titular
+    def __init__(self,numero,nome,saldo,limite):
+        self.__nome = nome
         self.__numero = numero
         self.__saldo = saldo
-        self.__limite = limite
+       # self.__limite = limite
        
     
          
     @Property
-    def titular(self):
-        return self.__titular
-    @property
-    def limite(self):
-        return self.__limite
+    def nome(self):
+        return self.__nome
+    
+    @nome.setter 
+    def nome(self,valor):
+        if type(valor) == type(str()):
+            print("Deve ser um vaor numerico")
+        else:
+        self.__nome = valor
 
     
 
@@ -29,7 +33,7 @@ conta = banco(123, "Nico", 55.5, 1000.0)
 
 conta.pega_saldo()
 
-conta.devolve_titular()
+conta.devolve_nome()
 
 conta.retorna_limite()
 
