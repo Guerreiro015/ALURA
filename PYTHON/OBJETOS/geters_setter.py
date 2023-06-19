@@ -1,57 +1,79 @@
 #PROPIEDADES OS GETTERS E SETTER SERVEM PARA ADICIONAR PROPIEDADES AOS OBJETOS
+ # @name.deleter
+    # def name(self):
+    #     print('Deleting name')
+    #     del self._name
+
 import os
 os.system("cls")
 
 class Persona:
-    def __init__(self, name,limite):
+    def __init__(self, name,limite,saldo):
         self._name = name
         self._limite = limite
+        self._saldo = saldo
 
     @property
     def name(self):
-        print('\nMostrando o name')
         return self._name
 
     @name.setter
     def name(self, value):
         if type(value) != type(str()):
-            print(" O nome não pode ser mumero ")
+            print('''\n A troca de nome não foi possível
+            nome não pode ser mumero\n ''')
         else:
-            print('\nTrocando name para ',value)
-            self._name = value
-
-    # @name.deleter
-    # def name(self):
-    #     print('Deleting name')
-    #     del self._name
-
+            print('\nTrocando nome para ',value)
+            self._name = value.upper()
 
 
     @property
     def limite(self):
-        print('\nMostrando o limite')
         return self._limite
 
     @limite.setter
     def limite(self, value):
         if type(value) == type(str()):
-            print(" O nome não pode ser mumero ")
+            print('''\n Tentativa de aumentar limite falhou
+            O limite não pode ser strings \n''')
         else:
             print('\nTrocando limite para ',value)
             self._limite = value
 
-li = Persona('Luana',0)
-print('The limite is:', li.limite)
-li.limite = 50
-print('The o limite is:', li.limite)
-#del p.name
+    @property
+    def saldo(self):
+        return self._saldo
 
-pessoa = Persona('Luana',0)
+    @saldo.setter
+    def saldo(self,value):
+        if type(value) != type(int()):
+             print('''\n Deposito não reaizado
+            O valor não pode ser strings \n''')
+        else:     
+            self._saldo += value
+            print(f"\nFazendo um depósito de R$ {value}")
+            print(f"Seu novo saldo é {self._saldo}")
+
+
+limi = Persona('Luana',100,50)
+print(f'\nA cliente {limi.name} foi cadastrao com um limite de: {limi.limite}')
+limi.limite = "asd"
+print(f'O novo limite é:{limi.limite}')
+#del p.limite
+
+
+pessoa = Persona('Lucas',500,100)
+print(f'\nO cliente {pessoa.name} foi cadastrado com sucesso, seu limite é: {pessoa.limite}')
+pessoa.name = 3445
 print('O nome é :', pessoa.name)
-pessoa.name = 50
-print('O nome é :', pessoa.name)
-pessoa.name = "Francsica"
-print('O nome á : ', pessoa.name)
+pessoa.name = "Francisca"
+print(f'O nome é : {pessoa.name} e seu saldo é R$: {pessoa.saldo}')
+
+pessoa.saldo = "noem"
+
+print(f'O nome é : {pessoa.name} e seu saldo é R$: {pessoa.saldo}')
+
+
 #del p.name
 
 
