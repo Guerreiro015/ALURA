@@ -47,7 +47,7 @@ class Persona:
     @saldo.setter
     def saldo(self,value):
         if type(value) != type(int()):
-             print('''\n Deposito não reaizado
+             print('''\n Deposito não realizado
             O valor não pode ser strings \n''')
         else:     
             self._saldo += value
