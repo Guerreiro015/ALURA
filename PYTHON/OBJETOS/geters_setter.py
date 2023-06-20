@@ -84,6 +84,7 @@ pessoa.deposito = 80
 pessoa.saque = "ddd"
 pessoa.saque = 2000
 pessoa.saque = 200
+pessoa.saldo
 
 #del p.name
 
