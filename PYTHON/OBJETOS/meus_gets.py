@@ -2,29 +2,31 @@ import os
 os.system("cls")
 
 class banco:
-    def __init__(self,titular,vendas):
-        self._titular = titular
+    def __init__(self,name,vendas):
+        self._name = name
         self._vendas = vendas
 
-@property
-def titular(self):
-    return self._titular
+    @property
+    def name(self):
+        return self._name.upper()
 
-@titular.setter
-def titular(self,valor):
-    self._titular = valor
-    print(f"\nTitular alterado para {self._titular}")
+    @name.setter
+    def name(self,value):
+        self._name = value
+
+    @property
+    def vendas(self):
+        return self._vendas
+    
+    @vendas.setter
+    def vendas(self,valor):
+        self._vendas = valor
 
 
+cliente =banco("Luana",0)
 
-cliente = banco("Lucas",0)
+print(f"\nA cliente {cliente.name} foi cadastrada com R$: {cliente.vendas} de vendas")
+cliente.name="antonio"
+cliente.vendas = 100
+print(f"\nCliente alterado para {cliente.name} e vendas alterada para R$: {cliente.vendas}\n")
 
-print(f'\nCliente {cliente._titular} foi cadastrado com sucesso')
-cliente.titular = "Luana"
-print(f"\nTitular é  {cliente._titular}")
-
-cliente1 = banco("Antonio",0)
-
-print(f'\nCliente {cliente1._titular} foi cadastrado com sucesso')
-cliente1.titular = "Luana"
-print(f"\nTitular é  {cliente1._titular}")

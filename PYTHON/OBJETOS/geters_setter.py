@@ -18,13 +18,13 @@ class Persona:
         return self._name
 
     @name.setter
-    def name(self, value):
-        if type(value) != type(str()):
+    def name(self, valor):
+        if type(valor) != type(str()):
             print('''\n A troca de nome não foi possível
             nome não pode ser mumero\n ''')
         else:
-            print('\nTrocando nome para ',value)
-            self._name = value.upper()
+            print('\nTrocando nome para ',valor)
+            self._name = valor.title()
 
 
     @property
@@ -32,26 +32,26 @@ class Persona:
         return self._limite
 
     @limite.setter
-    def limite(self, value):
-        if type(value) == type(str()):
+    def limite(self, valor):
+        if type(valor) == type(str()):
             print('''\n Tentativa de aumentar limite falhou
             O limite não pode ser strings \n''')
         else:
-            print('\nTrocando limite para ',value)
-            self._limite = value
+            print('\nTrocando limite para ',valor)
+            self._limite = valor
 
     @property
     def saldo(self):
         return self._saldo
 
     @saldo.setter
-    def saldo(self,value):
-        if type(value) != type(int()):
+    def saldo(self,valor):
+        if type(valor) != type(int()):
              print('''\n Deposito não realizado
             O valor não pode ser strings \n''')
         else:     
-            self._saldo += value
-            print(f"\nFazendo um depósito de R$ {value}")
+            self._saldo += valor
+            print(f"\nFazendo um depósito de R$ {valor}")
             print(f"Seu novo saldo é {self._saldo}")
 
 
@@ -62,9 +62,9 @@ print(f'O novo limite é:{limi.limite}')
 #del p.limite
 
 
-pessoa = Persona('Lucas',500,100)
+pessoa = Persona('Antonio',500,100)
 print(f'\nO cliente {pessoa.name} foi cadastrado com sucesso, seu limite é: {pessoa.limite}')
-pessoa.name = 3445
+pessoa.name = 1111
 print('O nome é :', pessoa.name)
 pessoa.name = "Francisca"
 print(f'O nome é : {pessoa.name} e seu saldo é R$: {pessoa.saldo}')
