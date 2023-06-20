@@ -21,58 +21,69 @@ class Persona:
     def name(self, valor):
         if type(valor) != type(str()):
             print('''\n A troca de nome não foi possível
-            nome não pode ser mumero\n ''')
+            nome não pode ser mumero''')
         else:
-            print('\nTrocando nome para ',valor)
+            print('\nNome alterado para ',valor)
             self._name = valor.title()
+            print(f"Seu novo nome é {self._name} e seu saldo é R$: {self._saldo: .2f} ")
 
-
-    @property
-    def limite(self):
-        return self._limite
-
-    @limite.setter
-    def limite(self, valor):
-        if type(valor) == type(str()):
-            print('''\n Tentativa de aumentar limite falhou
-            O limite não pode ser strings \n''')
-        else:
-            print('\nTrocando limite para ',valor)
-            self._limite = valor
-
-    @property
+    @property 
     def saldo(self):
-        return self._saldo
+       return self._saldo
 
-    @saldo.setter
-    def saldo(self,valor):
-        if type(valor) != type(int()):
-             print('''\n Deposito não realizado
-            O valor não pode ser strings \n''')
-        else:     
+
+
+    @property
+    def deposito(self):
+        return self.deposito
+
+    @deposito.setter
+    def deposito(self, valor):
+        if type(valor) == type(str()):
+            print('''\n Tentativa de deposito falhou
+            O deposito não pode ser strings''')
+        else:
+            print(f"\nDeposito de {valor: .2f} feito com sucesso")
             self._saldo += valor
-            print(f"\nFazendo um depósito de R$ {valor}")
-            print(f"Seu novo saldo é {self._saldo}")
+            print(f"Seu novo saldo é de {self._saldo: .2f}")
+    
+
+    @property
+   
+    def saque(self):
+        return self.saque
+    
+    @saque.setter 
+    def saque(self,valor):
+        if type(valor) == type(str()):
+            print('''\nTentativa de saque falhou
+            O valor do saque não pode ser strings''')
+        else:
+            if valor > self._saldo:
+                print(f"\n{self._name} seu saque de R$: {valor: .2f} não foi realizado, saldo de {self._saldo: .2f} insuficiente")
+            else:
+                self._saldo -= valor 
+                print(f"\n{self._name} seu saque de {valor: .2f} foi realizado com sucesso")
+                print(f'\n{self._name} seu novo saldo é de R$: {pessoa.saldo: .2f}')
+        
 
 
-limi = Persona('Luana',100,50)
-print(f'\nA cliente {limi.name} foi cadastrao com um limite de: {limi.limite}')
-limi.limite = "asd"
-print(f'O novo limite é:{limi.limite}')
-#del p.limite
 
 
-pessoa = Persona('Antonio',500,100)
-print(f'\nO cliente {pessoa.name} foi cadastrado com sucesso, seu limite é: {pessoa.limite}')
+pessoa = Persona('Antonio',500,1620)
+
+print(f'\nO cliente {pessoa.name} foi cadastrado com sucesso, com um saldo de: {pessoa.saldo: .2f}')
+
 pessoa.name = 1111
-print('O nome é :', pessoa.name)
+
 pessoa.name = "Francisca"
-print(f'O nome é : {pessoa.name} e seu saldo é R$: {pessoa.saldo}')
 
-pessoa.saldo = "noem"
+pessoa.deposito = "ffff"
+pessoa.deposito = 80
 
-print(f'O nome é : {pessoa.name} e seu saldo é R$: {pessoa.saldo}')
-
+pessoa.saque = "ddd"
+pessoa.saque = 2000
+pessoa.saque = 200
 
 #del p.name
 
