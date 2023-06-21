@@ -1,15 +1,13 @@
 import os
 os.system('cls')
+#print("\033[1;33;0m ola mundo")
 
-def linha():
-  print("="*50)
-
-print("="*50)
+print("\33[33m="*50)
 print("-"*50)
-print("CÁLCULO DE INSS - FGTS - IRRF ".center(50))
-print("-"*50)
+print("\33[1;34mCÁLCULO DE INSS - FGTS - IRRF ".center(50))
+print("\033[33m-"*50)
 print("="*50)
-sal=input('Digite o valor do Salário........ ..: ')
+sal=input('\033[32mDigite o valor do Salário........ ..: ')
 if sal == "":
   sal=0
 sal=int(sal)
@@ -71,10 +69,10 @@ for i in range(cont,len(basesalario)):
       else:
         cont = cont+1
 
-print("="*50)
-print(f'Valor base do INSS é : {sal:,.2f}')
+print("\33[33m="*50)
+print(f'\033[36mValor base do INSS é  : {sal:,.2f}')
 print(f'O valor do INSS será..: {inss:,.2f}')
-print("="*50)
+print("\33[33m="*50)
 #--------------------------------------------------------
 #--------------------------------------------------------
 
@@ -99,10 +97,11 @@ for i in range(cont,len(baseir)):
     cont=cont+1
 
 
-print(f'O Valor do FGTS é ....: {fgts:,.2f}')
-print("="*50)
-print(f'O Base do IRRF  é ....: {salarioir:,.2f}')
+print(f'\033[35mO Valor do FGTS é ....: {fgts:,.2f}')
+print("\33[33m="*50)
+print(f'\033[36mO Base do IRRF  é ....: {salarioir:,.2f}')
 print(f'O valor do IRRF é ....: {ir:,.2f}')
-print("="*50)
+print("\33[33m="*50)
 fim = input("FIM")
+print("\033[0;0;0m")
 
