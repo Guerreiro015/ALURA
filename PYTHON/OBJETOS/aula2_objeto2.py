@@ -1,6 +1,13 @@
 #REMOVENTO DUPLICATAS
 #VAMOS CRIAR UM CLASSE PARA cONTER OS dADOS QUE TEM NAS OUTRAS DUAS CLASSES
+import os
+os.system("cls")
 class programa:
+    def __init__(self, nome, ano):
+        self._nome = nome.title()
+        self.ano = ano
+        self._likes = 0
+    
     @property
     def likes(self):
         return self._likes
@@ -19,26 +26,26 @@ class programa:
 
 
 class Filme(programa):
-    def __init__(self, nome, ano, duracao):
-        self._nome = nome.title()
-        self.ano = ano
+    def __init__(self,nome,ano,duracao):
+        super().__init__(nome,ano)
         self.duracao = duracao
-        self._likes = 0
+      
 
     
 
 class Serie(programa):
     def __init__(self, nome, ano, temporadas):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome,ano)
         self.temporadas = temporadas
-        self._likes = 0
 
     
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-print(vingadores.nome)
-
+print(f"Nome: {vingadores.nome}, Likes: {vingadores.likes}")
+vingadores.dar_likes()
+vingadores.dar_likes()
+vingadores.dar_likes()
+print(f"Nome: {vingadores.nome}- Likes: {vingadores.likes}")
 
 atlanta = Serie('atlanta', 2018, 2)
 print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} likes: {atlanta.likes}')
