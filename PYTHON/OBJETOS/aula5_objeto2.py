@@ -1,7 +1,8 @@
 #REMOVENTO DUPLICATAS
 #VAMOS CRIAR UM CLASSE PARA cONTER OS dADOS QUE TEM NAS OUTRAS DUAS CLASSES
 
-# Usando o IF e for pra imprimir todos os detalhes dos objetos filmes e series
+# 
+## melhorando para mão precisar usar usar o IF e nem o print usaremos o __str__ e return
 
 import os
 os.system("cls")
@@ -25,14 +26,20 @@ class programa:
     @nome.setter
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
-
+    
+    def __str__(self):
+        return (f'Nome: {programa.nome}  - Likes: {programa.likes}')
+    
 
 
 class Filme(programa):
     def __init__(self,nome,ano,duracao):
         super().__init__(nome,ano)
         self.duracao = duracao
-      
+
+    def __str__(self):
+        return(f'Nome: {programa.nome} - Duração: {self.duracao} Minutos - Likes: {programa.likes}')
+        
 
     
 
@@ -41,36 +48,45 @@ class Serie(programa):
         super().__init__(nome,ano)
         self.temporadas = temporadas
 
+    def __str__(self):
+        return(f'Nome: {programa.nome} - Temporadas: {self.temporadas} - Likes: {programa.likes}')
     
 
-vingadores = Filme('vingadores - guerra infinita', 2018, 160)
+vingadores = Filme('vingadores - guerra infinita', 2018, 168)
+
 print(f"Nome: {vingadores.nome}, Likes: {vingadores.likes}")
 vingadores.dar_likes()
 vingadores.dar_likes()
 vingadores.dar_likes()
-print(f"Nome: {vingadores.nome}- Likes: {vingadores.likes}")
+print(f"Nome: {vingadores.nome}- Likes: {vingadores.likes}\n")
 
 atlanta = Serie('atlanta', 2018, 2)
-print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} likes: {atlanta.likes}')
-atlanta.dar_likes()
-atlanta.dar_likes()
 
 print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} likes: {atlanta.likes}')
+atlanta.dar_likes()
+atlanta.dar_likes()
+print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} likes: {atlanta.likes}\n')
 
 
 filmes_series = [vingadores,atlanta]
 
 
-# Usando o for pra imprimir todos os detalhes do objetos filmes e series
+## melhorando para mão precisar usar usar o IF
 for programa in filmes_series:
-    if hasattr(programa, 'duracao'):
-        detalhes = "Duração: ",programa.duracao
+    print(programa)
 
-    elif hasattr(programa, 'temporadas'): 
-        detalhes = ("Quant. de Temporadas: ",programa.temporadas)
-    else:
-        detalhes = ""
+
+lista = [1, 2, 4, 5]
+
+print(repr(lista))
     
-    print(f'Nome: {programa.nome} - {detalhes} - Likes: {programa.likes}')
+    # if hasattr(programa, 'duracao'):
+    #     detalhes = "Duração: ",programa.duracao
 
-# melhorando para mão precisar usar usar o for e if
+    # elif hasattr(programa, 'temporadas'): 
+    #     detalhes = ("Quant. de Temporadas: ",programa.temporadas)
+    # else:
+    #     detalhes = ""
+    
+    # print(f'Nome: {programa.nome} - {detalhes} - Likes: {programa.likes}')
+
