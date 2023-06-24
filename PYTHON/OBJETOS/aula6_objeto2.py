@@ -2,7 +2,9 @@
 #VAMOS CRIAR UM CLASSE PARA cONTER OS dADOS QUE TEM NAS OUTRAS DUAS CLASSES
 
 # 
-## melhorando para mão precisar usar usar o IF e nem o print usaremos o __str__ e return
+## usando a classe para pecrorre a playlist
+# Colocar a classe playlist como tipo (list)
+# Colocando o  super().__init__(programa)
 
 import os
 os.system("cls")
@@ -51,10 +53,10 @@ class Serie(programa):
     def __str__(self):
         return(f'Nome: {programa.nome} - Temporadas: {self.temporadas} - Likes: {programa.likes}')
 
-class Playlist():
+class Playlist(list):
     def __init__(self, nome, programa):
         self.nome = nome
-        self.programa = programa
+        super().__init__(programa)
 
     def tamanho(self):
         return len(self.programa)
@@ -93,22 +95,9 @@ filmes_series = [vingadores,atlanta,demolidor,tmep]
 
 playlist_fim_de_semana = Playlist('fim de semana', filmes_series)
 
+print(f'Tamanho do playlist: {len(playlist_fim_de_semana)}')
+print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana}')
 
 ## melhorando para não precisar usar usar o IF
-for programa in filmes_series:
+for programa in playlist_fim_de_semana:
     print(programa)
-
-
-
-
-    
-    # if hasattr(programa, 'duracao'):
-    #     detalhes = "Duração: ",programa.duracao
-
-    # elif hasattr(programa, 'temporadas'): 
-    #     detalhes = ("Quant. de Temporadas: ",programa.temporadas)
-    # else:
-    #     detalhes = ""
-    
-    # print(f'Nome: {programa.nome} - {detalhes} - Likes: {programa.likes}')
-
