@@ -3,12 +3,12 @@
 
 # 
 ## usando a classe para pecrorre a playlist
-# Colocar a classe playlist como tipo (list) list é funlao built in
-# Colocando o  super().__init__(programa)
+# retirando a função (list) list é funlao built in
+# retirado  o  super().__init__(programa)
 
 import os
 os.system("cls")
-class programa:
+class programas:
     def __init__(self, nome, ano):
         self._nome = nome.title()
         self.ano = ano
@@ -30,36 +30,51 @@ class programa:
         self._nome = novo_nome.title()
     
     def __str__(self):
-        return (f'Nome: {programa.nome}  - Likes: {programa.likes}')7
+        return (f'Nome: {programas.nome}  - Likes: {programas.likes}')
     
 
 
-class Filme(programa):
+class Filme(programas):
     def __init__(self,nome,ano,duracao):
         super().__init__(nome,ano)
         self.duracao = duracao
 
     def __str__(self):
-        return(f'Nome: {programa.nome} - Duração: {self.duracao} Minutos - Likes: {programa.likes}')
+        return(f'Nome: {programas.nome} - Duração: {self.duracao} Minutos - Likes: {programas.likes}')
         
 
     
 
-class Serie(programa):
+class Serie(programas):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome,ano)
         self.temporadas = temporadas
 
     def __str__(self):
-        return(f'Nome: {programa.nome} - Temporadas: {self.temporadas} - Likes: {programa.likes}')
+        return(f'Nome: {programas.nome} - Temporadas: {self.temporadas} - Likes: {programas.likes}')
 
-class Playlist(list):
-    def __init__(self, nome, programa):
+
+# class Playlist(list):
+#     def __init__(self, nome, programas):
+#         self.nome = nome
+#         super().__init__(programas)
+
+#     def tamanho(self):
+#         return len(self.programas)
+
+    
+class Playlist:
+    def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programa)
+        self._programas = programas
 
+    @property
+    def listagem(self):
+        return self._programas
+
+    @property
     def tamanho(self):
-        return len(self.programa)
+        return len(self._programas)
     
 
 
@@ -95,9 +110,9 @@ filmes_series = [vingadores,atlanta,demolidor,tmep]
 
 playlist_fim_de_semana = Playlist('fim de semana', filmes_series)
 
-print(f'Tamanho do playlist: {len(playlist_fim_de_semana)}')
-print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana}')
+print(f'Tamanho do playlist: {playlist_fim_de_semana.tamanho}')
+print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana.listagem}')
 
 ## melhorando para não precisar usar usar o IF
-for programa in playlist_fim_de_semana:
-    print(programa)
+for programas in playlist_fim_de_semana.listagem:
+    print(programas)
