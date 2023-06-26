@@ -5,8 +5,7 @@
 ## usando a classe para pecrorre a playlist
 # retirando a função (list) list é funçao built in
 # retirado  o  super().__init__(programa)
-# retirado complemento tamanho e acrescentado __len__(self)
-# habilitando o len para ser usado 
+
 
 import os
 os.system("cls")
@@ -74,7 +73,8 @@ class Playlist:
     def listagem(self):
         return self._programas
 
-    def __len__(self):
+    @property
+    def tamanho(self):
         return len(self._programas)
     
 
@@ -111,7 +111,7 @@ filmes_series = [vingadores,atlanta,demolidor,tmep]
 
 playlist_fim_de_semana = Playlist('fim de semana', filmes_series)
 
-print(f'Tamanho do playlist: {len(playlist_fim_de_semana)}')
+print(f'Tamanho do playlist: {playlist_fim_de_semana.tamanho}')
 print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana.listagem}')
 
 ## melhorando para não precisar usar usar o IF
