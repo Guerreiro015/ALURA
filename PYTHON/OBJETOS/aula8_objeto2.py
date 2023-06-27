@@ -121,3 +121,21 @@ print(f'Tá ou não tá? {demolidor in playlist_fim_de_semana.listagem}')
 ## melhorando para não precisar usar usar o IF
 for programas in playlist_fim_de_semana.listagem:
     print(programas)
+
+   
+   
+    # Há outras formas:
+
+# Para quê?         	Método
+# Inicialização	        __init__
+# Representação	        __str__, __repr__
+# Container, sequência	__contains__, __iter__, __len__, __getitem__
+# Numéricos	            __add__, __sub__, __mul__, __mod__
+
+# temos o seguinte:
+
+# Para quê?	Como?
+# Inicialização	        obj = Novo()
+# Representação	        print(obj), str(obj), repr(obj)
+# Container, sequência	len(obj), item in obj, for i in obj, obj[2:3]
+# Numéricos	            obj + outro_obj, obj * obj
