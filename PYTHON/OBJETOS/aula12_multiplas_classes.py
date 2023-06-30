@@ -26,7 +26,7 @@ class Alura(Funcionario):
     def busca_perguntas_sem_resposta(self):
         print('Mostrando perguntas não respondidas do fórum')
 
-class hispter(Funcionario):
+class hispter(): # sem herança ( Chamamos de mixim)
     def __str__(self):
         return f'Meu {self.nome}'
     
