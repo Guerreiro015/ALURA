@@ -3,8 +3,8 @@ import os
 os.system('cls') or None
 
 # Vamos puxar uma função criada em outro programa
-import titulo_menu # importando um programa voce pode usar suas funcoes
-titulo_menu.menu() # usando funcao que esta no programa titulo_menu
+import modulo_titulo # importando um programa voce pode usar suas funcoes
+modulo_titulo.menu() # usando funcao que esta no programa titulo_menu
 
 def jogo1():
     import advinhacao_randon # executando este programa
