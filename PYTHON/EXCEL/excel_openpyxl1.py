@@ -31,9 +31,17 @@ aba.append(['laranja',4,4.8])
 aba.append(['melancia',10,2.3])
 aba.append(['banana',2,2.9])
 
+aba = tabela["Sheet"]
+aba.append(['NOME',"QuanT.",'PRECO'])
+aba.append(['ARROZ',2,2.9])
+aba.append(['FEIJÃO',23,4])
+aba.append(['laranja',4,4.8])
+aba.append(['melancia',10,2.3])
+aba.append(['banana',2,2.9])
+
 print(tabela.sheetnames)
 
-#salvar a planilha
+#salvar a planilha - Obs: o openpyxl só o formato xlxs
 tabela.save("teste.xlsx")
 
 # ABRIR UM ARQUIVO EXSITENTE
