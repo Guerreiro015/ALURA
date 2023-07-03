@@ -2,13 +2,7 @@
 import os
 os.system("cls" or None)
 
-# import pandas as pd
 
-# tabela = pd.read_excel("dados.xlsx")
-# tabela.head()
-
-###################################################
-#==================================================
 import openpyxl
 
 #Criar uma planilha
@@ -44,12 +38,6 @@ print(tabela.sheetnames)
 #salvar a planilha - Obs: o openpyxl só o formato xlxs
 tabela.save("teste.xlsx")
 
-# ABRIR UM ARQUIVO EXSITENTE
-
-# plan = openpyxl.Workbook('teste.xlsx')
-
-# print(plan.sheetnames)
-# planilha = plan["frutas"]
 
 
 
