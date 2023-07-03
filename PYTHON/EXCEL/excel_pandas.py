@@ -28,6 +28,7 @@ df3.to_excel("dados_juntos.xlsx")
 ##################################################
 
 # Puxando apenas alguas colunas de dados da planilha
-tabela = pd.read_excel("dados.xlsx",sheet_name="NOMES",usecols=(0,1,2))
-tabela.loc[tabela["Cargo"]=="BUEIRISTA","Nome"] = "Este é Bueirista"
-print(tabela)
+tabela = pd.read_excel("QUADRO GERAL - ECOSAMPA.xlsx",sheet_name="QUADRO",usecols=(0,1,2,3))
+tabela.loc[tabela["Cargo"]=="BUEIRISTA","NOME"] = "Contratado para ser Bueirista"
+
+print(tabela[["NOME","Cargo","REGIONAL"]])
