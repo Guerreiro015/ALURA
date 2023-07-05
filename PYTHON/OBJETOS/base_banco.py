@@ -1,16 +1,23 @@
 
+class banco:
+    import os
+    os.system("cls")
+    def __init__(self,nome,numero,saldo,limite):
+        self.nome = nome
+        self.numero = numero
+        self.saldo = saldo
+        self.limite = limite
 
 
-
-def deposito(self,depositado):
+    def deposito(self,depositado):
         self.depositado = depositado
         self.saldo += depositado
     
-def sacar(self,valor):
+    def sacar(self,valor):
         self.valor = valor
         self.saldo -= self.valor
 
-def transferir(self,valor,destino):
+    def transferir(self,valor,destino):
         self.sacar(valor)
         destino.deposito(valor)
 
