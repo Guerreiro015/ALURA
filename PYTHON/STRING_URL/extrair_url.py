@@ -15,15 +15,16 @@ url = 'https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidad
 moeda = 'bytebank.com/cambio?moedaOrigem=real'
 fatia = moeda[0:19] #url base
 fatia1 = moeda[20:36] #url parametros
+
 def imprime(a=None,b=None,c=None):
-    print(a,f"{c} execução")
-    print(b,f"{c} execução\n")
+    print(a,f" --- Executando {c}")
+    print(b,f" --- Executando {c}\n")
 
 print(url)
 print(moeda)
 # print("\n",fatia,"\n")
 # print(fatia1,"\n")
-imprime(fatia,fatia1,"1ª")
+imprime(fatia,fatia1,"1ª Fatiamento")
 
 # usamos o find para encontrar o indice da string
 fim = len(moeda)
@@ -33,7 +34,7 @@ fatia = moeda[0:ind]
 fatia1 = moeda[ind+1:fim+1]
 # print("\n",fatia,"\n")
 # print(fatia1,"\n")
-imprime(fatia,fatia1,"2ª usando o find e o len")
+imprime(fatia,fatia1," - Usando o find e o len")
 
 # Podemos omitir o inicio ou o fim para fatiar e o python vai entender
 
@@ -42,14 +43,17 @@ fatia1 = moeda[ind+1:]
 # print(fatia,"( omitindo inicio)\n")
 # print(fatia1,"(omitindo fim)\n")
 
-imprime(fatia,fatia1,"3ª Omitindo o inicio e o fim")
+imprime(fatia,fatia1," - Omitindo o inicio e o fim")
 
 #O find também procura por uma string e retorna o inicio dela
 
 ind = url.find("moedaDestino")
+ind1 = url.find("cambio")
 
-fatia2 =url[ind:]
+fatia =url[ind:]
+fatia1 =url[:ind-1]
 
-imprime(fatia,fatia2,"4ª\n")
+imprime(fatia,fatia1," - Usando o find pra procurar um string completa")
+
 
 
