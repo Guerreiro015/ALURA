@@ -55,5 +55,11 @@ fatia1 =url[:ind-1]
 
 imprime(fatia,fatia1," - Usando o find pra procurar um string completa")
 
+fatia1="moedaorigem"
+fatia2 = moeda.find("moedaOrigem")
+print(moeda[fatia2+len(fatia1)+1:])
+
+
+
 
 
