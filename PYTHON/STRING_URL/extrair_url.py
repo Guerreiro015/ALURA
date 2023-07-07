@@ -60,6 +60,24 @@ fatia2 = moeda.find("moedaOrigem")
 print(moeda[fatia2+len(fatia1)+1:])
 
 
+###########################################################
+# 2ª parte - se der erro 
+
+url = ""
+
+ind = url.find("moedaDestino")
+ind1 = url.find("cambio")
+
+fatia =url[ind:]
+fatia1 =url[:ind-1]
+
+imprime(fatia,fatia1," - Usando o find pra procurar um string completa")
+
+fatia1="moedaorigem"
+fatia2 = moeda.find("moedaOrigem")
+print(moeda[fatia2+len(fatia1)+1:])
+
+
 
 
 
