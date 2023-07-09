@@ -20,12 +20,12 @@ len(url)
 
 print(len(url))
 
-# Como a variavel esta vazia não retorna nada então vamos mostrar o erro
+#Como a variavel esta vazia não retorna nada então vamos mostrar o erro
 
-# if url == "":
-#     raise ValueError("O valor esta vazio")
-# else:
-#     print(url)
+if url == "u":
+    raise ValueError("O valor esta vazio")
+else:
+    print(url)
 
 
 
