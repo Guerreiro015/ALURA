@@ -12,21 +12,31 @@ class extrator:
 
     
     def limpa(self,url):
-        return url.replace(" ","")
+        if type(url) == str:
+            return url.replace(" ","")
+        else:
+            url = ""
 
     def validar(self,url):
-        if self.url == "":
-            raise ValueError("Url esta vazia")
+        if not self.url:
+            print("O valor procurado não encontrado")
+            #raise ValueError("Url esta vazia")
+        
     def procura(self,valor):
-        ini = self.url.find(valor)
-        tamanho = len(valor)
-        resultado = self.url[ini+tamanho:]
-        return resultado
+        ini = self.url.find(valor)             # encontrar onde começa o valor de procura
+        tamanho = len(valor)                   # encontrar o taanho o valor de procura
+        resultado = self.url[ini+tamanho+1:]   # encontrar onde começa o valor procurado
+        fim = resultado.find("&")              # encontrar onde termina o valor procurado
+        final = resultado[:fim]                # Este é o resultado
+        return final
     
-dados = ("bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar")
+dados = ("bytebank.     com/cambio?quantidade   =100&m    oedaOrigem=real&moedaDestino=dolar")
+
 extrator_url = extrator(dados)
 
 print(extrator_url.procura("quantidade"))
+print(extrator_url.procura("moedaOrigem"))
+print(extrator_url.procura("moedaDestino"))
 
 
 
