@@ -1,3 +1,6 @@
+import os
+os.system("cls")
+
 # Exemplos de URLs válidas:
 
 # bytebank.com/cambio
@@ -18,9 +21,11 @@ import re
 
 url = 'https://www.bytebank.com.br/cambio'
 padrao_url = re.compile('(http(s)?://)?(www.)?bytebank.com(.br)?/cambio')
-match = padrao_url.match(url)
+padrao_url2 = re.compile("(http(s)?(www.)?meubanco.com(.br)?/cambio)")
+busca = padrao_url.match(url)
 
-if not match:
-    raise ValueError("A URL não é válida.")
-
-print("A URL é válida")
+if not busca:
+    print( " Não é uma url valida")
+    #raise ValueError("A URL não é válida.") #Fazer o programa travar neste erro
+else:
+    print("A URL é válida")
