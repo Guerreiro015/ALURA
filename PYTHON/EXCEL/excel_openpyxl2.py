@@ -15,7 +15,7 @@ planilha = plan.active
 planilha = plan["NOMES"]
 
 #pecrorrer as linhas
-for linha in plan.active.iter_rows(max_row=2):
+for linha in plan.active.iter_rows(max_row=1):
     #pecorrer as colunas
     for celula in linha:
         print(celula.value)
