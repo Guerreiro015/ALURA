@@ -10,6 +10,7 @@ class extrator:
         self.validar(url)
         print(self.url)
 
+   
     
     def limpa(self,url):
         if type(url) == str:
@@ -30,6 +31,10 @@ class extrator:
         final = resultado[:fim]                # Este é o resultado
         return final
     
+    def __len__(self): # Com este metodo connseguinos mostrar o tamanho da url
+        return len(self.url)
+    
+
 dados = ("bytebank.     com/cambio?quantidade   =100&m    oedaOrigem=real&moedaDestino=dolar")
 
 extrator_url = extrator(dados)
@@ -37,6 +42,6 @@ extrator_url = extrator(dados)
 print(extrator_url.procura("quantidade"))
 print(extrator_url.procura("moedaOrigem"))
 print(extrator_url.procura("moedaDestino"))
-
+print(len(extrator_url))
 
 
