@@ -34,6 +34,8 @@ class extrator:
     def __len__(self): # Com este metodo connseguinos mostrar o tamanho da url
         return len(self.url)
     
+    def __str__(self): # usadno para mostrar as strings
+        return self.url
 
 dados = ("bytebank.     com/cambio?quantidade   =100&m    oedaOrigem=real&moedaDestino=dolar")
 
@@ -43,5 +45,7 @@ print(extrator_url.procura("quantidade"))
 print(extrator_url.procura("moedaOrigem"))
 print(extrator_url.procura("moedaDestino"))
 print(len(extrator_url))
+
+print(extrator_url) # Se não tivesse  def __str__ não mostraria correto
 
 
