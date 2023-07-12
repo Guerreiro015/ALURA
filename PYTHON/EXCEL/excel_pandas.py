@@ -36,7 +36,7 @@ print(tabela[["ID","NOME","SALARIO"]]) # para selecionar os campos para ver usas
  
  #INSERIR UMA COLUNA NO FINAL DA PLANILHA DIRETO
 
-tabela["TOTAL"] = tabela["SALARIO"]*tabela["DIAS"]
+tabela['TOTAL'] = tabela["SALARIO"]*tabela["DIAS"]
 
 tabela['total3'] = tabela["SALARIO"]+tabela["DIAS"]
 
@@ -46,4 +46,4 @@ tabela.insert(8,  "soma",  tabela["DIAS"]+tabela["DIAS"])
 tabela.to_excel("dados2.xlsx",index=False)
 
 nova = pd.read_excel("dados2.xlsx")
-print(nova[["NOME","Cargo","TOTAL","soma"]])
+print(nova[['NOME','Cargo','TOTAL','soma']])
