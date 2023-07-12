@@ -32,11 +32,13 @@ import pandas as pd
 # tabela.loc[tabela["Cargo"]=="BUEIRISTA","NOME"] = "Contratado para ser Bueirista"
 
 tabela = pd.read_excel("QUADRO GERAL.xlsx",sheet_name="QUADRO")
-print(tabela[["NOME","SALARIO"]]) # para selecionar os campos para ver usas colchetes duplos
+print(tabela[["ID","NOME","SALARIO"]]) # para selecionar os campos para ver usas colchetes duplos
 
-tabela.assign(novo_salario = tabela["SALARIO"]*tabela["DIAS"])
+tabela["TOTAL"] = tabela["SALARIO"]*tabela["DIAS"]
+
+tabela['total3'] = tabela["SALARIO"]+tabela["DIAS"]
 
 tabela.to_excel("dados2.xlsx",index=False)
 
 nova = pd.read_excel("dados2.xlsx")
-print(nova[["NOME","Cargo","novo_salario"]])
+print(nova[["NOME","Cargo","TOTAL","total3"]])
