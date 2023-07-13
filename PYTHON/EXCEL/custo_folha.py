@@ -16,10 +16,10 @@ tabela.insert(6,"Siemaco", 0)
 
 #Alterar dados da planilha
 tabela.loc[tabela["Sindicato"] == "SIEMACO SAO PAULO LIMP URBANA","Siemaco"] = tabela["4Salário - Mensalistas"]*0.6/100
-print(tabela[["Id Contratado","Nome","Siemaco"]])
+print(tabela[["Id Contratado","Nome","Siemaco","Steriiisp"]])
 
 tabela.loc[tabela["Sindicato"] == "SIND TRAB EMP DE ONIBUS RODOV INTEREST INTERM SET DIF SAO PAULO","Steriiisp"] = tabela["4Salário - Mensalistas"]*0.4/100
-print(tabela[["Id Contratado","Nome","Siemaco"]])
+print(tabela[["Id Contratado","Nome","Siemaco","Steriiisp"]])
 
 
 tabela.to_excel("CUSTO05.xlsx",index=False)
