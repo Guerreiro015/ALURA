@@ -3,10 +3,13 @@ os.system("cls" or None)
 
 import pandas as pd
 
-abrir = input("Digite o nome do arquivo origem. : ")
-novo = input("Digite o nome do arquivo a ser criado. : ")
-abrir =(abrir+".xlxs")
-novo_arquivo = (novo+".xlxs")
+abrir = input("Digite o nome do arquivo origem. : ").upper()
+novo = input("Digite o nome do arquivo a ser criado. : ").upper()
+abrir = (abrir+".xlsx")
+novo_arquivo = (novo+".xlsx")
+
+# abrir = "FOLHA06.xlsx"
+# novo_arquivo = "custo06.xlsx"
 
 tb = pd.read_excel(abrir)
 print(tb[["Id Contratado","Nome","Cargo"]]) # para selecionar os campos para ver usas colchetes duplos
@@ -32,7 +35,9 @@ tb.insert(9,"Fgts",(tb["1005Base do FGTS Normal"]+tb["1010Base do FGTS 13º Sal�
 
 tb.loc[tb["Cargo"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["15Salário Aprendiz - Mensalistas"]*2/100
 
+tb.loc[tb["Nome"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["15Salário Aprendiz - Mensalistas"]*2/100
+
 tb.to_excel(novo_arquivo,index=False)
 
 nova = pd.read_excel(novo_arquivo)
-print("\n------  Cálculos dos sindicatos feito e OK.....  \n")
+print("\n------  Montagem da Planilha de custos Mensais Feito com Sucesso e OK.....  \n")
