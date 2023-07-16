@@ -36,9 +36,6 @@ pedro.deposito(1000)
 pedro.saque(3000)
 
 
-# print(ana)
-# print(pedro)
-
 contas = [ana,pedro,ana]
 
 for x in contas:
@@ -48,3 +45,19 @@ print(contas[1]) # como os objetos estão em uma lista podem chammado assim
 
 contas[1].deposito(450)
 print(pedro)
+
+def depositoGeral(valor):
+    for x in contas:
+        x.deposito(valor)
+
+depositoGeral(100)
+
+def saqueGeral(valor):
+    for x in contas:
+        x.saque(valor)
+
+saqueGeral(150)
+
+contas.insert(0,"Agencia")
+
+print(contas)
