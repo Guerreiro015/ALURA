@@ -14,7 +14,7 @@ print(colunas)
 print(colunas2)
 print(campos)
 
-if "Nome" not in campos:
+if "Nome" in campos:
     print(" Existe")
 else:
     print("Não Existe")
@@ -25,7 +25,10 @@ else:
 print(type(campos))
 
 if "1001Base INSS 13º Salário" not in campos:
-    1001Base INSS 13º Salário = 0
+    nova.insert(10,"1001Base INSS 13º Salário", 0)
 
+nova.to_excel("teste.xlsx",index=False)
 
+nova = pd.read_excel("teste.xlsx")
+print(nova["Id Contratado"],["1001Base INSS 13º Salário"])
 print("\n------  Montagem da Planilha de custos Mensais Feito com Sucesso e OK.....  \n")
