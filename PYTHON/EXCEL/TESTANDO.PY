@@ -8,20 +8,24 @@ nova = pd.read_excel("FOLHA05.xlsx")
 
 colunas = len(nova.columns)
 colunas2 = nova.shape[1]
-colunas3 = nova.columns
+campos = nova.columns
 
 print(colunas)
 print(colunas2)
-print(colunas3)
+print(campos)
 
-if "Nome" in colunas3:
+if "Nome" not in campos:
     print(" Existe")
 else:
     print("Não Existe")
-for x in colunas3:
+# for x in campos:
     
-    print(x)
+#     print(x)
 
+print(type(campos))
+
+if "1001Base INSS 13º Salário" not in campos:
+    1001Base INSS 13º Salário = 0
 
 
 print("\n------  Montagem da Planilha de custos Mensais Feito com Sucesso e OK.....  \n")

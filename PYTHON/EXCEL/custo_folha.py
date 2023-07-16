@@ -14,7 +14,8 @@ novo_arquivo = (novo+".xlsx")
 tb = pd.read_excel(abrir)
 print(tb[["Id Contratado","Nome","Cargo"]]) # para selecionar os campos para ver usas colchetes duplos
  
- 
+
+
 #INSERIR UMA COLUNA Ref. aos sidicatos usando Parametros ( nº coluna,nome coluna, valor da coluna)
 tb.insert(7,"Selur", tb["4Salário - Mensalistas"]*0.5/100)
 tb.insert(7,"Steriiisp", 0)
