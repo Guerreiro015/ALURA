@@ -27,6 +27,40 @@ tb.loc[tb["Sindicatos"] == "SIEMACO SAO PAULO LIMP URBANA","Siemaco"] = tb["4Sal
 
 tb.loc[tb["Sindicatos"] == "SIND TRAB EMP DE ONIBUS RODOV INTEREST INTERM SET DIF SAO PAULO","Steriiisp"] = tb["4Salário - Mensalistas"]*0.4/100
 
+
+campos = tb.columns
+if "1001Base INSS 13º Salário" not in campos:
+    tb.insert(10,"1001Base INSS 13º Salário", 0)
+
+if "1007Base do INSS Normal" not in campos:
+    tb.insert(10,"1007Base do INSS Normal", 0)
+
+if "1008Base do INSS Normal Excedente" not in campos:
+    tb.insert(10,"1008Base do INSS Normal Excedente", 0)
+
+if "1031Base INSS/FGTS Férias do Mês" not in campos:
+    tb.insert(10,"1031Base INSS/FGTS Férias do Mês", 0)
+
+
+if "1005Base do FGTS Normal" not in campos:
+    tb.insert(10,"1005Base do FGTS Normal", 0)
+
+if "1010Base do FGTS 13º Salário" not in campos:
+    tb.insert(10,"1010Base do FGTS 13º Salário", 0)
+
+if "1031Base INSS/FGTS Férias do Mês" not in campos:
+    tb.insert(10,"1031Base INSS/FGTS Férias do Mês", 0)
+
+if "1039Valor do FGTS - GRFF" not in campos:
+    tb.insert(10,"1039Valor do FGTS - GRFF", 0)
+
+
+if "953Dif Salário Aprendiz - Mensalistas" not in campos:
+    tb.insert(10,"953Dif Salário Aprendiz - Mensalistas", 0)
+
+
+
+
 # Calcular valOres dos INSS
 tb.insert(10,"Inss",(tb["1001Base INSS 13º Salário"]+tb["1007Base do INSS Normal"]+tb["1008Base do INSS Normal Excedente"]+tb["1031Base INSS/FGTS Férias do Mês"])*28.9854/100)
 
@@ -34,11 +68,11 @@ tb.insert(10,"Inss",(tb["1001Base INSS 13º Salário"]+tb["1007Base do INSS Norm
 tb.insert(10,"Fgts",(tb["1005Base do FGTS Normal"]+tb["1010Base do FGTS 13º Salário"]+tb["1031Base INSS/FGTS Férias do Mês"])*8/100-tb["1039Valor do FGTS - GRFF"])
 
 # Ajustando valOres dos FGTS dos jovens aprendizes
-tb.loc[tb["Cargo"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["15Salário Aprendiz - Mensalistas"]*2/100
+tb.loc[tb["Cargo"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["15Salário Aprendiz - Mensalistas"]*tb["953Dif Salário Aprendiz - Mensalistas"]*2/100
 
 # Zerando o INSS das licenças maternidadees
-tb.loc[tb["Situação"] == "Licença-Maternidade","Inss"] = 0
-
+if "7Salário-Maternidade" in campos:
+    tb.loc[tb["Situação"] == "Licença-Maternidade","Inss"] = 0
 
 
 
