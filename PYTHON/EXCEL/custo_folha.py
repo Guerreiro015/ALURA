@@ -68,7 +68,7 @@ tb.insert(10,"Inss",(tb["1001Base INSS 13º Salário"]+tb["1007Base do INSS Norm
 tb.insert(10,"Fgts",(tb["1005Base do FGTS Normal"]+tb["1010Base do FGTS 13º Salário"]+tb["1031Base INSS/FGTS Férias do Mês"])*8/100-tb["1039Valor do FGTS - GRFF"])
 
 # Ajustando valOres dos FGTS dos jovens aprendizes
-tb.loc[tb["Cargo"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["15Salário Aprendiz - Mensalistas"]*tb["953Dif Salário Aprendiz - Mensalistas"]*2/100
+tb.loc[tb["Cargo"] == "MENOR/JOVEM APRENDIZ","Fgts"] = tb["1005Base do FGTS Normal"]*2/100
 
 # Zerando o INSS das licenças maternidadees
 if "7Salário-Maternidade" in campos:
