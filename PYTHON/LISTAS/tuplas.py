@@ -30,15 +30,9 @@ class banco:
     self._saldo += valor
 
   def __str__(self):
-    return f"\nNome {self._nome} Saldo {self._saldo}"
+    return f"\nNome do cliente: {self._nome} -- > Saldo -> R$: {self._saldo: .2f}"
   
-#cliente1 = banco("Antonio")
 print(banco("Antonio"))
-
-class ContaCorrente(banco):
-
-  def passa_o_mes(self):
-    self._saldo -= 2
 
 class ContaCorrente(banco):
 
@@ -51,4 +45,21 @@ class ContaPoupanca(banco):
     self._saldo *= 1.01
     self._saldo -= 3
 
-print(banco("Antonio"))
+
+cliente1 = ContaCorrente("Antonio")
+cliente1.deposita(1000)
+cliente1.passa_o_mes()
+
+cliente2 = ContaPoupanca("Ana")
+cliente2.deposita(1000)
+cliente2.passa_o_mes()
+
+
+print(cliente1)
+print(cliente2)
+
+contas = [cliente1,cliente2]
+
+
+for x in contas:
+  print(x)
