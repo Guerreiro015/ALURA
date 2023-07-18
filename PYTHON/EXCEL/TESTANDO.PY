@@ -21,6 +21,9 @@ else:
     print("Licença-Maternidade in campos:Não Existe")
     print(nova[["Id Contratado","Nome","Situação"]])
 
+
+
+
 # for x in campos:
     
 #     print(x)
