@@ -6,6 +6,14 @@ os.system("cls")
 
 idades = [15, 87, 65, 56, 32, 49, 37, 32]
 
+ordenar = sorted(idades) # Colocar em ordem
+contra = sorted(idades, reverse = True)# Ordenar ao contrário
+idades.sort() # ordena a propia lista
+
+print("\n",ordenar) #
+print(contra) #
+print(idades)
+
 for x in idades:
     print (x)
 
