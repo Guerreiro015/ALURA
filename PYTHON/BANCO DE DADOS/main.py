@@ -3,6 +3,7 @@ os.system("cls")
 
 from tkinter import*
 from tkinter import Tk, StringVar, ttk
+from PIL import Image, ImageTk
 
 #cores
 
@@ -41,11 +42,19 @@ frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul,
 frameBaixo = Frame(janela,width=1043, height=303, bg=co1, relief=FLAT)
 frameBaixo.grid(row=2,column=0, pady=0, padx=1, sticky=NSEW)
 
+# Preparando a imagem
+foto=Image.open("ator-1.png")
+foto = foto.resize((45,45))
+foto = ImageTk.PhotoImage(foto)
+
+foto_logo = Label(frameCima, image = foto, text='  INVENTÁRIO DOMÉSTICO', width=900, compound=LEFT, relief=RAISED, anchor= NW, font=('verdana 20 bold'),bg=co1,fg=co4)
+foto_logo.place(x=0,y=0)
+
+
+
+
+
+
+
 janela.mainloop()
-
-
-
-
-
-
 
