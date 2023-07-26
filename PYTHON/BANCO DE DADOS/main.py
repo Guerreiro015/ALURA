@@ -9,6 +9,8 @@ from datetime import date
 
 
 #CORES--------------------------------------------
+#bg= Preenchimento
+#fg= Bordas
 
 co0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
@@ -90,6 +92,31 @@ l_serie = Label(frameMeio,text="Número de Serie", height=1,anchor=NW,font=("ivy
 l_serie.place(x=10,y=190)
 e_serie = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)# pODEMOS USAR SOLID OU ("solid")
 e_serie.place(x=130,y=191)
+
+#Criando botões --------------------------------------------
+l_img_item = Label(frameMeio,text="Imagem do ítem", compound=CENTER,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co0)
+l_img_item.place(x=10,y=220)
+
+l_img_item = Button(frameMeio,width=25,text="Imagem do ítem".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co7,fg=co4)
+l_img_item.place(x=130,y=221)
+
+# Botão adicionar
+l_adicionar = Button(frameMeio,width=15,text="Adicionar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_adicionar.place(x=350,y=10)
+
+# Botão Atulizar
+l_atualizar = Button(frameMeio,width=15,text="atualizar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_atualizar.place(x=350,y=50)
+
+# Botão Deletar
+l_deletar = Button(frameMeio,width=15,text="deletar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_deletar.place(x=350,y=90)
+
+# Botão Mostrar
+l_ver_item = Button(frameMeio,width=15,text="Ver Ítem".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_ver_item.place(x=350,y=220)
+
+
 
 
 
