@@ -74,7 +74,7 @@ e_descricao.place(x=130,y=71)
 
 l_marca = Label(frameMeio,text="Marca/Modelo", height=1,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co4)
 l_marca.place(x=10,y=100)
-e_marca = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID))
+e_marca = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
 e_marca.place(x=130,y=101)
 
 l_compra = Label(frameMeio,text="Data da Compra", height=1,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co4)
