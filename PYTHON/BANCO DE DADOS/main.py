@@ -140,15 +140,15 @@ l_ver_item.place(x=330,y=220)
 
 
 # Frames dos totais
-l_total = Label(frameMeio,text="         Valor Total dos Ítens           ",height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
+l_total = Label(frameMeio,text="         Valor Total dos Ítens           ",height=2,anchor=NW,font=("ivy 10 bold"),bg=co9,fg=co8)
 l_total.place(x=460,y=10)
-l_total = Label(frameMeio,text="",width=15, height=1,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
+l_total = Label(frameMeio,text="",width=15, height=2,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
 l_total.place(x=460,y=30)
 
 
-l_quant = Label(frameMeio,text="       Quantidade Total dos Ítens   ", height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
+l_quant = Label(frameMeio,text="      Quantidade Total dos Ítens    ", height=2,anchor=NW,font=("ivy 10 bold"),bg=co9,fg=co8)
 l_quant.place(x=460,y=110)
-l_quant = Label(frameMeio,text="",width=15, height=3,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
+l_quant = Label(frameMeio,text="",width=15, height=2,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
 l_quant.place(x=460,y=130)
 
 #-----------------------------------------------------------
@@ -191,7 +191,7 @@ for item in lista_itens:
     tree.insert('', 'end', values=item)
 
 
-quantidade = [8888,88]
+quantidade = [456,3044,1234,400]
 
 for iten in lista_itens:
     quantidade.append(iten[6])
