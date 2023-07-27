@@ -62,9 +62,5 @@ def ver_item(id):
 
     
 
-inserir_dados()
-visualizar()
-atualizar()
-apagar(str(5))
-#visualizar_individual(str(1))
+
 
