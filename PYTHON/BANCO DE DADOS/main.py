@@ -3,9 +3,13 @@ os.system("cls")
 
 from tkinter import*
 from tkinter import Tk, StringVar, ttk
+from tkinter import messagebox
+from tkinter.commondialog import Dialog
 from PIL import Image, ImageTk
 from tkcalendar import Calendar, DateEntry
 from datetime import date
+# imprtando os outros arquivos
+from view import *
 
 
 #CORES--------------------------------------------
@@ -47,10 +51,17 @@ def inserir():
     data = l_data
     valor=l_valor
     serie=l_serie
-    imagem=l_img_item
+    imagem=imagem_string
 
-    lista_iserir = [nome,local,descricao,modelo,data,valor,serie,imagem]
+    lista_inserir = [nome,local,descricao,modelo,data,valor,serie,imagem]
 
+    for i in lista_inserir:
+        if i=="":
+           messagebox.showerror('Erro','Preencha todos os campos')
+           return
+
+    inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
+    messagebox.showinfo
 
 # Criando frames-------------------------------
 
