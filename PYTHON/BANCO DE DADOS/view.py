@@ -10,7 +10,7 @@ con = lite.connect("dados.bd")
 #novos_dados = ['vaso','Banheiro','vaso de planta','PvA','13/03/2023','120',"001002",'c:imagem',5]
 
 #INSERIR DADOS ------------------------------------------------
-def inserir(valor):
+def inserir_dados(valor):
     cur = con.cursor()
     query = "INSERT INTO inventario(nome, local, descricao, marca, data_compra,valor_compra,serie, imagem) VALUES(?,?,?,?,?,?,?,?)"
     cur.execute(query,valor)
@@ -62,9 +62,9 @@ def ver_item(id):
 
     
 
-#inserir(dados)
+inserir_dados()
 visualizar()
-atualizar(novos_dados)
+atualizar()
 apagar(str(5))
 #visualizar_individual(str(1))
 
