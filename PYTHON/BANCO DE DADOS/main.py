@@ -80,19 +80,21 @@ def inserir():
     mostrar()
 
 # Função para escolher imagens
-global imagem,imagem_string,l_immagem
+global imagem, imagem_string, l_immagem
 
 def escolher_imagem():
     global imagem,imagem_string,l_immagem
-    imagem = fd.askopenfile()
+    imagem = fd.askopenfilename()
     imagem_string = imagem
-
-    imagem=Image.open("imagem")
+#Abrindo imagem
+    imagem=Image.open(imagem)
     imagem = imagem.resize((170,170))
     imagem = ImageTk.PhotoImage(imagem)
 
-    l_imagem = Label(frameCima, image = imagem,bg=co1,fg=co4)
-    l_imagem.place(x=700,y=0)
+    l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+    l_imagem.place(x=700,y=5)
+
+
 
 
 # Criando frames-------------------------------
@@ -155,10 +157,13 @@ e_serie = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
 e_serie.place(x=130,y=191)
 
 #Criando botões --------------------------------------------
+
+
+#Botão carregar
 l_img_item = Label(frameMeio,text="Imagem do ítem", compound=CENTER,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co0)
 l_img_item.place(x=10,y=220)
 
-l_img_item = Button(frameMeio,width=25,text="Carregar Imagem".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_img_item = Button(frameMeio,command=escolher_imagem, width=25,text="Carregar Imagem".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_img_item.place(x=130,y=221)
 
 
