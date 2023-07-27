@@ -140,16 +140,16 @@ l_ver_item.place(x=330,y=220)
 
 
 # Frames dos totais
-l_total = Label(frameMeio,text=" Valor Total dos Ítens ",width=27,height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
+l_total = Label(frameMeio,text="         Valor Total dos Ítens           ",height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
 l_total.place(x=460,y=10)
 l_total = Label(frameMeio,text="",width=15, height=1,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
 l_total.place(x=460,y=30)
 
 
-l_quant = Label(frameMeio,text="",width=15, height=3,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
+l_quant = Label(frameMeio,text="       Quantidade Total dos Ítens   ", height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
 l_quant.place(x=460,y=110)
-l_quant = Label(frameMeio,text="   Quantidade Total dos Ítens", height=2,anchor=NW,font=("ivy 10 bold"),bg=co7,fg=co1)
-l_quant.place(x=460,y=112)
+l_quant = Label(frameMeio,text="",width=15, height=3,anchor=CENTER,font=("ivy 17 bold"),bg=co7,fg=co1)
+l_quant.place(x=460,y=130)
 
 #-----------------------------------------------------------
 # tabela -----------------------------------------------------------
