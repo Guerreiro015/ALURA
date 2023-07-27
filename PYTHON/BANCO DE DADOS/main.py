@@ -34,7 +34,22 @@ janela.resizable(width=FALSE, height=FALSE)
 style = ttk.Style(janela)
 style.theme_use("clam")
 
-#janela.mainloop()
+# Criando  funcções
+
+global tree
+# Função inserir
+def inserir():
+    global imagem,imagem_strings,l_immagem
+    nome = e_nome
+    local = e_local
+    descricao = e_descricao
+    marca = l_marca
+    compra = l_compra
+    valor=l_valor
+    serie=l_serie
+    img_item=l_img_item
+
+
 
 # Criando frames-------------------------------
 
@@ -152,14 +167,12 @@ l_quant = Label(frameMeio,text="",width=15, height=2,anchor=CENTER,font=("ivy 17
 l_quant.place(x=460,y=130)
 
 #-----------------------------------------------------------
-# tabela -----------------------------------------------------------
+# tabela -TABELA ------TABELA   TABELA----------------------------------------------------------
 
-# Criando cabeçalo da tabela  duas barras de rolagem with dual scrollbars
+# Criando cabeçalho da tabela  duas barras de rolagem with dual scrollbars
 tabela_head = [' Item','Nome',  'Sala/Área','Descrição', 'Marca/Modelo', 'Data da compra','Valor da compra', 'Número de série']
 
 lista_itens = []
-
-global tree
 
 tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
 
