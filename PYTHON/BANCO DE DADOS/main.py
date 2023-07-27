@@ -39,16 +39,17 @@ style.theme_use("clam")
 global tree
 # Função inserir
 def inserir():
-    global imagem,imagem_strings,l_immagem
+    global imagem,imagem_string,l_immagem
     nome = e_nome
     local = e_local
     descricao = e_descricao
-    marca = l_marca
-    compra = l_compra
+    modelo = l_marca
+    data = l_data
     valor=l_valor
     serie=l_serie
-    img_item=l_img_item
+    imagem=l_img_item
 
+    lista_iserir = [nome,local,descricao,modelo,data,valor,serie,imagem]
 
 
 # Criando frames-------------------------------
@@ -92,11 +93,11 @@ l_marca.place(x=10,y=100)
 e_marca = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
 e_marca.place(x=130,y=101)
 
-l_compra = Label(frameMeio,text="Data da Compra", height=1,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co4)
-l_compra.place(x=10,y=130)
+l_data = Label(frameMeio,text="Data da Compra", height=1,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co4)
+l_data.place(x=10,y=130)
 # CRIANDO UM CALENDARIO-----------------------------------------
-e_compra = DateEntry(frameMeio,width=12,BackGround='darkblue',bordwidth=2,year=2023)# Criando um calendario
-e_compra.place(x=130,y=131)
+e_data = DateEntry(frameMeio,width=12,BackGround='darkblue',bordwidth=2,year=2023)# Criando um calendario
+e_data.place(x=130,y=131)
 #---------------------------------------------------------------------------------------
 
 
