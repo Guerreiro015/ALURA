@@ -62,8 +62,8 @@ def inserir():
            messagebox.showerror('Erro','Preencha todos os campos')
            return
 
-        inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
-        messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
+    inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
+    messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
 
     nome.delete(0,"end")
     local.delete(0,"end")
