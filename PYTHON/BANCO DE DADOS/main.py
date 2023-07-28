@@ -62,8 +62,8 @@ def inserir():
            messagebox.showerror('Erro','Preencha todos os campos')
            return
 
-    inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
-    messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
+        inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
+        messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
 
     nome.delete(0,"end")
     local.delete(0,"end")
@@ -92,7 +92,7 @@ def escolher_imagem():
     imagem = ImageTk.PhotoImage(imagem)
 
     l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
-    l_imagem.place(x=700,y=5)
+    l_imagem.place(x=700,y=0)
 
 
 
@@ -159,7 +159,7 @@ e_serie.place(x=130,y=191)
 #Criando botões --------------------------------------------
 
 
-#Botão carregar
+#Botão carregar imagem
 l_img_item = Label(frameMeio,text="Imagem do ítem", compound=CENTER,anchor=NW,font=("ivy 10 bold"),bg=co1,fg=co0)
 l_img_item.place(x=10,y=220)
 

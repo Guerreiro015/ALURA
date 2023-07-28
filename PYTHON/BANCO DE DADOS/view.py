@@ -3,6 +3,7 @@ import os
 os.system("cls")
 
 # import sqlite
+import sys
 import sqlite3 as lite
 con = lite.connect("dados.bd")
 
@@ -10,55 +11,57 @@ con = lite.connect("dados.bd")
 #novos_dados = ['vaso','Banheiro','vaso de planta','PvA','13/03/2023','120',"001002",'c:imagem',5]
 
 #INSERIR DADOS ------------------------------------------------
-def inserir_dados(valor):
-    cur = con.cursor()
-    query = "INSERT INTO inventario(nome, local, descricao, marca, data_compra,valor_compra,serie, imagem) VALUES(?,?,?,?,?,?,?,?)"
-    cur.execute(query,valor)
+def inserir_dados(i):
+    with con:
+        cur = con.cursor()
+        query = "INSERT INTO inventario(nome, local, descricao, marca, data_compra,valor_compra,serie, imagem) VALUES(?,?,?,?,?,?,?,?)"
+        cur.execute(query,i)
 
 
 #ATUALIZAR DADOS -----------------------------------------------------
-def atualizar(valor):
+def atualizar(i):
     with con:
         cur = con.cursor()
         query = "UPDATE inventario SET nome=?, local=?, descricao=?, marca=?, data_compra=?,valor_compra=?,serie=?, imagem=? WHERE id=?"
-        cur.execute(query,valor)
+        cur.execute(query,i)
 
 
 #DELETAR DADOS -----------------------------------------------------
 
-def apagar(valor):
+def apagar(i):
     with con:
         cur = con.cursor()
-        query = "DELETE FROM inventario WHERE local=?"
-        cur.execute(query, valor)
+        query = "DELETE FROM inventario WHERE id=?"
+        cur.execute(query, i)
 
 
-#VER DADOS -----------------------------------------------------
+#VER inventário -----------------------------------------------------
 def visualizar():   
-    ver_dados = []
+    lista_itens = []
     with con:
         cur = con.cursor()
-        query = "SELECT * FROM inventario"
-        cur.execute(query)
-
-        dad = cur.fetchall()
-
-        for x in dad:
-            ver_dados.append(x)
-
-    return ver_dados
-   # print(ver_dados)
+        cur.execute("SELECT * FROM Inventario")
+        rows = cur.fetchall()
+        for row in rows:
+             lista_itens.append(row)
+        return lista_itens
+            
+    
+#VER ítem no inventário -----------------------------------------------------
 
 def ver_item(id):   
-    ver_dados_individual = []
+    lista_itens = []
     with con:
         cur = con.cursor()
-        query = "SELECT * FROM inventario WHERE id?"
-        cur.execute(query,id)
+        cur.execute("SELECT * FROM Inventario WHERE id=?",(id))
 
-        dado = cur.fetchall()
-        for x in dado:
-            ver_dados_individual.append(x)
+        query = "SELECT * FROM inventario WHERE id?"
+
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
+        return lista_itens
+
 
     
 
