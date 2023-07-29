@@ -54,8 +54,8 @@ def visualizar():
         rows = cur.fetchall()
         for row in rows:
              lista_itens.append(row)
-        #return lista_itens
-    print(lista_itens)
+        return lista_itens
+    #print(lista_itens)
             
 visualizar()   
 #VER ítem no inventário -----------------------------------------------------

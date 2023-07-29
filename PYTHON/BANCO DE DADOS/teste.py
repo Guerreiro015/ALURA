@@ -1,65 +1,89 @@
-from tkinter import *
+from Banco import Banco
 
-class Application:
-    def __init__(self, master=None):
-        self.fontePadrao = ("Arial", "10")
-        self.primeiroContainer = Frame(master)
-        self.primeiroContainer["pady"] = 10
-        self.primeiroContainer.pack()
-
-        self.segundoContainer = Frame(master)
-        self.segundoContainer["padx"] = 20
-        self.segundoContainer.pack()
-
-        self.terceiroContainer = Frame(master)
-        self.terceiroContainer["padx"] = 20
-        self.terceiroContainer.pack()
-
-        self.quartoContainer = Frame(master)
-        self.quartoContainer["pady"] = 20
-        self.quartoContainer.pack()
-
-        self.titulo = Label(self.primeiroContainer, text="Dados do usuário")
-        self.titulo["font"] = ("Arial", "10", "bold")
-        self.titulo.pack()
-
-        self.nomeLabel = Label(self.segundoContainer,text="Nome", font=self.fontePadrao)
-        self.nomeLabel.pack(side=LEFT)
-
-        self.nome = Entry(self.segundoContainer)
-        self.nome["width"] = 30
-        self.nome["font"] = self.fontePadrao
-        self.nome.pack(side=LEFT)
-
-        self.senhaLabel = Label(self.terceiroContainer, text="Senha", font=self.fontePadrao)
-        self.senhaLabel.pack(side=LEFT)
-
-        self.senha = Entry(self.terceiroContainer)
-        self.senha["width"] = 30
-        self.senha["font"] = self.fontePadrao
-        self.senha["show"] = "*"
-        self.senha.pack(side=LEFT)
-
-        self.autenticar = Button(self.quartoContainer)
-        self.autenticar["text"] = "Autenticar"
-        self.autenticar["font"] = ("Calibri", "8")
-        self.autenticar["width"] = 12
-        self.autenticar["command"] = self.verificaSenha
-        self.autenticar.pack()
-
-        self.mensagem = Label(self.quartoContainer, text="", font=self.fontePadrao)
-        self.mensagem.pack()
-
-    #Método verificar senha
-    def verificaSenha(self):
-        usuario = self.nome.get()
-        senha = self.senha.get()
-        if usuario == "usuariodevmedia" and senha == "dev":
-            self.mensagem["text"] = "Autenticado"
-        else:
-            self.mensagem["text"] = "Erro na autenticação"
+class Usuarios(object):
 
 
-root = Tk()
-Application(root)
-root.mainloop()
+    def __init__(self, nome = "", local = "", descricao = "",modelo = "",data = "", valor = "", serie = "",imagem = ""):
+        self.info = {}
+        self.nome = nome
+        self.local = local
+        self.descricao = descricao
+        self.modelo = modelo
+        self.data = data
+        self.valor = valor
+        self.serie = serie
+        self.imagem = imagem
+
+    def insertUser(self):
+
+        banco = Banco()
+        try:
+
+            c = banco.conexao.cursor()
+ #nome,local,descricao,modelo,data,valor,serie,imagem
+            c.execute("insert into usuarios ( nome, local, descricao,modelo,data, valor, serie,imagem) values ('" + self.nome + "', '" +
+            self.local + "', '" + self.descricao + "', '" +
+            self.modelo + "',  '" + self.data + "' '" + self.valor + "' '" + self.serie + "''" + self.imagem + "' )")
+
+            banco.conexao.commit()
+            c.close()
+
+            return "Usuário cadastrado com sucesso!"
+        except:
+            return "Ocorreu um erro na inserção do usuário"
+
+    def updateUser(self):
+
+        banco = Banco()
+        try:
+
+            c = banco.conexao.cursor()
+
+            c.execute("update usuarios set nome = '" + self.nome + "', local = '" + self.local + "',descricao = '" + self.descricao + "', modelo = '" + self.modelo + "', data = '" + self.data + "', valor = '" + self.valor "' '" + self.serie + "''" + self.imagem + "'
+            "' where idusuario = " + self.idusuario + " ")
+
+            banco.conexao.commit()
+            c.close()
+
+            return "Usuário atualizado com sucesso!"
+        except:
+            return "Ocorreu um erro na alteração do usuário"
+
+    def deleteUser(self):
+
+        banco = Banco()
+        try:
+
+            c = banco.conexao.cursor()
+
+            c.execute("delete from usuarios where idusuario = " + self.idusuario + " ")
+
+            banco.conexao.commit()
+            c.close()
+
+            return "Usuário excluído com sucesso!"
+        except:
+            return "Ocorreu um erro na exclusão do usuário"
+
+    def selectUser(self, idusuario):
+        banco = Banco()
+        try:
+
+            c = banco.conexao.cursor()
+
+            c.execute("select * from usuarios where idusuario = " + idusuario + "  ")
+
+            for linha in c:
+                self.idusuario = linha[0]
+                self.nome = linha[1]
+                self.telefone = linha[2]
+                self.email = linha[3]
+                self.usuario = linha[4]
+                self.senha = linha[5]
+
+            c.close()
+
+            return "Busca feita com sucesso!"
+        except:
+            return "Ocorreu um erro na busca do usuário"
+        

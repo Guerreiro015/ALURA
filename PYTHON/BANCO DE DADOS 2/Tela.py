@@ -1,3 +1,6 @@
+import os
+os.system('cls')
+
 from Usuarios import Usuarios
 from tkinter import *
 

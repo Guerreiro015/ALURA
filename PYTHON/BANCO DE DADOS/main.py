@@ -13,7 +13,6 @@ from datetime import date
 from view import *
 
 
-
 #CORES--------------------------------------------
 #bg= Preenchimento
 #fg= Bordas
@@ -46,13 +45,13 @@ global tree
 # Função inserir
 def inserir():
     global imagem,imagem_string,l_immagem
-    nome = e_nome
-    local = e_local
-    descricao = e_descricao
-    modelo = l_marca
-    data = l_data
-    valor=l_valor
-    serie=l_serie
+    nome = e_nome.get()
+    local = e_local.get()
+    descricao = e_descricao.get()
+    modelo = e_marca.get()
+    data = e_data.get()
+    valor=e_valor.get()
+    serie=e_serie.get()
     imagem=imagem_string
 
     lista_inserir = [nome,local,descricao,modelo,data,valor,serie,imagem]
@@ -62,22 +61,19 @@ def inserir():
            messagebox.showerror('Erro','Preencha todos os campos')
            return
 
-    inserir_dados(lista_inserir) # inserir_dados é do arquivo view.py
+    inserir_dados(lista_inserir) 
     messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
 
-    nome.delete(0,"end")
-    local.delete(0,"end")
-    descricao.delete(0,"end")
-    modelo.delete(0,"end")
-    data.delete(0,"end")
-    valor.delete(0,"end")
-    serie.delete(0,"end")
-    
-    for widget in frameMeio.winfo_children():
-        widget.destroy()
-
-
-    mostrar()
+    e_nome.delete(0,"end")
+    e_local.delete(0,"end")
+    e_descricao.delete(0,"end")
+    e_marca.delete(0,"end")
+    e_data.delete(0,"end")
+    e_valor.delete(0,"end")
+    e_serie.delete(0,"end")
+    e_nome.delete(0,"end")
+       
+    mostrar() 
 
 # Função para escolher imagens
 global imagem, imagem_string, l_immagem
@@ -222,7 +218,7 @@ l_quant.place(x=460,y=130)
 def mostrar():
     tabela_head = [' Item','Nome',  'Sala/Área','Descrição', 'Marca/Modelo', 'Data da compra','Valor da compra', 'Número de série']
 
-    lista_itens = []
+    lista_itens = visualizar()
 
     tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
 
@@ -254,7 +250,7 @@ def mostrar():
         tree.insert('', 'end', values=item)
 
 
-    quantidade = [456,3044,1234,400]
+    quantidade = []
 
     for iten in lista_itens:
         quantidade.append(iten[6])
