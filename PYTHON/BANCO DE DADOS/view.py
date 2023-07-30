@@ -29,7 +29,7 @@ def inserir_dados(i):
 #inserir_dados(dados)
 
 #ATUALIZAR DADOS -----------------------------------------------------
-def atualizar(i):
+def atualizar_dados(i):
     with con:
         cur = con.cursor()
         query = "UPDATE inventario SET nome=?, local=?, descricao=?, marca=?, data_compra=?,valor_compra=?,serie=?, imagem=? WHERE id=?"
@@ -38,7 +38,7 @@ def atualizar(i):
 
 #DELETAR DADOS -----------------------------------------------------
 
-def apagar(i):
+def apagar_dados(i):
     with con:
         cur = con.cursor()
         query = "DELETE FROM inventario WHERE id=?"

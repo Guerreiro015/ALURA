@@ -60,6 +60,8 @@ def inserir():
         if i=="":
            messagebox.showerror('Erro','Preencha todos os campos')
            return
+      
+           
 
     inserir_dados(lista_inserir) 
     messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
@@ -74,23 +76,109 @@ def inserir():
     e_nome.delete(0,"end")
        
     mostrar() 
-
-# Função para escolher imagens
 global imagem, imagem_string, l_immagem
 
+def atualizar():
+  global imagem, imagem_string, l_immagem
+  try:
+    treev_dados = tree.focus()
+    treev_dicionario = tree.item(treev_dados)
+    treev_lista = treev_dicionario['values']
+    valor = treev_lista[0]
+
+    e_nome.delete(0, 'end')
+    e_local.delete(0, 'end')
+    e_descricao.delete(0, 'end')
+    e_marca.delete(0, 'end')
+    e_data.delete(0, 'end')
+    e_valor.delete(0, 'end')
+    e_serie.delete(0, 'end')
+
+    id = int(treev_lista[0])
+    e_nome.insert(0, treev_lista[1])
+    e_local.insert(0, treev_lista[2])
+    e_descricao.insert(0, treev_lista[3])
+    e_marca.insert(0, treev_lista[4])
+    e_data.insert(0, treev_lista[5])
+    e_valor.insert(0, treev_lista[6])
+    e_serie.insert(0, treev_lista[7])
+    imagem_string = (0, treev_lista[8])
+
+       
+    def update():
+        global imagem,imagem_string, l_imagem
+
+            
+        nome = e_nome.get()
+        local = e_local.get()
+        descricao = e_descricao.get()
+        model = e_marca.get()
+        data = e_data.get()
+        valor = e_valor.get()
+        serie = e_serie.get()
+        imagem = imagem_string
+
+        if imagem == '':
+            imagem = e_serie.insert(0, treev_lista[7])
+        
+        lista_atualizar = [nome, local, descricao, model, data, valor,serie,imagem, id]
+        for i in lista_atualizar:
+            if i=='':
+                messagebox.showerror('Erro', 'Preencha todos os campos')
+                return
+        atualizar_dados(lista_atualizar)
+
+        messagebox.showinfo('Sucesso', 'Os dados foram atualizados com sucesso')
+        e_nome.delete(0, 'end')
+        e_local.delete(0, 'end')
+        e_descricao.delete(0, 'end')
+        e_marca.delete(0, 'end')
+        e_data.delete(0, 'end')
+        e_valor.delete(0, 'end')
+        e_serie.delete(0, 'end')
+        b_confirmar.destroy()
+
+        mostrar()
+           
+    b_confirmar = Button(frameMeio,command=update,width=13,text="Confirmar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
+    b_confirmar.place(x=330,y=185)
+
+  except IndexError:
+    messagebox.showerror('Erro', 'Seleciona um dos dados na tabela')
+        
+
+# Função para escolher imagens
+
 def escolher_imagem():
-    global imagem,imagem_string,l_immagem
-    imagem = fd.askopenfilename()
-    imagem_string = imagem
-#Abrindo imagem
-    imagem=Image.open(imagem)
-    imagem = imagem.resize((170,170))
-    imagem = ImageTk.PhotoImage(imagem)
+        global imagem, imagem_string, l_immagem
+    
+        imagem = fd.askopenfilename()
+        imagem_string = imagem
+    #Abrindo imagem
+        imagem=Image.open(imagem)
+        imagem = imagem.resize((170,170))
+        imagem = ImageTk.PhotoImage(imagem)
 
-    l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
-    l_imagem.place(x=700,y=0)
+        l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+        l_imagem.place(x=700,y=0)
 
+def ver_imagem():
+     global imagem, imagem_string, l_immagem
 
+     # Troquei treev da apostila (video) por focar
+     focar_dados = tree.focus()
+     focar_dicionario = tree.item(focar_dados)
+     focar_lista = focar_dicionario['values']
+     valor = [int(focar_lista[0])]
+     item = ver_item(valor)
+     imagem = item[0][8]
+
+     imagem=Image.open(imagem)
+     imagem = imagem.resize((170,170))
+     imagem = ImageTk.PhotoImage(imagem)
+
+     l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+     l_imagem.place(x=700,y=0)
 
 
 # Criando frames-------------------------------
@@ -187,7 +275,7 @@ l_adicionar = Button(frameMeio,command=inserir,image=foto_adicionar,width=95,tex
 l_adicionar.place(x=330,y=10)
 
 # Botão Atualizar
-l_atualizar = Button(frameMeio,image=foto_atualizar,width=95,text="  Atualizar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_atualizar = Button(frameMeio,command=atualizar,image=foto_atualizar,width=95,text="  Atualizar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_atualizar.place(x=330,y=50)
 
 # Botão Deletar
@@ -195,7 +283,7 @@ l_deletar = Button(frameMeio,image=foto_deletar,width=95,text="  Deletar".upper(
 l_deletar.place(x=330,y=90)
 
 # Botão Mostrar
-l_ver_item = Button(frameMeio,image=foto_ver,width=95,text="  Ver Ítens".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_ver_item = Button(frameMeio,command=ver_imagem,image=foto_ver,width=95,text="  Ver Ítens".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_ver_item.place(x=330,y=220)
 
 
@@ -216,12 +304,13 @@ l_quant.place(x=460,y=130)
 
 # Criando cabeçalho da tabela  duas barras de rolagem with dual scrollbars
 def mostrar():
+    global tree
     tabela_head = [' Item','Nome',  'Sala/Área','Descrição', 'Marca/Modelo', 'Data da compra','Valor da compra', 'Número de série']
 
     lista_itens = visualizar()
 
     tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
-
+    # ( tree é o nome da tabela) --------------------------
     # vertical scrollbar -- Barra de rolagem
     vsb = ttk.Scrollbar(frameBaixo, orient="vertical", command=tree.yview)
 
@@ -234,7 +323,7 @@ def mostrar():
     hsb.grid(column=0, row=1, sticky='ew')
     frameBaixo.grid_rowconfigure(0, weight=12)
 
-    hd=["center","center","center","center","center","center","center", 'center']
+    hd=["center","sw","center","center","center","center","center", 'center']
     h=[40,150,100,160,130,100,100, 100]
     n=0
 
