@@ -38,7 +38,7 @@ def atualizar_dados(i):
 
 #DELETAR DADOS -----------------------------------------------------
 
-def apagar_dados(i):
+def deletar_dados(i):
     with con:
         cur = con.cursor()
         query = "DELETE FROM inventario WHERE id=?"

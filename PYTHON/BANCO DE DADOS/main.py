@@ -20,13 +20,13 @@ from view import *
 co0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
 co2 = "#4fa882" # Verde
-co3 = "#38576b" #  - Valor
-co4 = "#403d3d" #  - Letra
-co5 = "#e06636" #  - profit
-co6 = "#038cfc" # Azul
+co3 = "#38576b" # Azul
+co4 = "#403d3d" # cinza
+co5 = "#e06636" # laranja
+co6 = "#038cfc" # Azul claro
 co7 = "#3fbfb9" # Verde azulado
 co8 = "#263238" # Preto claro
-co9 = "#e9edf5" #  Branco cinza claro
+co9 = "#e9edf5" # Branco cinza claro
 
 # Criando janela------------------------------
 
@@ -78,7 +78,7 @@ def inserir():
     mostrar() 
 global imagem, imagem_string, l_immagem
 
-def atualizar():
+def verificar():
   global imagem, imagem_string, l_immagem
   try:
     treev_dados = tree.focus()
@@ -102,10 +102,10 @@ def atualizar():
     e_data.insert(0, treev_lista[5])
     e_valor.insert(0, treev_lista[6])
     e_serie.insert(0, treev_lista[7])
-    imagem_string = (0, treev_lista[8])
+    imagem_string = treev_lista[8]
 
        
-    def update():
+    def atualizar():
         global imagem,imagem_string, l_imagem
 
             
@@ -129,6 +129,7 @@ def atualizar():
         atualizar_dados(lista_atualizar)
 
         messagebox.showinfo('Sucesso', 'Os dados foram atualizados com sucesso')
+
         e_nome.delete(0, 'end')
         e_local.delete(0, 'end')
         e_descricao.delete(0, 'end')
@@ -140,13 +141,38 @@ def atualizar():
 
         mostrar()
            
-    b_confirmar = Button(frameMeio,command=update,width=13,text="Confirmar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
+    b_confirmar = Button(frameMeio,command=atualizar,width=13,text="Atualizar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
     b_confirmar.place(x=330,y=185)
 
   except IndexError:
     messagebox.showerror('Erro', 'Seleciona um dos dados na tabela')
-        
 
+def deletar():
+   try:
+
+    focar_dados = tree.focus()
+    focar_dicionario = tree.item(focar_dados)
+    focar_lista = focar_dicionario['values']
+    valor = focar_lista[0]
+
+    deletar_dados([valor])
+
+    e_local.delete(0, 'end')
+    e_descricao.delete(0, 'end')
+    e_marca.delete(0, 'end')
+    e_data.delete(0, 'end')
+    e_valor.delete(0, 'end')
+    e_serie.delete(0, 'end')
+    e_nome.delete(0, 'end')
+
+    messagebox.showinfo('Sucesso', 'Os dados foram deletados com sucesso')
+
+    mostrar()
+
+   except IndexError:
+    messagebox.showerror('Erro', 'Seleciona um dos dados na tabela') 
+
+  
 # Função para escolher imagens
 
 def escolher_imagem():
@@ -256,9 +282,9 @@ foto_adicionar = Image.open("Adicionar.png")
 foto_adicionar = foto_adicionar.resize((20,20))
 foto_adicionar = ImageTk.PhotoImage(foto_adicionar)
 
-foto_atualizar = Image.open("carregar.png")
-foto_atualizar = foto_atualizar.resize((20,20))
-foto_atualizar = ImageTk.PhotoImage(foto_atualizar)
+foto_verificar = Image.open("carregar.png")
+foto_verificar = foto_verificar.resize((20,20))
+foto_verificar = ImageTk.PhotoImage(foto_verificar)
 
 foto_deletar = Image.open("lixeira.png")
 foto_deletar = foto_deletar.resize((20,20))
@@ -275,11 +301,11 @@ l_adicionar = Button(frameMeio,command=inserir,image=foto_adicionar,width=95,tex
 l_adicionar.place(x=330,y=10)
 
 # Botão Atualizar
-l_atualizar = Button(frameMeio,command=atualizar,image=foto_atualizar,width=95,text="  Atualizar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
-l_atualizar.place(x=330,y=50)
+l_verificar = Button(frameMeio,command=verificar,image=foto_verificar,width=95,text="  Verificar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_verificar.place(x=330,y=50)
 
 # Botão Deletar
-l_deletar = Button(frameMeio,image=foto_deletar,width=95,text="  Deletar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
+l_deletar = Button(frameMeio,command=deletar,image=foto_deletar,width=95,text="  Deletar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_deletar.place(x=330,y=90)
 
 # Botão Mostrar
