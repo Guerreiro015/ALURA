@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 os.system("cls")
 
 from tkinter import*
@@ -34,7 +35,7 @@ janela = Tk()
 janela.title("CONTROLE DE INVENTARIO")
 janela.geometry("900x600")
 janela.configure(background=co9)
-janela.resizable(width=FALSE, height=FALSE)
+#janela.resizable(width=FALSE, height=FALSE)
 
 style = ttk.Style(janela)
 style.theme_use("clam")
@@ -183,11 +184,17 @@ l_quant.place(x=460,y=130)
 # tabela -TABELA ------TABELA   TABELA----------------------------------------------------------
 
 # Criando cabeçalho da tabela  duas barras de rolagem with dual scrollbars
+
+
+nova = pd.read_excel("FOLHA06.xlsx")
+tb = pd.DataFrame(nova)
+print(nova)
+
 def mostrar():
     global tree
-    tabela_head = [' Item','Nome',  'Sala/Área','Descrição', 'Marca/Modelo', 'Data da compra','Valor da compra', 'Número de série']
+    tabela_head = ['Id Contratado',' Nome','Cargo','Folha','Situação','Sindicato','4Salário - Mensalistas','5Salário-Família']
 
-    lista_itens = [0,1,2,3,4,5,6,7]
+    lista_itens = nova
 
     tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
     # ( tree é o nome da tabela) --------------------------
@@ -204,7 +211,7 @@ def mostrar():
     frameBaixo.grid_rowconfigure(0, weight=12)
 
     hd=["center","sw","center","center","center","center","center", 'center']
-    h=[40,150,100,160,130,100,100, 100]
+    h=[100,200,100,100,100,100,100, 100]
     n=0
 
     for col in tabela_head:
@@ -214,9 +221,9 @@ def mostrar():
         n+=1
 
 
-    # # inserindo os itens dentro da tabela
-    # for i in lista_itens:
-    #     tree.insert('', 'end', values=i)
+    # inserindo os itens dentro da tabela
+    for i in lista_itens:
+        tree.insert('', 'end', values=i)
 
 
     quantidade = [8,80]
