@@ -141,7 +141,7 @@ def verificar():
 
         mostrar()
            
-    b_confirmar = Button(frameMeio,command=atualizar,width=13,text="Atualizar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
+    b_confirmar = Button(frameMeio,command=atualizar,image=foto_update,width=13,text="Atualizar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
     b_confirmar.place(x=330,y=185)
 
   except IndexError:
@@ -294,13 +294,17 @@ foto_ver = Image.open("ver.png")
 foto_ver = foto_ver.resize((20,20))
 foto_ver = ImageTk.PhotoImage(foto_ver)
 
+foto_update = Image.open("update.png")
+foto_update = foto_update.resize((20,20))
+foto_update = ImageTk.PhotoImage(foto_update)
+
 
 
 # Botão adicionar
 l_adicionar = Button(frameMeio,command=inserir,image=foto_adicionar,width=95,text="  Adicionar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_adicionar.place(x=330,y=10)
 
-# Botão Atualizar
+# Botão verificar
 l_verificar = Button(frameMeio,command=verificar,image=foto_verificar,width=95,text="  Verificar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co4)
 l_verificar.place(x=330,y=50)
 
