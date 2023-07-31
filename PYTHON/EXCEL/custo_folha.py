@@ -27,7 +27,7 @@ tb.loc[tb["Sindicatos"] == "SIEMACO SAO PAULO LIMP URBANA","Siemaco"] = tb["4Sal
 
 tb.loc[tb["Sindicatos"] == "SIND TRAB EMP DE ONIBUS RODOV INTEREST INTERM SET DIF SAO PAULO","Steriiisp"] = tb["4Salário - Mensalistas"]*0.4/100
 
-
+# criar colunas se elas não existirem
 campos = tb.columns
 if "1001Base INSS 13º Salário" not in campos:
     tb.insert(10,"1001Base INSS 13º Salário", 0)
@@ -76,7 +76,7 @@ if "7Salário-Maternidade" in campos:
 
 
 
-
+# Salvando o arquivo criado
 tb.to_excel(novo_arquivo,index=False)
 
 nova = pd.read_excel(novo_arquivo)

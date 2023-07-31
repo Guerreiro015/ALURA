@@ -40,7 +40,7 @@ tabela['TOTAL'] = tabela["SALARIO"]*tabela["DIAS"]
 
 tabela['total3'] = tabela["SALARIO"]+tabela["DIAS"]
 
-#INSERIR UMA COLUNA USANDO Parmetros ( nº coluna,nome coluna, valor da coluna)
+#INSERIR UMA COLUNA USANDO Parmetros .insert( nº coluna,nome coluna, valor da coluna)
 tabela.insert(8,  "soma",  tabela["DIAS"]+tabela["DIAS"])  
 
 tabela.to_excel("dados2.xlsx",index=False)

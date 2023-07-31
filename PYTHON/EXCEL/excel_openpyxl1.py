@@ -35,7 +35,7 @@ aba.append(['banana',2,2.9])
 
 print(tabela.sheetnames)
 
-#salvar a planilha - Obs: o openpyxl só o formato xlxs
+#salvar a planilha - Obs: o openpyxl só usa o formato xlxs
 tabela.save("teste.xlsx")
 
 
