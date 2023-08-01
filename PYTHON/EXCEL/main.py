@@ -194,7 +194,8 @@ def mostrar():
     global tree
     tabela_head = ['Id Contratado',' Nome','Cargo','Folha','Situação','Sindicato','4Salário - Mensalistas','5Salário-Família']
 
-    lista_itens = nova
+    lista_itens = [ nova ]
+    
 
     tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
     # ( tree é o nome da tabela) --------------------------
@@ -223,7 +224,7 @@ def mostrar():
 
     # inserindo os itens dentro da tabela
     for i in lista_itens:
-        tree.insert('', 'end', values=i)
+        tree.insert('', 'end', values= i)
 
 
     quantidade = [8,80]
