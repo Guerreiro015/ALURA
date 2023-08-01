@@ -32,7 +32,7 @@ co9 = "#e9edf5" # Branco cinza claro
 # Criando janela------------------------------
 
 janela = Tk()
-janela.title("CONTROLE DE INVENTARIO")
+janela.title("BANCO DE DADOS")
 janela.geometry("900x600")
 janela.configure(background=co9)
 #janela.resizable(width=FALSE, height=FALSE)
@@ -74,7 +74,7 @@ foto=Image.open("inventario.png")
 foto = foto.resize((45,45))
 foto = ImageTk.PhotoImage(foto)
 
-foto_logo = Label(frameCima, image = foto, text='  INVENTÁRIO DOMÉSTICO', width=900, compound=LEFT, relief=RAISED, anchor= NW, font=('verdana 20 bold'),bg=co1,fg=co4)
+foto_logo = Label(frameCima, image = foto, text='  CONTROLE DE BANCO DE DADOS', width=900, compound=LEFT, relief=RAISED, anchor= NW, font=('verdana 15 bold'),bg=co1,fg=co4)
 foto_logo.place(x=0,y=0)
 
 # Trabahando no FrameMeio -------------------------------------
