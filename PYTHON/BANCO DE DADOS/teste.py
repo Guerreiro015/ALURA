@@ -18,14 +18,14 @@ co9 = "#e9edf5" # Branco cinza claro
 
 from tkinter import*
 from tkinter import Tk, StringVar, ttk
-# from tkinter import messagebox
-# from tkinter.commondialog import Dialog
-# from tkinter import filedialog as fd
-# from PIL import Image, ImageTk
-# from tkcalendar import Calendar, DateEntry
-# from datetime import date
-# # imprtando os outros arquivos
-# from view import *
+from tkinter import messagebox
+from tkinter.commondialog import Dialog
+from tkinter import filedialog as fd
+from PIL import Image, ImageTk
+from tkcalendar import Calendar, DateEntry
+from datetime import date
+# importando os outros arquivos
+from view import *
 
 
 
@@ -44,7 +44,7 @@ style.theme_use("clam")
 frameCima = Frame(janela,width=1043, height=50, bg=co8, relief=FLAT) #Tamanho do quadro
 frameCima.grid(row=0,column=0) # posição do quadro
 
-texto_cima= Label(frameCima, text='  CÁLCULO DE IR E INSS', width=400, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 20 bold'),bg=co9,fg=co2)
+texto_cima= Label(frameCima, text='  CÁLCULO DE IR E INSS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
 
