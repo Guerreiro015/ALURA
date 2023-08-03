@@ -110,6 +110,7 @@ lista =meu_texto.split() # Retira os espaços em branco e transforma em lista
 print(lista)
 lista = set(meu_texto.split()) # Retira os espaços em branco e transforma em conjunto sem duplicidade.
 
+
 print(lista)
 
 
