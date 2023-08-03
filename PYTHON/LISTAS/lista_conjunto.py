@@ -91,3 +91,25 @@ for i,y in enumerate(conjunto7):
    desempacote.append(y)
    print(i,y)
 print(desempacote)
+
+print('\n','-'*50)
+# Os comjuntos são mutaveis, mas acrescentar um item que ja existe ele desconsidera
+usuarios = {1,5,76,34,52,13,17}
+print(usuarios)
+
+usuarios.add(13)
+print(usuarios)
+
+
+usuarios.add(765)
+print(usuarios)
+
+#Quebrando em espaços em branco e tirando as duplicidades
+meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o meu cachorro e gosto muito de cachorro"
+lista =meu_texto.split() # Retira os espaços em branco e transforma em lista
+print(lista)
+lista = set(meu_texto.split()) # Retira os espaços em branco e transforma em conjunto sem duplicidade.
+
+print(lista)
+
+
