@@ -47,36 +47,54 @@ style.theme_use("clam")
 frameCima = Frame(janela,width=1043, height=50, bg=co8, relief=FLAT) #Tamanho do quadro
 frameCima.grid(row=0,column=0) # posição do quadro
 
-texto_cima= Label(frameCima, text='  CÁLCULO DE IR E INSS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
+texto_cima= Label(frameCima, text='  CÁLCULO DE  ---   IRRF - INSS - FGTS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-frameMeio = Frame(janela,width=1043, height=300, bg=co9, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=300, bg=co7, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
 
-frameBaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
-frameBaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
+framebaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
+framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
-texto_meio= Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co8,fg=co1)
-texto_meio.place(x=0,y=0)
-texto_meio= Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co8,fg=co1)
-texto_meio.place(x=0,y=20)
-texto_meio= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co8,fg=co1)
-texto_meio.place(x=0,y=40)
-texto_meio= Label(frameMeio, text='  Outros descontos', font=('verdana 10 bold'),bg=co8,fg=co1)
-texto_meio.place(x=0,y=60)
+meio_salario = Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=0)
+meio_faltas= Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_faltas.place(x=0,y=30)
+meio_depe= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_depe.place(x=0,y=60)
+meio_pensao= Label(frameMeio, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_pensao.place(x=0,y=90)
 
-e_texto = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
-e_texto.place(x=230,y=0)
-e_texto = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
-e_texto.place(x=230,y=20)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=0)
+e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_faltas.place(x=200,y=30)
+e_depe = Entry(frameMeio,width=10,justify=LEFT,relief=SOLID)
+e_depe.place(x=200,y=60)
+e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_pensao.place(x=200,y=90)
 
+imagem=Image.open("baseir.png")
+imagem = imagem.resize((300,260))
+imagem = ImageTk.PhotoImage(imagem)
 
+l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+l_imagem.place(x=550,y=0)
 
+l_botao = Button(frameMeio,width=25,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 15 bold"),bg=co1,fg=co4)
+l_botao.place(x=130,y=221)
 
+baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_salario.place(x=0,y=0)
+baixo_faltas= Label(framebaixo, text='  BASE DO IRRF', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_faltas.place(x=0,y=30)
+baixo_depe= Label(framebaixo, text='  BASE DO FGTS ', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_depe.place(x=0,y=60)
+baixo_pensao= Label(framebaixo, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_pensao.place(x=0,y=90)
 
-
-texto_meio= Label(frameMeio, text='  BASES DE DEDUÇÕES', font=('verdana 10 bold'),bg=co6,fg=co1)
-texto_meio.place(x=600,y=0)
-
+base_salario = e_salario-e_faltas
+e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
+e_base.place(x=200,y=0)
 
 janela.mainloop()
