@@ -140,8 +140,11 @@ def verificar():
         b_confirmar.destroy()
 
         mostrar()
-           
-    b_confirmar = Button(frameMeio,command=atualizar,image=foto_update,width=13,text="Atualizar".upper(),overrelief=RIDGE,font=("ivy 8 bold"),bg=co2,fg=co1)
+
+
+
+
+    b_confirmar = Button(frameMeio,command=atualizar,image=foto_update,width=95,text=" Atualizar".upper(),compound=LEFT,anchor=NW,overrelief=RIDGE,font=("ivy 8 bold"),bg=co1,fg=co5)
     b_confirmar.place(x=330,y=185)
 
   except IndexError:
