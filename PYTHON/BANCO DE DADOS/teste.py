@@ -4,6 +4,9 @@ os.system("cls")
 #CORES--------------------------------------------
 #bg= Preenchimento
 #fg= Bordas
+# x = coluna
+# y = Linha
+
 # n, ne, e, se, s, sw, w, nw, or center
 o0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
@@ -47,14 +50,33 @@ frameCima.grid(row=0,column=0) # posição do quadro
 texto_cima= Label(frameCima, text='  CÁLCULO DE IR E INSS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-
-frameMeio = Frame(janela,width=1043, height=300, bg=co6, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=300, bg=co8, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
-
-texto_meio= Label(frameMeio, text='  Cálculo de Imposto de Renda', font=('verdana 10 bold'),bg=co6,fg=co1)
-texto_meio.place(x=0,y=0)
 
 frameBaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
 frameBaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
+
+texto_meio= Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co8,fg=co1)
+texto_meio.place(x=0,y=0)
+texto_meio= Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co8,fg=co1)
+texto_meio.place(x=0,y=20)
+texto_meio= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co8,fg=co1)
+texto_meio.place(x=0,y=40)
+texto_meio= Label(frameMeio, text='  Outros descontos', font=('verdana 10 bold'),bg=co8,fg=co1)
+texto_meio.place(x=0,y=60)
+
+e_texto = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
+e_texto.place(x=230,y=0)
+e_texto = Entry(frameMeio,width=30,justify=LEFT,relief=SOLID)
+e_texto.place(x=230,y=20)
+
+
+
+
+
+
+texto_meio= Label(frameMeio, text='  BASES DE DEDUÇÕES', font=('verdana 10 bold'),bg=co6,fg=co1)
+texto_meio.place(x=600,y=0)
+
 
 janela.mainloop()
