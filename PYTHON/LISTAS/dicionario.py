@@ -61,8 +61,23 @@ for i in lista:
        print(f'O Elemento {i} não está no conjunto aparicoes') 
 
 
+aparicoes = {
+  "Guilherme" : 1,
+  "cachorro" : 2,
+  "nome" : 2,
+  "vindo" : 1
+}
+ #Desempacotando
 
+print("="*30)
 
+for x,y in aparicoes.items():
+   print(x,"=",y)
+
+[f'item {x}'for a in aparicoes.keys()]
+
+print([f'item {x}'for a in aparicoes.keys()])
+   
 
 
 
