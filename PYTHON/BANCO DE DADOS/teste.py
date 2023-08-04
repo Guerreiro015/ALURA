@@ -50,7 +50,7 @@ frameCima.grid(row=0,column=0) # posição do quadro
 texto_cima= Label(frameCima, text='  CÁLCULO DE IR E INSS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-frameMeio = Frame(janela,width=1043, height=300, bg=co8, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=300, bg=co9, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
 
 frameBaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
