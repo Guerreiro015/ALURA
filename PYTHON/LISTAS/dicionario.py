@@ -79,9 +79,28 @@ for x,y in aparicoes.items():
 print([f'item {x}'for a in aparicoes.keys()])
    
 
+# Vamos usar o defaultdict para sempre usar o padrao int()
+meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o meu cachorro e gosto muito de cachorro"
+meu_texto = meu_texto.lower()
+
+# sem o defaultdict teriamos que usar o .get para retornrar 0 quando náo existisse
+# neste exemo iremos contar a quant. de cada items.
+
+for palavra in meu_texto.split():
+  ate_agora = aparicoes.get(palavra, 0)
+  aparicoes[palavra] = ate_agora + 1
+
+print(aparicoes,"\n")
 
 
 
+from collections import defaultdict
 
+aparicoes = defaultdict(int)
 
+for palavra in meu_texto.split():
+  ate_agora = aparicoes[palavra]
+  aparicoes[palavra] = ate_agora + 1
+
+print(aparicoes)
 
