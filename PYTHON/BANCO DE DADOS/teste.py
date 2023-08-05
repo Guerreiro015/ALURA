@@ -56,6 +56,15 @@ frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul,
 framebaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
 framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
+
+
+
+
+
+
+
+
+
 meio_salario = Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co7,fg=co1)
 meio_salario.place(x=0,y=0)
 meio_faltas= Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
@@ -81,20 +90,48 @@ imagem = ImageTk.PhotoImage(imagem)
 l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
 l_imagem.place(x=550,y=0)
 
-l_botao = Button(frameMeio,width=25,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 15 bold"),bg=co1,fg=co4)
-l_botao.place(x=130,y=221)
 
-baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co7,fg=co1)
+
+campos = [e_salario,e_faltas,e_depe,e_pensao]
+def calculo():
+    for i in campos:
+         if i=='':
+            messagebox.showerror('Erro', 'Preencha todos os campos')
+            return
+    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+
+def deletar():
+   try:
+
+    e_salario.delete(0, 'end')
+    e_faltas.delete(0, 'end')
+    e_depe.delete(0, 'end')
+    e_pensao.delete(0, 'end')
+   
+    messagebox.showinfo('Sucesso', 'Os dados foram limpos com sucesso')
+ 
+    
+   except IndexError:
+    messagebox.showerror('Erro', 'Seleciona um dos dados na tabela') 
+
+l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+l_botao.place(x=130,y=230)
+l_botao = Button(frameMeio,command=deletar,width=15,text="LIMPAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+l_botao.place(x=130,y=170)
+
+baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
-baixo_faltas= Label(framebaixo, text='  BASE DO IRRF', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_faltas= Label(framebaixo, text='  BASE DO IRRF', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_faltas.place(x=0,y=30)
-baixo_depe= Label(framebaixo, text='  BASE DO FGTS ', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_depe= Label(framebaixo, text='  BASE DO FGTS ', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_depe.place(x=0,y=60)
-baixo_pensao= Label(framebaixo, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
+baixo_pensao= Label(framebaixo, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_pensao.place(x=0,y=90)
 
-# base_salario = e_salario-e_faltas
-# e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
-# e_base.place(x=200,y=0)
+
+            
+    # base_salario = e_salario-e_faltas
+    # e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
+    # e_base.place(x=200,y=0)
 
 janela.mainloop()
