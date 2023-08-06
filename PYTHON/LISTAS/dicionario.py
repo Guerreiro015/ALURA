@@ -125,7 +125,18 @@ de paz, amor e muita alegria.
 Parabéns por mais um ano de vida!
  '''
 
-texto = Counter(texto.split())
-for i in texto:
-   print(i)
+#texto = Counter(texto.split()) # Contando palavras
+print('\n',texto)
+
+texto = Counter(texto) # Contando letras
+print('\n',texto,"\n")
+
+soma = sum(texto.values()) #somando as letras
+print(soma,'\n')
+
+for x,y in texto.items():
+   porcem = y/soma
+   print( f'''\n A letra {x}, apareceu {y} vezes' = a {porcem * 100: .2f} de todas as palavras \n''')
+
+
 
