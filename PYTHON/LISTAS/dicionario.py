@@ -84,7 +84,7 @@ meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o m
 meu_texto = meu_texto.lower()
 
 # sem o defaultdict teriamos que usar o .get para retornrar 0 quando náo existisse
-# neste exemo iremos contar a quant. de cada items.
+# neste exemplo iremos contar a quant. de cada items.
 
 for palavra in meu_texto.split():
   ate_agora = aparicoes.get(palavra, 0)
@@ -95,12 +95,37 @@ print(aparicoes,"\n")
 
 
 from collections import defaultdict
+from collections import Counter
 
 aparicoes = defaultdict(int)
 
 for palavra in meu_texto.split():
-  ate_agora = aparicoes[palavra]
-  aparicoes[palavra] = ate_agora + 1
 
+  aparicoes[palavra] +=1
+  
 print(aparicoes)
+
+# Para  facilitar podemos usar a funcção COUNTER()
+aparicoes = Counter(meu_texto.split())
+print(aparicoes)
+
+
+# testando o uso de diversas coleções
+texto = '''Parabéns e muitas felicidades!
+Este é seu dia especial
+E por isso deve festejar com alegria.
+Espero que receba muito carinho
+Homenagens e surpresas boas
+Que hoje e sempre não falte a
+Saúde, a paz e o amor.
+Feliz aniversário! 
+Tenha um feliz aniversário cheio
+de sorrisos e gargalhadas, repleto
+de paz, amor e muita alegria.
+Parabéns por mais um ano de vida!
+ '''
+
+texto = Counter(texto.split())
+for i in texto:
+   print(i)
 
