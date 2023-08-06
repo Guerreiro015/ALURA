@@ -76,23 +76,46 @@ framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 meio_salario = Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co7,fg=co1)
 meio_salario.place(x=0,y=0)
+meio_salario = Label(frameMeio, text='  Insalubridade', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=25)
+meio_salario = Label(frameMeio, text='  Periculosidade', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=50)
+meio_salario = Label(frameMeio, text='  Horas Extras ', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=75)
+meio_salario = Label(frameMeio, text='  Adicional Noturno ', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=100)
+meio_salario = Label(frameMeio, text='  DSR  - (H.E - Adic.Notur) ', font=('verdana 10 bold'),bg=co7,fg=co1)
+meio_salario.place(x=0,y=125)
+
+
+
 meio_faltas= Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
-meio_faltas.place(x=0,y=30)
+meio_faltas.place(x=0,y=175)
 meio_depe= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
-meio_depe.place(x=0,y=60)
+meio_depe.place(x=0,y=200)
 meio_pensao= Label(frameMeio, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
-meio_pensao.place(x=0,y=90)
+meio_pensao.place(x=0,y=29)
 
 e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_salario.place(x=200,y=0)
-sal = int(e_salario)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=25)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=50)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=75)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=100)
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=125)
+
 e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
-e_faltas.place(x=200,y=30)
-fal = int(e_faltas)
+e_faltas.place(x=200,y=175)
+
 e_depe = Entry(frameMeio,width=10,justify=LEFT,relief=SOLID)
-e_depe.place(x=200,y=60)
+e_depe.place(x=200,y=200)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
-e_pensao.place(x=200,y=90)
+e_pensao.place(x=200,y=290)
 
 imagem=Image.open("baseir.png")
 imagem = imagem.resize((300,260))
@@ -112,11 +135,11 @@ else:
 
 def calculo():
    for i in campos:
-      if sal == '': 
+      if e_salario == '': 
           messagebox.showinfo('Erro', 'Preencha todos os campos')
           return
-      else: messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
-   total = sal-fal
+   messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+   total = e_salario,e_faltas
    print(total)
 
 
@@ -139,10 +162,10 @@ def deletar():
    except IndexError:
     messagebox.showerror('Erro', 'Seleciona um dos dados na tabela') 
 
-l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
-l_botao.place(x=130,y=230)
 l_botao = Button(frameMeio,command=deletar,width=15,text="LIMPAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
-l_botao.place(x=130,y=170)
+l_botao.place(x=350,y=0)
+l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+l_botao.place(x=350,y=60)
 
 baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
