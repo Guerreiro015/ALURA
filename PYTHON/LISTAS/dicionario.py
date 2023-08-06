@@ -108,8 +108,9 @@ print(aparicoes)
 # Para  facilitar podemos usar a funcção COUNTER()
 aparicoes = Counter(meu_texto.split())
 print(aparicoes)
+soma = sum(aparicoes.values()) #somando as letras
 
-
+print(f'\n {soma} Palavras')
 # testando o uso de diversas coleções
 texto = '''Parabéns e muitas felicidades!
 Este é seu dia especial
@@ -132,11 +133,11 @@ texto = Counter(texto) # Contando letras
 print('\n',texto,"\n")
 
 soma = sum(texto.values()) #somando as letras
-print(soma,'\n')
+print(soma,'Letras\n')
 
 for x,y in texto.items():
    porcem = y/soma
-   print( f'''\n A letra {x}, apareceu {y} vezes' = a {porcem * 100: .2f} de todas as palavras \n''')
+   print( f'''\n A letra {x}, apareceu {y} vezes' - {porcem * 100: .2f} % de todas as palavras \n''')
 
 
 
