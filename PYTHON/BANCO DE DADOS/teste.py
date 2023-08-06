@@ -19,6 +19,15 @@ co7 = "#3fbfb9" # Verde azulado
 co8 = "#263238" # Preto claro
 co9 = "#e9edf5" # Branco cinza claro
 
+# Vamos ver algumas configurações de estilo mais comuns que podemos definir:
+# Width – Largura do widget;
+# Height – Altura do widget;
+# Text – Texto a ser exibido no widget;
+# Font – Família da fonte do texto;
+# Fg – Cor do texto do widget;
+# Bg – Cor de fundo do widget;
+# Side – Define em que lado o widget se posicionará (Left, Right, Top, Bottom).
+
 from tkinter import*
 from tkinter import Tk, StringVar, ttk
 from tkinter import messagebox
@@ -76,8 +85,10 @@ meio_pensao.place(x=0,y=90)
 
 e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_salario.place(x=200,y=0)
+sal = int(e_salario)
 e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_faltas.place(x=200,y=30)
+fal = int(e_faltas)
 e_depe = Entry(frameMeio,width=10,justify=LEFT,relief=SOLID)
 e_depe.place(x=200,y=60)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
@@ -93,12 +104,21 @@ l_imagem.place(x=550,y=0)
 
 
 campos = [e_salario,e_faltas,e_depe,e_pensao]
+if "" in campos:
+   print("ola")
+else:
+   print("ok")
+   print(type(campos))
+
 def calculo():
-    for i in campos:
-         if i=='':
-            messagebox.showerror('Erro', 'Preencha todos os campos')
-            return
-    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+   for i in campos:
+      if sal == '': 
+          messagebox.showinfo('Erro', 'Preencha todos os campos')
+          return
+      else: messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+   total = sal-fal
+   print(total)
+
 
 def deletar():
    try:
@@ -107,6 +127,11 @@ def deletar():
     e_faltas.delete(0, 'end')
     e_depe.delete(0, 'end')
     e_pensao.delete(0, 'end')
+
+   #  e_salario=0
+   #  e_faltas=0
+   #  e_depe=0
+   #  e_pensao=0
    
     messagebox.showinfo('Sucesso', 'Os dados foram limpos com sucesso')
  
