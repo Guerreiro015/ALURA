@@ -128,22 +128,38 @@ l_imagem.place(x=550,y=0)
 
 
 
-campos = [e_salario,e_faltas,e_depe,e_pensao]
-if "" in campos:
-   print("ola")
-else:
-   print("ok")
-   print(type(campos))
+campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao]
 
 def calculo():
    for i in campos:
-      if e_salario == '': 
+      if i.get() == '': 
           messagebox.showinfo('Erro', 'Preencha todos os campos')
           return
-   messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
-   total = e_salario,e_faltas
-   print(total)
+   sal = float(e_salario.get())
+   ins = float(e_insalu.get())
+   per = float(e_pericu.get())
+   hex = float(e_he.get())
+   adn = float(e_adno.get())
+   ds = float(e_dsr.get())
+   fal = float(e_faltas.get())
+   pen = float(e_pensao.get())
+   dep = float(e_depe.get())
 
+   total = (sal+ins+per+hex+adn+ds)-fal
+
+   ir = total-(pen+(dep*189.59))
+   print(f'Base de INSS {total: .2f}')
+   print(f'Base de IRRF {ir: .2f}')
+      
+   baixo_salario = Label(framebaixo, text=f'{total: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_salario.place(x=200,y=0)
+   baixo_depe= Label(framebaixo, text=f'{ir: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_depe.place(x=200,y=30)
+   baixo_depe= Label(framebaixo, text=f'{total: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_depe.place(x=200,y=60)
+   
+   
+   messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
 
 def deletar():
    try:
@@ -160,11 +176,6 @@ def deletar():
     e_pensao.delete(0, 'end')
     
 
-   #  e_salario=0
-   #  e_faltas=0
-   #  e_depe=0
-   #  e_pensao=0
-   
     messagebox.showinfo('Sucesso', 'Os dados foram limpos com sucesso')
  
     
@@ -178,6 +189,9 @@ l_botao.place(x=350,y=60)
 
 baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
+
+
+
 baixo_faltas= Label(framebaixo, text='  BASE DO IRRF', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_faltas.place(x=0,y=30)
 baixo_depe= Label(framebaixo, text='  BASE DO FGTS ', font=('verdana 10 bold'),bg=co3,fg=co1)
