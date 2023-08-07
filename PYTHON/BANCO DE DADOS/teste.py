@@ -93,8 +93,8 @@ baixo_depe.place(x=0,y=60)
 baixo_pensao= Label(framebaixo, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
 baixo_pensao.place(x=0,y=90)
 
-base_salario = e_salario-e_faltas
-e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
-e_base.place(x=200,y=0)
+# base_salario = e_salario-e_faltas
+# e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
+# e_base.place(x=200,y=0)
 
 janela.mainloop()
