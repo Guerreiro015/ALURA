@@ -8,7 +8,7 @@ os.system("cls")
 # y = Linha
 
 # n, ne, e, se, s, sw, w, nw, or center
-o0 = "#2e2d2b" # Preta
+co0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
 co2 = "#4fa882" # Verde
 co3 = "#38576b" # Azul
@@ -131,8 +131,9 @@ l_imagem.place(x=550,y=0)
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao]
 
 def calculo():
+  try:
    for i in campos:
-      if i.get() == '': 
+      if i.get() == '':
           messagebox.showinfo('Erro', 'Preencha todos os campos')
           return
    sal = float(e_salario.get())
@@ -151,15 +152,17 @@ def calculo():
    print(f'Base de INSS {total: .2f}')
    print(f'Base de IRRF {ir: .2f}')
       
-   baixo_salario = Label(framebaixo, text=f'{total: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=200,y=0)
-   baixo_depe= Label(framebaixo, text=f'{ir: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=30)
-   baixo_depe= Label(framebaixo, text=f'{total: .2f}', font=('verdana 10 bold'),bg=co3,fg=co1)
+   baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=60)
-   
-   
+      
    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+
+  except:
+    messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
 
 def deletar():
    try:
@@ -187,17 +190,25 @@ l_botao.place(x=350,y=0)
 l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
 l_botao.place(x=350,y=60)
 
-baixo_salario = Label(framebaixo, text='  BASE DO INSS', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_salario = Label(framebaixo, text='  BASE DO INSS.:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
+baixo_salario = Label(framebaixo, text='Valor de desconto INSS....:', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_salario.place(x=350,y=0)
 
 
 
-baixo_faltas= Label(framebaixo, text='  BASE DO IRRF', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_faltas= Label(framebaixo, text='  BASE DO IRRF.:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_faltas.place(x=0,y=30)
-baixo_depe= Label(framebaixo, text='  BASE DO FGTS ', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_faltas= Label(framebaixo, text='Valor de desconto IRRF....: ', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_faltas.place(x=350,y=30)
+
+
+baixo_depe= Label(framebaixo, text='  BASE DO FGTS:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_depe.place(x=0,y=60)
-baixo_pensao= Label(framebaixo, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co3,fg=co1)
-baixo_pensao.place(x=0,y=90)
+baixo_depe= Label(framebaixo, text='Valor de depósito do FGTS:', font=('verdana 10 bold'),bg=co3,fg=co1)
+baixo_depe.place(x=350,y=60)
+
+
 
 
             
