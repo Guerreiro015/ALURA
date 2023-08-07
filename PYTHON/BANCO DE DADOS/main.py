@@ -192,6 +192,7 @@ def escolher_imagem():
         l_imagem.place(x=700,y=0)
 
 def ver_imagem():
+  try:   
      global imagem, imagem_string, l_immagem
 
      # Troquei treev da apostila (video) por focar
@@ -208,7 +209,8 @@ def ver_imagem():
 
      l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
      l_imagem.place(x=700,y=0)
-
+  except:
+     messagebox.showerror('Erro', 'Não foi encontrada nenhuma imagem') 
 
 # Criando frames-------------------------------
 

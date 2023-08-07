@@ -177,7 +177,7 @@ def deletar():
     e_faltas.delete(0, 'end')
     e_depe.delete(0, 'end')
     e_pensao.delete(0, 'end')
-    
+    total =0
 
     messagebox.showinfo('Sucesso', 'Os dados foram limpos com sucesso')
  
