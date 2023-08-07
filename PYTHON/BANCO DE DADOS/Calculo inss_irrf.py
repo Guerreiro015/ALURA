@@ -1,5 +1,6 @@
 import os
 os.system("cls")
+from base_inss import *
 
 #CORES--------------------------------------------
 #bg= Preenchimento
@@ -129,8 +130,9 @@ l_imagem.place(x=550,y=0)
 
 
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao]
-
+global desc_inss
 def calculo():
+  global desc_inss
   try:
    for i in campos:
       if i.get() == '':
@@ -151,14 +153,18 @@ def calculo():
    ir = total-(pen+(dep*189.59))
    print(f'Base de INSS {total: .2f}')
    print(f'Base de IRRF {ir: .2f}')
+   desc_inss = inss(total)
       
    baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=200,y=0)
+   baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_salario.place(x=600,y=0)
+
+
    baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=30)
    baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=60)
-      
    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
 
   except:

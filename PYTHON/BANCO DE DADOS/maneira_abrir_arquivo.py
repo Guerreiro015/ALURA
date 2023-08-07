@@ -8,3 +8,10 @@ with open("modo.txt","w") as moelo: # Abrir para escreverr
 with open("modo.txt",'r') as moelo: # Abrir para ler
     mo = moelo.read()
 print(mo)
+
+from base_inss import *
+
+inss(500)
+
+a= inss(500)
+print(a)
