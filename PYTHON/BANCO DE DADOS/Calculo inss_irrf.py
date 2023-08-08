@@ -60,7 +60,7 @@ frameCima.grid(row=0,column=0) # posição do quadro
 texto_cima= Label(frameCima, text='  CÁLCULO DE  ---   IRRF - INSS - FGTS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-frameMeio = Frame(janela,width=1043, height=300, bg=co7, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=330, bg=co7, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
 
 framebaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
@@ -80,18 +80,20 @@ l_adno = Label(frameMeio, text='  Adicional Noturno ', font=('verdana 10 bold'),
 l_adno.place(x=0,y=100)
 l_dsr = Label(frameMeio, text='  DSR  - (H.E - Adic.Notur) ', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_dsr.place(x=0,y=125)
+l_outros = Label(frameMeio, text='  Outros Proventos  ', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_outros.place(x=0,y=150)
 
 meio_salario = Label(frameMeio, text=' DEDUÇÕES ', font=('verdana 13 bold'),bg=co7,fg=co8)
-meio_salario.place(x=0,y=175)
+meio_salario.place(x=0,y=200)
 
 
 
 l_falta=Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_falta.place(x=0,y=200)
+l_falta.place(x=0,y=225)
 l_depe= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_depe.place(x=0,y=225)
+l_depe.place(x=0,y=250)
 l_pensao= Label(frameMeio, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_pensao.place(x=0,y=250)
+l_pensao.place(x=0,y=275)
 
 e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_salario.place(x=200,y=0)
@@ -105,13 +107,17 @@ e_adno = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_adno.place(x=200,y=100)
 e_dsr = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_dsr.place(x=200,y=125)
+e_outros = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_outros.place(x=200,y=150)
+
+
 
 e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
-e_faltas.place(x=200,y=200)
+e_faltas.place(x=200,y=225)
 e_depe = Entry(frameMeio,width=10,justify=LEFT,relief=SOLID)
-e_depe.place(x=200,y=225)
+e_depe.place(x=200,y=250)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
-e_pensao.place(x=200,y=250)
+e_pensao.place(x=200,y=275)
 
 imagem=Image.open("baseir.png")
 imagem = imagem.resize((300,260))
@@ -122,7 +128,7 @@ l_imagem.place(x=550,y=0)
 
 
 
-campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao]
+campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
 global desc_inss
 def calculo():
   global desc_inss
@@ -140,8 +146,8 @@ def calculo():
    fal = float(e_faltas.get())
    pen = float(e_pensao.get())
    dep = float(e_depe.get())
-
-   total = (sal+ins+per+hex+adn+ds)-fal
+   out = float(e_outros.get()) 
+   total = (sal+ins+per+hex+adn+ds+out)-fal
 
    ir = total-(pen+(dep*189.59))
    print(f'Base de INSS {total: .2f}')
@@ -153,11 +159,17 @@ def calculo():
    baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=600,y=0)
 
-
    baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=30)
+   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe.place(x=600,y=30)
+
    baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=60)
+   baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe.place(x=600,y=60)
+
+
    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
 
   except:
@@ -172,6 +184,7 @@ def deletar():
     e_he.delete(0, 'end')
     e_adno.delete(0, 'end')
     e_dsr.delete(0, 'end')
+    e_outros.delete(0, 'end')
 
     e_faltas.delete(0, 'end')
     e_depe.delete(0, 'end')

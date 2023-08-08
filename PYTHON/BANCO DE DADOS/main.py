@@ -28,6 +28,16 @@ co7 = "#3fbfb9" # Verde azulado
 co8 = "#263238" # Preto claro
 co9 = "#e9edf5" # Branco cinza claro
 
+# Vamos ver algumas configurações de estilo mais comuns que podemos definir:
+# Width – Largura do widget;
+# Height – Altura do widget;
+# Text – Texto a ser exibido no widget;
+# Font – Família da fonte do texto;
+# Fg – Cor do texto do widget;
+# Bg – Cor de fundo do widget;
+# Side – Define em que lado o widget se posicionará (Left, Right, Top, Bottom).
+
+
 # Criando janela------------------------------
 
 janela = Tk()
