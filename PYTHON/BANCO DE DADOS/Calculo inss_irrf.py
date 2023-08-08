@@ -156,17 +156,17 @@ def calculo():
       
    baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=200,y=0)
-   baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=600,y=0)
 
    baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=30)
-   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=600,y=30)
 
    baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=60)
-   baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=600,y=60)
 
 
