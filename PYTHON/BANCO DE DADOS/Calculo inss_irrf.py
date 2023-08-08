@@ -68,13 +68,6 @@ framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 
 
-
-
-
-
-
-
-
 l_salario = Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_salario.place(x=0,y=0)
 l_insalu = Label(frameMeio, text='  Insalubridade', font=('verdana 10 bold'),bg=co7,fg=co1)
