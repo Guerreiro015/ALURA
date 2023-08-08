@@ -129,9 +129,9 @@ l_imagem.place(x=550,y=0)
 
 
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
-global desc_inss
+global desc_inss,desc_irrf
 def calculo():
-  global desc_inss
+  global desc_inss,desc_irrf,dedu_ir
   try:
    for i in campos:
       if i.get() == '':
@@ -149,25 +149,40 @@ def calculo():
    out = float(e_outros.get()) 
    total = (sal+ins+per+hex+adn+ds+out)-fal
 
-   ir = total-(pen+(dep*189.59))
+   
+   desc_inss = inss(total)
+
+   dedu_ir=0
+   dedu = 528
+   dedu1=(desc_inss+pen+(dep*189.59))
+   if dedu1 <= dedu:
+     dedu_ir = dedu
+   else:
+     dedu_ir = dedu1
+
+   ir = total-dedu_ir
+   
    print(f'Base de INSS {total: .2f}')
    print(f'Base de IRRF {ir: .2f}')
-   desc_inss = inss(total)
-      
-   baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   print(f'Base de IRRF {dedu: .2f}')
+   print(f'Base de IRRF {dedu1: .2f}')
+
+   desc_irrf = irrf(ir,0)
+
+   baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_salario.place(x=200,y=0)
    baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_salario.place(x=600,y=0)
-
-   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_salario.place(x=630,y=0)
+   
+   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=30)
-   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=600,y=30)
+   baixo_depe= Label(framebaixo, text=f'{desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe.place(x=630,y=30)
 
-   baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', font=('verdana 10 bold'),bg=co9,fg=co0)
+   baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
    baixo_depe.place(x=200,y=60)
    baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=600,y=60)
+   baixo_depe.place(x=630,y=60)
 
 
    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
@@ -205,20 +220,20 @@ l_botao.place(x=350,y=60)
 baixo_salario = Label(framebaixo, text='  BASE DO INSS.:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
 baixo_salario = Label(framebaixo, text='Valor de desconto INSS....:', font=('verdana 10 bold'),bg=co3,fg=co1)
-baixo_salario.place(x=350,y=0)
+baixo_salario.place(x=400,y=0)
 
 
 
 baixo_faltas= Label(framebaixo, text='  BASE DO IRRF.:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_faltas.place(x=0,y=30)
 baixo_faltas= Label(framebaixo, text='Valor de desconto IRRF....: ', font=('verdana 10 bold'),bg=co3,fg=co1)
-baixo_faltas.place(x=350,y=30)
+baixo_faltas.place(x=400,y=30)
 
 
 baixo_depe= Label(framebaixo, text='  BASE DO FGTS:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_depe.place(x=0,y=60)
 baixo_depe= Label(framebaixo, text='Valor de depósito do FGTS:', font=('verdana 10 bold'),bg=co3,fg=co1)
-baixo_depe.place(x=350,y=60)
+baixo_depe.place(x=400,y=60)
 
 
 
