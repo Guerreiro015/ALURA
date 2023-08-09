@@ -166,6 +166,7 @@ def calculo():
    print(f'Base de IRRF {ir: .2f}')
    print(f'Base de IRRF {dedu: .2f}')
    print(f'Base de IRRF {dedu1: .2f}')
+   
 
    desc_irrf = irrf(ir,0)
 
