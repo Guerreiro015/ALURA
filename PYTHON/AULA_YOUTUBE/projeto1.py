@@ -1,4 +1,7 @@
-frase_do_dia = 'Tudo é facil com um bom direcionamento'
+import os
+os.system('cls')
+
+
 frase_do_dia = 'tudo é fácil com um bom direcionamento'.upper()
 
 from fpdf import FPDF

@@ -162,6 +162,9 @@ def calculo():
 
    ir = total-dedu_ir
    
+   if ir<=0:
+     ir=0
+  
    print(f'Base de INSS {total: .2f}')
    print(f'Base de IRRF {ir: .2f}')
    print(f'Base de IRRF {dedu: .2f}')
