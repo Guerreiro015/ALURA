@@ -82,17 +82,6 @@ l_dsr.place(x=0,y=125)
 l_outros = Label(frameMeio, text='  Outros Proventos  ', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_outros.place(x=0,y=150)
 
-meio_salario = Label(frameMeio, text=' DEDUÇÕES ', font=('verdana 13 bold'),bg=co7,fg=co8)
-meio_salario.place(x=0,y=200)
-
-
-
-l_falta=Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_falta.place(x=0,y=225)
-l_depe= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_depe.place(x=0,y=250)
-l_pensao= Label(frameMeio, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
-l_pensao.place(x=0,y=275)
 
 e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_salario.place(x=200,y=0)
@@ -118,34 +107,29 @@ e_depe.place(x=200,y=250)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_pensao.place(x=200,y=275)
 
-imagem=Image.open("baseir.png")
-imagem = imagem.resize((300,260))
-imagem = ImageTk.PhotoImage(imagem)
-
-l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
-l_imagem.place(x=550,y=0)
-
-
 
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
-global desc_inss,desc_irrf
-def calculo():
-    global desc_inss,desc_irrf,dedu_ir
-try:
-    for i in campos:
-        if i.get() == '':
-            messagebox.showinfo('Erro', 'Preencha todos os campos')
-            return
-    sal = float(e_salario.get())
-    ins = float(e_insalu.get())
-    per = float(e_pericu.get())
-    hex = float(e_he.get())
-    adn = float(e_adno.get())
-    ds = float(e_dsr.get())
-    fal = float(e_faltas.get())
-    pen = float(e_pensao.get())
-    dep = float(e_depe.get())
-    out = float(e_outros.get()) 
+
+def atualizar():
     
-except:
-        messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
+    try:
+        for i in campos:
+            if i.get() == '':
+                messagebox.showinfo('Erro', 'Preencha todos os campos')
+                return
+        sal = float(e_salario.get())
+        ins = float(e_insalu.get())
+        per = float(e_pericu.get())
+        hex = float(e_he.get())
+        adn = float(e_adno.get())
+        ds = float(e_dsr.get())
+        fal = float(e_faltas.get())
+        pen = float(e_pensao.get())
+        dep = float(e_depe.get())
+        out = float(e_outros.get()) 
+        
+    except:
+            messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
+
+
+janela.mainloop()
