@@ -3,6 +3,8 @@ os.system('cls')
 
 
 frase_do_dia = 'tudo é fácil com um bom direcionamento'.upper()
+frase_do_dia2 = 'Estou vivendo a minha melhor experiencia de aprendizado'.upper()
+
 
 from fpdf import FPDF
 
