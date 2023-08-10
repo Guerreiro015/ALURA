@@ -130,69 +130,82 @@ l_imagem.place(x=550,y=0)
 
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
 global desc_inss,desc_irrf
+# global sal,ins,per,hex,adn,ds,fal,pen,dep,out
+# sal=0
+# ins=0
+# per=0
+# hex=0
+# adn=0
+# ds=0
+# fal=0
+# pen=0
+# dep=0
+# out=0
+# valor = [sal,ins,per,hex,adn,ds,fal,pen,dep,out]
 def calculo():
   global desc_inss,desc_irrf,dedu_ir
+  # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
   try:
-   for i in campos:
+    for i in campos:
       if i.get() == '':
-          messagebox.showinfo('Erro', 'Preencha todos os campos')
-          return
-   sal = float(e_salario.get())
-   ins = float(e_insalu.get())
-   per = float(e_pericu.get())
-   hex = float(e_he.get())
-   adn = float(e_adno.get())
-   ds = float(e_dsr.get())
-   fal = float(e_faltas.get())
-   pen = float(e_pensao.get())
-   dep = float(e_depe.get())
-   out = float(e_outros.get()) 
-   total = (sal+ins+per+hex+adn+ds+out)-fal
+        messagebox.showinfo('Erro', 'Preencha todos os campos')
+        return
+      sal = float(e_salario.get())
+      ins = float(e_insalu.get())
+      per = float(e_pericu.get())
+      hex = float(e_he.get())
+      adn = float(e_adno.get())
+      ds = float(e_dsr.get())
+      fal = float(e_faltas.get())
+      pen = float(e_pensao.get())
+      dep = float(e_depe.get())
+      out = float(e_outros.get()) 
+      total = (sal+ins+per+hex+adn+ds+out)-fal
 
    
-   desc_inss = inss(total)
+    desc_inss = inss(total)
 
-   dedu_ir=0
-   dedu = 528
-   dedu1=(desc_inss+pen+(dep*189.59))
-   if dedu1 <= dedu:
-     dedu_ir = dedu
-   else:
-     dedu_ir = dedu1
+    dedu_ir=0
+    dedu = 528
+    dedu1=(desc_inss+pen+(dep*189.59))
+    if dedu1 <= dedu:
+      dedu_ir = dedu
+    else:
+      dedu_ir = dedu1
 
-   ir = total-dedu_ir
-   
-   if ir<=0:
-     ir=0
-  
-   print(f'Base de INSS {total: .2f}')
-   print(f'Base de IRRF {ir: .2f}')
-   print(f'Base de IRRF {dedu: .2f}')
-   print(f'Base de IRRF {dedu1: .2f}')
-   
+    ir = total-dedu_ir
+    
+    if ir<=0:
+      ir=0
+    
+    print(f'Base de INSS {total: .2f}')
+    print(f'Base de IRRF {ir: .2f}')
+    print(f'Base de IRRF {dedu: .2f}')
+    print(f'Base de IRRF {dedu1: .2f}')
+    
 
-   desc_irrf = irrf(ir,0)
+    desc_irrf = irrf(ir,0)
 
-   baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_salario.place(x=200,y=0)
-   baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_salario.place(x=630,y=0)
-   
-   baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=200,y=30)
-   baixo_depe= Label(framebaixo, text=f'{desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=630,y=30)
+    baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_salario.place(x=200,y=0)
+    baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_salario.place(x=630,y=0)
+    
+    baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe.place(x=200,y=30)
+    baixo_depe= Label(framebaixo, text=f'{desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe.place(x=630,y=30)
 
-   baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=200,y=60)
-   baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
-   baixo_depe.place(x=630,y=60)
+    baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe.place(x=200,y=60)
+    baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe.place(x=630,y=60)
 
 
-   messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
+    messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
 
   except:
-    messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
+   messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
 
 def deletar():
    try:

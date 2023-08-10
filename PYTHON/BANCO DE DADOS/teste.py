@@ -107,6 +107,8 @@ e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_pensao.place(x=200,y=275)
 
 
+
+
 campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
 
 def atualizar():
@@ -129,6 +131,7 @@ def atualizar():
         
     except:
             messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
+
 
 
 janela.mainloop()
