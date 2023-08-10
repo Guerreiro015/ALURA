@@ -56,7 +56,7 @@ style.theme_use("clam")
 frameCima = Frame(janela,width=1043, height=50, bg=co8, relief=FLAT) #Tamanho do quadro
 frameCima.grid(row=0,column=0) # posição do quadro
 
-texto_cima= Label(frameCima, text='  CÁLCULO DE  ---   IRRF - INSS - FGTS', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
+texto_cima= Label(frameCima, text='  TABELAS DE IMPOSTO DE RENDAS e INSS ', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
 frameMeio = Frame(janela,width=1043, height=330, bg=co7, pady=20, relief=FLAT)
@@ -67,7 +67,7 @@ framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 
 
-l_salario = Label(frameMeio, text='  Valor do salário bruto', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_salario = Label(frameMeio, text='  TABELA DE INSS  ', font=('verdana 13 bold'),bg=co7,fg=co1)
 l_salario.place(x=0,y=0)
 l_insalu = Label(frameMeio, text='  Insalubridade', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_insalu.place(x=0,y=25)
@@ -83,8 +83,6 @@ l_outros = Label(frameMeio, text='  Outros Proventos  ', font=('verdana 10 bold'
 l_outros.place(x=0,y=150)
 
 
-e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
-e_salario.place(x=200,y=0)
 e_insalu = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_insalu.place(x=200,y=25)
 e_pericu = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
@@ -97,7 +95,8 @@ e_dsr = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_dsr.place(x=200,y=125)
 e_outros = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_outros.place(x=200,y=150)
-
+e_salario = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
+e_salario.place(x=200,y=175)
 
 
 e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
