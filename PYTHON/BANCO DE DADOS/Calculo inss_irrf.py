@@ -144,25 +144,62 @@ global desc_inss,desc_irrf
 # valor = [sal,ins,per,hex,adn,ds,fal,pen,dep,out]
 def calculo():
   global desc_inss,desc_irrf,dedu_ir
-  # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
+    # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
   try:
-    for i in campos:
-      if i.get() == '':
-        messagebox.showinfo('Erro', 'Preencha todos os campos')
-        return
+    if e_salario.get() == '':
+      sal=0
+    else:
       sal = float(e_salario.get())
-      ins = float(e_insalu.get())
-      per = float(e_pericu.get())
-      hex = float(e_he.get())
-      adn = float(e_adno.get())
-      ds = float(e_dsr.get())
-      fal = float(e_faltas.get())
-      pen = float(e_pensao.get())
-      dep = float(e_depe.get())
-      out = float(e_outros.get()) 
-      total = (sal+ins+per+hex+adn+ds+out)-fal
 
-   
+    if e_insalu.get() == '':
+        ins = 0 
+    else:
+        ins = float(e_insalu.get())
+
+    if e_pericu.get() == '':
+        per = 0 
+    else:
+        per = float(e_pericu.get())
+
+    if e_he.get() == '':
+        hex = 0 
+    else:
+        hex = float(e_he.get())
+
+    if e_adno.get() == '':
+        adn = 0 
+    else:
+        adn = float(e_adno.get())
+
+    if e_dsr.get() == '':
+        ds = 0 
+    else:
+        ds = float(e_dsr.get())
+
+    if e_faltas.get() == '':
+        fal = 0 
+    else:
+        fal = float(e_faltas.get())
+
+    if e_pensao.get() == '':
+        pen = 0 
+    else:
+        pen = float(e_pensao.get())
+
+    if e_depe.get() == '':
+      dep = 0 
+    else:
+      dep = float(e_depe.get())
+
+    if e_outros.get() == '':
+        out = 0 
+    else:
+        out = float(e_outros.get())
+        
+            
+    total = (sal+ins+per+hex+adn+ds+out)-fal
+
+    
     desc_inss = inss(total)
 
     dedu_ir=0
@@ -174,15 +211,15 @@ def calculo():
       dedu_ir = dedu1
 
     ir = total-dedu_ir
-    
+      
     if ir<=0:
-      ir=0
-    
+        ir=0
+      
     print(f'Base de INSS {total: .2f}')
     print(f'Base de IRRF {ir: .2f}')
     print(f'Base de IRRF {dedu: .2f}')
     print(f'Base de IRRF {dedu1: .2f}')
-    
+      
 
     desc_irrf = irrf(ir,0)
 
@@ -190,7 +227,7 @@ def calculo():
     baixo_salario.place(x=200,y=0)
     baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_salario.place(x=630,y=0)
-    
+      
     baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_depe.place(x=200,y=30)
     baixo_depe= Label(framebaixo, text=f'{desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
@@ -205,7 +242,7 @@ def calculo():
     messagebox.showinfo('Sucesso', 'Cálculo executado com sucesso')
 
   except:
-   messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
+    messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
 
 def deletar():
    try:
