@@ -132,17 +132,5 @@ def atualizar():
     except:
             messagebox.showerror('Erro', 'Por favor Verifique, A entrada de dados contém ERROS') 
 
-a, b = 10, 20
- 
-# Copy value of a in min if a < b else copy b
-min = a if a < b else 100
-
-print(min)
-
-if e_salario.get() == '':
-     a=50
-     print(a)
-sal = 0 if e_salario.get() == '' else e_salario.get()
-print(sal)
 
 janela.mainloop()
