@@ -146,56 +146,26 @@ def calculo():
   global desc_inss,desc_irrf,dedu_ir
     # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
   try:
-    if e_salario.get() == '':
-      sal=0
-    else:
-      sal = float(e_salario.get())
-
-    if e_insalu.get() == '':
-        ins = 0 
-    else:
-        ins = float(e_insalu.get())
-
-    if e_pericu.get() == '':
-        per = 0 
-    else:
-        per = float(e_pericu.get())
-
-    if e_he.get() == '':
-        hex = 0 
-    else:
-        hex = float(e_he.get())
-
-    if e_adno.get() == '':
-        adn = 0 
-    else:
-        adn = float(e_adno.get())
-
-    if e_dsr.get() == '':
-        ds = 0 
-    else:
-        ds = float(e_dsr.get())
-
-    if e_faltas.get() == '':
-        fal = 0 
-    else:
-        fal = float(e_faltas.get())
-
-    if e_pensao.get() == '':
-        pen = 0 
-    else:
-        pen = float(e_pensao.get())
-
-    if e_depe.get() == '':
-      dep = 0 
-    else:
-      dep = float(e_depe.get())
-
-    if e_outros.get() == '':
-        out = 0 
-    else:
-        out = float(e_outros.get())
+    sal = 0 if e_salario.get() == '' else float(e_salario.get())
+     
+    ins = 0 if e_insalu.get() == '' else float(e_insalu.get())
+     
+    per = 0 if e_pericu.get() == '' else float(e_pericu.get())
+     
+    hex = 0  if e_he.get() == '' else float(e_he.get())
+      
+    adn = 0  if e_adno.get() == '' else  float(e_adno.get())
+  
+    ds = 0 if e_dsr.get() == '' else float(e_dsr.get())
+          
+    fal = 0 if e_faltas.get() == '' else float(e_faltas.get())
         
+    pen = 0 if e_pensao.get() == '' else float(e_pensao.get())
+       
+    dep = 0 if e_depe.get() == '' else float(e_depe.get())
+     
+    out = 0 if e_outros.get() == '' else float(e_outros.get())
+       
             
     total = (sal+ins+per+hex+adn+ds+out)-fal
 
