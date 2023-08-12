@@ -128,8 +128,7 @@ l_imagem.place(x=550,y=0)
 
 
 
-campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
-global desc_inss,desc_irrf
+#campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
 # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
 # sal=0
 # ins=0
@@ -141,11 +140,13 @@ global desc_inss,desc_irrf
 # pen=0
 # dep=0
 # out=0
-# valor = [sal,ins,per,hex,adn,ds,fal,pen,dep,out]
+
+global desc_inss,desc_irrf
 def calculo():
   global desc_inss,desc_irrf,dedu_ir
-    # global sal,ins,per,hex,adn,ds,fal,pen,dep,out
+  #global sal,ins,per,hex,adn,ds,fal,pen,dep,out
   try:
+    
     sal = 0 if e_salario.get() == '' else float(e_salario.get())
      
     ins = 0 if e_insalu.get() == '' else float(e_insalu.get())

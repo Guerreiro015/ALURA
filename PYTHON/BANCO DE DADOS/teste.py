@@ -59,7 +59,7 @@ frameCima.grid(row=0,column=0) # posição do quadro
 texto_cima= Label(frameCima, text='  TABELAS DE IMPOSTO DE RENDAS e INSS ', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-frameMeio = Frame(janela,width=1043, height=280, bg=co7, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=280, bg=co2, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
 
 framebaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
@@ -67,18 +67,18 @@ framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 
 
-l_salario = Label(frameMeio, text='  TABELA DE INSS  ', font=('verdana 13 bold'),bg=co7,fg=co1)
+l_salario = Label(frameMeio, text='  TABELA DE INSS  ', font=('verdana 13 bold'),bg=co2,fg=co1)
 l_salario.place(x=150,y=0)
-l_insalu = Label(frameMeio, text='  Salário de Contribuição', font=('verdana 11 bold'),bg=co7,fg=co3)
+l_insalu = Label(frameMeio, text='  Salário de Contribuição', font=('verdana 11 bold'),bg=co2,fg=co3)
 l_insalu.place(x=135,y=25)
 
-l_pericu = Label(frameMeio, text='  DE', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_pericu = Label(frameMeio, text='  DE', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=50,y=50)
-l_pericu = Label(frameMeio, text='  ATÉ ', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_pericu = Label(frameMeio, text='  ATÉ ', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=150,y=50)
-l_pericu = Label(frameMeio, text=' Áliquota ', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_pericu = Label(frameMeio, text=' Áliquota ', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=230,y=50)
-l_pericu = Label(frameMeio, text='Parcela P/ Deduzir', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_pericu = Label(frameMeio, text='Parcela P/ Deduzir', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=330,y=50)
 
 
@@ -133,6 +133,7 @@ l_pericu = Label(framebaixo, text='  DE', font=('verdana 10 bold'),bg=co3,fg=co1
 l_pericu.place(x=50,y=50)
 l_pericu = Label(framebaixo, text='  ATÉ ', font=('verdana 10 bold'),bg=co3,fg=co1)
 l_pericu.place(x=150,y=50)
+
 l_pericu = Label(framebaixo, text=' Áliquota ', font=('verdana 10 bold'),bg=co3,fg=co1)
 l_pericu.place(x=230,y=50)
 l_pericu = Label(framebaixo, text='Parcela P/ Deduzir', font=('verdana 10 bold'),bg=co3,fg=co1)
