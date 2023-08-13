@@ -17,7 +17,7 @@ os.system("cls")
 # Side – Define em que lado o widget se posicionará (Left, Right, Top, Bottom).
 
 # n, ne, e, se, s, sw, w, nw, or center
-o0 = "#2e2d2b" # Preta
+Co0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
 co2 = "#4fa882" # Verde
 co3 = "#38576b" # Azul
@@ -68,9 +68,26 @@ framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 
 l_salario = Label(frameMeio, text='  TABELA DE INSS  ', font=('verdana 13 bold'),bg=co2,fg=co1)
-l_salario.place(x=150,y=0)
+l_salario.place(x=350,y=0)
 l_insalu = Label(frameMeio, text='  Salário de Contribuição', font=('verdana 11 bold'),bg=co2,fg=co3)
-l_insalu.place(x=135,y=25)
+l_insalu.place(x=335,y=25)
+
+a=1000
+b=8
+c=2000
+d=100
+l_texto_titulo = Label(frameMeio, text=f'DE                  ATÉ               AlÍquota        Dedução ', font=('verdana 10 bold'),bg=co2,fg=co1)
+l_texto_titulo.place(x=520,y=50)
+l_texto_titulo = Label(frameMeio, text=f'R$: {a}  ->   R$: {c}   ->     {b}%  ->       R$: {d}', font=('verdana 10'),bg=co2,fg=co8)
+l_texto_titulo.place(x=500,y=70)
+l_texto_titulo = Label(frameMeio, text=f'R$: {a}  ->   R$: {c}   ->     {b}%  ->       R$: {d}', font=('verdana 10'),bg=co2,fg=co8)
+l_texto_titulo.place(x=500,y=90)
+l_texto_titulo = Label(frameMeio, text=f'R$: {a}  ->   R$: {c}   ->     {b}%  ->       R$: {d}', font=('verdana 10'),bg=co2,fg=co8)
+l_texto_titulo.place(x=500,y=110)
+l_texto_titulo = Label(frameMeio, text=f'R$: {a}  ->   R$: {c}   ->     {b}%  ->       R$: {d}', font=('verdana 10 '),bg=co2,fg=co8)
+l_texto_titulo.place(x=500,y=130)
+
+
 
 l_pericu = Label(frameMeio, text='  DE', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=50,y=50)
