@@ -3,7 +3,7 @@ os.system('cls')
 #pip install validate-docbr
 from validar_cpf import *
 from VALIDACAO_GERAL import *
-from validate_docbr import CPF
+
 
 
 #cpf = input('Por favor digite o CPF: ')
@@ -22,15 +22,20 @@ for i in cpfs:
 
     validar_geral(i)
 
+#<<<<<<<<<>>>>>>>>>>
 
-#usando o pacote manual
-# cpf = CPF()
-# print(cpf.validate('31375855385'))
+print('\n')
+dados=[
+12345678901,
+15316264754,
+31375855387,
+111222333,
+111222333444555,
+33572312000129,
+35379838000112,
+'00360305000104',
+111222333,
+111222333444555]
 
-
-# fatiamento simples
-# f=cpf[0:3]
-# f1=cpf[3:6]
-# f2=cpf[6:9]
-# f3=cpf[9:]
-# print(f,f1,f2,f3)
+for i in dados:
+    validar_geral(i)
