@@ -9,7 +9,8 @@ class validar_tel:
       print(f' Número de telefone inválido')
 
     def validar(self,valor):
-        padrao = "[0-9]{2}[0-9]{4,5}[0-9]{4}"
+       # padrao = "[0-9]{2}[0-9]{4,5}[0-9]{4}"
+        padrao = "[0-9]{11}"
         resposta = re.findall(padrao,valor)
         if resposta:
             return True
