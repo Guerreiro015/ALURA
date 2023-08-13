@@ -2,7 +2,7 @@ import os
 os.system('cls')
 #pip install validate-docbr
 from validar_cpf import *
-from VALIDACAO_GERAL import *
+from VALIDACAO_CPF_CNPJ import *
 
 
 
