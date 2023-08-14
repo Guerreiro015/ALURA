@@ -223,53 +223,112 @@ l_pericu.place(x=490,y=200)
 
 
 
-de1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-de1.place(x=30,y=70)
-ate1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ate1.place(x=130,y=70)
-ali1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ali1.place(x=230,y=70)
-par1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-par1.place(x=330,y=70)
+deir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+deir1.place(x=30,y=70)
+ateir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+ateir1.place(x=130,y=70)
+aliir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+aliir1.place(x=230,y=70)
+parir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+parir1.place(x=330,y=70)
 
-de2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-de2.place(x=30,y=90)
-ate2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ate2.place(x=130,y=90)
-ali2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ali2.place(x=230,y=90)
-par2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-par2.place(x=330,y=90)
+deir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+deir2.place(x=30,y=90)
+ateir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+ateir2.place(x=130,y=90)
+aliir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+aliir2.place(x=230,y=90)
+parir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+parir2.place(x=330,y=90)
 
-de3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-de3.place(x=30,y=110)
-ate3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ate3.place(x=130,y=110)
-ali3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ali3.place(x=230,y=110)
-par3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-par3.place(x=330,y=110)
+deir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+deir3.place(x=30,y=110)
+ateir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+ateir3.place(x=130,y=110)
+aliir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+aliir3.place(x=230,y=110)
+parir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+parir3.place(x=330,y=110)
 
-de4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-de4.place(x=30,y=130)
-ate4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ate4.place(x=130,y=130)
-ali4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ali4.place(x=230,y=130)
-par4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-par4.place(x=330,y=130)
+deir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+deir4.place(x=30,y=130)
+ateir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+ateir4.place(x=130,y=130)
+aliir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+aliir4.place(x=230,y=130)
+parir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+parir4.place(x=330,y=130)
 
-de5= Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-de5.place(x=30,y=150)
+deir5= Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+deir5.place(x=30,y=150)
 # ate5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
 # ate5.place(x=130,y=150)
-ali5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ali5.place(x=230,y=150)
-par5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-par5.place(x=330,y=150)
+aliir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+aliir5.place(x=230,y=150)
+parir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+parir5.place(x=330,y=150)
 
 
+def verificar():
+  global imagem, imagem_string, l_immagem
+  try:
+    treev_dados = tree.focus()
+    treev_dicionario = tree.item(treev_dados)
+    treev_lista = treev_dicionario['values']
+    valor = treev_lista[0]
 
+    de1.delete(0, 'end')
+    ate1.delete(0, 'end')
+    ali1.delete(0, 'end')
+    par1.delete(0, 'end')
+
+    de2.delete(0, 'end')
+    ate2.delete(0, 'end')
+    ali2.delete(0, 'end')
+    par2.delete(0, 'end')
+    
+    de3.delete(0, 'end')
+    ate3.delete(0, 'end')
+    ali3.delete(0, 'end')
+    par3.delete(0, 'end')
+
+    de4.delete(0, 'end')
+    ate4.delete(0, 'end')
+    ali4.delete(0, 'end')
+    par4.delete(0, 'end')
+
+    deir1.delete(0, 'end')
+    ateir1.delete(0, 'end')
+    aliir1.delete(0, 'end')
+    parir1.delete(0, 'end')
+
+    deir2.delete(0, 'end')
+    ateir2.delete(0, 'end')
+    aliir2.delete(0, 'end')
+    parir2.delete(0, 'end')
+    
+    deir3.delete(0, 'end')
+    ateir3.delete(0, 'end')
+    aliir3.delete(0, 'end')
+    par3.delete(0, 'end')
+
+    deir4.delete(0, 'end')
+    ateir4.delete(0, 'end')
+    aliir4.delete(0, 'end')
+    parir4.delete(0, 'end')
+
+
+    
+    id = int(treev_lista[0])
+    e_nome.insert(0, treev_lista[1])
+    e_local.insert(0, treev_lista[2])
+    e_descricao.insert(0, treev_lista[3])
+    e_marca.insert(0, treev_lista[4])
+    e_data.insert(0, treev_lista[5])
+    e_valor.insert(0, treev_lista[6])
+    e_serie.insert(0, treev_lista[7])
+    imagem_string = treev_lista[8]
+  except: 
 
 
 
