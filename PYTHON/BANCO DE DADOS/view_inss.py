@@ -1,0 +1,38 @@
+import os
+os.system("cls")
+
+from tkinter import*
+from tkinter import Tk, StringVar, ttk
+from tkinter import messagebox
+from tkinter.commondialog import Dialog
+from tkinter import filedialog as fd
+from PIL import Image, ImageTk
+from tkcalendar import Calendar, DateEntry
+from datetime import date
+from criar_bd_inss_irrf import *
+# imprtando os outros arquivos
+import sys
+import sqlite3 as lite
+con = lite.connect("dados.bd")
+
+
+#ATUALIZAR DADOS -----------------------------------------------------
+def atualizar_dados(i):
+    with con:
+        cur = con.cursor()
+        query = '''UPDATE inventario SET 
+                de1=?,ate1=?,ali1=?,par1=?,
+                de2=?,ate2=?,ali1=?,par2=?,
+                de3=?,ate3=?,ali1=?,par3=?,
+                de4=?,ate4=?,ali1=?,par4=?,
+                deir1=?,ateir1=?,aliir1=?,parir1=?,
+                deir2=?,ateir2=?,aliir2=?,parir2=?,
+                deir3=?,ateir3=?,aliir3=?,parir3=?,
+                deir4=?,ateir4=?,aliir4=?,parir4=?,
+                deir5=?,ateir5=?,aliir5=?,parir5=?'''
+        
+        cur.execute(query,i)
+
+
+
+

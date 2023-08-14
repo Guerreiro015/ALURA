@@ -37,7 +37,7 @@ from PIL import Image, ImageTk
 from tkcalendar import Calendar, DateEntry
 from datetime import date
 # importando os outros arquivos
-from view import *
+from view_inss import *
 
 
 
@@ -268,68 +268,100 @@ aliir5.place(x=230,y=150)
 parir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
 parir5.place(x=330,y=150)
 
+de=0
+ate=0
+ali=0
+par=0
+x=1
+lista=[de,ate,ali,par]
+for i in lista:
+    a=str(i).insert(0,"ola")
+print(a)
 
-def verificar():
-  global imagem, imagem_string, l_immagem
-  try:
-    treev_dados = tree.focus()
-    treev_dicionario = tree.item(treev_dados)
-    treev_lista = treev_dicionario['values']
-    valor = treev_lista[0]
+# def verificar():
+  
+#     de1.delete(0, 'end')
+#     ate1.delete(0, 'end')
+#     ali1.delete(0, 'end')
+#     par1.delete(0, 'end')
 
-    de1.delete(0, 'end')
-    ate1.delete(0, 'end')
-    ali1.delete(0, 'end')
-    par1.delete(0, 'end')
-
-    de2.delete(0, 'end')
-    ate2.delete(0, 'end')
-    ali2.delete(0, 'end')
-    par2.delete(0, 'end')
+#     de2.delete(0, 'end')
+#     ate2.delete(0, 'end')
+#     ali2.delete(0, 'end')
+#     par2.delete(0, 'end')
     
-    de3.delete(0, 'end')
-    ate3.delete(0, 'end')
-    ali3.delete(0, 'end')
-    par3.delete(0, 'end')
+#     de3.delete(0, 'end')
+#     ate3.delete(0, 'end')
+#     ali3.delete(0, 'end')
+#     par3.delete(0, 'end')
 
-    de4.delete(0, 'end')
-    ate4.delete(0, 'end')
-    ali4.delete(0, 'end')
-    par4.delete(0, 'end')
+#     de4.delete(0, 'end')
+#     ate4.delete(0, 'end')
+#     ali4.delete(0, 'end')
+#     par4.delete(0, 'end')
 
-    deir1.delete(0, 'end')
-    ateir1.delete(0, 'end')
-    aliir1.delete(0, 'end')
-    parir1.delete(0, 'end')
+#     deir1.delete(0, 'end')
+#     ateir1.delete(0, 'end')
+#     aliir1.delete(0, 'end')
+#     parir1.delete(0, 'end')
 
-    deir2.delete(0, 'end')
-    ateir2.delete(0, 'end')
-    aliir2.delete(0, 'end')
-    parir2.delete(0, 'end')
+#     deir2.delete(0, 'end')
+#     ateir2.delete(0, 'end')
+#     aliir2.delete(0, 'end')
+#     parir2.delete(0, 'end')
     
-    deir3.delete(0, 'end')
-    ateir3.delete(0, 'end')
-    aliir3.delete(0, 'end')
-    par3.delete(0, 'end')
+#     deir3.delete(0, 'end')
+#     ateir3.delete(0, 'end')
+#     aliir3.delete(0, 'end')
+#     par3.delete(0, 'end')
 
-    deir4.delete(0, 'end')
-    ateir4.delete(0, 'end')
-    aliir4.delete(0, 'end')
-    parir4.delete(0, 'end')
+#     deir4.delete(0, 'end')
+#     ateir4.delete(0, 'end')
+#     aliir4.delete(0, 'end')
+#     parir4.delete(0, 'end')
+    
+#     deir5.delete(0, 'end')
+#     #ateir5.delete(0, 'end')
+#     aliir5.delete(0, 'end')
+#     parir5.delete(0, 'end')
 
 
     
-    id = int(treev_lista[0])
-    e_nome.insert(0, treev_lista[1])
-    e_local.insert(0, treev_lista[2])
-    e_descricao.insert(0, treev_lista[3])
-    e_marca.insert(0, treev_lista[4])
-    e_data.insert(0, treev_lista[5])
-    e_valor.insert(0, treev_lista[6])
-    e_serie.insert(0, treev_lista[7])
-    imagem_string = treev_lista[8]
-  except: 
+#     id = int(treev_lista[0])
+#     e_nome.insert(0, treev_lista[1])
+#     e_local.insert(0, treev_lista[2])
+#     e_descricao.insert(0, treev_lista[3])
+#     e_marca.insert(0, treev_lista[4])
+#     e_data.insert(0, treev_lista[5])
+#     e_valor.insert(0, treev_lista[6])
+#     e_serie.insert(0, treev_lista[7])
+#     imagem_string = treev_lista[8]
+#   except: 
 
+# def atualizar():
+#         global imagem,imagem_string, l_imagem
+
+            
+#         nome = e_nome.get()
+#         local = e_local.get()
+#         descricao = e_descricao.get()
+#         model = e_marca.get()
+#         data = e_data.get()
+#         valor = e_valor.get()
+#         serie = e_serie.get()
+#         imagem = imagem_string
+
+#         if imagem == '':
+#             imagem = e_serie.insert(0, treev_lista[7])
+        
+#         lista_atualizar = [nome, local, descricao, model, data, valor,serie,imagem, id]
+#         for i in lista_atualizar:
+#             if i=='':
+#                 messagebox.showerror('Erro', 'Preencha todos os campos')
+#                 return
+#         atualizar_dados(lista_atualizar)
+
+#         messagebox.showinfo('Sucesso', 'Os dados foram atualizados com sucesso')
 
 
 janela.mainloop()
