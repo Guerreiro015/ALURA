@@ -9,11 +9,11 @@ from tkinter import filedialog as fd
 from PIL import Image, ImageTk
 from tkcalendar import Calendar, DateEntry
 from datetime import date
-from criar_bd_inss_irrf import *
+#from criar_bd_inss_irrf import *
 # imprtando os outros arquivos
 import sys
 import sqlite3 as lite
-con = lite.connect("dados.bd")
+con = lite.connect("INSS.bd")
 
 
 #ATUALIZAR DADOS -----------------------------------------------------

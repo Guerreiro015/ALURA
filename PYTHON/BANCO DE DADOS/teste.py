@@ -80,10 +80,10 @@ base_ate1=1320
 base_ate2=2571.29
 base_ate3=3856.94
 base_ate4=7507.49
-ali1 = 7.50
-ali2 = 9.00
-ali3 = 12.0
-ali4 = 14.0
+inssali1 = 7.50
+inssali2 = 9.00
+inssali3 = 12.0
+inssali4 = 14.0
 dedu1 = 0
 dedu2 = 19.8
 dedu3 = 96.94
@@ -93,13 +93,13 @@ dedu4 = 174.08
 teto_inss = 876.95
 l_texto_titulo = Label(frameMeio, text=f'    Alíquota           Dedução ', font=('verdana 8 bold'),bg=co3,fg=co1)
 l_texto_titulo.place(x=720,y=50)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de1: ,.2F}            até       R$: {base_ate1: ,.2F}                    {ali1: ,.2f}%                R$: {dedu1: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+l_texto_titulo = Label(frameMeio, text=f'R$: {base_de1: ,.2F}            até       R$: {base_ate1: ,.2F}                    {inssali1: ,.2f}%                R$: {dedu1: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
 l_texto_titulo.place(x=490,y=70)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de2: ,.2F}    até       R$: {base_ate2: ,.2F}                    {ali2:,.2f}%                 R$: {dedu2: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+l_texto_titulo = Label(frameMeio, text=f'R$: {base_de2: ,.2F}    até       R$: {base_ate2: ,.2F}                    {inssali2:,.2f}%                 R$: {dedu2: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
 l_texto_titulo.place(x=490,y=90) 
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de3: ,.2F}    até       R$: {base_ate3: ,.2F}                    {ali3:,.2f}%               R$: {dedu3: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+l_texto_titulo = Label(frameMeio, text=f'R$: {base_de3: ,.2F}    até       R$: {base_ate3: ,.2F}                    {inssali3:,.2f}%               R$: {dedu3: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
 l_texto_titulo.place(x=490,y=110)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de4: ,.2F}    até       R$: {base_ate4: ,.2F}                    {ali4:,.2f}%               R$: {dedu4: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+l_texto_titulo = Label(frameMeio, text=f'R$: {base_de4: ,.2F}    até       R$: {base_ate4: ,.2F}                    {inssali4:,.2f}%               R$: {dedu4: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
 l_texto_titulo.place(x=490,y=130)
 l_texto_titulo = Label(frameMeio, text=f'Teto Máximo de desconto de INSS... : R$: {teto_inss: .2f}', font=('verdana 7 bold'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=150)
@@ -117,41 +117,41 @@ l_pericu.place(x=330,y=50)
 
 
 
-de1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-de1.place(x=30,y=70)
-ate1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ate1.place(x=130,y=70)
-ali1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ali1.place(x=230,y=70)
-par1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-par1.place(x=330,y=70)
+e_de1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_de1.place(x=30,y=70)
+e_ate1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ate1.place(x=130,y=70)
+e_ali1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ali1.place(x=230,y=70)
+e_par1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_par1.place(x=330,y=70)
 
-de2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-de2.place(x=30,y=90)
-ate2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ate2.place(x=130,y=90)
-ali2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ali2.place(x=230,y=90)
-par2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-par2.place(x=330,y=90)
+e_de2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_de2.place(x=30,y=90)
+e_ate2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ate2.place(x=130,y=90)
+e_ali2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ali2.place(x=230,y=90)
+e_par2 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_par2.place(x=330,y=90)
 
-de3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-de3.place(x=30,y=110)
-ate3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ate3.place(x=130,y=110)
-ali3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ali3.place(x=230,y=110)
-par3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-par3.place(x=330,y=110)
+e_de3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_de3.place(x=30,y=110)
+e_ate3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ate3.place(x=130,y=110)
+e_ali3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ali3.place(x=230,y=110)
+e_par3 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_par3.place(x=330,y=110)
 
-de4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-de4.place(x=30,y=130)
-ate4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ate4.place(x=130,y=130)
-ali4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-ali4.place(x=230,y=130)
-par4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
-par4.place(x=330,y=130)
+e_de4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_de4.place(x=30,y=130)
+e_ate4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ate4.place(x=130,y=130)
+e_ali4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_ali4.place(x=230,y=130)
+e_par4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_par4.place(x=330,y=130)
 
 
 
@@ -187,11 +187,11 @@ base_ateir3=3751.05
 base_ateir4=4664.68
 base_ateir5=100000000
 
-aliir1 = 0.0
-aliir2 = 7.5
-aliir3 = 15.0
-aliir4 = 22.5
-aliir5 = 27.5
+irraliir1 = 0.0
+irraliir2 = 7.5
+irraliir3 = 15.0
+irraliir4 = 22.5
+irraliir5 = 27.5
 
 
 deduir1 = 0
@@ -203,15 +203,15 @@ deduir5 = 884.96
 
 l_texto_titulo = Label(framebaixo, text=f'Alíquota          Parc. Deduzir ', font=('verdana 8 bold'),bg=co5,fg=co1)
 l_texto_titulo.place(x=730,y=50)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir1: ,.2F}            até       R$: {base_ateir1: ,.2F}                    {aliir1: ,.2f}%                R$: {deduir1: ,.2F}', font=('verdana 7 '),bg=co3,fg=co1)
+l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir1: ,.2F}            até       R$: {base_ateir1: ,.2F}                    {irraliir1: ,.2f}%                R$: {deduir1: ,.2F}', font=('verdana 7 '),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=70)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir2: ,.2F}    até       R$: {base_ateir2: ,.2F}                    {aliir2:,.2f}%                 R$: {deduir2: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir2: ,.2F}    até       R$: {base_ateir2: ,.2F}                    {irraliir2:,.2f}%                 R$: {deduir2: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=90) 
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir3: ,.2F}    até       R$: {base_ateir3: ,.2F}                    {aliir3:,.2f}%               R$: {deduir3: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir3: ,.2F}    até       R$: {base_ateir3: ,.2F}                    {irraliir3:,.2f}%               R$: {deduir3: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=110)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir4: ,.2F}    até       R$: {base_ateir4: ,.2F}                    {aliir4:,.2f}%               R$: {deduir4: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir4: ,.2F}    até       R$: {base_ateir4: ,.2F}                    {irraliir4:,.2f}%               R$: {deduir4: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=130)
-l_texto_titulo = Label(framebaixo, text=f'         Acima  de  R$: {base_deir5: ,.2F}                                 {aliir5:,.2f}%               R$: {deduir5: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+l_texto_titulo = Label(framebaixo, text=f'         Acima  de  R$: {base_deir5: ,.2F}                                 {irraliir5:,.2f}%               R$: {deduir5: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=150)
 
 l_pericu = Label(framebaixo, text=f'Dedução Por Dependente ...............: R$: {dependente: .2f}', font=('verdana 8 bold'),bg=co5,fg=co1)
@@ -221,112 +221,101 @@ l_pericu.place(x=490,y=200)
 
 
 
+e_deir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_deir1.place(x=30,y=70)
+e_ateir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_ateir1.place(x=130,y=70)
+e_aliir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_aliir1.place(x=230,y=70)
+e_parir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_parir1.place(x=330,y=70)
 
+e_deir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_deir2.place(x=30,y=90)
+e_ateir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_ateir2.place(x=130,y=90)
+e_aliir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_aliir2.place(x=230,y=90)
+e_parir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_parir2.place(x=330,y=90)
 
-deir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-deir1.place(x=30,y=70)
-ateir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ateir1.place(x=130,y=70)
-aliir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-aliir1.place(x=230,y=70)
-parir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-parir1.place(x=330,y=70)
+e_deir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_deir3.place(x=30,y=110)
+e_ateir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_ateir3.place(x=130,y=110)
+e_aliir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_aliir3.place(x=230,y=110)
+e_parir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_parir3.place(x=330,y=110)
 
-deir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-deir2.place(x=30,y=90)
-ateir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ateir2.place(x=130,y=90)
-aliir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-aliir2.place(x=230,y=90)
-parir2 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-parir2.place(x=330,y=90)
+e_deir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_deir4.place(x=30,y=130)
+e_ateir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_ateir4.place(x=130,y=130)
+e_aliir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_aliir4.place(x=230,y=130)
+e_parir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_parir4.place(x=330,y=130)
 
-deir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-deir3.place(x=30,y=110)
-ateir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ateir3.place(x=130,y=110)
-aliir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-aliir3.place(x=230,y=110)
-parir3 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-parir3.place(x=330,y=110)
-
-deir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-deir4.place(x=30,y=130)
-ateir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-ateir4.place(x=130,y=130)
-aliir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-aliir4.place(x=230,y=130)
-parir4 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-parir4.place(x=330,y=130)
-
-deir5= Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-deir5.place(x=30,y=150)
+e_deir5= Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_deir5.place(x=30,y=150)
 # ate5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
 # ate5.place(x=130,y=150)
-aliir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-aliir5.place(x=230,y=150)
-parir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
-parir5.place(x=330,y=150)
+e_aliir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_aliir5.place(x=230,y=150)
+e_parir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_parir5.place(x=330,y=150)
 
-de=0
-ate=0
-ali=0
-par=0
-x=1
-lista=[de,ate,ali,par]
-for i in lista:
-    a=str(i).insert(0,"ola")
-print(a)
+
+lista1 = [      e_de1,e_ate1,e_ali1,e_par1,
+                e_de2,e_ate2,e_ali1,e_par2,
+                e_de3,e_ate3,e_ali1,e_par3,
+               e_de4,e_ate4,e_ali1,e_par4,
+                e_deir1,e_ateir1,e_aliir1,e_parir1,
+                e_deir2,e_ateir2,e_aliir2,e_parir2,
+                e_deir3,e_ateir3,e_aliir3,e_parir3,
+                e_deir4,e_ateir4,e_aliir4,e_parir4,
+                e_deir5,e_aliir5,e_parir5 ]
+
+
+
+
+
+de1,ate1,ali1,par1,de2,ate2,ali1,par2,de3,ate3,ali1,par3,de4,ate4,ali1,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5 = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+
+lista2 = [      de1,ate1,ali1,par1,
+                de2,ate2,ali1,par2,
+                de3,ate3,ali1,par3,
+                de4,ate4,ali1,par4,
+                deir1,ateir1,aliir1,parir1,
+                deir2,ateir2,aliir2,parir2,
+                deir3,ateir3,aliir3,parir3,
+                deir4,ateir4,aliir4,parir4,
+                deir5,aliir5,parir5 ]
+
+l_botao = Button(framebaixo,command=alterar,width=15,text="Alterar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+l_botao.place(x=350,y=60)
+
+
+def alterar():
+    x=0
+    lista_atualizar = []
+    for i in lista1:
+       if i.get() == "":
+           messagebox.showerror('Erro','Preencha todos os campos')
+           return
+       else:
+           for i in lista1:
+               lista2[x] = i.get()
+    
+    print(lista2)
+
 
 # def verificar():
+
   
-#     de1.delete(0, 'end')
-#     ate1.delete(0, 'end')
-#     ali1.delete(0, 'end')
-#     par1.delete(0, 'end')
 
-#     de2.delete(0, 'end')
-#     ate2.delete(0, 'end')
-#     ali2.delete(0, 'end')
-#     par2.delete(0, 'end')
-    
-#     de3.delete(0, 'end')
-#     ate3.delete(0, 'end')
-#     ali3.delete(0, 'end')
-#     par3.delete(0, 'end')
-
-#     de4.delete(0, 'end')
-#     ate4.delete(0, 'end')
-#     ali4.delete(0, 'end')
-#     par4.delete(0, 'end')
-
-#     deir1.delete(0, 'end')
-#     ateir1.delete(0, 'end')
-#     aliir1.delete(0, 'end')
-#     parir1.delete(0, 'end')
-
-#     deir2.delete(0, 'end')
-#     ateir2.delete(0, 'end')
-#     aliir2.delete(0, 'end')
-#     parir2.delete(0, 'end')
-    
-#     deir3.delete(0, 'end')
-#     ateir3.delete(0, 'end')
-#     aliir3.delete(0, 'end')
-#     par3.delete(0, 'end')
-
-#     deir4.delete(0, 'end')
-#     ateir4.delete(0, 'end')
-#     aliir4.delete(0, 'end')
-#     parir4.delete(0, 'end')
-    
-#     deir5.delete(0, 'end')
-#     #ateir5.delete(0, 'end')
-#     aliir5.delete(0, 'end')
-#     parir5.delete(0, 'end')
-
-
-    
 #     id = int(treev_lista[0])
 #     e_nome.insert(0, treev_lista[1])
 #     e_local.insert(0, treev_lista[2])
