@@ -281,26 +281,23 @@ lista1 = [      e_de1,e_ate1,e_ali1,e_par1,
 
 
 
-de1,ate1,ali1,par1,de2,ate2,ali1,par2,de3,ate3,ali1,par3,de4,ate4,ali1,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5 = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+de1,ate1,ali1,par1,de2,ate2,ali2,par2,de3,ate3,ali3,par3,de4,ate4,ali4,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5 = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 
 lista2 = [      de1,ate1,ali1,par1,
-                de2,ate2,ali1,par2,
-                de3,ate3,ali1,par3,
-                de4,ate4,ali1,par4,
+                de2,ate2,ali2,par2,
+                de3,ate3,ali3,par3,
+                de4,ate4,ali4,par4,
                 deir1,ateir1,aliir1,parir1,
                 deir2,ateir2,aliir2,parir2,
                 deir3,ateir3,aliir3,parir3,
                 deir4,ateir4,aliir4,parir4,
                 deir5,aliir5,parir5 ]
 
-l_botao = Button(framebaixo,command=alterar,width=15,text="Alterar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
-l_botao.place(x=350,y=60)
-
 
 def alterar():
     x=0
-    lista_atualizar = []
+    
     for i in lista1:
        if i.get() == "":
            messagebox.showerror('Erro','Preencha todos os campos')
@@ -308,9 +305,11 @@ def alterar():
        else:
            for i in lista1:
                lista2[x] = i.get()
-    
+               x +=1
     print(lista2)
 
+l_botao = Button(framebaixo,command=alterar,width=10,text="Alterar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co5,fg=co1)
+l_botao.place(x=160,y=190)
 
 # def verificar():
 

@@ -29,7 +29,7 @@ def atualizar_dados(i):
                 deir2=?,ateir2=?,aliir2=?,parir2=?,
                 deir3=?,ateir3=?,aliir3=?,parir3=?,
                 deir4=?,ateir4=?,aliir4=?,parir4=?,
-                deir5=?,ateir5=?,aliir5=?,parir5=?'''
+                deir5=?,aliir5=?,parir5=?'''
         
         cur.execute(query,i)
 
