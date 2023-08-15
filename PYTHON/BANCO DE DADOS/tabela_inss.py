@@ -295,16 +295,28 @@ lista2 = [      de1,ate1,ali1,par1,
                 deir5,aliir5,parir5 ]
 
 
+print(len(lista1))
+print(len(lista2))
+print(lista1)
+print(lista2)
+
 def alterar():
-    x=0
+    cont=0
     for i in lista1:
        if i.get() == "":
-           messagebox.showerror('Erro','Preencha todos os campos')
-           return
-       else:
-           for i in lista1:
-               lista2[x] = i.get()
-               x +=1
+           cont +=1
+          
+    print(cont) 
+    if cont>0:
+      messagebox.showerror('Erro','Preencha todos os campos')
+      return
+    else:
+     x=0
+     for i in lista1:
+      dados=(i.get())
+      lista2[x] = dados
+      print(x,lista2[x],dados)
+      x +=1
     print(lista2)
 
 l_botao = Button(framebaixo,command=alterar,width=10,text="Alterar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co5,fg=co1)
