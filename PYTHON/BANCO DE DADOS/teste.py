@@ -297,7 +297,6 @@ lista2 = [      de1,ate1,ali1,par1,
 
 def alterar():
     x=0
-    
     for i in lista1:
        if i.get() == "":
            messagebox.showerror('Erro','Preencha todos os campos')
