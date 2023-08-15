@@ -32,7 +32,7 @@ def inserir_dados(i):
 def atualizar_dados(i):
     with con:
         cur = con.cursor()
-        query = "UPDATE inventario SET nome=?, local=?, descricao=?, marca=?, data_compra=?,valor_compra=?,serie=?, imagem=? WHERE id=?"
+        query = "UPDATE inventario SET nome=?, local=?, descricao = ?, marca=?, data_compra=?,valor_compra=?,serie=?, imagem=? WHERE id=?"
         cur.execute(query,i)
 
 

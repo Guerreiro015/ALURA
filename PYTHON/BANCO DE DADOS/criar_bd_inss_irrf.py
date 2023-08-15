@@ -15,7 +15,8 @@ with con:
                 deir2 DECIMAL,ateir2 DECIMAL,aliir2 DECIMAL,parir2 DECIMAL,
                 deir3 DECIMAL,ateir3 DECIMAL,aliir3 DECIMAL,parir3 DECIMAL,
                 deir4 DECIMAL,ateir4 DECIMAL,aliir4 DECIMAL,parir4 DECIMAL,
-                deir5 DECIMAL,ateir5 DECIMAL,aliir5 DECIMAL,parir5 DECIMAL
+                deir5 DECIMAL,aliir5 DECIMAL,parir5 DECIMAL,tetoinss DECIMAL,
+                dedudep DECIMAL,dedusimp DECIMAL
                  )''')
 
     

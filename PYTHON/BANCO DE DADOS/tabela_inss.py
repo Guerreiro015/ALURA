@@ -38,6 +38,7 @@ from tkcalendar import Calendar, DateEntry
 from datetime import date
 # importando os outros arquivos
 from view_inss import *
+#from criar_bd_inss_irrf import *
 
 
 
@@ -59,23 +60,23 @@ frameCima.grid(row=0,column=0) # posição do quadro
 texto_cima= Label(frameCima, text='  TABELAS DE IMPOSTO DE RENDAS e INSS ', width=600, compound=CENTER, relief=RAISED, anchor=SW, font=('verdana 15 bold'),bg=co9,fg=co2)
 texto_cima.place(x=0,y=0)
 
-frameMeio = Frame(janela,width=1043, height=280, bg=co2, pady=20, relief=FLAT)
+frameMeio = Frame(janela,width=1043, height=250, bg=co2, pady=20, relief=FLAT)
 frameMeio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW) # NSEW = Norte, Sul, lEste e Oweste
 
-framebaixo = Frame(janela,width=1043, height=303, bg=co3,pady=20, relief=FLAT)
+framebaixo = Frame(janela,width=1043, height=330, bg=co3,pady=20, relief=FLAT)
 framebaixo.grid(row=2,column=0, pady=2, padx=0, sticky=NSEW)
 
 
 
 l_salario = Label(frameMeio, text='  TABELA DE INSS  ', font=('verdana 13 bold'),bg=co3,fg=co1)
-l_salario.place(x=350,y=0)
-l_insalu = Label(frameMeio, text='  Salário de Contribuição', font=('verdana 11 bold'),bg=co2,fg=co3)
-l_insalu.place(x=335,y=25)
+l_salario.place(x=600,y=0)
+l_insalu = Label(frameMeio, text=' Digite abaixo os dados para alteração da tabela ', font=('verdana 11 bold'),bg=co3,fg=co1)
+l_insalu.place(x=30,y=10)
 
 base_de1=0
 base_de2=1320.01
-base_de3=2427.36
-base_de4=3641.04
+base_de3=2571.30
+base_de4=3856.95
 base_ate1=1320
 base_ate2=2571.29
 base_ate3=3856.94
@@ -112,6 +113,8 @@ l_pericu = Label(frameMeio, text=' Alíquota ', font=('verdana 10 bold'),bg=co2,
 l_pericu.place(x=230,y=50)
 l_pericu = Label(frameMeio, text='  Dedução ', font=('verdana 10 bold'),bg=co2,fg=co1)
 l_pericu.place(x=330,y=50)
+l_pericu = Label(frameMeio, text='Teto INSS ', font=('verdana 10 bold'),bg=co2,fg=co1)
+l_pericu.place(x=30,y=150)
 
 
 
@@ -153,13 +156,16 @@ e_ali4.place(x=230,y=130)
 e_par4 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
 e_par4.place(x=330,y=130)
 
+e_tetoinss = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
+e_tetoinss.place(x=130,y=150)
+
 
 
 
 l_salario = Label(framebaixo, text='  TABELA DE IRRF  ', font=('verdana 13 bold'),bg=co3,fg=co1)
-l_salario.place(x=350,y=0)
-l_insalu = Label(framebaixo, text=' Base de Cálculo de IRRF ', font=('verdana 11 bold'),bg=co3,fg=co1)
-l_insalu.place(x=335,y=25)
+l_salario.place(x=600,y=0)
+l_insalu = Label(framebaixo, text=' Digite abaixo os dados para alteração da tabela ', font=('verdana 11 bold'),bg=co5,fg=co1)
+l_insalu.place(x=30,y=10)
 
 l_pericu = Label(framebaixo, text='  De', font=('verdana 10 bold'),bg=co3,fg=co1)
 l_pericu.place(x=50,y=50)
@@ -170,6 +176,11 @@ l_pericu = Label(framebaixo, text=' Alíquota ', font=('verdana 10 bold'),bg=co3
 l_pericu.place(x=230,y=50)
 l_pericu = Label(framebaixo, text='Parc. Deduzir', font=('verdana 10 bold'),bg=co3,fg=co1)
 l_pericu.place(x=330,y=50)
+
+l_pericu = Label(framebaixo, text='Dedução Dependente', font=('verdana 10 bold'),bg=co3,fg=co1)
+l_pericu.place(x=30,y=180)
+l_pericu = Label(framebaixo, text='Dedução Simplificada', font=('verdana 10 bold'),bg=co3,fg=co1)
+l_pericu.place(x=30,y=200)
 
 dependente = 189.59
 deducao_simplicada = 528.00
@@ -214,9 +225,9 @@ l_texto_titulo.place(x=490,y=130)
 l_texto_titulo = Label(framebaixo, text=f'         Acima  de  R$: {base_deir5: ,.2F}                                 {irraliir5:,.2f}%               R$: {deduir5: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
 l_texto_titulo.place(x=490,y=150)
 
-l_pericu = Label(framebaixo, text=f'Dedução Por Dependente ...............: R$: {dependente: .2f}', font=('verdana 8 bold'),bg=co5,fg=co1)
+l_pericu = Label(framebaixo, text=f'Dedução Por Dependente ....   ...........: R$: {dependente: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
 l_pericu.place(x=490,y=180)
-l_pericu = Label(framebaixo, text=f'Base de DEDUÇÃO SIMPLIFICADA...:  R$: {deducao_simplicada: .2f}', font=('verdana 8 bold'),bg=co5,fg=co1)
+l_pericu = Label(framebaixo, text=f'Base de DEDUÇÃO SIMPLIFICADA...:  R$: {deducao_simplicada: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
 l_pericu.place(x=490,y=200)
 
 
@@ -266,22 +277,29 @@ e_aliir5.place(x=230,y=150)
 e_parir5 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
 e_parir5.place(x=330,y=150)
 
+e_dedudep = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_dedudep.place(x=230,y=180)
+e_dedusimp = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
+e_dedusimp.place(x=230,y=200)
+
+
 
 lista1 = [      e_de1,e_ate1,e_ali1,e_par1,
-                e_de2,e_ate2,e_ali1,e_par2,
-                e_de3,e_ate3,e_ali1,e_par3,
-               e_de4,e_ate4,e_ali1,e_par4,
+                e_de2,e_ate2,e_ali2,e_par2,
+                e_de3,e_ate3,e_ali3,e_par3,
+               e_de4,e_ate4,e_ali4,e_par4,
                 e_deir1,e_ateir1,e_aliir1,e_parir1,
                 e_deir2,e_ateir2,e_aliir2,e_parir2,
                 e_deir3,e_ateir3,e_aliir3,e_parir3,
                 e_deir4,e_ateir4,e_aliir4,e_parir4,
-                e_deir5,e_aliir5,e_parir5 ]
+                e_deir5,e_aliir5,e_parir5,e_tetoinss,
+                e_dedudep,e_dedusimp ]
 
 
 
 
 
-de1,ate1,ali1,par1,de2,ate2,ali2,par2,de3,ate3,ali3,par3,de4,ate4,ali4,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5 = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+de1,ate1,ali1,par1,de2,ate2,ali2,par2,de3,ate3,ali3,par3,de4,ate4,ali4,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5,tetoinss,dedudep,dedusimp = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 
 lista2 = [      de1,ate1,ali1,par1,
@@ -292,15 +310,17 @@ lista2 = [      de1,ate1,ali1,par1,
                 deir2,ateir2,aliir2,parir2,
                 deir3,ateir3,aliir3,parir3,
                 deir4,ateir4,aliir4,parir4,
-                deir5,aliir5,parir5 ]
+                deir5,aliir5,parir5,tetoinss,
+                dedudep,dedusimp ]
 
 
-print(len(lista1))
-print(len(lista2))
-print(lista1)
-print(lista2)
+# print(len(lista1))
+# print(len(lista2))
+# print(lista1)
+# print(lista2)
 
 def alterar():
+    os.system('cls')
     cont=0
     for i in lista1:
        if i.get() == "":
@@ -317,15 +337,16 @@ def alterar():
       lista2[x] = dados
       print(x,lista2[x],dados)
       x +=1
-    print(lista2)
+     print(lista2)
+     inserir_dados(lista2)
 
-l_botao = Button(framebaixo,command=alterar,width=10,text="Alterar".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co5,fg=co1)
-l_botao.place(x=160,y=190)
+l_botao = Button(framebaixo,command=alterar,width=20,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co6,fg=co1)
+l_botao.place(x=330,y=250)
 
 # def verificar():
-
-  
-
+#_________________________________________
+  #lista_itens = visualizar()
+#____________________________________________
 #     id = int(treev_lista[0])
 #     e_nome.insert(0, treev_lista[1])
 #     e_local.insert(0, treev_lista[2])
