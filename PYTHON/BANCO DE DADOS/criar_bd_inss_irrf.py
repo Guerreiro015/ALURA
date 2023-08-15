@@ -6,7 +6,7 @@ con = lite.connect("INSS.bd")
 # Criando tabela
 with con:
     cur = con.cursor()
-    cur.execute('''CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cur.execute('''CREATE TABLE dados(id INTEGER PRIMARY KEY AUTOINCREMENT,
                 de1 DECIMAL,ate1 DECIMAL,ali1 DECIMAL,par1 DECIMAL,
                 de2 DECIMAL,ate2 DECIMAL,ali2 DECIMAL,par2 DECIMAL,
                 de3 DECIMAL,ate3 DECIMAL,ali3 DECIMAL,par3 DECIMAL,
