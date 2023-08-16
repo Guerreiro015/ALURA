@@ -33,27 +33,31 @@ def atualizar_dados(i):
                 dedudep=?,dedusimp=?'''
         
         cur.execute(query,i)
+        con.commit()
 
 def visualizar():   
     lista_itens = []
     with con:
         cur = con.cursor()
         cur.execute("SELECT * FROM dados")
-        rows = cur.fetchall()
-        for row in rows:
-             lista_itens.append(row)
-        #return lista_itens
-    print(lista_itens)
+        linha_dados = cur.fetchall()
+        for i in linha_dados:
+             lista_itens.append(i)
+        return lista_itens
+    #print(lista_itens)#
             
-visualizar()   
+
 
 def inserir_dados(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO dados(de1,ate1,ali1,par1,de2,ate2,ali1,par2,de3,ate3,ali1,par3,de4,ate4,ali1,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5,tetoinss,deir5,aliir5,parir5,tetoinss,deir5,aliir5,parir5,tetoinss,deir5,aliir5,parir5,tetoinss,deir5,aliir5,parir5,tetoinss,dedudep,dedusimp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        query = "INSERT INTO dados(de1,ate1,ali1,par1,de2,ate2,ali2,par2,de3,ate3,ali3,par3,de4,ate4,ali4,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5,tetoinss,dedudep,dedusimp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
                 
                            
         cur.execute(query,i)
+        con.commit()     
+
+
 
 
 

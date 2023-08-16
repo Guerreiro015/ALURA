@@ -27,6 +27,13 @@ co6 = "#038cfc" # Azul claro
 co7 = "#3fbfb9" # Verde azulado
 co8 = "#263238" # Preto claro
 co9 = "#e9edf5" # Branco cinza claro
+co10 = '#ffff00' # amarelo
+co11 = '#ce0018' # Vermelho
+co12 = '#106b21' # Verde
+co13 = '#fc9303' # Laranja
+co14 = '#5a005a' # roxo
+
+
 
 from tkinter import*
 from tkinter import Tk, StringVar, ttk
@@ -340,48 +347,23 @@ def alterar():
      print(lista2)
      inserir_dados(lista2)
 
-l_botao = Button(framebaixo,command=alterar,width=20,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co6,fg=co1)
-l_botao.place(x=330,y=250)
+l_botao = Button(framebaixo,command=alterar,width=15,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co11,fg=co1)
+l_botao.place(x=280,y=250)
 
-# def verificar():
-#_________________________________________
-  #lista_itens = visualizar()
-#____________________________________________
-#     id = int(treev_lista[0])
-#     e_nome.insert(0, treev_lista[1])
-#     e_local.insert(0, treev_lista[2])
-#     e_descricao.insert(0, treev_lista[3])
-#     e_marca.insert(0, treev_lista[4])
-#     e_data.insert(0, treev_lista[5])
-#     e_valor.insert(0, treev_lista[6])
-#     e_serie.insert(0, treev_lista[7])
-#     imagem_string = treev_lista[8]
-#   except: 
+def tabela():
+    os.system('cls')
+    x=0
+    lista_itens=visualizar()
+    print(lista_itens)
+    
+    # for i in lista_itens:
+    #   y=str(i)
+    #   lista1[x].insert(0,i)
+    #   print(lista1[x])
+    #   x += 1
+l_botao = Button(framebaixo,command=tabela,width=15,text="Mostrar dados".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co12,fg=co9)
+l_botao.place(x=500,y=250)
 
-# def atualizar():
-#         global imagem,imagem_string, l_imagem
-
-            
-#         nome = e_nome.get()
-#         local = e_local.get()
-#         descricao = e_descricao.get()
-#         model = e_marca.get()
-#         data = e_data.get()
-#         valor = e_valor.get()
-#         serie = e_serie.get()
-#         imagem = imagem_string
-
-#         if imagem == '':
-#             imagem = e_serie.insert(0, treev_lista[7])
-        
-#         lista_atualizar = [nome, local, descricao, model, data, valor,serie,imagem, id]
-#         for i in lista_atualizar:
-#             if i=='':
-#                 messagebox.showerror('Erro', 'Preencha todos os campos')
-#                 return
-#         atualizar_dados(lista_atualizar)
-
-#         messagebox.showinfo('Sucesso', 'Os dados foram atualizados com sucesso')
 
 
 janela.mainloop()
