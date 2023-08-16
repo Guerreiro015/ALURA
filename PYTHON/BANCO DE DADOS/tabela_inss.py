@@ -347,7 +347,7 @@ def alterar():
      print(lista2)
      inserir_dados(lista2)
 
-l_botao = Button(framebaixo,command=alterar,width=15,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co11,fg=co1)
+l_botao = Button(framebaixo,command=alterar,width=17,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co11,fg=co1)
 l_botao.place(x=280,y=250)
 
 def tabela():
@@ -356,12 +356,13 @@ def tabela():
     lista_itens=visualizar()
     print(lista_itens)
     
-    # for i in lista_itens:
-    #   y=str(i)
-    #   lista1[x].insert(0,i)
-    #   print(lista1[x])
-    #   x += 1
-l_botao = Button(framebaixo,command=tabela,width=15,text="Mostrar dados".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co12,fg=co9)
+    for i in lista_itens[0]:
+      item=lista_itens[0][x]
+      lista1[x].delete(0,'end')
+      lista1[x].insert(0,item)
+      print(lista1[x])
+      x += 1
+l_botao = Button(framebaixo,command=tabela,width=17,text="Mostrar dados".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co12,fg=co9)
 l_botao.place(x=500,y=250)
 
 
