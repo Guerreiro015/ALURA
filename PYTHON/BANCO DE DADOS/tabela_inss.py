@@ -80,25 +80,55 @@ l_salario.place(x=600,y=0)
 l_insalu = Label(frameMeio, text=' Digite abaixo os dados para alteração da tabela ', font=('verdana 11 bold'),bg=co3,fg=co1)
 l_insalu.place(x=30,y=10)
 
-base_de1=0
-base_de2=1320.01
-base_de3=2571.30
-base_de4=3856.95
-base_ate1=1320
-base_ate2=2571.29
-base_ate3=3856.94
-base_ate4=7507.49
-inssali1 = 7.50
-inssali2 = 9.00
-inssali3 = 12.0
-inssali4 = 14.0
-dedu1 = 0
-dedu2 = 19.8
-dedu3 = 96.94
-dedu4 = 174.08
+lista_itens=visualizar()    
+
+base_de1=lista_itens[0][1]
+base_de2=lista_itens[0][5]
+base_de3=lista_itens[0][9]
+base_de4=lista_itens[0][13]
+base_ate1=lista_itens[0][2]
+base_ate2=lista_itens[0][6]
+base_ate3=lista_itens[0][10]
+base_ate4=lista_itens[0][14]
+inssali1 = lista_itens[0][3]
+inssali2 = lista_itens[0][7]
+inssali3 = lista_itens[0][11]
+inssali4 = lista_itens[0][15]
+dedu1 = lista_itens[0][4]
+dedu2 = lista_itens[0][8]
+dedu3 = lista_itens[0][12]
+dedu4 = lista_itens[0][16]
+
+base_deir1=lista_itens[0][17]
+base_deir2=lista_itens[0][21]
+base_deir3=lista_itens[0][25]
+base_deir4=lista_itens[0][29]
+base_deir5=lista_itens[0][33]
 
 
-teto_inss = 876.95
+base_ateir1=lista_itens[0][18]
+base_ateir2=lista_itens[0][22]
+base_ateir3=lista_itens[0][26]
+base_ateir4=lista_itens[0][30]
+base_ateir5=100000000
+
+irraliir1 = lista_itens[0][19]
+irraliir2 = lista_itens[0][23]
+irraliir3 = lista_itens[0][27]
+irraliir4 = lista_itens[0][31]
+irraliir5 = lista_itens[0][34]
+
+
+deduir1 = lista_itens[0][20]
+deduir2 = lista_itens[0][24]
+deduir3 = lista_itens[0][28]
+deduir4 = lista_itens[0][32]
+deduir5 = lista_itens[0][35]
+
+teto_inss = lista_itens[0][36]
+dependente = lista_itens[0][37]
+deducao_simplicada = lista_itens[0][38]
+
 l_texto_titulo = Label(frameMeio, text=f'    Alíquota           Dedução ', font=('verdana 8 bold'),bg=co3,fg=co1)
 l_texto_titulo.place(x=720,y=50)
 l_texto_titulo = Label(frameMeio, text=f'R$: {base_de1: ,.2F}            até       R$: {base_ate1: ,.2F}                    {inssali1: ,.2f}%                R$: {dedu1: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
@@ -189,34 +219,7 @@ l_pericu.place(x=30,y=180)
 l_pericu = Label(framebaixo, text='Dedução Simplificada', font=('verdana 10 bold'),bg=co3,fg=co1)
 l_pericu.place(x=30,y=200)
 
-dependente = 189.59
-deducao_simplicada = 528.00
 
-base_deir1=0.0
-base_deir2=2112.01
-base_deir3=2826.66
-base_deir4=3751.06
-base_deir5=4664.68
-
-
-base_ateir1=2112
-base_ateir2=2826.65
-base_ateir3=3751.05
-base_ateir4=4664.68
-base_ateir5=100000000
-
-irraliir1 = 0.0
-irraliir2 = 7.5
-irraliir3 = 15.0
-irraliir4 = 22.5
-irraliir5 = 27.5
-
-
-deduir1 = 0
-deduir2 = 158.40
-deduir3 = 370.40
-deduir4 = 651.73
-deduir5 = 884.96
 
 
 l_texto_titulo = Label(framebaixo, text=f'Alíquota          Parc. Deduzir ', font=('verdana 8 bold'),bg=co5,fg=co1)
@@ -347,10 +350,8 @@ def alterar():
      print(lista2)
      atualizar_dados(lista2)
 
-l_botao = Button(framebaixo,command=alterar,width=17,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co11,fg=co1)
-l_botao.place(x=280,y=250)
 
-def tabela():
+def mostrar():
     os.system('cls')
     x=0
     y=1
@@ -365,7 +366,10 @@ def tabela():
       y += 1
       if y > 38: return
       
-l_botao = Button(framebaixo,command=tabela,width=17,text="Mostrar dados".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co12,fg=co9)
+l_botao = Button(framebaixo,command=mostrar,width=20,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co12,fg=co1)
+l_botao.place(x=280,y=250)
+
+l_botao = Button(framebaixo,command=alterar,width=20,text="Confirmar alteração".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co11,fg=co9)
 l_botao.place(x=500,y=250)
 
 
