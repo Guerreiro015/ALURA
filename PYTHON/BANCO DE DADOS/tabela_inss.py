@@ -345,7 +345,7 @@ def alterar():
       print(x,lista2[x],dados)
       x +=1
      print(lista2)
-     inserir_dados(lista2)
+     atualizar_dados(lista2)
 
 l_botao = Button(framebaixo,command=alterar,width=17,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co11,fg=co1)
 l_botao.place(x=280,y=250)

@@ -19,6 +19,12 @@ co6 = "#038cfc" # Azul claro
 co7 = "#3fbfb9" # Verde azulado
 co8 = "#263238" # Preto claro
 co9 = "#e9edf5" # Branco cinza claro
+co10 = '#ffff00' # amarelo
+co11 = '#ce0018' # Vermelho
+co12 = '#106b21' # Verde
+co13 = '#fc9303' # Laranja
+co14 = '#5a005a' # roxo
+
 
 # Vamos ver algumas configurações de estilo mais comuns que podemos definir:
 # Width – Largura do widget;
@@ -38,15 +44,14 @@ from PIL import Image, ImageTk
 from tkcalendar import Calendar, DateEntry
 from datetime import date
 # importando os outros arquivos
-from view import *
-
+from view_inss import *
 
 
 # Criando janela------------------------------
 
 janela = Tk()
 janela.title("Encargos com folha de pagamento")
-janela.geometry("900x600")
+janela.geometry("1000x600")
 janela.configure(background=co8)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -237,10 +242,15 @@ def deletar():
    except IndexError:
     messagebox.showerror('Erro', 'Seleciona um dos dados na tabela') 
 
-l_botao = Button(frameMeio,command=deletar,width=15,text="LIMPAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+def tabelas():
+  import tabela_inss
+  
+l_botao = Button(frameMeio,command=deletar,width=15,text="LIMPAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co12,fg=co1)
 l_botao.place(x=350,y=0)
-l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co1,fg=co4)
+l_botao = Button(frameMeio,command=calculo,width=15,text="CALCULAR".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co11,fg=co1)
 l_botao.place(x=350,y=60)
+l_botao = Button(frameMeio,command=tabelas,width=15,text="VER TABELAS".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 12 bold"),bg=co10,fg=co4)
+l_botao.place(x=350,y=120)
 
 baixo_salario = Label(framebaixo, text='  BASE DO INSS.:', font=('verdana 10 bold'),bg=co3,fg=co1)
 baixo_salario.place(x=0,y=0)
