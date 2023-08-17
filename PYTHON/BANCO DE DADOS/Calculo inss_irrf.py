@@ -95,7 +95,7 @@ meio_salario.place(x=0,y=200)
 
 l_falta=Label(frameMeio, text='  Valor das faltas', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_falta.place(x=0,y=225)
-l_depe= Label(frameMeio, text='  Quant. de depenndentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
+l_depe= Label(frameMeio, text='  Quant. de dependentes ', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_depe.place(x=0,y=250)
 l_pensao= Label(frameMeio, text='  Pensão Alimentícia', font=('verdana 10 bold'),bg=co7,fg=co1)
 l_pensao.place(x=0,y=275)
@@ -124,12 +124,12 @@ e_depe.place(x=200,y=250)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_pensao.place(x=200,y=275)
 
-imagem=Image.open("baseir.png")
+imagem=Image.open("inventorio.png")
 imagem = imagem.resize((300,260))
 imagem = ImageTk.PhotoImage(imagem)
 
 l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
-l_imagem.place(x=550,y=0)
+l_imagem.place(x=650,y=0)
 
 
 
@@ -171,8 +171,7 @@ def calculo():
     dep = 0 if e_depe.get() == '' else float(e_depe.get())
      
     out = 0 if e_outros.get() == '' else float(e_outros.get())
-       
-            
+                
     total = (sal+ins+per+hex+adn+ds+out)-fal
 
     
@@ -195,11 +194,13 @@ def calculo():
     print(f'Base de IRRF {ir: .2f}')
     print(f'Base de IRRF {dedu: .2f}')
     print(f'Base de IRRF {dedu1: .2f}')
-      
+    l_depe= Label(frameMeio, text=f'R$: {dep*189.59: ,.2f} ', font=('verdana 10 bold'),bg=co7,fg=co1)
+    l_depe.place(x=280,y=250)    
+
 
     desc_irrf = irrf(ir,0)
 
-    baixo_salario = Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_salario = Label(framebaixo, text=f'R$: {total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_salario.place(x=200,y=0)
     baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_salario.place(x=630,y=0)
