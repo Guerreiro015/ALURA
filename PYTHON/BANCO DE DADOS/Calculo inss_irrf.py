@@ -133,23 +133,12 @@ l_imagem.place(x=650,y=0)
 
 
 
-#campos = [e_salario,e_insalu,e_pericu,e_he,e_adno,e_dsr,e_faltas,e_depe,e_pensao,e_outros]
-# global sal,ins,per,hex,adn,ds,fal,pen,dep,out
-# sal=0
-# ins=0
-# per=0
-# hex=0
-# adn=0
-# ds=0
-# fal=0
-# pen=0
-# dep=0
-# out=0
+
 
 global desc_inss,desc_irrf
 def calculo():
   global desc_inss,desc_irrf,dedu_ir
-  #global sal,ins,per,hex,adn,ds,fal,pen,dep,out
+  
   try:
     
     sal = 0 if e_salario.get() == '' else float(e_salario.get())
@@ -272,11 +261,6 @@ baixo_depe= Label(framebaixo, text='Valor de depósito do FGTS:', font=('verdana
 baixo_depe.place(x=400,y=60)
 
 
-
-
             
-    # base_salario = e_salario-e_faltas
-    # e_base = Label(framebaixo, base_salario, font=('verdana 10 bold'),bg=co7,fg=co1)
-    # e_base.place(x=200,y=0)
-
+   
 janela.mainloop()
