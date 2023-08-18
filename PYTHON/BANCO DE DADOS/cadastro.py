@@ -112,8 +112,14 @@ def verificar():
     e_data.insert(0, treev_lista[5])
     e_valor.insert(0, treev_lista[6])
     e_serie.insert(0, treev_lista[7])
-    imagem_string = treev_lista[8]
+    imagem = treev_lista[8]
 
+    imagem=Image.open(imagem)
+    imagem = imagem.resize((170,170))
+    imagem = ImageTk.PhotoImage(imagem)
+
+    l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+    l_imagem.place(x=700,y=0)
        
     def atualizar():
         global imagem,imagem_string, l_imagem
@@ -219,6 +225,7 @@ def ver_imagem():
 
      l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
      l_imagem.place(x=700,y=0)
+
   except:
      messagebox.showerror('Erro', 'Não foi encontrada nenhuma imagem') 
 
@@ -368,7 +375,7 @@ def mostrar():
     hsb.grid(column=0, row=1, sticky='ew')
     frameBaixo.grid_rowconfigure(0, weight=12)
 
-    hd=["center","sw","center","center","center","center","center", 'center']
+    hd=["center","center","center","center","center","center","center", 'center']
     h=[40,150,100,160,130,100,100, 100]
     n=0
 
@@ -394,7 +401,17 @@ def mostrar():
 
     l_total['text'] = f'R$ {Total_valor:,.2f}'
     l_quant['text'] = Total_itens
+#_______________________________________________________________
+    imagem = lista_itens[0][8]
 
+    imagem=Image.open(imagem)
+    imagem = imagem.resize((170,170))
+    imagem = ImageTk.PhotoImage(imagem)
+
+    l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+    l_imagem.place(x=700,y=0)
+     
+#______________________________________________________________________
 mostrar()
 
 
