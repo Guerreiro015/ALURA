@@ -81,81 +81,122 @@ l_insalu = Label(frameMeio, text=' Digite abaixo os dados para alteração da ta
 l_insalu.place(x=30,y=10)
 
 lista_itens=visualizar()    
+def tabelas_atuais():
+  lista_itens=visualizar()    
 
-base_de1=lista_itens[0][1]
-base_de2=lista_itens[0][5]
-base_de3=lista_itens[0][9]
-base_de4=lista_itens[0][13]
-base_ate1=lista_itens[0][2]
-base_ate2=lista_itens[0][6]
-base_ate3=lista_itens[0][10]
-base_ate4=lista_itens[0][14]
-inssali1 = lista_itens[0][3]
-inssali2 = lista_itens[0][7]
-inssali3 = lista_itens[0][11]
-inssali4 = lista_itens[0][15]
-dedu1 = lista_itens[0][4]
-dedu2 = lista_itens[0][8]
-dedu3 = lista_itens[0][12]
-dedu4 = lista_itens[0][16]
+  base_de1=lista_itens[0][1]
+  base_de2=lista_itens[0][5]
+  base_de3=lista_itens[0][9]
+  base_de4=lista_itens[0][13]
+  base_ate1=lista_itens[0][2]
+  base_ate2=lista_itens[0][6]
+  base_ate3=lista_itens[0][10]
+  base_ate4=lista_itens[0][14]
+  inssali1 = lista_itens[0][3]
+  inssali2 = lista_itens[0][7]
+  inssali3 = lista_itens[0][11]
+  inssali4 = lista_itens[0][15]
+  dedu1 = lista_itens[0][4]
+  dedu2 = lista_itens[0][8]
+  dedu3 = lista_itens[0][12]
+  dedu4 = lista_itens[0][16]
 
-base_deir1=lista_itens[0][17]
-base_deir2=lista_itens[0][21]
-base_deir3=lista_itens[0][25]
-base_deir4=lista_itens[0][29]
-base_deir5=lista_itens[0][33]
-
-
-base_ateir1=lista_itens[0][18]
-base_ateir2=lista_itens[0][22]
-base_ateir3=lista_itens[0][26]
-base_ateir4=lista_itens[0][30]
-base_ateir5=100000000
-
-irraliir1 = lista_itens[0][19]
-irraliir2 = lista_itens[0][23]
-irraliir3 = lista_itens[0][27]
-irraliir4 = lista_itens[0][31]
-irraliir5 = lista_itens[0][34]
+  base_deir1=lista_itens[0][17]
+  base_deir2=lista_itens[0][21]
+  base_deir3=lista_itens[0][25]
+  base_deir4=lista_itens[0][29]
+  base_deir5=lista_itens[0][33]
 
 
-deduir1 = lista_itens[0][20]
-deduir2 = lista_itens[0][24]
-deduir3 = lista_itens[0][28]
-deduir4 = lista_itens[0][32]
-deduir5 = lista_itens[0][35]
+  base_ateir1=lista_itens[0][18]
+  base_ateir2=lista_itens[0][22]
+  base_ateir3=lista_itens[0][26]
+  base_ateir4=lista_itens[0][30]
+  base_ateir5=100000000
 
-teto_inss = lista_itens[0][36]
-dependente = lista_itens[0][37]
-deducao_simplicada = lista_itens[0][38]
-
-l_texto_titulo = Label(frameMeio, text=f'    Alíquota           Dedução ', font=('verdana 8 bold'),bg=co3,fg=co1)
-l_texto_titulo.place(x=720,y=50)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de1: ,.2F}            até       R$: {base_ate1: ,.2F}                    {inssali1: ,.2f}%                R$: {dedu1: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
-l_texto_titulo.place(x=490,y=70)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de2: ,.2F}    até       R$: {base_ate2: ,.2F}                    {inssali2:,.2f}%                 R$: {dedu2: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
-l_texto_titulo.place(x=490,y=90) 
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de3: ,.2F}    até       R$: {base_ate3: ,.2F}                    {inssali3:,.2f}%               R$: {dedu3: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
-l_texto_titulo.place(x=490,y=110)
-l_texto_titulo = Label(frameMeio, text=f'R$: {base_de4: ,.2F}    até       R$: {base_ate4: ,.2F}                    {inssali4:,.2f}%               R$: {dedu4: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
-l_texto_titulo.place(x=490,y=130)
-l_texto_titulo = Label(frameMeio, text=f'Teto Máximo de desconto de INSS... : R$: {teto_inss: .2f}', font=('verdana 7 bold'),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=150)
-
-l_pericu = Label(frameMeio, text='  De', font=('verdana 10 bold'),bg=co2,fg=co1)
-l_pericu.place(x=50,y=50)
-l_pericu = Label(frameMeio, text='  Até ', font=('verdana 10 bold'),bg=co2,fg=co1)
-l_pericu.place(x=150,y=50)
-l_pericu = Label(frameMeio, text=' Alíquota ', font=('verdana 10 bold'),bg=co2,fg=co1)
-l_pericu.place(x=230,y=50)
-l_pericu = Label(frameMeio, text='  Dedução ', font=('verdana 10 bold'),bg=co2,fg=co1)
-l_pericu.place(x=330,y=50)
-l_pericu = Label(frameMeio, text='Teto INSS ', font=('verdana 10 bold'),bg=co2,fg=co1)
-l_pericu.place(x=30,y=150)
+  irraliir1 = lista_itens[0][19]
+  irraliir2 = lista_itens[0][23]
+  irraliir3 = lista_itens[0][27]
+  irraliir4 = lista_itens[0][31]
+  irraliir5 = lista_itens[0][34]
 
 
+  deduir1 = lista_itens[0][20]
+  deduir2 = lista_itens[0][24]
+  deduir3 = lista_itens[0][28]
+  deduir4 = lista_itens[0][32]
+  deduir5 = lista_itens[0][35]
+
+  teto_inss = lista_itens[0][36]
+  dependente = lista_itens[0][37]
+  deducao_simplicada = lista_itens[0][38]
+
+  l_texto_titulo = Label(frameMeio, text=f'    Alíquota           Dedução ', font=('verdana 8 bold'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=720,y=50)
+  l_texto_titulo = Label(frameMeio, text=f'R$: {base_de1: ,.2F}            até       R$: {base_ate1: ,.2F}                    {inssali1: ,.2f}%                R$: {dedu1: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+  l_texto_titulo.place(x=490,y=70)
+  l_texto_titulo = Label(frameMeio, text=f'R$: {base_de2: ,.2F}    até       R$: {base_ate2: ,.2F}                    {inssali2:,.2f}%                 R$: {dedu2: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+  l_texto_titulo.place(x=490,y=90) 
+  l_texto_titulo = Label(frameMeio, text=f'R$: {base_de3: ,.2F}    até       R$: {base_ate3: ,.2F}                    {inssali3:,.2f}%               R$: {dedu3: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+  l_texto_titulo.place(x=490,y=110)
+  l_texto_titulo = Label(frameMeio, text=f'R$: {base_de4: ,.2F}    até       R$: {base_ate4: ,.2F}                    {inssali4:,.2f}%               R$: {dedu4: ,.2F}', font=('verdana 7'),bg=co2,fg=co1)
+  l_texto_titulo.place(x=490,y=130)
+  l_texto_titulo = Label(frameMeio, text=f'Teto Máximo de desconto de INSS... : R$: {teto_inss: .2f}', font=('verdana 7 bold'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=150)
+
+  l_pericu = Label(frameMeio, text='  De', font=('verdana 10 bold'),bg=co2,fg=co1)
+  l_pericu.place(x=50,y=50)
+  l_pericu = Label(frameMeio, text='  Até ', font=('verdana 10 bold'),bg=co2,fg=co1)
+  l_pericu.place(x=150,y=50)
+  l_pericu = Label(frameMeio, text=' Alíquota ', font=('verdana 10 bold'),bg=co2,fg=co1)
+  l_pericu.place(x=230,y=50)
+  l_pericu = Label(frameMeio, text='  Dedução ', font=('verdana 10 bold'),bg=co2,fg=co1)
+  l_pericu.place(x=330,y=50)
+  l_pericu = Label(frameMeio, text='Teto INSS ', font=('verdana 10 bold'),bg=co2,fg=co1)
+  l_pericu.place(x=30,y=150)
+
+  #_-----------------------------------------------------------------------------
 
 
+  l_salario = Label(framebaixo, text='  TABELA DE IRRF  ', font=('verdana 13 bold'),bg=co3,fg=co1)
+  l_salario.place(x=600,y=0)
+  l_insalu = Label(framebaixo, text=' Digite abaixo os dados para alteração da tabela ', font=('verdana 11 bold'),bg=co5,fg=co1)
+  l_insalu.place(x=30,y=10)
+
+  l_pericu = Label(framebaixo, text='  De', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=50,y=50)
+  l_pericu = Label(framebaixo, text='  Até ', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=150,y=50)
+
+  l_pericu = Label(framebaixo, text=' Alíquota ', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=230,y=50)
+  l_pericu = Label(framebaixo, text='Parc. Deduzir', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=330,y=50)
+
+  l_pericu = Label(framebaixo, text='Dedução Dependente', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=30,y=180)
+  l_pericu = Label(framebaixo, text='Dedução Simplificada', font=('verdana 10 bold'),bg=co3,fg=co1)
+  l_pericu.place(x=30,y=200)
+
+
+  l_texto_titulo = Label(framebaixo, text=f'Alíquota          Parc. Deduzir ', font=('verdana 8 bold'),bg=co5,fg=co1)
+  l_texto_titulo.place(x=730,y=50)
+  l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir1: ,.2F}            até       R$: {base_ateir1: ,.2F}                    {irraliir1: ,.2f}%                R$: {deduir1: ,.2F}', font=('verdana 7 '),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=70)
+  l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir2: ,.2F}    até       R$: {base_ateir2: ,.2F}                    {irraliir2:,.2f}%                 R$: {deduir2: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=90) 
+  l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir3: ,.2F}    até       R$: {base_ateir3: ,.2F}                    {irraliir3:,.2f}%               R$: {deduir3: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=110)
+  l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir4: ,.2F}    até       R$: {base_ateir4: ,.2F}                    {irraliir4:,.2f}%               R$: {deduir4: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=130)
+  l_texto_titulo = Label(framebaixo, text=f'         Acima  de  R$: {base_deir5: ,.2F}                                 {irraliir5:,.2f}%               R$: {deduir5: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
+  l_texto_titulo.place(x=490,y=150)
+
+  l_pericu = Label(framebaixo, text=f'Dedução Por Dependente ....   ...........: R$: {dependente: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
+  l_pericu.place(x=490,y=180)
+  l_pericu = Label(framebaixo, text=f'Base de DEDUÇÃO SIMPLIFICADA...:  R$: {deducao_simplicada: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
+  l_pericu.place(x=490,y=200)
+tabelas_atuais()
 
 e_de1 = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
 e_de1.place(x=30,y=70)
@@ -197,49 +238,7 @@ e_tetoinss = Entry(frameMeio,width=15,justify=LEFT,relief=SOLID)
 e_tetoinss.place(x=130,y=150)
 
 
-
-
-l_salario = Label(framebaixo, text='  TABELA DE IRRF  ', font=('verdana 13 bold'),bg=co3,fg=co1)
-l_salario.place(x=600,y=0)
-l_insalu = Label(framebaixo, text=' Digite abaixo os dados para alteração da tabela ', font=('verdana 11 bold'),bg=co5,fg=co1)
-l_insalu.place(x=30,y=10)
-
-l_pericu = Label(framebaixo, text='  De', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=50,y=50)
-l_pericu = Label(framebaixo, text='  Até ', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=150,y=50)
-
-l_pericu = Label(framebaixo, text=' Alíquota ', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=230,y=50)
-l_pericu = Label(framebaixo, text='Parc. Deduzir', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=330,y=50)
-
-l_pericu = Label(framebaixo, text='Dedução Dependente', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=30,y=180)
-l_pericu = Label(framebaixo, text='Dedução Simplificada', font=('verdana 10 bold'),bg=co3,fg=co1)
-l_pericu.place(x=30,y=200)
-
-
-
-
-l_texto_titulo = Label(framebaixo, text=f'Alíquota          Parc. Deduzir ', font=('verdana 8 bold'),bg=co5,fg=co1)
-l_texto_titulo.place(x=730,y=50)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir1: ,.2F}            até       R$: {base_ateir1: ,.2F}                    {irraliir1: ,.2f}%                R$: {deduir1: ,.2F}', font=('verdana 7 '),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=70)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir2: ,.2F}    até       R$: {base_ateir2: ,.2F}                    {irraliir2:,.2f}%                 R$: {deduir2: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=90) 
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir3: ,.2F}    até       R$: {base_ateir3: ,.2F}                    {irraliir3:,.2f}%               R$: {deduir3: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=110)
-l_texto_titulo = Label(framebaixo, text=f'R$: {base_deir4: ,.2F}    até       R$: {base_ateir4: ,.2F}                    {irraliir4:,.2f}%               R$: {deduir4: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=130)
-l_texto_titulo = Label(framebaixo, text=f'         Acima  de  R$: {base_deir5: ,.2F}                                 {irraliir5:,.2f}%               R$: {deduir5: ,.2F}', font=('verdana 7'),bg=co3,fg=co1)
-l_texto_titulo.place(x=490,y=150)
-
-l_pericu = Label(framebaixo, text=f'Dedução Por Dependente ....   ...........: R$: {dependente: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
-l_pericu.place(x=490,y=180)
-l_pericu = Label(framebaixo, text=f'Base de DEDUÇÃO SIMPLIFICADA...:  R$: {deducao_simplicada: .2f}', font=('verdana 7 bold'),bg=co5,fg=co1)
-l_pericu.place(x=490,y=200)
-
+#--------------------------------------------------------------------
 
 
 e_deir1 = Entry(framebaixo,width=15,justify=LEFT,relief=SOLID)
@@ -349,7 +348,7 @@ def alterar():
       x +=1
      print(lista2)
      atualizar_dados(lista2)
-
+     tabelas_atuais()
 
 def mostrar():
     os.system('cls')
@@ -365,7 +364,7 @@ def mostrar():
       x += 1
       y += 1
       if y > 38: return
-      
+      tabelas_atuais()
 l_botao = Button(framebaixo,command=mostrar,width=20,text="Alterar tabelas".upper(), height=1,anchor=CENTER,overrelief=RIDGE,font=("ivy 10 bold"),bg=co12,fg=co1)
 l_botao.place(x=280,y=250)
 

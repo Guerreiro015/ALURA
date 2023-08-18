@@ -137,6 +137,7 @@ l_imagem.place(x=650,y=0)
 
 global desc_inss,desc_irrf
 def calculo():
+ 
   global desc_inss,desc_irrf,dedu_ir
   
   try:
@@ -183,7 +184,7 @@ def calculo():
     print(f'Base de IRRF {ir: .2f}')
     print(f'Base de IRRF {dedu: .2f}')
     print(f'Base de IRRF {dedu1: .2f}')
-    l_depe= Label(frameMeio, text=f'R$: {dep*189.59: ,.2f} ', font=('verdana 10 bold'),bg=co7,fg=co1)
+    l_depe= Label(frameMeio, text=f'R$: {dep*dependente: ,.2f} ', font=('verdana 10 bold'),bg=co7,fg=co1)
     l_depe.place(x=280,y=250)    
 
 
