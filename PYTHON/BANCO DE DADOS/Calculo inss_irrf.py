@@ -180,10 +180,10 @@ def calculo():
     if ir<=0:
         ir=0
       
-    print(f'Base de INSS {total: .2f}')
-    print(f'Base de IRRF {ir: .2f}')
-    print(f'Base de IRRF {dedu: .2f}')
-    print(f'Base de IRRF {dedu1: .2f}')
+    print(f'Base de INSS R$: {total: .2f}')
+    print(f'Base de IRRF R$: {ir: .2f}')
+    print(f'Base de IRRF R$: {dedu: .2f}')
+    print(f'Base de IRRF R$: {dedu1: .2f}')
     l_depe= Label(frameMeio, text=f'R$: {dep*dependente: ,.2f} ', font=('verdana 10 bold'),bg=co7,fg=co1)
     l_depe.place(x=280,y=250)    
 
@@ -192,17 +192,17 @@ def calculo():
 
     baixo_salario = Label(framebaixo, text=f'R$: {total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_salario.place(x=200,y=0)
-    baixo_salario = Label(framebaixo, text=f'{desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_salario = Label(framebaixo, text=f'R$: {desc_inss: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_salario.place(x=630,y=0)
       
-    baixo_depe= Label(framebaixo, text=f'{ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe= Label(framebaixo, text=f'R$: {ir: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_depe.place(x=200,y=30)
-    baixo_depe= Label(framebaixo, text=f'{desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe= Label(framebaixo, text=f'R$: {desc_irrf: ,.2f}', width=15,font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_depe.place(x=630,y=30)
 
-    baixo_depe= Label(framebaixo, text=f'{total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe= Label(framebaixo, text=f'R$: {total: ,.2f}', width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_depe.place(x=200,y=60)
-    baixo_depe= Label(framebaixo, text=f'{total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
+    baixo_depe= Label(framebaixo, text=f'R$: {total*8/100: ,.2f}',width=15, font=('verdana 10 bold'),bg=co9,fg=co0)
     baixo_depe.place(x=630,y=60)
 
 
