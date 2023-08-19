@@ -35,3 +35,7 @@ class data_br:
 
         return self.forma_data, self.forma_hora
     
+    def tempo(self):
+        tempo = (datetime.today()+timedelta(days=30,hours=10)) - datetime.today()
+        return tempo
+    

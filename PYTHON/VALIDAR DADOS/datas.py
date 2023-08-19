@@ -14,4 +14,20 @@ print(cad)
 
 print(datetime.today())
 
+hoje = datetime.today()
+amanha = datetime.today() + timedelta(days=1)
+amanha1 = datetime.today() + timedelta(days=1, hours= 20)
+amanha2 = datetime.today() + timedelta(hours = 20)
+
+resu = amanha - hoje
+resu1 = amanha1 - hoje
+resu2 = amanha - hoje
+
+print(resu)
+print(resu1)
+print(resu2)
+
+print(cad.tempo())
+
+
 
