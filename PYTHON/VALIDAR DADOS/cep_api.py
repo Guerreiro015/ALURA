@@ -32,6 +32,7 @@ for i in dados: # Mostrar Os valores dos campos
     print(dados[i])
 
 print(dados.values()) # Mostrar Os valores dos campos 2º modo
+print(*dados.values()) # Mostrar Os valores dos campos 2º modo
 
 for i in dados:
     print(f'-> {i} = {dados[i]}') # Lista com todos
