@@ -26,4 +26,4 @@ class cep:
     
     def solicitação(self):
             r = requests.get(f'https://viacep.com.br/ws/{self.cep}/json/')
-            return r.text
+            return r.json

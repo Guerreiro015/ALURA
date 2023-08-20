@@ -13,11 +13,27 @@ print(cep(codigo2))
 # cep(codigo)
 # cep(codigo2)
 
-r = requests.get('https://viacep.com.br/ws/64670000/json/')
-print(r.text)
+r = requests.get('https://viacep.com.br/ws/05857390/json/')
+print(r.text) # mostra o resultado em forma de texto
+dados = r.json() # Mosyra o resultado em forma de dicionário
 
-lista =dict( r.text)
+#VAMOS TRABALHAR COM O DICIONÁRIO
 
-for i in lista:
-    print(i)
+print(dados)
+print(dados["bairro"])
 
+
+for a in dados: # Mostrar Os campos chaves
+    print(a)
+
+print(dados.keys()) # Mostrar Os campos chaves 2º modo
+
+for i in dados: # Mostrar Os valores dos campos
+    print(dados[i])
+
+print(dados.values()) # Mostrar Os valores dos campos 2º modo
+
+for i in dados:
+    print(f'-> {i} = {dados[i]}') # Lista com todos
+
+    
