@@ -71,22 +71,13 @@ last_name_label = tkinter.Label(frame1, text="Último Nome")
 last_name_label.grid(row=0, column=1)
 
 
-
-TESTE_name_label = tkinter.Label(frame1, text="testando o  teste")
-TESTE_name_label.grid(row=4, column=0)
-TESTE_name_entry = tkinter.Entry(frame1)
-TESTE_name_entry.grid(row=5, column=0)
-
-
-
-
 first_name_entry = tkinter.Entry(frame1)
 last_name_entry = tkinter.Entry(frame1)
 first_name_entry.grid(row=1, column=0)
 last_name_entry.grid(row=1, column=1)
 
 title_label = tkinter.Label(frame1, text="Título")
-title_combobox = ttk.Combobox(frame1, values=["", "Mr.", "Ms.", "Dr."])
+title_combobox = ttk.Combobox(frame1, values=["", "Mr.", "Ms.", "Dr.",'Dra. ','Sr. ','Sra'])
 title_label.grid(row=0, column=2)
 title_combobox.grid(row=1, column=2)
 
@@ -100,6 +91,10 @@ nationality_combobox = ttk.Combobox(frame1, values=["Africa", "America do Norte"
 nationality_label.grid(row=2, column=1)
 nationality_combobox.grid(row=3, column=1)
 
+TESTE_name_label = tkinter.Label(frame1, text="testando o  teste")
+TESTE_name_label.grid(row=2, column=2)
+TESTE_name_entry = tkinter.Entry(frame1)
+TESTE_name_entry.grid(row=3, column=2)
 
 
 for widget in frame1.winfo_children():

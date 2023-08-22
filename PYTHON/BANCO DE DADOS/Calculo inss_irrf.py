@@ -188,7 +188,7 @@ def calculo():
     print(f'Base de IRRF R$: {dedu: .2f}')
     print(f'Base de IRRF R$: {dedu1: .2f}')
     l_depe= Label(frameMeio, text=f'R$: {dep*dependente: ,.2f} ', font=('verdana 10 bold'),bg=co7,fg=co1)
-    l_depe.place(x=280,y=250)    
+    l_depe.place(x=340,y=250)    
 
 
     desc_irrf = irrf(ir,0)

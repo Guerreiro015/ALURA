@@ -6,8 +6,8 @@ from tkinter import ttk
 from tkinter import messagebox
 import sqlite3
 
-conn = sqlite3.connect('testebd.db')
-table_create_query = '''CREATE TABLE IF NOT EXISTS Student_Data 
+conn = sqlite3.connect('alunosbd.db')
+table_create_query = '''CREATE TABLE IF NOT EXISTS alunos 
             (nome TEXT, sobrenome TEXT)
             '''
 conn.execute(table_create_query)
@@ -15,7 +15,7 @@ conn.execute(table_create_query)
 def Inserir():
     n='antonio'
     s='neto'
-    data_insert_query = '''INSERT INTO Student_Data (nome, sobrenome) VALUES 
+    data_insert_query = '''INSERT INTO alunos (nome, sobrenome) VALUES 
         (?, ?)'''
     data_insert_tuple = (n,s)
     cursor = conn.cursor()
@@ -23,4 +23,4 @@ def Inserir():
     conn.commit()
     conn.close()         
 
-#inserir()
+Inserir()
