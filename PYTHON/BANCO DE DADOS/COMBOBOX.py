@@ -49,7 +49,7 @@ def obter():
         print (resul)
     print ('MInha Filhota')  if resul == 'Luana' else  print(resul)
 
-botao = Button(janela,width=12, height=1,command=obter,text = 'Ver Resposta',font=("ivy 10 bold"),anchor='center',bg=co14,fg=co1)
+botao = Button(janela,width=12, height=1,command=obter,text = 'Ver Resposta',font=("Arial 10 bold"),anchor='center',bg=co14,fg=co1)
 botao.grid(row=3,column=0,padx=5,pady=5)
 
 janela.mainloop()
