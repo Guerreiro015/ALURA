@@ -47,7 +47,7 @@ def enter_data():
             cursor.execute(data_insert_query, data_insert_tuple)
             conn.commit()
             conn.close()
-
+            tkinter.messagebox.showwarning(title="SUCESSO", message="Aluno cadatrado com sucesso!!.")
             
                 
         else:
@@ -55,58 +55,58 @@ def enter_data():
     else:
         tkinter.messagebox.showwarning(title= "Error", message="Você não aceitou os termos e condições")
 
-window = tkinter.Tk()
-window.title("TESTE de FORMULÁRIO")
+janela = tkinter.Tk()
+janela.title("TESTE de FORMULÁRIO")
 
-frame = tkinter.Frame(window)
+frame = tkinter.Frame(janela)
 frame.pack()
 
 # Saving User Info
-user_info_frame =tkinter.LabelFrame(frame, text="Informação Usuário")
-user_info_frame.grid(row= 0, column=0, padx=20, pady=10)
+frame1 =tkinter.LabelFrame(frame, text="Informação Usuário")
+frame1.grid(row= 0, column=0, padx=20, pady=10)
 
-first_name_label = tkinter.Label(user_info_frame, text="Primeiro Nome")
+first_name_label = tkinter.Label(frame1, text="Primeiro Nome")
 first_name_label.grid(row=0, column=0)
-last_name_label = tkinter.Label(user_info_frame, text="Último Nome")
+last_name_label = tkinter.Label(frame1, text="Último Nome")
 last_name_label.grid(row=0, column=1)
 
 
 
-TESTE_name_label = tkinter.Label(user_info_frame, text="testando o  teste")
+TESTE_name_label = tkinter.Label(frame1, text="testando o  teste")
 TESTE_name_label.grid(row=4, column=0)
-TESTE_name_entry = tkinter.Entry(user_info_frame)
+TESTE_name_entry = tkinter.Entry(frame1)
 TESTE_name_entry.grid(row=5, column=0)
 
 
 
 
-first_name_entry = tkinter.Entry(user_info_frame)
-last_name_entry = tkinter.Entry(user_info_frame)
+first_name_entry = tkinter.Entry(frame1)
+last_name_entry = tkinter.Entry(frame1)
 first_name_entry.grid(row=1, column=0)
 last_name_entry.grid(row=1, column=1)
 
-title_label = tkinter.Label(user_info_frame, text="Título")
-title_combobox = ttk.Combobox(user_info_frame, values=["", "Mr.", "Ms.", "Dr."])
+title_label = tkinter.Label(frame1, text="Título")
+title_combobox = ttk.Combobox(frame1, values=["", "Mr.", "Ms.", "Dr."])
 title_label.grid(row=0, column=2)
 title_combobox.grid(row=1, column=2)
 
-age_label = tkinter.Label(user_info_frame, text="Idade")
-age_spinbox = tkinter.Spinbox(user_info_frame, from_=0, to=200)
+age_label = tkinter.Label(frame1, text="Idade")
+age_spinbox = tkinter.Spinbox(frame1, from_=0, to=200)
 age_label.grid(row=2, column=0)
 age_spinbox.grid(row=3, column=0)
 
-nationality_label = tkinter.Label(user_info_frame, text="Nacionalidade")
-nationality_combobox = ttk.Combobox(user_info_frame, values=["Africa", "America do Norte", "Oceania", "America do Sul", "Antarctica", "Asia", 'Brasil', "Europa",])
+nationality_label = tkinter.Label(frame1, text="Nacionalidade")
+nationality_combobox = ttk.Combobox(frame1, values=["Africa", "America do Norte", "Oceania", "America do Sul", "Antarctica", "Asia", 'Brasil', "Europa",])
 nationality_label.grid(row=2, column=1)
 nationality_combobox.grid(row=3, column=1)
 
 
 
-for widget in user_info_frame.winfo_children():
+for widget in frame1.winfo_children():
     widget.grid_configure(padx=10, pady=5)
 
 # Saving Course Info
-meio_frame = tkinter.LabelFrame(frame)
+meio_frame = tkinter.LabelFrame(frame,text="CURSOS")
 meio_frame.grid(row=1, column=0, sticky="news", padx=20, pady=10)
 
 registered_label = tkinter.Label(meio_frame, text="Status do Registro")
@@ -149,4 +149,4 @@ terms_check.grid(row=0, column=0)
 button = tkinter.Button(frame, text="Enter data", command = enter_data)
 button.grid(row=3, column=0, sticky="news", padx=20, pady=10)
  
-window.mainloop()
+janela.mainloop()
