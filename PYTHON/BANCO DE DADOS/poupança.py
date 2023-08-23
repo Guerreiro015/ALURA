@@ -10,14 +10,29 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import calendar
 
+def salvar_valor():
+    valor_dia = float(entry_valor.get())
+    valores.append(valor_dia)
+    total_valores = sum(valores)
+    entry_valor.delete(0, tk.END)
+    label_status.config(text="Valor salvo com sucesso!", foreground="green")
+    label_total.config(text=f"Total economizado: R${total_valores:.2f}")
 
+    linha = len(valores) + 1
+    coluna_data = get_column_letter(1)
+    coluna_valor = get_column_letter(2)
+    sheet.cell(row=linha, column=1, value=date.today().strftime("%d-%m-%y"))
+    sheet.cell(row=linha, column=2, value=valor_dia)
+
+    canvas.get_tk_widget().destroy()
+    plotar_grafico()
 
 janela = tk.Tk()
 janela.title("App de Poupança Pessoal")
 janela.geometry("700x500")
 janela.configure(bg="#252525")
 
-janela.mainloop()
+
 
 style = ttk.Style()
 style.theme_use("clam")
@@ -44,6 +59,16 @@ button_salvar = ttk.Button(janela, text="Salvar", command=salvar_valor)
 
 
 
+# Posicionamento dos elementos
+label_instrucao.pack(pady=10)
+entry_valor.pack(pady=5)
+button_salvar.pack(pady=10)
+label_status.pack()
+label_total.pack(pady=10)
+
+#janela.mainloop()
+
+
 #Criando um banco de dados em excel
 try:
  Workbook = load_workbook('valores_diarios.xlsx')
@@ -66,31 +91,6 @@ label_total.config(text = f'Total Economizado: R$: {sum(valores):,.2f}')
 
 Workbook.save('valores_diarios.xlsx')
 
-
-
-# Posicionamento dos elementos
-label_instrucao.pack(pady=10)
-entry_valor.pack(pady=5)
-button_salvar.pack(pady=10)
-label_status.pack()
-label_total.pack(pady=10)
-
-def salvar_valor():
-    valor_dia = float(entry_valor.get())
-    valores.append(valor_dia)
-    total_valores = sum(valores)
-    entry_valor.delete(0, tk.END)
-    label_status.config(text="Valor salvo com sucesso!", foreground="green")
-    label_total.config(text=f"Total economizado: R${total_valores:.2f}")
-
-    linha = len(valores) + 1
-    coluna_data = get_column_letter(1)
-    coluna_valor = get_column_letter(2)
-    sheet.cell(row=linha, column=1, value=date.today().strftime("%d-%m-%y"))
-    sheet.cell(row=linha, column=2, value=valor_dia)
-
-    canvas.get_tk_widget().destroy()
-    plotar_grafico()
 
 def plotar_grafico():
     global canvas
@@ -140,6 +140,10 @@ def plotar_grafico():
     diferenca = (data_final - data_inicial).days
     semanas = diferenca // 7
 
+    canvas = FigureCanvasTkAgg(fig, master=janela)
+    canvas.draw()
+    canvas.get_tk_widget().pack(side=tk.TOP,fill=tk.BOTH, expand=True)
+    
     labels = [f'{i+1}ª Semana' for i in range(semanas)]
     valores_semana = []
     for i in range(semanas):
@@ -150,10 +154,11 @@ def plotar_grafico():
     pie = ax_pie.pie(valores_semana, labels=labels, autopct='%1.1f%%', startangle=90)
     ax_pie.set_title('Economia por Semana')
 
-    canvas = FigureCanvasTkAgg(fig, master=janela)
-    canvas.get_tk_widget().grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
     fig.tight_layout()
+
+janela.mainloop()
+
 
 
 
