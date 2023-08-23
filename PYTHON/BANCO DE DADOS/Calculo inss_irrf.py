@@ -120,7 +120,7 @@ e_outros.place(x=200,y=150)
 e_faltas = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_faltas.place(x=200,y=225)
 
-e_depe = Spinbox(frameMeio, from_=0, to=50)
+e_depe = Spinbox(frameMeio, from_=0, to=50)#***********#
 e_depe.place(x=200,y=250)
 
 

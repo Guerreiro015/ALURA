@@ -4,6 +4,7 @@ import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 import sqlite3
+from tkcalendar import Calendar, DateEntry
 
 def enter_data():
     accepted = accept_var.get()
@@ -47,6 +48,18 @@ def enter_data():
             cursor.execute(data_insert_query, data_insert_tuple)
             conn.commit()
             conn.close()
+
+            # firstname.delete(0,'end')
+            # lastname.delete(0,'end')
+            # title.delete(0,'end')
+            # age.delete(0,'end')
+            # nationality.delete(0,'end')
+            # numcourses.delete(0,'end')
+            # numsemesters.delete(0,'end')
+            # registration_status.delete(0,'end')
+ 
+
+
             tkinter.messagebox.showwarning(title="SUCESSO", message="Aluno cadatrado com sucesso!!.")
             
                 
@@ -91,9 +104,9 @@ nationality_combobox = ttk.Combobox(frame1, values=["Africa", "America do Norte"
 nationality_label.grid(row=2, column=1)
 nationality_combobox.grid(row=3, column=1)
 
-TESTE_name_label = tkinter.Label(frame1, text="testando o  teste")
+TESTE_name_label = tkinter.Label(frame1, text="Data Inicio")
 TESTE_name_label.grid(row=2, column=2)
-TESTE_name_entry = tkinter.Entry(frame1)
+TESTE_name_entry = DateEntry(frame1)
 TESTE_name_entry.grid(row=3, column=2)
 
 
@@ -123,11 +136,6 @@ numsemesters_spinbox = tkinter.Spinbox(meio_frame, from_=0, to="infinity")
 numsemesters_label.grid(row=0, column=2)
 numsemesters_spinbox.grid(row=1, column=2)
 
-TESTE_name_label = tkinter.Label(meio_frame, text="testando o  teste")
-TESTE_name_label.grid(row=0, column=3)
-TESTE_name_entry = tkinter.Entry(meio_frame)
-TESTE_name_entry.grid(row=1, column=3)
-
 for widget in meio_frame.winfo_children():
     widget.grid_configure(padx=15, pady=5)
 
@@ -141,7 +149,7 @@ terms_check = tkinter.Checkbutton(baixo_frame, text= "Eu aceito os termos e cond
 terms_check.grid(row=0, column=0)
 
 # Button
-button = tkinter.Button(frame, text="Enter data", command = enter_data)
+button = tkinter.Button(frame, text="Confirmar Cadastro", command = enter_data)
 button.grid(row=3, column=0, sticky="news", padx=20, pady=10)
  
 janela.mainloop()

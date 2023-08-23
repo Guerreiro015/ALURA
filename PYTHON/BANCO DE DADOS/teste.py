@@ -23,4 +23,4 @@ def Inserir():
     conn.commit()
     conn.close()         
 
-Inserir()
+#Inserir()

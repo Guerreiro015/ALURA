@@ -1,3 +1,6 @@
+import os
+os.system('cls')
+
 import tkinter as tk
 from tkinter import ttk
 from openpyxl import load_workbook, Workbook
@@ -7,12 +10,14 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import calendar
 
-window = tk.Tk()
-window.title("App de Poupança Pessoal")
-window.geometry("700x500")
-window.configure(bg="#252525")
 
-window.mainloop()
+
+janela = tk.Tk()
+janela.title("App de Poupança Pessoal")
+janela.geometry("700x500")
+janela.configure(bg="#252525")
+
+janela.mainloop()
 
 style = ttk.Style()
 style.theme_use("clam")
@@ -28,14 +33,39 @@ style.configure("TButton",
                 foreground="#FFFFFF",
                 font=("Arial", 12))
 
-label_instrucao = ttk.Label(window, text="Insira o valor diário:")
+label_instrucao = ttk.Label(janela, text="Insira o valor diário:")
+label_status = ttk.Label(janela, text="", foreground="red")
+label_total = ttk.Label(janela, text="", font=("Arial", 14, "bold"))
 
-label_status = ttk.Label(window, text="", foreground="red")
-label_total = ttk.Label(window, text="", font=("Arial", 14, "bold"))
+entry_valor = ttk.Entry(janela)
 
-entry_valor = ttk.Entry(window)
+button_salvar = ttk.Button(janela, text="Salvar", command=salvar_valor)
 
-button_salvar = ttk.Button(window, text="Salvar", command=salvar_valor)
+
+
+
+#Criando um banco de dados em excel
+try:
+ Workbook = load_workbook('valores_diarios.xlsx')
+except FileNotFoundError:
+ Workbook = Workbook()
+
+#Selecioando a primeira planilha
+sheet = Workbook.active
+
+#Verificando se a planilha tem valores salvos
+if sheet.max_row == 0:
+   sheet.cell(row=1,colunm=1, Value = "Data")
+   sheet.cell(row=1,colunm=2, Value = "valor Diário")
+
+# Obtendo a lista de valores salvos
+valores = [cell.value for cell in sheet['B'][1:]]
+
+#Exibir o total economizado
+label_total.config(text = f'Total Economizado: R$: {sum(valores):,.2f}')
+
+Workbook.save('valores_diarios.xlsx')
+
 
 
 # Posicionamento dos elementos
@@ -120,7 +150,7 @@ def plotar_grafico():
     pie = ax_pie.pie(valores_semana, labels=labels, autopct='%1.1f%%', startangle=90)
     ax_pie.set_title('Economia por Semana')
 
-    canvas = FigureCanvasTkAgg(fig, master=window)
+    canvas = FigureCanvasTkAgg(fig, master=janela)
     canvas.get_tk_widget().grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
     fig.tight_layout()
