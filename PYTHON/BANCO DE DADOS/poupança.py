@@ -9,8 +9,22 @@ from datetime import date, datetime, timedelta
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import calendar
+global canvas
+
 
 def salvar_valor():
+    global canvas
+
+
+    # fig = plt.Figure(figsize=(12, 6), dpi=80)
+    # ax_barras = fig.add_subplot(121)
+    # ax_pie = fig.add_subplot(122)
+    # canvas = FigureCanvasTkAgg(fig, master=janela)
+    # canvas.draw()
+    # canvas.get_tk_widget().pack(side=tk.TOP,fill=tk.BOTH, expand=True)
+
+
+
     valor_dia = float(entry_valor.get())
     valores.append(valor_dia)
     total_valores = sum(valores)
@@ -25,14 +39,13 @@ def salvar_valor():
     sheet.cell(row=linha, column=2, value=valor_dia)
 
     canvas.get_tk_widget().destroy()
-    plotar_grafico()
+    grafico()
+
 
 janela = tk.Tk()
 janela.title("App de Poupança Pessoal")
 janela.geometry("700x500")
 janela.configure(bg="#252525")
-
-
 
 style = ttk.Style()
 style.theme_use("clam")
@@ -57,8 +70,6 @@ entry_valor = ttk.Entry(janela)
 button_salvar = ttk.Button(janela, text="Salvar", command=salvar_valor)
 
 
-
-
 # Posicionamento dos elementos
 label_instrucao.pack(pady=10)
 entry_valor.pack(pady=5)
@@ -66,7 +77,7 @@ button_salvar.pack(pady=10)
 label_status.pack()
 label_total.pack(pady=10)
 
-#janela.mainloop()
+
 
 
 #Criando um banco de dados em excel
@@ -81,7 +92,7 @@ sheet = Workbook.active
 #Verificando se a planilha tem valores salvos
 if sheet.max_row == 0:
    sheet.cell(row=1,colunm=1, Value = "Data")
-   sheet.cell(row=1,colunm=2, Value = "valor Diário")
+   sheet.cell(row=1,colunm=2, Value = "Valor diário")
 
 # Obtendo a lista de valores salvos
 valores = [cell.value for cell in sheet['B'][1:]]
@@ -92,7 +103,8 @@ label_total.config(text = f'Total Economizado: R$: {sum(valores):,.2f}')
 Workbook.save('valores_diarios.xlsx')
 
 
-def plotar_grafico():
+
+def grafico():
     global canvas
 
     datas = [cell.value.date() if isinstance(cell.value, datetime) else datetime.strptime(cell.value, "%d-%m-%y").date() for cell in sheet['A'][1:]]
