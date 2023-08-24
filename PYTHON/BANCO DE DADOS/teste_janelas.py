@@ -23,6 +23,7 @@ def enter_data():
             registration_status = reg_status_var.get()
             numcourses = numcourses_spinbox.get()
             numsemesters = numsemesters_spinbox.get()
+            parce = parcelas_spinbox.get()
             
             print("Nome: ", firstname, "Sobrenome: ", lastname)
             print("Título: ", title, "Idade: ", age, "Nacionalidade: ", nationality)
@@ -34,19 +35,19 @@ def enter_data():
             conn = sqlite3.connect('data.db')
             table_create_query = '''CREATE TABLE IF NOT EXISTS Student_Data 
                     (firstname TEXT, lastname TEXT, title TEXT, age INT, nationality TEXT, 
-                    registration_status TEXT, num_courses INT, num_semesters INT)
+                    registration_status TEXT, num_courses INT, num_semesters INT,parcela FLOAT)
             '''
             conn.execute(table_create_query)
             
             # Insert Data
             data_insert_query = '''INSERT INTO Student_Data (firstname, lastname, title, 
             age, nationality, registration_status, num_courses, num_semesters) VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?)'''
+            (?, ?, ?, ?, ?, ?, ?, ?, ?)'''
             data_insert_tuple = (firstname, lastname, title,
-                                  age, nationality, registration_status, numcourses, numsemesters)
+                                  age, nationality, registration_status, numcourses, numsemesters,prestacao)
             cursor = conn.cursor()
 
-            x=int(numcourses)
+            x=int(parce)
             for i in range(0,x):
                 cursor.execute(data_insert_query, data_insert_tuple)
                 conn.commit()
@@ -153,6 +154,7 @@ parcelas_label.grid(row=0,column=1)
 # valor_parcela_label=tkinter.Label(frame3,text='Valor das Parcelas')
 # valor_parcela_label.grid(row=0,column=2)
 
+
 valor_entry = tkinter.Entry(frame3)
 valor_entry.grid(row=1,column=0)
 parcelas_spinbox=tkinter.Spinbox(frame3,from_=1, to='infinity')
@@ -167,6 +169,7 @@ def valor_parcela():
     prestacao=va/int(parcelas_spinbox.get())
     valor_parcela=tkinter.Label(frame3,text=f'R$: {prestacao:,.2f}',width=15)
     valor_parcela.grid(row=1,column=2)
+    
 
 button_parcela = tkinter.Button(frame3,text='Valor das Parcelas',command=valor_parcela,bg="#e9edf5")
 button_parcela.grid(row=0,column=2)
