@@ -127,7 +127,7 @@ e_depe.place(x=200,y=250)
 e_pensao = Entry(frameMeio,width=20,justify=LEFT,relief=SOLID)
 e_pensao.place(x=200,y=275)
 
-imagem=Image.open("inventorio.png")
+imagem=Image.open("inventario.png")
 imagem = imagem.resize((300,260))
 imagem = ImageTk.PhotoImage(imagem)
 
