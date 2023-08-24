@@ -45,9 +45,12 @@ def enter_data():
             data_insert_tuple = (firstname, lastname, title,
                                   age, nationality, registration_status, numcourses, numsemesters)
             cursor = conn.cursor()
-            cursor.execute(data_insert_query, data_insert_tuple)
-            conn.commit()
-            conn.close()
+
+            x=int(numcourses)
+            for i in range(0,x):
+                cursor.execute(data_insert_query, data_insert_tuple)
+                conn.commit()
+            conn.close()    
 
             # firstname.delete(0,'end')
             # lastname.delete(0,'end')
@@ -104,52 +107,88 @@ nationality_combobox = ttk.Combobox(frame1, values=["Africa", "America do Norte"
 nationality_label.grid(row=2, column=1)
 nationality_combobox.grid(row=3, column=1)
 
-TESTE_name_label = tkinter.Label(frame1, text="Data Inicio")
-TESTE_name_label.grid(row=2, column=2)
-TESTE_name_entry = DateEntry(frame1)
-TESTE_name_entry.grid(row=3, column=2)
+inicio_label = tkinter.Label(frame1, text="Inicio do Curso")
+inicio_label.grid(row=2, column=2)
+inicio_entry = DateEntry(frame1)
+inicio_entry.grid(row=3, column=2)
 
 
 for widget in frame1.winfo_children():
     widget.grid_configure(padx=10, pady=5)
 
 # Saving Course Info
-meio_frame = tkinter.LabelFrame(frame,text="CURSOS")
-meio_frame.grid(row=1, column=0, sticky="news", padx=20, pady=10)
+frame2 = tkinter.LabelFrame(frame,text="CURSOS")
+frame2.grid(row=1, column=0, sticky="news", padx=20, pady=10)
 
-registered_label = tkinter.Label(meio_frame, text="Status do Registro")
+registered_label = tkinter.Label(frame2, text="Status do Registro")
 
 reg_status_var = tkinter.StringVar(value="Não Registrado")
-registered_check = tkinter.Checkbutton(meio_frame, text="Registrado",
+registered_check = tkinter.Checkbutton(frame2, text="Registrado",
                                        variable=reg_status_var, onvalue="Registrado", offvalue="Não Registrado")
 
 registered_label.grid(row=0, column=0)
 registered_check.grid(row=1, column=0)
 
-numcourses_label = tkinter.Label(meio_frame, text= "Cursos Finalizados")
-numcourses_spinbox = tkinter.Spinbox(meio_frame, from_=0, to='infinity')
+numcourses_label = tkinter.Label(frame2, text= "Cursos Finalizados")
+numcourses_spinbox = tkinter.Spinbox(frame2, from_=0, to='infinity')
 numcourses_label.grid(row=0, column=1)
 numcourses_spinbox.grid(row=1, column=1)
 
-numsemesters_label = tkinter.Label(meio_frame, text="Semestre")
-numsemesters_spinbox = tkinter.Spinbox(meio_frame, from_=0, to="infinity")
+numsemesters_label = tkinter.Label(frame2, text="Semestre")
+numsemesters_spinbox = tkinter.Spinbox(frame2, from_=0, to="infinity")
 numsemesters_label.grid(row=0, column=2)
 numsemesters_spinbox.grid(row=1, column=2)
 
-for widget in meio_frame.winfo_children():
+for widget in frame2.winfo_children():
     widget.grid_configure(padx=15, pady=5)
 
+# Pagamento
+frame3 = tkinter.LabelFrame(frame, text="Dados do Pagamento")
+frame3.grid(row=2, column=0, sticky="news", padx=20, pady=15)
+
+valor_label = tkinter.Label(frame3,text='Valor do Curso')
+valor_label.grid(row=0,column=0)
+parcelas_label=tkinter.Label(frame3,text='Quant. Parcelas')
+parcelas_label.grid(row=0,column=1)
+# valor_parcela_label=tkinter.Label(frame3,text='Valor das Parcelas')
+# valor_parcela_label.grid(row=0,column=2)
+
+valor_entry = tkinter.Entry(frame3)
+valor_entry.grid(row=1,column=0)
+parcelas_spinbox=tkinter.Spinbox(frame3,from_=1, to='infinity')
+parcelas_spinbox.grid(row=1,column=1)
+
+def valor_parcela():
+
+    if valor_entry.get()=='':
+        va=0
+    else:
+        va=int(valor_entry.get())
+    prestacao=va/int(parcelas_spinbox.get())
+    valor_parcela=tkinter.Label(frame3,text=f'R$: {prestacao:,.2f}',width=15)
+    valor_parcela.grid(row=1,column=2)
+
+button_parcela = tkinter.Button(frame3,text='Valor das Parcelas',command=valor_parcela,bg="#e9edf5")
+button_parcela.grid(row=0,column=2)
+
+for widget in frame3.winfo_children():
+    widget.grid_configure(padx=15, pady=10)
+
 # Accept terms
-baixo_frame = tkinter.LabelFrame(frame, text="Terms & Conditions")
-baixo_frame.grid(row=2, column=0, sticky="news", padx=20, pady=10)
+frame4 = tkinter.LabelFrame(frame,text='Terms & Conditions')
+frame4.grid(row=3,column=0,sticky='news',padx=20,pady=10)
 
 accept_var = tkinter.StringVar(value="Não Aceito")
-terms_check = tkinter.Checkbutton(baixo_frame, text= "Eu aceito os termos e condições.",
+terms_check = tkinter.Checkbutton(frame4, text= "Eu aceito os termos e condições.",
                                   variable=accept_var, onvalue="Aceito", offvalue="Não Aceito")
 terms_check.grid(row=0, column=0)
 
+for widget in frame4.winfo_children():
+    widget.grid_configure(padx=15, pady=5)
+
+
 # Button
-button = tkinter.Button(frame, text="Confirmar Cadastro", command = enter_data)
-button.grid(row=3, column=0, sticky="news", padx=20, pady=10)
+button = tkinter.Button(frame, text="Confirmar Cadastro", command = enter_data,bg="#e9edf5")
+button.grid(row=4, column=0, sticky="news", padx=20, pady=10)
  
 janela.mainloop()
