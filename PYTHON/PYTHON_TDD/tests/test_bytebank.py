@@ -1,5 +1,5 @@
 
-import pytest
+
 from bytebank import Funcionario
 
 class TestClass:
@@ -11,5 +11,3 @@ class TestClass:
         resultado = funcionario_teste.idade() # When-ação
 
         assert resultado == esperado  # Then-desfecho
-
-print(TestClass)
