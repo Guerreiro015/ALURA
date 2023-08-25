@@ -1,10 +1,16 @@
 import os
 os.system('cls')
+import requests
 
 import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar,DateEntry
+import requests
+from tkinter import*
+from tkinter import messagebox
+
+
 
 import sqlite3
 
@@ -49,14 +55,14 @@ xxx1=tkinter.Label(frame2,text='CEP:')
 xxx1.grid(row=0,column=1)
 xxx3=tkinter.Entry(frame2)
 xxx3.grid(row=0,column=2)
-xxx4=tkinter.Button(frame2,text='Consultar CEP:',bg='Blue',fg='Yellow')
-xxx4.grid(row=0,column=0)
+
 
 
 rua_label = tkinter.Label(frame2,text='Rua:')
 rua_label.grid(row=1,column=0)
 rua_entry = tkinter.Entry(frame2)
 rua_entry.grid(row=2, column=0)
+
 
 numero_label = tkinter.Label(frame2,text='Número:')
 numero_label.grid(row=1,column=1)
@@ -75,16 +81,44 @@ cidade_entry.grid(row=2, column=3)
 
 estado_label = tkinter.Label(frame2,text='Estado:')
 estado_label.grid(row=3,column=0)
-estado_label_entry = tkinter.Entry(frame2)
-estado_label_entry.grid(row=4, column=0)
+estado_entry = tkinter.Entry(frame2)
+estado_entry.grid(row=4, column=0)
 
 uf_label = tkinter.Label(frame2,text='UF:')
 uf_label.grid(row=3,column=1)
 uf_entry = tkinter.Entry(frame2)
 uf_entry.grid(row=4, column=1)
 
+codigo=str('04760060')
+print(codigo)
+b=str(xxx3.get())
+print(b)
 
+def cep():
+    print(b)
+    r = requests.get(f'https://viacep.com.br/ws/{codigo}/json/')
+    dados = r.json() 
 
+    #try:
+    print(dados) 
+    rua_entry.delete(0,'end')
+    bairro_entry.delete(0,'end')
+    cidade_entry.delete(0,'end')
+    estado_entry.delete(0,'end')
+    uf_entry.delete(0,'end')
+
+    rua_entry.insert(0,dados["logradouro"])
+    bairro_entry.insert(0,dados["bairro"])
+    cidade_entry.insert(0,dados["localidade"])
+    estado_entry.insert(0,dados["uf"])
+    uf_entry.insert(0,dados["uf"])
+            
+    #except:
+        # messagebox.showerror('CEP NÃO É VÁLIDO')
+        # print('erro')
+
+xxx4=tkinter.Button(frame2,text='Consultar CEP:',bg='Blue',fg='Yellow',command=cep)
+xxx4.grid(row=0,column=0)
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=5)
