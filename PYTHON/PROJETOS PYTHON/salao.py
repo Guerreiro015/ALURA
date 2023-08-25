@@ -10,7 +10,7 @@ import sqlite3
 
 janela= tkinter.Tk()
 janela.title('Salão de Beleza')
-#janela.geometry('400x300')
+#janela.geometry('800x400')
 frame = tkinter.Frame(janela)
 frame.pack()
 
@@ -34,14 +34,38 @@ tel_entry = tkinter.Entry(frame1)
 tel_entry.grid(row=1,column=2)
 
 email_label=tkinter.Label(frame1,text='Email')
-email_label.grid(row=2,column=0)
+email_label.grid(row=0,column=3)
 email_entry=tkinter.Entry(frame1)
-email_entry.grid(row=3,column=0)
+email_entry.grid(row=1,column=3)
 
-inicio_label = tkinter.Label(frame1,text='Data Cadastro')
-inicio_label.grid(row=2,column=2)
-inicio_entry = DateEntry(frame1)
-inicio_entry.grid(row=3, column=2)
+frame4=tkinter.LabelFrame(frame,text="Dados Endereço")
+
+xxx=tkinter.Label(frame1,text='Endereço:')
+xxx.grid(row=2,column=0)
+xxx=tkinter.Button(frame1,text='Consultar CEP:')
+xxx.grid(row=2,column=1)
+
+rua_label = tkinter.Label(frame1,text='Rua')
+rua_label.grid(row=3,column=0)
+rua_entry = tkinter.Entry(frame1)
+rua_entry.grid(row=4, column=0)
+
+numero_label = tkinter.Label(frame1,text='Número')
+numero_label.grid(row=3,column=1)
+numero_entry = tkinter.Entry(frame1)
+numero_entry.grid(row=4, column=1)
+
+bairro_label = tkinter.Label(frame1,text='Bairro')
+bairro_label.grid(row=3,column=2)
+bairro_entry = tkinter.Entry(frame1)
+bairro_entry.grid(row=4, column=2)
+
+cidade_label = tkinter.Label(frame1,text='Cidade')
+cidade_label.grid(row=3,column=3)
+cidade_entry = tkinter.Entry(frame1)
+cidade_entry.grid(row=4, column=3)
+
+
 
 
 for widget in frame1.winfo_children():
@@ -62,9 +86,13 @@ atendente_entry.grid(row=1,column=1)
 
 data_servico_label = tkinter.Label(frame2,text='Data do Servico')
 data_servico_label.grid(row=0,column=2)
-data_servico_entry = DateEntry(frame2)
+data_servico_entry =  tkinter.Entry(frame2)
 data_servico_entry.grid(row=1,column=2)
 
+valor_label = tkinter.Label(frame2,text='Data do Servico',width=17)
+valor_label.grid(row=0,column=3)
+valor_entry = DateEntry(frame2)
+valor_entry.grid(row=1,column=3)
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=5)

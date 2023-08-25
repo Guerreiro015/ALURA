@@ -22,7 +22,7 @@ class cep:
     def formato_cep(self):
         parte1 = self.cep [:5]
         parte2 = self.cep [5:]
-        return f'CEP: {parte1}-{parte2} -  Validado foi Com Sucesso'
+        return f'CEP: {parte1}-{parte2} -  Validado Com Sucesso'
     
     def solicitação(self):
             r = requests.get(f'https://viacep.com.br/ws/{self.cep}/json/')
