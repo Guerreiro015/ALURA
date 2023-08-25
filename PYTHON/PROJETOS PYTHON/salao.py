@@ -42,82 +42,78 @@ for widget in frame1.winfo_children():
     widget.grid_configure(padx=10,pady=5)
 
 
-frame4=tkinter.LabelFrame(frame,text="Dados Endereço:")
-frame4.grid(row=1,column=0)
+frame2=tkinter.LabelFrame(frame,text="Dados Endereço:")
+frame2.grid(row=1,column=0)
 
-xxx=tkinter.Label(frame1,text='Endereço:')
-xxx.grid(row=2,column=0)
-xxx1=tkinter.Label(frame1,text='CEP:')
-xxx1.grid(row=2,column=1)
-xxx3=tkinter.Entry(frame1)
-xxx3.grid(row=2,column=2)
-xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='Blue',fg='Yellow')
-xxx4.grid(row=2,column=3)
+xxx1=tkinter.Label(frame2,text='CEP:')
+xxx1.grid(row=0,column=1)
+xxx3=tkinter.Entry(frame2)
+xxx3.grid(row=0,column=2)
+xxx4=tkinter.Button(frame2,text='Consultar CEP:',bg='Blue',fg='Yellow')
+xxx4.grid(row=0,column=0)
 
 
-rua_label = tkinter.Label(frame1,text='Rua:')
-rua_label.grid(row=3,column=0)
-rua_entry = tkinter.Entry(frame1)
-rua_entry.grid(row=4, column=0)
+rua_label = tkinter.Label(frame2,text='Rua:')
+rua_label.grid(row=1,column=0)
+rua_entry = tkinter.Entry(frame2)
+rua_entry.grid(row=2, column=0)
 
-numero_label = tkinter.Label(frame1,text='Número:')
-numero_label.grid(row=3,column=1)
-numero_entry = tkinter.Entry(frame1)
-numero_entry.grid(row=4, column=1)
+numero_label = tkinter.Label(frame2,text='Número:')
+numero_label.grid(row=1,column=1)
+numero_entry = tkinter.Entry(frame2)
+numero_entry.grid(row=2, column=1)
 
-bairro_label = tkinter.Label(frame1,text='Bairro:')
-bairro_label.grid(row=3,column=2)
-bairro_entry = tkinter.Entry(frame1)
-bairro_entry.grid(row=4, column=2)
+bairro_label = tkinter.Label(frame2,text='Bairro:')
+bairro_label.grid(row=1,column=2)
+bairro_entry = tkinter.Entry(frame2)
+bairro_entry.grid(row=2, column=2)
 
-cidade_label = tkinter.Label(frame1,text='Cidade:')
-cidade_label.grid(row=3,column=3)
-cidade_entry = tkinter.Entry(frame1)
-cidade_entry.grid(row=4, column=3)
+cidade_label = tkinter.Label(frame2,text='Cidade:')
+cidade_label.grid(row=1,column=3)
+cidade_entry = tkinter.Entry(frame2)
+cidade_entry.grid(row=2, column=3)
 
-estado_label = tkinter.Label(frame1,text='Estado:')
-estado_label.grid(row=5,column=0)
-estado_label_entry = tkinter.Entry(frame1)
-estado_label_entry.grid(row=6, column=0)
+estado_label = tkinter.Label(frame2,text='Estado:')
+estado_label.grid(row=3,column=0)
+estado_label_entry = tkinter.Entry(frame2)
+estado_label_entry.grid(row=4, column=0)
 
-uf_label = tkinter.Label(frame1,text='UF:')
-uf_label.grid(row=5,column=1)
-uf_entry = tkinter.Entry(frame1)
-uf_entry.grid(row=6, column=1)
+uf_label = tkinter.Label(frame2,text='UF:')
+uf_label.grid(row=3,column=1)
+uf_entry = tkinter.Entry(frame2)
+uf_entry.grid(row=4, column=1)
 
 
 
-
-for widget in frame1.winfo_children():
-    widget.grid_configure(padx=10,pady=5)
-
-frame2 = tkinter.LabelFrame(frame,text='Dados do Serviço')
-frame2.grid(row=1,column=0,padx=20,pady=10)
-
-servico_label = tkinter.Label(frame2,text='Tipo de Servico')
-servico_label.grid(row=0,column=0)
-servico_entry=tkinter.Entry(frame2)
-servico_entry.grid(row=1,column=0)
-
-atendente_label = tkinter.Label(frame2,text='Atendente: ')
-atendente_label.grid(row=0,column=1)
-atendente_entry = tkinter.Entry(frame2)
-atendente_entry.grid(row=1,column=1)
-
-data_servico_label = tkinter.Label(frame2,text='Data do Servico')
-data_servico_label.grid(row=0,column=2)
-data_servico_entry =  tkinter.Entry(frame2)
-data_servico_entry.grid(row=1,column=2)
-
-valor_label = tkinter.Label(frame2,text='Data do Servico',width=17)
-valor_label.grid(row=0,column=3)
-valor_entry = DateEntry(frame2)
-valor_entry.grid(row=1,column=3)
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=5)
 
+frame3 = tkinter.LabelFrame(frame,text='Dados do Serviço')
+frame3.grid(row=2,column=0,padx=20,pady=10)
 
+servico_label = tkinter.Label(frame3,text='Tipo de Servico')
+servico_label.grid(row=0,column=0)
+servico_entry=tkinter.Entry(frame3)
+servico_entry.grid(row=1,column=0)
+
+atendente_label = tkinter.Label(frame3,text='Atendente: ')
+atendente_label.grid(row=0,column=1)
+atendente_entry = tkinter.Entry(frame3)
+atendente_entry.grid(row=1,column=1)
+
+data_servico_label = tkinter.Label(frame3,text='Data do Servico')
+data_servico_label.grid(row=0,column=2)
+data_servico_entry =  tkinter.Entry(frame3)
+data_servico_entry.grid(row=1,column=2)
+
+valor_label = tkinter.Label(frame3,text='Data do Servico',width=17)
+valor_label.grid(row=0,column=3)
+valor_entry = DateEntry(frame3)
+valor_entry.grid(row=1,column=3)
+
+for widget in frame3.winfo_children():
+    widget.grid_configure(padx=10,pady=5)
 
 
 
