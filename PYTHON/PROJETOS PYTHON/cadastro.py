@@ -402,14 +402,14 @@ def mostrar():
     l_total['text'] = f'R$ {Total_valor:,.2f}'
     l_quant['text'] = Total_itens
 #_______________________________________________________________
-    imagem = lista_itens[0][8]
+    # imagem = lista_itens[0][8]
 
-    imagem=Image.open(imagem)
-    imagem = imagem.resize((170,170))
-    imagem = ImageTk.PhotoImage(imagem)
+    # imagem=Image.open(imagem)
+    # imagem = imagem.resize((170,170))
+    # imagem = ImageTk.PhotoImage(imagem)
 
-    l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
-    l_imagem.place(x=700,y=0)
+    # l_imagem = Label(frameMeio, image = imagem,bg=co1,fg=co4)
+    # l_imagem.place(x=700,y=0)
      
 #______________________________________________________________________
 mostrar()
