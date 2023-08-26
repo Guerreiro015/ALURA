@@ -18,7 +18,7 @@ try:
     print(dados["localidade"])
     print(dados["uf"])
 except:
-    messagebox.showerror('CEP NÃO É VÁLIDO')
+    messagebox.showerror('ERRO','O Cep Digitado não é Valido')
     print('erro')
 
 # for a in dados: # Mostrar Os campos chaves
