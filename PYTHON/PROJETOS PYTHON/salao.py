@@ -81,12 +81,12 @@ cidade_entry.grid(row=2, column=3)
 
 estado_label = tkinter.Label(frame2,text='Estado:')
 estado_label.grid(row=3,column=0)
-estado_entry = tkinter.Entry(frame2)
+estado_entry = tkinter.Entry(frame2,border=5,justify=CENTER)
 estado_entry.grid(row=4, column=0)
 
 ddd_label = tkinter.Label(frame2,text='DDD:')
 ddd_label.grid(row=3,column=1)
-ddd_entry = tkinter.Entry(frame2,width=10)
+ddd_entry = tkinter.Entry(frame2,width=10,border=5,justify=CENTER) # Justify(center,left,right)
 ddd_entry.grid(row=4, column=1)
 
 cad_label=tkinter.Label(frame2,text='Data do Cadastro')
@@ -121,7 +121,7 @@ def cep():
         xxx1.grid(row=0,column=3)
             
     except:
-        messagebox.showerror('ERRO','O Cep Digitado não é Valido')
+        messagebox.showerror('CEP NÃO EXISTE','O Cep Digitado não é Valido')
         
 
 xxx4=tkinter.Button(frame2,text='Consultar CEP:',bg='#3fbfb9',command=cep)
@@ -186,7 +186,7 @@ def valor_parcela():
     valor_comissao=tkinter.Label(frame3,text=f'R$:  {comissao:,.2f}')
     valor_comissao.grid(row=3,column=3)
 
-valor_parcela_label=tkinter.Button(frame3,text='Valor das parcela',command=valor_parcela)
+valor_parcela_label=tkinter.Button(frame3,text='Valor das parcela',command=valor_parcela,border=4)
 valor_parcela_label.grid(row=2,column=2)
 
 comissao_label=tkinter.Label(frame3,text='Comissão:')
@@ -196,6 +196,8 @@ for widget in frame3.winfo_children():
     widget.grid_configure(padx=10,pady=5)
 
 
+salvar_botao=tkinter.Button(frame,text='Salvar Dados',width=50,font='Arial,10,bold',border=5)
+salvar_botao.grid(row=3,column=0,pady=10)
 
 
 janela.mainloop()
