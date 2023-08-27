@@ -24,7 +24,8 @@ def enter_data():
             numcourses = numcourses_spinbox.get()
             numsemesters = numsemesters_spinbox.get()
             parce = parcelas_spinbox.get()
-            
+            parcela = valor_parcela_entry.get()
+
             print("Nome: ", firstname, "Sobrenome: ", lastname)
             print("Título: ", title, "Idade: ", age, "Nacionalidade: ", nationality)
             print("Cursos: ", numcourses, "Semestre: ", numsemesters)
@@ -40,16 +41,15 @@ def enter_data():
             conn.execute(table_create_query)
             
             # Insert Data
-            data_insert_query = '''INSERT INTO Student_Data (firstname, lastname, title, 
-            age, nationality, registration_status, num_courses, num_semesters) VALUES 
+            insert_query = '''INSERT INTO Student_Data (firstname, lastname, title, 
+            age, nationality, registration_status, num_courses, num_semesters,parcela) VALUES 
             (?, ?, ?, ?, ?, ?, ?, ?, ?)'''
-            data_insert_tuple = (firstname, lastname, title,
-                                  age, nationality, registration_status, numcourses, numsemesters,prestacao)
+            insert_tuple = (firstname, lastname, title, age, nationality, registration_status, numcourses, numsemesters,parcela)
             cursor = conn.cursor()
 
             x=int(parce)
             for i in range(0,x):
-                cursor.execute(data_insert_query, data_insert_tuple)
+                cursor.execute(insert_query, insert_tuple)
                 conn.commit()
             conn.close()    
 
@@ -151,8 +151,8 @@ valor_label = tkinter.Label(frame3,text='Valor do Curso')
 valor_label.grid(row=0,column=0)
 parcelas_label=tkinter.Label(frame3,text='Quant. Parcelas')
 parcelas_label.grid(row=0,column=1)
-# valor_parcela_label=tkinter.Label(frame3,text='Valor das Parcelas')
-# valor_parcela_label.grid(row=0,column=2)
+valor_parcela_entry=tkinter.Entry(frame3)
+valor_parcela_entry.grid(row=1,column=2)
 
 
 valor_entry = tkinter.Entry(frame3)
@@ -165,11 +165,11 @@ def valor_parcela():
     if valor_entry.get()=='':
         va=0
     else:
-        va=int(valor_entry.get())
-    prestacao=va/int(parcelas_spinbox.get())
-    valor_parcela=tkinter.Label(frame3,text=f'R$: {prestacao:,.2f}',width=15)
-    valor_parcela.grid(row=1,column=2)
-    
+        va=float(valor_entry.get())
+    prestacao=va/float(parcelas_spinbox.get())
+    valor_parcela_entry.delete(0, 'end')
+    valor_parcela_entry.insert(0, f'R$: {prestacao:,.2f}')
+        
 
 button_parcela = tkinter.Button(frame3,text='Valor das Parcelas',command=valor_parcela,bg="#e9edf5")
 button_parcela.grid(row=0,column=2)

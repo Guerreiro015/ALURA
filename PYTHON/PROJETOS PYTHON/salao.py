@@ -17,13 +17,14 @@ import requests
 import sqlite3
 
 janela = tkinter.Tk()
-janela.title('Empresa Ficticia')
+janela.title('EMPRESA FICTICIA')
 #janela.geometry('800x600')
+janela.configure(background='#F0F8FF')
 frame = tkinter.Frame(janela)
 frame.pack()
 
-frame1 = tkinter.LabelFrame(frame, text = 'Informações do Cliente')
-frame1.grid(row=0,column=0,padx=20,pady=5)
+frame1 = tkinter.LabelFrame(frame, text = 'Informações do Cliente',font=' ivy 10 bold')
+frame1.grid(row=0,column=0,padx=10,pady=5)
 
 
 nome_label = tkinter.Label(frame1,text='Nome do Cliente')
@@ -51,14 +52,11 @@ cad_label.grid(row=0,column=4)
 cad_entry=DateEntry(frame1)
 cad_entry.grid(row=1,column=4)
 
-for widget in frame1.winfo_children():
-    widget.grid_configure(padx=10,pady=5)
 
-
-xxx1=tkinter.Label(frame1,text='Digite o número do CEP:')
-xxx1.grid(row=2,column=1)
-xxx3=tkinter.Entry(frame1,width=15)
-xxx3.grid(row=2,column=2)
+cep_label=tkinter.Label(frame1,text='Digite o número do CEP:')
+cep_label.grid(row=2,column=0)
+cep_entry=tkinter.Entry(frame1,bg='#F0F8FF')
+cep_entry.grid(row=2,column=1)
 
 
 
@@ -96,10 +94,11 @@ ddd_entry.grid(row=4, column=5)
 
 
 def cep():
+        
     try:
-        codigo=str(xxx3.get())
-        print(codigo)
-        print(xxx3.get())
+        codigo=str(cep_entry.get())
+        # print(codigo)
+        # print(xxx3.get())
         r = requests.get(f'https://viacep.com.br/ws/{codigo}/json/')
         dados = r.json() 
 
@@ -109,6 +108,7 @@ def cep():
         cidade_entry.delete(0,'end')
         estado_entry.delete(0,'end')
         ddd_entry.delete(0,'end')
+        cep_entry.delete(0,'end')
 
         rua_entry.insert(0,dados["logradouro"])
         bairro_entry.insert(0,dados["bairro"])
@@ -117,21 +117,23 @@ def cep():
         ddd_entry.insert(0,dados["ddd"])
         ce1=codigo[:5]
         ce2=codigo[5:]
-        xxx1=tkinter.Label(frame1,text=f'CEP:  {ce1}-{ce2}')
-        xxx1.grid(row=0,column=3)
+        cep_entry.insert(0, (ce1,'-',ce2))
+        
             
     except:
         messagebox.showerror('CEP NÃO EXISTE','O Cep Digitado não é Valido')
         
 
-xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='#3fbfb9',command=cep)
-xxx4.grid(row=2,column=0)
+xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='#F0F8FF',command=cep)
+xxx4.grid(row=2,column=2)
 
 for widget in frame1.winfo_children():
     widget.grid_configure(padx=10,pady=5)
 
-frame2 = tkinter.LabelFrame(frame,text='Dados do Serviço')
-frame2.grid(row=2,column=0,padx=20,pady=5)
+    #-------------------------------------------------------------------
+
+frame2 = tkinter.LabelFrame(frame,text='Dados do Serviço',font=' ivy 10 bold')
+frame2.grid(row=2,column=0,padx=10,pady=5)
 
 servico_label = tkinter.Label(frame2,text='Servico Executado')
 servico_label.grid(row=0,column=0)
@@ -164,88 +166,157 @@ parcela_label.grid(row=2,column=1)
 parcelas_spinbox=tkinter.Spinbox(frame2,from_=1,to='infinity',width=5)
 parcelas_spinbox.grid(row=3,column=1)
 
+comissao_label=tkinter.Label(frame2,text='Valor Comissão:')
+comissao_label.grid(row=2,column=3)
+comissao_entry=tkinter.Entry(frame2)
+comissao_entry.grid(row=3,column=3)
 
 def valor_parcela():
-
+ try:
     if valor_entry.get()=='':
         va=0
         
     else:
-        va=int(valor_entry.get())
+        va=float(valor_entry.get())
         
 
     if comissao_percentual_entry.get() == '':
         por=0
     else:
-        por=int(comissao_percentual_entry.get())
+        por=float(comissao_percentual_entry.get())
 
     prestacao=va/int(parcelas_spinbox.get())
-    valor_parcela=tkinter.Label(frame2,text=f'R$: {prestacao:,.2f}',width=15)
-    valor_parcela.grid(row=3,column=2)
+    valor_parcela_entry.delete(0,'end')
+    valor_parcela_entry.insert(0,f'R$:  {prestacao:,.2f}')
+   
     comissao=va*por/100
-    valor_comissao=tkinter.Label(frame2,text=f'R$:  {comissao:,.2f}')
-    valor_comissao.grid(row=3,column=3)
+    comissao_entry.delete(0,'end')
+    comissao_entry.insert(0,f'R$:  {comissao:,.2f}')
+ except:  
+     messagebox.showerror(' É sério? você digitou letra ?', 'Os valores tem que ser números')
 
 valor_parcela_label=tkinter.Button(frame2,text='Valor das parcela',command=valor_parcela,border=4,)
 valor_parcela_label.grid(row=2,column=2)
+valor_parcela_entry=tkinter.Entry(frame2)
+valor_parcela_entry.grid(row=3,column=2)
 
-comissao_label=tkinter.Label(frame2,text='Comissão:')
-comissao_label.grid(row=2,column=3)
 
 forma_pag_label=tkinter.Label(frame2,text='Forma de Pagamento')
 forma_pag_label.grid(row=0,column=4)
 forma_pag_entry=ttk.Combobox(frame2,values=['Pix','Dinheiro','Débito','Crédito','Fiado','Cortesia da casa'])
 forma_pag_entry.grid(row=1,column=4)
 
-salvar_botao=tkinter.Button(frame2,text='Salvar Dados',font='Arial,9,bold',border=4,bg='Green')
+
+def cadastro():
+ try:
+     no=nome_entry.get()
+     cp=cpf_entry.get()
+     te=tel_entry.get()
+     em=email_entry.get()
+     ca=cad_entry.get()
+     ce=cep_entry.get()
+     ru=rua_entry.get()
+     nu=numero_entry.get()
+     ba=bairro_entry.get()
+     ci=cidade_entry.get()
+     uf=estado_entry.get()
+     dd=ddd_entry.get()
+     se=servico_entry.get()
+     da=data_servico_entry.get()
+     va=valor_entry.get()
+     pa=parcelas_spinbox.get()
+     vp=valor_parcela_entry.get()
+     co=comissao_percentual_entry.get()
+     cco=comissao_entry.get()
+     fo=forma_pag_entry.get()   
+    # Create Table
+     conn = sqlite3.connect('salao.db')
+     table_create_query = '''CREATE TABLE IF NOT EXISTS salao_base 
+     (nome TEXT, cpf TEXT, tel TEXT, email TEXT, cadastro TEXT, cep TEXT, 
+     rua TEXT, numero TEXT, bairro TEXT, cidade TEXT, uf TEXT, ddd TEXT, servico TEXT, d_servico TEXT,
+     valor FLOAT,q_parcela FLOAT, parcela FLOAT, com FLOAT, comissao FLOAT, forma TEXT)'''
+            
+     conn.execute(table_create_query)
+            
+            # Insert Data
+     insert_query = '''INSERT INTO salao_base 
+                    (nome , cpf , tel , email , cadastro , cep,
+                    rua , numero, bairro ,cidade ,uf ,ddd ,servico ,d_servico ,
+                    valor ,q_parcela , parcela ,com , comissao, forma ) VALUES 
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'''
+     
+     insert_tuple = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo)
+     cursor = conn.cursor()
+
+     x=int(pa)
+     for i in range(0,x):
+                cursor.execute(insert_query, insert_tuple)
+                conn.commit()
+     conn.close()    
+     
+     messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
+
+ except:
+     messagebox.showerror('Errro','Verifique os dados e tente novamente')
+          
+
+def limpar():
+     nome_entry.delete(0,'end')
+     cpf_entry.delete(0,'end')
+     tel_entry.delete(0,'end')
+     email_entry.delete(0,'end')
+     cad_entry.delete(0,'end')
+     cep_entry.delete(0,'end')
+     rua_entry.delete(0,'end')
+     numero_entry.delete(0,'end')
+     bairro_entry.delete(0,'end')
+     cidade_entry.delete(0,'end')
+     estado_entry.delete(0,'end')
+     ddd_entry.delete(0,'end')
+     servico_entry.delete(0,'end')
+     data_servico_entry.delete(0,'end')
+     valor_entry.delete(0,'end')
+     parcelas_spinbox.delete(0,'end')
+     valor_parcela_entry.delete(0,'end')
+     comissao_percentual_entry.delete(0,'end')
+     comissao_entry.delete(0,'end')
+     forma_pag_entry.delete(0,'end')
+
+
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4')
 salvar_botao.grid(row=2,column=5,pady=10)
+
+limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4')
+limpar_botao.grid(row=3,column=5,pady=10)
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=5)
 
-def cadastro():
-
-    # Create Table
-            conn = sqlite3.connect('salao.db')
-            table_create_query = '''CREATE TABLE IF NOT EXISTS Student_Data 
-                    (firstname TEXT, lastname TEXT, title TEXT, age INT, nationality TEXT, 
-                    registration_status TEXT, num_courses INT, num_semesters INT,parcela FLOAT)
-            '''
-            conn.execute(table_create_query)
-            
-            # Insert Data
-            data_insert_query = '''INSERT INTO Student_Data (firstname, lastname, title, 
-            age, nationality, registration_status, num_courses, num_semesters) VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?)'''
-            data_insert_tuple = (firstname, lastname, title,
-                                  age, nationality, registration_status, numcourses, numsemesters,prestacao)
-            cursor = conn.cursor()
-
-            x=int(parce)
-            for i in range(0,x):
-                cursor.execute(data_insert_query, data_insert_tuple)
-                conn.commit()
-            conn.close()    
-
-            # firstname.delete(0,'end')
-            # lastname.delete(0,'end')
-            # title.delete(0,'end')
-            # age.delete(0,'end')
-            # nationality.delete(0,'end')
-            # numcourses.delete(0,'end')
-            # numsemesters.delete(0,'end')
-            # registration_status.delete(0,'end')
+#---------------------------------------------------------
 
 
+#-------------------------------------------------------------------------------------------------
+con = sqlite3.connect('salao.db')
+def visualizar():   
+      lista_itens = []
+      with con:
+        #conn = sqlite3.connect('salao.db')
+        cur = con.cursor()
+        cur.execute("SELECT * FROM salao_base")
+        rows = cur.fetchall()
+        for row in rows:
+             lista_itens.append(row)
+        return lista_itens
+     
+#----------------------------------------------------------------------
 
 frame3 = tkinter.LabelFrame(frame)
-frame3.grid(row=3,column=0,padx=20,pady=5)
+frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
-    tabela_head = ['Nome','CPF',  'Telefone','E-mail', 'Serviço','Valor Servico', 'Data Serviço']
-    #lista_itens = visualizar()
-
-    tree = ttk.Treeview(frame3, selectmode="extended",columns=tabela_head, show="headings")
+    tabela_head = ['NOME','CPF',  'TELEFONE','E-Mail', 'SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','COMISSÕES %','VALOR COMISSÕES']
+    #0,1,2,3,12,13,14,15,16
+    tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
     # vertical scrollbar -- Barra de rolagem
     vsb = ttk.Scrollbar(frame3, orient="vertical", command=tree.yview)
@@ -254,25 +325,28 @@ def mostrar():
     hsb = ttk.Scrollbar(frame3, orient="horizontal", command=tree.xview)
 
     tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-    tree.grid(column=0, row=0, sticky='nsew')
+    tree.grid(column=0, row=0, sticky='nsew',padx=5,pady=5)
     vsb.grid(column=1, row=0, sticky='ns')
     hsb.grid(column=0, row=1, sticky='ew')
-    frame3.grid_rowconfigure(0, weight=10)
+    frame3.grid_rowconfigure(0, weight=5)
+    frame3.grid_columnconfigure(0, weight=9)
+    
 
-    hd=["center","center","center","center","center","center","center"]
-    h=[100,80,80,80,100,80,80]
+    hd=["sw","sw","sw","sw","sw","center","center","center","center","center","center"]
+    h=[130,80,80,100,130,120,100,80,100,100,100]
     n=0
 
     for col in tabela_head:
-        tree.heading(col, text=col.title(), anchor=CENTER)
+        tree.heading(col, text=col.title().upper(), anchor=SW)
         # ajusta a largura da coluna para a string do cabeçalho
         tree.column(col, width=h[n],anchor=hd[n])
         n+=1
 
-    # lista_itens = visualizar()
-    # inserindo os itens dentro da tabela
-    # for item in lista_itens:
-    #     tree.insert('', 'end', values=item)
+    lista_itens = visualizar()
+   # inserindo os itens dentro da tabela
+    for item in lista_itens:
+        tree.insert('', 'end', values=item)
+
 
 
 mostrar()
