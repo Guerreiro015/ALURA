@@ -5,22 +5,51 @@ import tkinter
 from tkinter import ttk
 from tkinter import messagebox
 import sqlite3
+import tkinter
+from tkinter import*
+from tkinter import Tk, StringVar, ttk
+from tkinter import messagebox
+from tkinter.commondialog import Dialog
+from tkinter import filedialog as fd
+from PIL import Image, ImageTk
+from tkcalendar import Calendar, DateEntry
+from datetime import date
+from datetime import timedelta
+from datetime import *
+from datetime import datetime
+from dateutil import relativedelta
 
-conn = sqlite3.connect('alunosbd.db')
-table_create_query = '''CREATE TABLE IF NOT EXISTS alunos 
-            (nome TEXT, sobrenome TEXT)
-            '''
-conn.execute(table_create_query)
-            
-def Inserir():
-    n='antonio'
-    s='neto'
-    data_insert_query = '''INSERT INTO alunos (nome, sobrenome) VALUES 
-        (?, ?)'''
-    data_insert_tuple = (n,s)
-    cursor = conn.cursor()
-    cursor.execute(data_insert_query, data_insert_tuple)
-    conn.commit()
-    conn.close()         
+janela = tkinter.Tk()
+janela.title('EMPRESA FICTICIA')
+janela.geometry('600x400')
+janela.configure(background='#F0F8FF')
+frame = tkinter.Frame(janela)
+frame.pack()
 
-#Inserir()
+frame1 = tkinter.LabelFrame(frame, text = 'Informações do Cliente',font=' ivy 10 bold')
+frame1.grid(row=0,column=0,padx=10,pady=5)
+
+
+nome_label = tkinter.Label(frame1,text='Nome do Cliente')
+nome_label.grid(row=0,column=0,pady=0)
+data_entry = DateEntry(frame1)
+data_entry.grid(row=1,column=0,)
+def calculo():
+    valor=data_entry.get()
+    print(valor)
+    valor1=datetime.strptime(valor,'%d/%m/%Y').date()
+    val=timedelta(30)
+    valor2=(valor1+val)
+    valor3=datetime.strftime(valor2,'%d/%m/%Y')
+    valu=valor[3:5]
+    print(valor3)
+    print(valu)
+    
+    d = valor + relativedelta(months=1)
+    print(d)
+
+bot=tkinter.Button(frame1,text='Calcular data',command=calculo)
+bot.grid(row=3,column=0)
+
+
+janela.mainloop()
