@@ -11,6 +11,10 @@ from tkinter import filedialog as fd
 from PIL import Image, ImageTk
 from tkcalendar import Calendar, DateEntry
 from datetime import date
+from datetime import timedelta
+from datetime import *
+from datetime import datetime
+from dateutil import relativedelta
 
 
 import requests
@@ -18,8 +22,9 @@ import sqlite3
 
 janela = tkinter.Tk()
 janela.title('EMPRESA FICTICIA')
-#janela.geometry('800x600')
+janela.geometry('1000x700')
 janela.configure(background='#F0F8FF')
+janela.resizable(width=FALSE, height=FALSE)
 frame = tkinter.Frame(janela)
 frame.pack()
 
@@ -208,7 +213,7 @@ forma_pag_entry.grid(row=1,column=4)
 
 
 def cadastro():
-# try:
+ try:
      no=nome_entry.get()
      cp=cpf_entry.get()
      te=tel_entry.get()
@@ -231,52 +236,69 @@ def cadastro():
      fo=forma_pag_entry.get()  
 
      lista = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo) 
-     x=0
-     for i in lista:
-       if i == "":
-         x += 1
 
-     if x > 0:
-            messagebox.showerror('Errro','Preencha todos os dados e tente novamente') 
+     if len(cp) != 11:
+         messagebox.showerror('ERRO NO CPF','Verifique -  o CPF digitado é Ínválido]') 
      else:  
-            # Create Table
-            conn = sqlite3.connect('salao.db')
-            table_create_query = '''CREATE TABLE IF NOT EXISTS salao_base 
-            (nome TEXT, cpf TEXT, tel TEXT, email TEXT, cadastro TEXT, cep TEXT, 
-            rua TEXT, numero TEXT, bairro TEXT, cidade TEXT, uf TEXT, ddd TEXT, servico TEXT, d_servico TEXT,
-            valor FLOAT,q_parcela FLOAT, parcela FLOAT, com FLOAT, comissao FLOAT, forma TEXT)'''
-                    
-            conn.execute(table_create_query)
-                    
-            # Insert Data
-            insert_query = '''INSERT INTO salao_base 
-                            (nome , cpf , tel , email , cadastro , cep,
-                            rua , numero, bairro ,cidade ,uf ,ddd ,servico ,d_servico ,
-                            valor ,q_parcela , parcela ,com , comissao, forma ) VALUES 
-                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'''
-            
-            # insert_tuple = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo)
-            # cursor = conn.cursor()
+        cpp=f'{cp[:3]}.{cp[3:6]}.{cp[6:9]}-{cp[9:11]}'
+        cpf_entry.delete(0,'end')
+        cpf_entry.insert(0,cpp)
+        cp=cpp
+        x=0
+        for i in lista:
+          if i == "":
+                x += 1
 
-            x=int(pa)
-            y = int(pa)
-            for i in range(0,x):
+        if x > 0:
+                messagebox.showerror('Errro','Preencha todos os dados e tente novamente') 
+        else:  
+                # Create Table
+                conn = sqlite3.connect('salao.db')
+                table_create_query = '''CREATE TABLE IF NOT EXISTS salao_base 
+                (nome TEXT, cpf TEXT, tel TEXT, email TEXT, cadastro TEXT, cep TEXT, 
+                rua TEXT, numero TEXT, bairro TEXT, cidade TEXT, uf TEXT, ddd TEXT, servico TEXT, d_servico TEXT,
+                valor FLOAT,q_parcela FLOAT, parcela FLOAT, com FLOAT, comissao FLOAT, forma TEXT)'''
+                        
+                conn.execute(table_create_query)
+                        
+                # Insert Data
+                insert_query = '''INSERT INTO salao_base 
+                                (nome , cpf , tel , email , cadastro , cep,
+                                rua , numero, bairro ,cidade ,uf ,ddd ,servico ,d_servico ,
+                                valor ,q_parcela , parcela ,com , comissao, forma ) VALUES 
+                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'''
                 
-                insert_tuple = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo)
-                cursor = conn.cursor()
+                
+                x=int(pa)
+                y = int(pa)
+                a=da
+                dias=30
+                for i in range(0,x):
+                    pa=float(pa)
+                    pa=(pa-x)+1
+                    insert_tuple = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo)
+                    cursor = conn.cursor()
 
-                cursor.execute(insert_query, insert_tuple)
-                conn.commit()
+                    cursor.execute(insert_query, insert_tuple)
+                    conn.commit()
 
-                if y > 1:
-                   y = y - 1
-                   pa=float(y)
-                   
-            conn.close()    
-            
-            messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
-  #except:
-     messagebox.showerror('Errro','Verifique os dados e tente novamente')
+                    
+                    if x>1:
+                        x=x-1
+
+                        pa=float(y)
+
+                        valor1=datetime.strptime(da,'%d/%m/%Y').date()
+                        val=timedelta(dias)
+                        valor2=(valor1+val)
+                        da=datetime.strftime(valor2,'%d/%m/%Y')
+                    
+                conn.close()    
+                
+                messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
+                mostrar()
+ except:       
+    messagebox.showerror('Errro','Verifique os dados e tente novamente')
           
 
 def limpar():
@@ -334,9 +356,9 @@ frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
     visualizar()
-    tabela_head = ['NOME','CPF',  'TELEFONE','E-Mail', 'SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','COMISSÕES %','VALOR COMISSÕES']
+    tabela_head = ['NOME','CPF','SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','VALOR COMISSÕES']
     #0,1,2,3,12,13,14,15,16
-    tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
+    tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings")
     # ( tree é o nome da tabela) --------------------------
     # vertical scrollbar -- Barra de rolagem
     vsb = ttk.Scrollbar(frame3, orient="vertical", command=tree.yview)
@@ -348,16 +370,16 @@ def mostrar():
     tree.grid(column=0, row=0, sticky='nsew',padx=5,pady=5)
     vsb.grid(row=0,column=1, sticky='ns')
     hsb.grid(row=1,column=0, sticky='ew')
-    frame3.grid_rowconfigure(0, weight=5)
-    frame3.grid_columnconfigure(0, weight=9)
+    #frame3.grid_rowconfigure(0, weight=5)
+    #frame3.grid_columnconfigure(0, weight=5)
+    frame3.grid_rowconfigure(0, weight=12)
     
-
-    hd=["sw","sw","sw","sw","sw","center","center","center","center","center",'center']
-    h=[130,80,80,100,130,120,100,80,100,100,100]
+    hd=["sw","sw","sw","sw","sw","center","center","center",]
+    h=[130,80,130,100,130,120,100,100]
     n=0
 
     for col in tabela_head:
-        tree.heading(col, text=col.title().upper(), anchor=SW)
+        tree.heading(col, text=col.title().upper(), anchor='center')
         # ajusta a largura da coluna para a string do cabeçalho
         tree.column(col, width=h[n],anchor=hd[n])
         n+=1

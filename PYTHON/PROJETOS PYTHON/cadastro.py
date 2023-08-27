@@ -42,7 +42,7 @@ co9 = "#e9edf5" # Branco cinza claro
 
 janela = Tk()
 janela.title("CONTROLE DE INVENTARIO")
-janela.geometry("900x600")
+janela.geometry("900x800")
 janela.configure(background=co9)
 janela.resizable(width=FALSE, height=FALSE)
 
