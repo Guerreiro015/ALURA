@@ -183,7 +183,7 @@ def valor_parcela():
         
     else:
         va=float(valor_entry.get())
-        
+        valor_entry.insert((0,f'R$:  {va:,.2f}'))
 
     if comissao_percentual_entry.get() == '':
         por=0
@@ -356,14 +356,14 @@ frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
     visualizar()
-    tabela_head = ['NOME','CPF','SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','VALOR COMISSÕES']
+    tabela_head = ['NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','COMISSÃO','VALOR COMISSÃO']
     
-    tree = ttk.Treeview(frame3, selectmode='browse',columns=tabela_head, show="headings",height=10)
+    tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
 
     # ajusta a largura da coluna para a string do cabeçalho
     for i in tabela_head:
-        tree.column(i,anchor='c', width=110)
+        tree.column(i,anchor='c', width=46)
         tree.heading(i, text= i)
 
     # vertical scrollbar -- Barra de rolagem
