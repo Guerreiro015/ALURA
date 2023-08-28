@@ -21,7 +21,7 @@ import requests
 import sqlite3
 
 janela = tkinter.Tk()
-janela.title('EMPRESA FICTICIA')
+janela.title('EMPRESA FICTÍCIA')
 janela.geometry('1000x700')
 janela.configure(background='#F0F8FF')
 janela.resizable(width=FALSE, height=FALSE)
@@ -351,15 +351,21 @@ def visualizar():
      
 #----------------------------------------------------------------------
 
-frame3 = tkinter.LabelFrame(frame)
+frame3 = tkinter.LabelFrame(frame,bg='bisque',fg='green',font='ivy 8 ')
 frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
     visualizar()
     tabela_head = ['NOME','CPF','SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','VALOR COMISSÕES']
-    #0,1,2,3,12,13,14,15,16
-    tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings")
+    
+    tree = ttk.Treeview(frame3, selectmode='browse',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
+
+    # ajusta a largura da coluna para a string do cabeçalho
+    for i in tabela_head:
+        tree.column(i,anchor='c', width=110)
+        tree.heading(i, text= i)
+
     # vertical scrollbar -- Barra de rolagem
     vsb = ttk.Scrollbar(frame3, orient="vertical", command=tree.yview)
 
@@ -370,23 +376,26 @@ def mostrar():
     tree.grid(column=0, row=0, sticky='nsew',padx=5,pady=5)
     vsb.grid(row=0,column=1, sticky='ns')
     hsb.grid(row=1,column=0, sticky='ew')
-    #frame3.grid_rowconfigure(0, weight=5)
-    #frame3.grid_columnconfigure(0, weight=5)
-    frame3.grid_rowconfigure(0, weight=12)
+    frame3.grid_rowconfigure(0, weight=5)
+    frame3.grid_columnconfigure(0, weight=5)
     
-    hd=["sw","sw","sw","sw","sw","center","center","center",]
-    h=[130,80,130,100,130,120,100,100]
-    n=0
+    
+    # hd=["sw","sw","sw","sw","sw","center","center","center",]
+    # h=[130,80,130,100,130,120,100,100]
+    # n=0
 
-    for col in tabela_head:
-        tree.heading(col, text=col.title().upper(), anchor='center')
-        # ajusta a largura da coluna para a string do cabeçalho
-        tree.column(col, width=h[n],anchor=hd[n])
-        n+=1
+    # for col in tabela_head:
+    #     tree.heading(col, text=col.title().upper(), anchor='center')
+    #     # ajusta a largura da coluna para a string do cabeçalho
+    #     tree.column(col, width=h[n],anchor=hd[n])
+    #     n+=1
 
     lista_itens = visualizar()
    # inserindo os itens dentro da tabela
+    ss=[1,2,13,14,15,16,17,19]
+    
     for item in lista_itens:
+    
         tree.insert('', 'end', values=item)
 
 
