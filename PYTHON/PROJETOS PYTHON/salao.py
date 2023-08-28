@@ -22,11 +22,14 @@ import sqlite3
 
 janela = tkinter.Tk()
 janela.title('EMPRESA FICTÍCIA')
-janela.geometry('1000x700')
+janela.geometry('1000x650')
 janela.configure(background='#F0F8FF')
 janela.resizable(width=FALSE, height=FALSE)
 frame = tkinter.Frame(janela)
 frame.pack()
+
+style = ttk.Style(janela)
+style.theme_use("clam")
 
 frame1 = tkinter.LabelFrame(frame, text = 'Informações do Cliente',font=' ivy 10 bold')
 frame1.grid(row=0,column=0,padx=10,pady=5)
@@ -129,7 +132,7 @@ def cep():
         messagebox.showerror('CEP NÃO EXISTE','O Cep Digitado não é Valido')
         
 
-xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='#F0F8FF',command=cep)
+xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='#F0F8FF',command=cep,border=4)
 xxx4.grid(row=2,column=2)
 
 for widget in frame1.winfo_children():
@@ -152,14 +155,18 @@ data_servico_entry.grid(row=1,column=1)
 
 atendente_label = tkinter.Label(frame2,text='Atendente: ')
 atendente_label.grid(row=0,column=2)
-atendente_entry = tkinter.Entry(frame2,width=25)
+atendente_entry = tkinter.Entry(frame2,width=23)
 atendente_entry.grid(row=1,column=2)
 
-comissao_percentual_label = tkinter.Label(frame2,text='Comissão %: ')
+comissao_percentual_label = tkinter.Label(frame2,text='% Comissão: ')
 comissao_percentual_label.grid(row=0,column=3)
-comissao_percentual_entry = tkinter.Entry(frame2,width=10)
+comissao_percentual_entry = tkinter.Entry(frame2)
 comissao_percentual_entry.grid(row=1,column=3)
 
+comissao_label=tkinter.Label(frame2,text='Valor Comissão:')
+comissao_label.grid(row=0,column=4)
+comissao_entry=tkinter.Entry(frame2)
+comissao_entry.grid(row=1,column=4)
 
 valor_label = tkinter.Label(frame2,text='Valor do Servico')
 valor_label.grid(row=2,column=0)
@@ -171,10 +178,6 @@ parcela_label.grid(row=2,column=1)
 parcelas_spinbox=tkinter.Spinbox(frame2,from_=1,to='infinity',width=5)
 parcelas_spinbox.grid(row=3,column=1)
 
-comissao_label=tkinter.Label(frame2,text='Valor Comissão:')
-comissao_label.grid(row=2,column=3)
-comissao_entry=tkinter.Entry(frame2)
-comissao_entry.grid(row=3,column=3)
 
 def valor_parcela():
  try:
@@ -183,7 +186,7 @@ def valor_parcela():
         
     else:
         va=float(valor_entry.get())
-        valor_entry.insert((0,f'R$:  {va:,.2f}'))
+        
 
     if comissao_percentual_entry.get() == '':
         por=0
@@ -197,6 +200,8 @@ def valor_parcela():
     comissao=va*por/100
     comissao_entry.delete(0,'end')
     comissao_entry.insert(0,f'R$:  {comissao:,.2f}')
+
+    
  except:  
      messagebox.showerror(' É sério? você digitou letra ?', 'Os valores tem que ser números')
 
@@ -205,11 +210,16 @@ valor_parcela_label.grid(row=2,column=2)
 valor_parcela_entry=tkinter.Entry(frame2)
 valor_parcela_entry.grid(row=3,column=2)
 
+entrada_label=tkinter.Label(frame2,text='ENTRADA')
+entrada_label.grid(row=2,column=3)
+var_entrada=tkinter.StringVar(value='Sem entrada')
+entrada_entry=tkinter.Checkbutton(frame2,text='Com entrada',variable=var_entrada,onvalue='Com Entrada',offvalue='Sem Entrada')
+entrada_entry.grid(row=3,column=3)
 
 forma_pag_label=tkinter.Label(frame2,text='Forma de Pagamento')
-forma_pag_label.grid(row=0,column=4)
+forma_pag_label.grid(row=2,column=4)
 forma_pag_entry=ttk.Combobox(frame2,values=['Pix','Dinheiro','Débito','Crédito','Fiado','Cortesia da casa'])
-forma_pag_entry.grid(row=1,column=4)
+forma_pag_entry.grid(row=3,column=4)
 
 
 def cadastro():
@@ -273,6 +283,7 @@ def cadastro():
                 y = int(pa)
                 a=da
                 dias=30
+                
                 for i in range(0,x):
                     pa=float(pa)
                     pa=(pa-x)+1
@@ -324,14 +335,14 @@ def limpar():
      forma_pag_entry.delete(0,'end')
 
 
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4')
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4',relief='raised')
 salvar_botao.grid(row=2,column=5,pady=10)
 
-limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4')
+limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4',relief='raised')
 limpar_botao.grid(row=3,column=5,pady=10)
 
 for widget in frame2.winfo_children():
-    widget.grid_configure(padx=10,pady=5)
+    widget.grid_configure(padx=10,pady=3)
 
 #---------------------------------------------------------
 
@@ -356,7 +367,7 @@ frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
     visualizar()
-    tabela_head = ['NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'VALOR SERVICO','PARCELAS','VALOR DAS PARCELAS','COMISSÃO','VALOR COMISSÃO']
+    tabela_head = ['NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO']
     
     tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
