@@ -16,7 +16,6 @@ from datetime import *
 from datetime import datetime
 from dateutil import relativedelta
 
-
 import requests
 import sqlite3
 
@@ -29,7 +28,7 @@ frame = tkinter.Frame(janela)
 frame.pack()
 
 style = ttk.Style(janela)
-style.theme_use("clam")
+style.theme_use('clam')
 
 frame1 = tkinter.LabelFrame(frame, text = 'Informações do Cliente',font=' ivy 10 bold')
 frame1.grid(row=0,column=0,padx=10,pady=5)
@@ -105,19 +104,14 @@ def cep():
         
     try:
         codigo=str(cep_entry.get())
-        # print(codigo)
-        # print(xxx3.get())
+        
         r = requests.get(f'https://viacep.com.br/ws/{codigo}/json/')
         dados = r.json() 
 
-     
-        rua_entry.delete(0,'end')
-        bairro_entry.delete(0,'end')
-        cidade_entry.delete(0,'end')
-        estado_entry.delete(0,'end')
-        ddd_entry.delete(0,'end')
-        cep_entry.delete(0,'end')
-
+        endereco=[rua_entry,bairro_entry,cidade_entry,estado_entry,ddd_entry,cep_entry]
+        for i in endereco:
+            i.delete(0,'end')
+        
         rua_entry.insert(0,dados["logradouro"])
         bairro_entry.insert(0,dados["bairro"])
         cidade_entry.insert(0,dados["localidade"])
@@ -334,18 +328,17 @@ def limpar():
      comissao_entry.delete(0,'end')
      forma_pag_entry.delete(0,'end')
 
+limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',fg='Green',border=4,relief='raised')
+limpar_botao.grid(row=1,column=5,pady=10)
 
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4',relief='raised')
-salvar_botao.grid(row=2,column=5,pady=10)
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='Arial 9 bold',fg='Red',border=4,bg='#7FFFD4',relief='raised')
+salvar_botao.grid(row=3,column=5,pady=10)
 
-limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',border=4,bg='#7FFFD4',relief='raised')
-limpar_botao.grid(row=3,column=5,pady=10)
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=3)
 
 #---------------------------------------------------------
-
 
 #-------------------------------------------------------------------------------------------------
 con = sqlite3.connect('salao.db')
@@ -366,6 +359,7 @@ frame3 = tkinter.LabelFrame(frame,bg='bisque',fg='green',font='ivy 8 ')
 frame3.grid(row=3,column=0,padx=10,pady=5)
 
 def mostrar():
+    global tree
     visualizar()
     tabela_head = ['NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO']
     
@@ -408,10 +402,28 @@ def mostrar():
     for item in lista_itens:
     
         tree.insert('', 'end', values=item)
-
-
-
 mostrar()
+
+def verificar():
+    global tree
+    base=[nome_entry, cpf_entry, tel_entry, email_entry, cad_entry, cep_entry, rua_entry, numero_entry, bairro_entry, cidade_entry,
+          estado_entry, ddd_entry,servico_entry, data_servico_entry, valor_entry, parcelas_spinbox, valor_parcela_entry,
+            comissao_percentual_entry, comissao_entry, forma_pag_entry]
+
+    for i in base:
+        i.delete(0,'end')  
+
+    treev_dados = tree.focus()
+    treev_dicionario = tree.item(treev_dados)
+    treev_lista = treev_dicionario['values']
+
+    x=0
+    for i in base:
+        i.insert(0,treev_lista[x])
+        x +=1
+botao_verificar=tkinter.Button(frame2,text='Verificar Dados',font='ivy 8 bold',fg='Blue',border=4,command=verificar)
+botao_verificar.grid(row=2,column=5)
+
 
 janela.mainloop()
 
