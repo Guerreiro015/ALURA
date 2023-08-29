@@ -19,6 +19,7 @@ from dateutil import relativedelta
 import requests
 import sqlite3
 
+
 janela = tkinter.Tk()
 janela.title('EMPRESA FICTÍCIA')
 janela.geometry('1000x650')
@@ -217,7 +218,7 @@ forma_pag_entry.grid(row=3,column=4)
 
 
 def cadastro():
- try:
+ #try:
      no=nome_entry.get()
      cp=cpf_entry.get()
      te=tel_entry.get()
@@ -259,7 +260,7 @@ def cadastro():
                 # Create Table
                 conn = sqlite3.connect('salao.db')
                 table_create_query = '''CREATE TABLE IF NOT EXISTS salao_base 
-                (nome TEXT, cpf TEXT, tel TEXT, email TEXT, cadastro TEXT, cep TEXT, 
+                (id INTEGER PRIMARY KEY AUTOINCREMENT, nome, TEXT, cpf TEXT, tel TEXT, email TEXT, cadastro TEXT, cep TEXT, 
                 rua TEXT, numero TEXT, bairro TEXT, cidade TEXT, uf TEXT, ddd TEXT, servico TEXT, d_servico TEXT,
                 valor FLOAT,q_parcela FLOAT, parcela FLOAT, com FLOAT, comissao FLOAT, forma TEXT)'''
                         
@@ -302,8 +303,8 @@ def cadastro():
                 
                 messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
                 mostrar()
- except:       
-    messagebox.showerror('Errro','Verifique os dados e tente novamente')
+ #except:       
+   # messagebox.showerror('Errro','Verifique os dados e tente novamente')
           
 
 def limpar():
@@ -361,7 +362,7 @@ frame3.grid(row=3,column=0,padx=10,pady=5)
 def mostrar():
     global tree
     visualizar()
-    tabela_head = ['NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO']
+    tabela_head = ['INDICE','NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO']
     
     tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
@@ -418,7 +419,7 @@ def verificar():
     treev_dicionario = tree.item(treev_dados)
     treev_lista = treev_dicionario['values']
 
-    x=0
+    x=1
     for i in base:
         i.insert(0,treev_lista[x])
         x +=1
