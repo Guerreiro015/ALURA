@@ -216,9 +216,35 @@ forma_pag_label.grid(row=2,column=4)
 forma_pag_entry=ttk.Combobox(frame2,values=['Pix','Dinheiro','Débito','Crédito','Fiado','Cortesia da casa'])
 forma_pag_entry.grid(row=3,column=4)
 
+def dados_tabela():
+ 
+     no=nome_entry.get()
+     cp=cpf_entry.get()
+     te=tel_entry.get()
+     em=email_entry.get()
+     ca=cad_entry.get()
+     ce=cep_entry.get()
+     ru=rua_entry.get()
+     nu=numero_entry.get()
+     ba=bairro_entry.get()
+     ci=cidade_entry.get()
+     uf=estado_entry.get()
+     dd=ddd_entry.get()
+     se=servico_entry.get()
+     da=data_servico_entry.get()
+     va=valor_entry.get()
+     pa=parcelas_spinbox.get()
+     vp=valor_parcela_entry.get()
+     co=comissao_percentual_entry.get()
+     cco=comissao_entry.get()
+     fo=forma_pag_entry.get()  
+
+     lista = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo) 
+     return lista
+
 
 def cadastro():
- #try:
+ try:
      no=nome_entry.get()
      cp=cpf_entry.get()
      te=tel_entry.get()
@@ -303,8 +329,8 @@ def cadastro():
                 
                 messagebox.showinfo('Sucesso ','Os dados foram inseridos com sucesso')
                 mostrar()
- #except:       
-   # messagebox.showerror('Errro','Verifique os dados e tente novamente')
+ except:       
+    messagebox.showerror('Errro','Verifique os dados e tente novamente')
           
 
 def limpar():
@@ -386,16 +412,7 @@ def mostrar():
     frame3.grid_columnconfigure(0, weight=5)
     
     
-    # hd=["sw","sw","sw","sw","sw","center","center","center",]
-    # h=[130,80,130,100,130,120,100,100]
-    # n=0
-
-    # for col in tabela_head:
-    #     tree.heading(col, text=col.title().upper(), anchor='center')
-    #     # ajusta a largura da coluna para a string do cabeçalho
-    #     tree.column(col, width=h[n],anchor=hd[n])
-    #     n+=1
-
+    
     lista_itens = visualizar()
    # inserindo os itens dentro da tabela
     ss=[1,2,13,14,15,16,17,19]
@@ -429,6 +446,15 @@ def verificar():
 botao_verificar=tkinter.Button(frame2,text='* Ver  Dados *',font='ivy 8 bold',fg='Blue',border=4,command=verificar)
 botao_verificar.grid(row=1,column=5)
 
+def atualizar_dados(dados_tabela):
+    with con:
+        cur = con.cursor()
+        query = '''UPDATE inventario SET nome=?, cpf=?, tel=?, email=?, cadastro=?,
+        cep=?,rua=?, numero=?, bairro=?,cidade=?,uf=?,ddd=?,servico=?,d_servico=?,valor=?,q_parcela=?, parcela=?,com=?, comissao=?, forma=? WHERE id=?'''
+        cur.execute(query,dados_tabela)
+
+botao_verificar=tkinter.Button(frame2,text='Atualizar Dados',font='ivy 8 bold',fg='Blue',border=4,command=atualizar_dados)
+botao_verificar.grid(row=0,column=5)
 
 janela.mainloop()
 
