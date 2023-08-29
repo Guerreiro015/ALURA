@@ -329,9 +329,9 @@ def limpar():
      forma_pag_entry.delete(0,'end')
 
 limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',fg='Green',border=4,relief='raised')
-limpar_botao.grid(row=1,column=5,pady=10)
+limpar_botao.grid(row=2,column=5,pady=10)
 
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='Arial 9 bold',fg='Red',border=4,bg='#7FFFD4',relief='raised')
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='Arial 9 bold',fg='Red',border=4,relief='raised')
 salvar_botao.grid(row=3,column=5,pady=10)
 
 
@@ -405,6 +405,7 @@ def mostrar():
 mostrar()
 
 def verificar():
+   try: 
     global tree
     base=[nome_entry, cpf_entry, tel_entry, email_entry, cad_entry, cep_entry, rua_entry, numero_entry, bairro_entry, cidade_entry,
           estado_entry, ddd_entry,servico_entry, data_servico_entry, valor_entry, parcelas_spinbox, valor_parcela_entry,
@@ -421,8 +422,11 @@ def verificar():
     for i in base:
         i.insert(0,treev_lista[x])
         x +=1
-botao_verificar=tkinter.Button(frame2,text='Verificar Dados',font='ivy 8 bold',fg='Blue',border=4,command=verificar)
-botao_verificar.grid(row=2,column=5)
+   except:
+       messagebox.showerror('ERRO','Nenhum dado selcionado')
+
+botao_verificar=tkinter.Button(frame2,text='* Ver  Dados *',font='ivy 8 bold',fg='Blue',border=4,command=verificar)
+botao_verificar.grid(row=1,column=5)
 
 
 janela.mainloop()
