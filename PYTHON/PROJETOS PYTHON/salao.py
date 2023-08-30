@@ -1,5 +1,22 @@
 import os
 os.system('cls')
+
+Co0 = "#2e2d2b" # Preta
+co1 = "#feffff" # Branca
+co2 = "#4fa882" # Verde
+co3 = "#38576b" # Azul
+co4 = "#403d3d" # cinza
+co5 = "#e06636" # laranja
+co6 = "#038cfc" # Azul claro
+co7 = "#3fbfb9" # Verde azulado
+co8 = "#263238" # Preto claro
+co9 = "#e9edf5" # Branco cinza claro
+co10 = '#ffff00' # amarelo
+co11 = '#ce0018' # Vermelho
+co12 = '#106b21' # Verde
+co13 = '#fc9303' # Laranja
+co14 = '#5a005a' # roxo
+
 import requests
 
 import tkinter
@@ -19,6 +36,9 @@ from dateutil import relativedelta
 import requests
 import sqlite3
 
+conn = sqlite3.connect('salao.db')
+global tree
+global treev_lista
 
 janela = tkinter.Tk()
 janela.title('EMPRESA FICTÍCIA')
@@ -217,7 +237,10 @@ forma_pag_entry=ttk.Combobox(frame2,values=['Pix','Dinheiro','Débito','Crédito
 forma_pag_entry.grid(row=3,column=4)
 
 def dados_tabela():
- 
+     conn = sqlite3.connect('salao.db')
+     treev_dados = tree.focus()
+     treev_dicionario = tree.item(treev_dados)
+     treev_lista = treev_dicionario['values']
      no=nome_entry.get()
      cp=cpf_entry.get()
      te=tel_entry.get()
@@ -238,9 +261,10 @@ def dados_tabela():
      co=comissao_percentual_entry.get()
      cco=comissao_entry.get()
      fo=forma_pag_entry.get()  
+     id=treev_lista[0]
 
-     lista = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo) 
-     return lista
+     lista_dados = (no,cp,te,em,ca,ce,ru,nu,ba,ci,uf,dd,se,da,va,pa,vp,co,cco,fo,id) 
+     return lista_dados
 
 
 def cadastro():
@@ -355,12 +379,6 @@ def limpar():
      comissao_entry.delete(0,'end')
      forma_pag_entry.delete(0,'end')
 
-limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados',font='ivy 8 bold',fg='Green',border=4,relief='raised')
-limpar_botao.grid(row=2,column=5,pady=10)
-
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados',font='Arial 9 bold',fg='Red',border=4,relief='raised')
-salvar_botao.grid(row=3,column=5,pady=10)
-
 
 for widget in frame2.winfo_children():
     widget.grid_configure(padx=10,pady=3)
@@ -388,14 +406,15 @@ frame3.grid(row=3,column=0,padx=10,pady=5)
 def mostrar():
     global tree
     visualizar()
-    tabela_head = ['INDICE','NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF','DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO']
+    tabela_head = ['INDICE','NOME','CPF','TELEFONE','E-MAIL','CADASTRO','CEP','RUA','NÚMERO','BAIRRO','CIDADE','UF',
+                   'DDD','SERVIÇO','DATA SERVIÇO', 'Vlr. SERVICO','Quant. PARCELAS','Vlr. PARCELAS','% COMISSÃO','Vlr. COMISSÃO','FORMA DE PG']
     
     tree = ttk.Treeview(frame3, selectmode='extended',columns=tabela_head, show="headings",height=10)
     # ( tree é o nome da tabela) --------------------------
 
     # ajusta a largura da coluna para a string do cabeçalho
     for i in tabela_head:
-        tree.column(i,anchor='c', width=46)
+        tree.column(i,anchor='center', width=42)
         tree.heading(i, text= i)
 
     # vertical scrollbar -- Barra de rolagem
@@ -425,6 +444,7 @@ mostrar()
 def verificar():
    try: 
     global tree
+   
     base=[nome_entry, cpf_entry, tel_entry, email_entry, cad_entry, cep_entry, rua_entry, numero_entry, bairro_entry, cidade_entry,
           estado_entry, ddd_entry,servico_entry, data_servico_entry, valor_entry, parcelas_spinbox, valor_parcela_entry,
             comissao_percentual_entry, comissao_entry, forma_pag_entry]
@@ -435,26 +455,43 @@ def verificar():
     treev_dados = tree.focus()
     treev_dicionario = tree.item(treev_dados)
     treev_lista = treev_dicionario['values']
-
+   
     x=1
     for i in base:
         i.insert(0,treev_lista[x])
         x +=1
    except:
-       messagebox.showerror('ERRO','Nenhum dado selcionado')
+       messagebox.showerror('ERRO','Nenhum dado selecionado')
 
-botao_verificar=tkinter.Button(frame2,text='* Ver  Dados *',font='ivy 8 bold',fg='Blue',border=4,command=verificar)
-botao_verificar.grid(row=1,column=5)
 
-def atualizar_dados(dados_tabela):
-    with con:
+def atualizar_dados():
+   try:  
+     lista=dados_tabela()
+    
+     with con:
         cur = con.cursor()
-        query = '''UPDATE inventario SET nome=?, cpf=?, tel=?, email=?, cadastro=?,
-        cep=?,rua=?, numero=?, bairro=?,cidade=?,uf=?,ddd=?,servico=?,d_servico=?,valor=?,q_parcela=?, parcela=?,com=?, comissao=?, forma=? WHERE id=?'''
-        cur.execute(query,dados_tabela)
+        query = '''UPDATE salao_base SET nome=?, cpf=?, tel=?, email=?, cadastro=?,
+        cep=?,rua=?, numero=?, bairro=?,cidade=?,uf=?,ddd=?,servico=?,d_servico=?,
+        valor=?,q_parcela=?, parcela=?,com=?, comissao=?, forma=? WHERE id=?'''
+        cur.execute(query,lista)
+        messagebox.showinfo('SUCESSO', 'Os dados foram alterados com sucesso')
+     mostrar()
 
-botao_verificar=tkinter.Button(frame2,text='Atualizar Dados',font='ivy 8 bold',fg='Blue',border=4,command=atualizar_dados)
+   except:
+       messagebox.showerror('ERRRO!!!','Selecione um registro para alteração')
+
+botao_verificar=tkinter.Button(frame2,text='Ver  Dados'.upper(),anchor=CENTER,font='ivy 8 bold',bg='yellow',fg='red',border=4,command=verificar,width=15)
 botao_verificar.grid(row=0,column=5)
+
+limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados'.upper(),font='ivy 8 bold',fg='Blue',border=4,relief='raised',width=15)
+limpar_botao.grid(row=1,column=5,pady=10)
+
+botao_verificar=tkinter.Button(frame2,text='Atualizar'.upper(),font='ivy 8 bold',bg=co12,fg=co1,border=4,command=atualizar_dados,width=15)
+botao_verificar.grid(row=2,column=5)
+
+
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados'.upper(),anchor=CENTER,font='Ivy 8 bold',bg=co11,fg=co9,width=15,border=4)
+salvar_botao.grid(row=3,column=5,pady=10)
 
 janela.mainloop()
 
