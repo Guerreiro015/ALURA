@@ -386,12 +386,12 @@ for widget in frame2.winfo_children():
 #---------------------------------------------------------
 
 #-------------------------------------------------------------------------------------------------
-con = sqlite3.connect('salao.db')
+conn = sqlite3.connect('salao.db')
 def visualizar():   
       lista_itens = []
-      with con:
+      with conn:
         #conn = sqlite3.connect('salao.db')
-        cur = con.cursor()
+        cur = conn.cursor()
         cur.execute("SELECT * FROM salao_base")
         rows = cur.fetchall()
         for row in rows:
@@ -468,8 +468,8 @@ def atualizar_dados():
    try:  
      lista=dados_tabela()
     
-     with con:
-        cur = con.cursor()
+     with conn:
+        cur = conn.cursor()
         query = '''UPDATE salao_base SET nome=?, cpf=?, tel=?, email=?, cadastro=?,
         cep=?,rua=?, numero=?, bairro=?,cidade=?,uf=?,ddd=?,servico=?,d_servico=?,
         valor=?,q_parcela=?, parcela=?,com=?, comissao=?, forma=? WHERE id=?'''
@@ -480,21 +480,44 @@ def atualizar_dados():
    except:
        messagebox.showerror('ERRRO!!!','Selecione um registro para alteração')
 
+
+def deletar_dados():
+
+  try:  
+    
+    lista=dados_tabela()    
+    i=int(lista[20])
+    i=[i]
+    
+    with conn:
+        cur = conn.cursor()
+        query = "DELETE FROM salao_base WHERE id=?"
+        cur.execute(query,i)      
+
+
+        
+    mostrar()
+    messagebox.showinfo('SUCESSO', 'Os dados foram deletados com sucesso')
+
+  except:
+    messagebox.showerror('ERRRO!!!','Selecione um registro apagar')
+
+
 botao_verificar=tkinter.Button(frame2,text='Ver  Dados'.upper(),anchor='center',font='ivy 8 bold',bg='blue',fg=co1,border=4,command=verificar,width=25)
 botao_verificar.grid(row=4,column=0)
 
 limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados'.upper(),anchor='center',font='ivy 8 bold',fg='Blue',border=4,width=22)
 limpar_botao.grid(row=4,column=1,pady=10)
 
-botao_verificar=tkinter.Button(frame2,text='Atualizar'.upper(),font='ivy 8 bold',bg=co12,fg=co1,border=4,command=atualizar_dados,width=25)
+botao_verificar=tkinter.Button(frame2,text='ALTERAR DADOS'.upper(),font='ivy 8 bold',bg=co12,fg=co1,border=4,command=atualizar_dados,width=25)
 botao_verificar.grid(row=4,column=2)
 
 
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg=co11,fg=co9,width=25,border=4)
-salvar_botao.grid(row=4,column=3,pady=10)
-
-salvar_botao=tkinter.Button(frame2,command=limpar,text='Apagar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg=co11,fg=co9,width=22,border=4)
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg='BLUE',fg=co9,width=25,border=4)
 salvar_botao.grid(row=4,column=4,pady=10)
+
+salvar_botao=tkinter.Button(frame2,command=deletar_dados,text='Apagar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg=co11,fg=co9,width=22,border=4)
+salvar_botao.grid(row=4,column=3,pady=10)
 
 
 janela.mainloop()
