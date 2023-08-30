@@ -81,10 +81,10 @@ cad_entry=DateEntry(frame1)
 cad_entry.grid(row=1,column=4)
 
 
-cep_label=tkinter.Label(frame1,text='Digite o número do CEP:')
-cep_label.grid(row=2,column=0)
+cep_label=tkinter.Label(frame1,text='Número do CEP:')
+cep_label.grid(row=0,column=4)
 cep_entry=tkinter.Entry(frame1,bg='#F0F8FF')
-cep_entry.grid(row=2,column=1)
+cep_entry.grid(row=1,column=4)
 
 
 
@@ -148,7 +148,7 @@ def cep():
         
 
 xxx4=tkinter.Button(frame1,text='Consultar CEP:',bg='#F0F8FF',command=cep,border=4)
-xxx4.grid(row=2,column=2)
+xxx4.grid(row=0,column=5)
 
 for widget in frame1.winfo_children():
     widget.grid_configure(padx=10,pady=5)
@@ -414,7 +414,7 @@ def mostrar():
 
     # ajusta a largura da coluna para a string do cabeçalho
     for i in tabela_head:
-        tree.column(i,anchor='center', width=42)
+        tree.column(i,anchor='center', width=43)
         tree.heading(i, text= i)
 
     # vertical scrollbar -- Barra de rolagem
@@ -424,7 +424,7 @@ def mostrar():
     hsb = ttk.Scrollbar(frame3, orient="horizontal", command=tree.xview)
 
     tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-    tree.grid(column=0, row=0, sticky='nsew',padx=5,pady=5)
+    tree.grid(column=0, row=0, sticky='nsew')
     vsb.grid(row=0,column=1, sticky='ns')
     hsb.grid(row=1,column=0, sticky='ew')
     frame3.grid_rowconfigure(0, weight=5)
@@ -480,18 +480,22 @@ def atualizar_dados():
    except:
        messagebox.showerror('ERRRO!!!','Selecione um registro para alteração')
 
-botao_verificar=tkinter.Button(frame2,text='Ver  Dados'.upper(),anchor=CENTER,font='ivy 8 bold',bg='yellow',fg='red',border=4,command=verificar,width=15)
-botao_verificar.grid(row=0,column=5)
+botao_verificar=tkinter.Button(frame2,text='Ver  Dados'.upper(),anchor='center',font='ivy 8 bold',bg='blue',fg=co1,border=4,command=verificar,width=25)
+botao_verificar.grid(row=4,column=0)
 
-limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados'.upper(),font='ivy 8 bold',fg='Blue',border=4,relief='raised',width=15)
-limpar_botao.grid(row=1,column=5,pady=10)
+limpar_botao=tkinter.Button(frame2,command=limpar,text='Limpar Dados'.upper(),anchor='center',font='ivy 8 bold',fg='Blue',border=4,width=22)
+limpar_botao.grid(row=4,column=1,pady=10)
 
-botao_verificar=tkinter.Button(frame2,text='Atualizar'.upper(),font='ivy 8 bold',bg=co12,fg=co1,border=4,command=atualizar_dados,width=15)
-botao_verificar.grid(row=2,column=5)
+botao_verificar=tkinter.Button(frame2,text='Atualizar'.upper(),font='ivy 8 bold',bg=co12,fg=co1,border=4,command=atualizar_dados,width=25)
+botao_verificar.grid(row=4,column=2)
 
 
-salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados'.upper(),anchor=CENTER,font='Ivy 8 bold',bg=co11,fg=co9,width=15,border=4)
-salvar_botao.grid(row=3,column=5,pady=10)
+salvar_botao=tkinter.Button(frame2,command=cadastro,text='Salvar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg=co11,fg=co9,width=25,border=4)
+salvar_botao.grid(row=4,column=3,pady=10)
+
+salvar_botao=tkinter.Button(frame2,command=limpar,text='Apagar Dados'.upper(),anchor='center',font='Ivy 8 bold',bg=co11,fg=co9,width=22,border=4)
+salvar_botao.grid(row=4,column=4,pady=10)
+
 
 janela.mainloop()
 
