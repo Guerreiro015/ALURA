@@ -495,7 +495,7 @@ def deletar_dados():
         cur.execute(query,i)      
 
 
-        
+    limpar()   
     mostrar()
     messagebox.showinfo('SUCESSO', 'Os dados foram deletados com sucesso')
 
