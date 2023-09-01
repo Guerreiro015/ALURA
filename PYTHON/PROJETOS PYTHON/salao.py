@@ -390,7 +390,7 @@ conn = sqlite3.connect('salao.db')
 def visualizar():   
       lista_itens = []
       with conn:
-        #conn = sqlite3.connect('salao.db')
+        
         cur = conn.cursor()
         cur.execute("SELECT * FROM salao_base")
         rows = cur.fetchall()
@@ -434,11 +434,11 @@ def mostrar():
     
     lista_itens = visualizar()
    # inserindo os itens dentro da tabela
-    ss=[1,2,13,14,15,16,17,19]
-    
+        
     for item in lista_itens:
     
         tree.insert('', 'end', values=item)
+
 mostrar()
 
 def verificar():
