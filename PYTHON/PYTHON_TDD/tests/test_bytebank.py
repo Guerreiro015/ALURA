@@ -1,4 +1,5 @@
-
+import os
+os.system('cls')
 
 from bytebank import Funcionario
 
@@ -11,3 +12,4 @@ class TestClass:
         resultado = funcionario_teste.idade() # When-ação
 
         assert resultado == esperado  # Then-desfecho
+
