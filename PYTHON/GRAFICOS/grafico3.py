@@ -37,7 +37,6 @@ print(dados_brasil)
 
 # VAMOS USAR O PARAMETRO FIG, AX
 
-import matplotlib.pyplot as plt
 
 fig,ax = plt.subplots(figsize=(8,4))
 

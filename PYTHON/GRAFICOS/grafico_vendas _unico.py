@@ -27,8 +27,7 @@ print(df)
 
 
 # Criar a figura e os subplots
-fig, ax = plt.subplots(figsize=(10
-                                , 4))
+fig, ax = plt.subplots(figsize=(10, 4))
 
 # Ajustar os espaçamentos entre os subplots
 plt.subplots_adjust(wspace=0.3, hspace=0.4)
