@@ -1,5 +1,8 @@
 import os
 os.system('cls')
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
 
 Co0 = "#2e2d2b" # Preta
 co1 = "#feffff" # Branca
@@ -85,20 +88,20 @@ def mostrar():
         tree.heading(i, text= i)
 
     # vertical scrollbar -- Barra de rolagem
-    vsb = ttk.Scrollbar(frame3, orient="vertical", command=tree.yview)
+    vsb = ttk.Scrollbar(frame1, orient="vertical", command=tree.yview)
 
     # horizontal scrollbar -- Barra de rolagem
-    hsb = ttk.Scrollbar(frame3, orient="horizontal", command=tree.xview)
+    hsb = ttk.Scrollbar(frame1, orient="horizontal", command=tree.xview)
 
     tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
     tree.grid(column=0, row=0, sticky='nsew')
     vsb.grid(row=0,column=1, sticky='ns')
     hsb.grid(row=1,column=0, sticky='ew')
-    frame3.grid_rowconfigure(0, weight=5)
-    frame3.grid_columnconfigure(0, weight=5)
+    frame1.grid_rowconfigure(0, weight=5)
+    frame1.grid_columnconfigure(0, weight=5)
     
     
-    
+  
     lista_itens = visualizar()
    # inserindo os itens dentro da tabela
         
@@ -108,11 +111,43 @@ def mostrar():
 
 mostrar()
 
+frame2 = tkinter.LabelFrame(frame,bg='bisque',fg='green',font='ivy 8 ')
+frame2.grid(row=3,column=0,padx=10,pady=5)
 
 
+lista_itens = visualizar()
+nomes=[]
+valor=[]    
+for item in lista_itens:
+    nomes.append(item[1])
+    valor.append(item[15])
+print(nomes)
+print(valor)  
 
+df=pd.DataFrame({'NOMES': nomes,'VALOR': valor})
+df.set_index('NOMES', inplace=True)
+print(df)
+
+
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+figura=plt.figure(figsize=(10,4),dpi=60)
+grafico = figura.add_subplot(111)
+
+
+# canva = FigureCanvasTkAgg(figura,janela)
+# canva.get_tk_widget().grid(row=1,column=0)
+
+
+fig,ax = plt.subplots(figsize=(14,5))
+ax.plot(df.index, df['VALOR'],lw=3)
+
+
+ax.set_title('GASTOS COM SERVIÇOS')
+ax.set_xlabel('CLIENTES',fontsize=14,color='blue')
+ax.set_ylabel('VALORES',fontsize=14)
+ax.xaxis.set_tick_params(labelsize=8) #Tamanho da letra do eixo
+ax.yaxis.set_tick_params(labelsize=10) #Tamanho da letra do eixo
+plt.show()
 
 janela.mainloop()
-
-
-

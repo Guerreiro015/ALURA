@@ -2,6 +2,7 @@ import os
 os.system('cls')
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 df = pd.read_csv('imigrantes.csv')
 print(df)

@@ -18,7 +18,7 @@ print(df)
 anos=list(map(str,range(1980,2014))) 
 print(anos)
 
-america_sul = df.query('Região == "América do Sul"')
+america_sul = df.query('Região == "América do Sul"') # PEGAR UMA PARTE ESPECIFICA DO DATAFRAME
 print(america_sul)
 
 america_sul=america_sul.sort_values('Total',ascending=True) #ordenando do menor pro maior
