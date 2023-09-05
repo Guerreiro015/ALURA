@@ -131,16 +131,20 @@ print(df)
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-figura=plt.figure(figsize=(10,4),dpi=60)
-grafico = figura.add_subplot(111)
+figura=plt.figure(figsize=(12,5),dpi=100)
+ax = figura.add_subplot(111)
 
+
+canvas = FigureCanvasTkAgg(figura, master = janela)   
+canvas.draw() 
+canvas.get_tk_widget().pack() 
 
 # canva = FigureCanvasTkAgg(figura,janela)
 # canva.get_tk_widget().grid(row=1,column=0)
 
 
-fig,ax = plt.subplots(figsize=(14,5))
-ax.plot(df.index, df['VALOR'],lw=3)
+#fig,ax = plt.subplots(figsize=(14,5))
+ax.bar(df.index, df['VALOR'],lw=3)
 
 
 ax.set_title('GASTOS COM SERVIÇOS')
