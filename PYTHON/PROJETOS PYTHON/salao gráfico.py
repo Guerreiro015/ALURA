@@ -120,7 +120,7 @@ nomes=[]
 valor=[]    
 for item in lista_itens:
     nomes.append(item[1])
-    valor.append(item[15])
+    valor.append(item[17])
 print(nomes)
 print(valor)  
 
@@ -149,7 +149,7 @@ ax.bar(df.index, df['VALOR'],lw=3)
 
 ax.set_title('GASTOS COM SERVIÇOS')
 ax.set_xlabel('CLIENTES',fontsize=14,color='blue')
-ax.set_ylabel('VALORES',fontsize=14)
+ax.set_ylabel('Comissões',fontsize=14)
 ax.xaxis.set_tick_params(labelsize=8) #Tamanho da letra do eixo
 ax.yaxis.set_tick_params(labelsize=10) #Tamanho da letra do eixo
 plt.show()
