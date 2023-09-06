@@ -3,8 +3,8 @@ os.system('cls')
 
 import pandas as pd
 import matplotlib.pyplot as plt
-# IPython_default = plt.rcParams.copy()
-# plt.style.use('fivethirtyeight')
+
+
 cores = []
 
 df = pd.read_csv('imigrantes.csv')
@@ -15,7 +15,7 @@ df.set_index('País',inplace=True) # Colocar o culuna pais como indice
 #print(df)
 
 
-anos=list(map(str,range(1980,2014))) 
+anos=list(map(str,range(1980,2014))) #Criando uma lista  de anos
 #print(anos)
 
 america_sul = df.query('Região == "América do Sul"')
@@ -42,5 +42,7 @@ for i, v in enumerate(america_sul['Total']):
 ax.set_frame_on(False) # Esconder as bordas
 ax.get_xaxis().set_visible(False) # Esconder os valores do eixo x horozontal
 #ax.tick_params(axis='both', witch='both', length=0)# Esconder marcações dos gráficos verticais
+
+fig.savefig('America.png',transparent=False,dpi=300, bbox_inches='tight')
 
 plt.show()

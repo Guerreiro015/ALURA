@@ -15,6 +15,7 @@ print(df)
 anos=list(map(str,range(1980,2014))) # Crianndo uma lista com os anos como strings
 print(anos)
 
+
 #Extração da série de dados para o Brasil
 #criamos uma variável chamada brasil igual à df.loc[]
 # e variável anos nos colchetes.
@@ -39,14 +40,22 @@ print(dados_brasil)
 
 
 fig,ax = plt.subplots(figsize=(8,4))
-
-ax.plot(dados_brasil['ano'],dados_brasil['imigrantes'],lw=3) # dados dos gráfico
-ax.set_title('Imigração do Brasil para o canadá \n Entres os anos de 1980 a 2013')
-ax.set_xlabel('Anos')# Rótulos da gráfico horizontal
-ax.set_ylabel('Quant. de Imigrantes')# Rótulos do gráfico vertical
+#------------------------------------------------------
+print(fig.canvas.get_supported_filetypes())# mostrar os modos que pode salvar um gráfico
+#---------------------------------------------------
+ax.plot(dados_brasil['ano'],dados_brasil['imigrantes'],lw=3,color='Red') # dados dos gráfico
+ax.set_title('Imigração do Brasil para o canadá \n Entres os anos de 1980 a 2013',color='Blue')
+ax.set_xlabel('Anos',color='Green',fontsize=14)# Rótulos da gráfico horizontal
+ax.set_ylabel('Quant. de Imigrantes',color='green',fontsize=16)# Rótulos do gráfico vertical
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(5))## vamos mostrar de 5 em 5 anos para nãoficar muito amontoado
 
+ax.spines['top'].set_visible(False) # Retirar linha de cima
+ax.spines['right'].set_visible(False) # Retirar linha da direita
+
+#Salvando o gráfico
+
+fig.savefig('Imigrantes.png',transparent=False,dpi=300, bbox_inches='tight')
 
 plt.show()
 

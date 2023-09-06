@@ -125,7 +125,7 @@ print(nomes)
 print(valor)  
 
 df=pd.DataFrame({'NOMES': nomes,'VALOR': valor})
-df.set_index('NOMES', inplace=True)
+#df.set_index('NOMES', inplace=True)
 print(df)
 
 
@@ -137,14 +137,14 @@ ax = figura.add_subplot(111)
 
 canvas = FigureCanvasTkAgg(figura, master = janela)   
 canvas.draw() 
-canvas.get_tk_widget().pack() 
+canvas.get_tk_widget().pack(expand = True) 
 
 # canva = FigureCanvasTkAgg(figura,janela)
 # canva.get_tk_widget().grid(row=1,column=0)
 
 
 #fig,ax = plt.subplots(figsize=(14,5))
-ax.bar(df.index, df['VALOR'],lw=3)
+ax.bar(df['VALOR'], df['VALOR'],lw=3)
 
 
 ax.set_title('GASTOS COM SERVIÇOS')
