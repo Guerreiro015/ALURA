@@ -17,18 +17,6 @@ print(df)
 anos=list(map(str,range(1980,2014))) # Crianndo uma lista com os anos como strings
 print(anos)
 
-#Extração da série de dados para o Brasil
-#criamos uma variável chamada brasil igual à df.loc[]
-# e variável anos nos colchetes.
-
-paises=df.loc[['Brasil','Argentina','Cuba','Peru'],anos] #Vamos usar dois paises
-
-paises=paises.T # Trocar horizontal por vertical
-
-print(paises)
-
-# VAMOS USAR MAIS DE UMA INFORMAÇÃO
-import matplotlib.pyplot as plt
 
 sns.set_theme(style='dark')
 

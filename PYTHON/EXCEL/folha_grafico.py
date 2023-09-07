@@ -11,26 +11,20 @@ df = pd.read_excel('CUSTO0823.xlsx')
 
 df=pd.DataFrame(df)
 
-fol=list(df['Folha'])
-sin=list(df['Siemaco'])
-dd={'Folha': fol, 'Sindicato': sin}
-dados=pd.DataFrame(dd)
+#df.set_index('Sindicatos',inplace=True)
 
-print(dados)
+print(df)
 
-
+#ax = sns.lineplot(df.loc['Brasil', anos], label='Brasil', lw=4)
 
 #df.set_index('Folha',inplace=True) # Colocar o culuna pais como indice
 
-#Ordenando do Maior para o menor e pegando os 10 peimeiros
-#top10=df.sort_values('Total',ascending=False).head(10) 
-#print(top10)
 fig,ax = plt.subplots(figsize=(10,4))
-ax.plot(dados['Folha'], dados['Sindicato'])
-# ax.plot(data=df, y='Folha', x='Steriiisp')
-# ax.plot(data=df, y='Folha', x='Selur')
+
+ax=sns.lineplot(y=df['Sindicatos'],x=df['Salário'],label='Siemaco')
+# ax=sns.lineplot(data=df,y=df['Sindicatos'],x=df['Salário'],label='Steriiisp')
+# ax=sns.lineplot(data=df,y=df['Sindicatos'],x=df['Salário'],label='Selur')
 
 ax.set(title='Salários por Regionais',xlabel='Valor Salários',ylabel='Regionais')
-
 
 plt.show()
