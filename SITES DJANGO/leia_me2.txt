@@ -1,0 +1,32 @@
+VAMO CRIAR OUTRO APLICATIVO
+usuario
+python manage.py startapp usuarios
+
+na pasta usuario
+        criar a pasta urls
+        from django.urls import path
+
+        urlpatterns = [
+        
+        
+        ]
+
+na pasta setup
+        INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'galeria.apps.GaleriaConfig',
+        'usuarios.apps.UsuariosConfig',
+        ]
+
+na pasta setup/urls
+        urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('galeria.urls')),
+        path('', include('usuarios.urls')),
+]
+
