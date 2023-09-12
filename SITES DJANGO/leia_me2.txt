@@ -30,3 +30,31 @@ na pasta setup/urls
         path('', include('usuarios.urls')),
 ]
 
+Na pasta usuario/urls - vamos os path(caminhos) abaixo
+        from django.urls import path
+        from usuarios.views import login, cadastro
+
+        urlpatterns = [
+        path('login', login, name='login'),
+        path('cadastro', cadastro, name='cadastro'),
+        ]
+
+Na pasta usuario/views
+        Vamos criar nossas primeiras views no arquivo "usuarios > views.py".
+
+        Começaremos declarando o método login(), 
+        que receberá request como parâmetro. O retorno será a renderização
+        de um template chamado login.html, que estará na pasta "templates > usuarios":
+
+        from django.shortcuts import render
+
+        def login(request):
+        return render(request, 'usuarios/login.html')
+        def cadastro(request):
+        return render(request, 'usuarios/cadastro.html')COPIAR C
+
+Na "templates > usuarios",
+      criaremos um arquivo chamado login.html
+       e outro chamado          cadastro.html.
+
+       
