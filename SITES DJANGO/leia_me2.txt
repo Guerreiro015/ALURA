@@ -57,4 +57,115 @@ Na "templates > usuarios",
       criaremos um arquivo chamado login.html
        e outro chamado          cadastro.html.
 
+   O conteudo dos arquivos A alura jA DISPONIBILIZOU
+   fICOU LEGAL - BOM
+
+______________________________________________________________________
+______________________________________________________________________
+MAS VAMOS CRIAR UM FORMULÁRIO NO PROPIO django que fica melhor
+
+Na Pasta usuario vamos cruar um arquivo chamado forms.py
+vamos criar uma classe com campos do FORMULÁRIO
+
+class LoginForms(forms.Form):
+        nome_login=forms.CharField(
+                label='Nome de Login', 
+                required=True, 
+                max_length=100
+        )
+
+        senha=forms.CharField(
+                label='Senha', 
+                required=True, 
+                max_length=70
+                widget=forms.PasswordInput()
+    )
+
+vamos no app usuario\views para que este FORMULÁRIO aparece no site
+
+        from django.shortcuts import render
+        from usuarios.forms import LoginForms
+
+        def login(request):
+        form=LoginForms()
+        return render(request, 'usuarios/login.html',{'forms:',form})
+
+        def cadastro(request):
+        return render(request, 'usuarios/cadastro.html')
+
+No arquivo template\usuario\login - trocaremos o conteúdo abaixo
+
+
+                        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                            <label for="nome_login" style="color:#D9D9D9; margin-bottom: 5px;"><b>Nome de Login</b></label>
+                            <input type="text" class="form-control" name="nome_login" placeholder="Ex.: João Silva" required>
+                        </div>
+                        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                            <label for="password" style="color:#D9D9D9; margin-bottom: 5px;"><b>Senha</b></label>
+                            <input type="password" class="form-control" name="password" placeholder="Digite sua senha" required>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Login</button>
+                        </div>
+
+Trocar por:
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        {% for field in form.visible_fields %}
+                        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                            <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;">{{field.label}}</label>
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn btn-success col-12" style="padding: top 5px;">Cadastrar</button>
+                     </div>  
+                    
+                </form>
+
+Na pasta forms - 
+ Vamos determinar o tipo e forma do FORMULÁRIO
+
+        from django import forms
+
+        class LoginForms(forms.Form):
+        nome_login=forms.CharField(
+                label='Nome de Login', 
+                required=True, 
+                max_length=100,
+                widget=forms.TextInput(
+                attrs={
+                        'class': 'form-control',             # tipo de FORMULÁRIO form-control
+                        'placeholder': 'Ex.: João Silva',    # Texto predigitado
+                }
+                )
+        )
+        senha=forms.CharField(
+                label='Senha', 
+                required=True, 
+                max_length=70,
+                widget=forms.PasswordInput(
+                attrs={
+                        'class': 'form-control',              # tipo de FORMULÁRIO form-control
+                        'placeholder': 'Digite sua senha',    # Texto predigitado
+                }
+                ),
+        )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        
