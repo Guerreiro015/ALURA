@@ -1,8 +1,7 @@
-{% extends 'galeria/base.html' %}
+{% extends 'shared/base.html' %}
 {% load static %}
 {% block content %}
-
-                <section class="conteudo">
+            <section class="conteudo">
                 <section class="banner">
                     <img class="banner__imagem" src="{% static '/assets/imagens/galeria/banner(2).png' %}" alt="Banner Alura Space">
                     <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
@@ -30,16 +29,14 @@
                                     <img class="imagem__imagem" src="{{fotografia.foto.url}}">
                                 {% endif %}   
                                 </a>
-                                <span class="card__tag">Galáxia</span>
-                                <div class="card__info">{{fotografia.data_fotografia}}</p>
-                                    <p class="card__titulo">{{fotografia.nome}}</p>
-                                    <div class="card__texto">
-                                        <p class="card__descricao">{{fotografia.legenda}}</p>
-                                        <span>
-                                            <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
-                                        </span>
-                                    </div>
+                                <span class="card__tag">Universo</span>
+                                <div class="card__info">{{fotografia.data_fotografia}} - Usuário:  {{fotografia.usuario}}</p>
+                                    <p class="card__titulo" > {{fotografia.nome}}</p>
+                                    <p class="card__descricao">{{fotografia.legenda}}</p>
+                                    <p class="card__texto" >  </p>
+                                                                       
                                 </div>
+                            </li>    
                             {% endfor %} 
                             {% else %}
                             {% endif %}                                                                                

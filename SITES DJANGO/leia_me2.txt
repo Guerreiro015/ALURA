@@ -157,15 +157,303 @@ Na pasta forms -
 
 
 
+FaZER NOSSA LOGIN FUNCIONAR
+Na pasta template/Login e na pasta template/cadastro
+        <section class="galeria" style="margin-left: 5em">
+        <form action="{% url 'login' %}" method="POST"> # metodo POST esconde a senha para não aparecer junto com url
+
+e na pasta template/cadastro
+        <section class="galeria" style="margin-left: 5em">
+        <form action="{% url 'cadastron' %}" method="POST"> # metodo POST esconde a senha para não aparecer junto com url
+
+Na pasta usuario/views
+
+from django.shortcuts import render, redirect
+
+def cadastro(request):
+    form = CadastroForms()
+
+    if request.method == 'POST':
+        form = CadastroForms(request.POST)
+
+        if form.is_valid():
+            if form["senha_1"].value() != form["senha_2"].value():
+                                return redirect ('cadastro')
+            # Vamos criar variaveis com os dados do formulário
+            nome=form['nome_cadastro'].value()
+            email=form['email'].value()
+            senha=form['senha_1'].value()
+vamos verificar se ja existe um usuário com o mesmo nome
+
+
+if User.objects.filter(username=nome).exists()
+        return redirect('cadastro') 
+
+
+vamos Cadastrar o novo usuario
+           
+       usuario = User.objects.create_user(
+                username=nome,
+                email=email,
+                password=senha
+            )
+       usuario.save()
+       return redirect('login')
+
+
+    return render(request, 'usuarios/cadastro.html', {'form': form})
+
+FaZER NOSSA LOGIN FUNCIONAR 2ª parte 
+Na parte do login - 
+o djando tem um função para autenticcar um logon
+
+from django.contrib import auth
+
+
+        if request.method == 'POST':
+                form = LoginForms(request.POST)
+
+                if form.is_valid():
+                nome = form['nome_login'].value()
+                senha = form['senha'].value()
+        usuario = auth.authenticate(
+               request,
+               username=nome,
+               password=senha
+   )
+            
+            if usuario is not None:
+               auth.login(request, usuario)
+
+            if usuario is not None:
+               auth.login(request, usuario)
+               return redirect ('index')
+
+            else:
+                  return redirect('login')
+
+para aparecer as informações de erro e success
+
+nas pastas / usuario/login.html
+nas pastas / usuario/cadastro.html
+nas pastas / template\galeria\partials\menu.html
+
+vamos colocar o codigo abaixo bem depois de logo ( <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />)
+
+{% for message in messages %}
+            <div>
+               <p id="messages">{{message}} </p> 
+            </div>
+            {%endfor%}am
+
+Para aplivar um stilo nos alertas pesquisaremos no google (messages boxes bootstrap)
+e vamos pegar esta e coocar dentro do nosso código
+
+            <div class="alert alert-primary" role="alert">
+               <p id="messages">{{message}} </p> 
+            </div>
+Na pasta galeria/base.html - depois da linha <link href="https://fonts.googleapis.com
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+Agora vamos fazer o logout:
+Na pasta usuario\views
+
+        def logout(request):
+        auth.logout(request)
+        messages.success(request,"Logout efetuado com sucesso")
+        return redirect('login')
+
+Na pasta usuario\urlss
+        from usuarios.views import login, cadastro,logout
+
+        urlpatterns = [
+        path('login', login, name='login'),
+        path('cadastro', cadastro, name='cadastro'),
+        path('logout', logout, name='logout'),
+        ]
+
+na pasta template\login  \cadastro e pasta template/partials\_menu
+
+        <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Logout</a>
+
+
+para nao precisarmos usar bootstrap vamos entrar em inspecionar e copiar os codigos do styles 
+e colar em static/styles.css
+
+.alert {
+    --bs-alert-bg: transparent;
+    --bs-alert-padding-x: 1rem;
+    --bs-alert-padding-y: 1rem;
+    --bs-alert-margin-bottom: 1rem;
+    --bs-alert-color: inherit;
+    --bs-alert-border-color: transparent;
+    --bs-alert-border: 1px solid var(--bs-alert-border-color);
+    --bs-alert-border-radius: 0.375rem;
+    position: relative;
+    padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+    margin-bottom: var(--bs-alert-margin-bottom);
+    color: var(--bs-alert-color);
+    background-color: var(--bs-alert-bg);
+    border: var(--bs-alert-border);
+    border-radius: var(--bs-alert-border-radius);
+}
+
+.alert-primary {
+    --bs-alert-color: #084298;
+    --bs-alert-bg: #cfe2ff;
+    --bs-alert-border-color: #b6d4fe;
+}
+
+.alert-danger {
+    --bs-alert-color: #842029;
+    --bs-alert-bg: #f8d7da;
+    --bs-alert-border-color: #f5c2c7;
+}
+
+.alert-success {
+    --bs-alert-color: #0f5132;
+    --bs-alert-bg: #d1e7dd;
+    --bs-alert-border-color: #badbcc;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+
+Vamos deixar ver as fotos somente pra quem estiver logado
+
+na pasta galeria\views
+        from django.contrib import messages
+
+
+        def index(request):
+        if not request.user.is_authenticated:
+                 messages.error(request, 'Usuário não logado')
+                return redirect('login')
+
+        def buscar(request):
+        if not request.user.is_authenticated:
+           messages.error(request, 'Usuário não logado')
+                return redirect('login')
+
+ASSOCIANDO AS TABELAS
+(Agora vamos atribuir  a cada imagem um usuário específico. Para isso, acessaremos "galera > models.py".)
+
+        from django.contrib.auth.models import user.
+
+        Criar um novo campo para incluir o nime do usuário
+
+        usuario = models.ForeignKey(
+                to=User,
+                on_delete=models.SET_NULL,
+                null=True,
+                blank=False,
+                related_name='user'
+        )
+
+        def __str__(self):
+                return self.nome
+
+Vamos importar para o sistema no terminal
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+Vamos fazer uma validação de cadastro para não cadstrar o nome de usuário com dois noomes tipo (Carol Silva)
+
+Dentro da pasta usuario/Forms.py - colocaremmos o codigo abaixo:
+
+ def clean_nome_cadastro(self):  # Tem que comecar com (clean_)
+        nome = self.cleaned_data.get('nome_cadastro')
+
+        if nome:
+            nome = nome.strip()
+            if ' ' in nome:
+                raise forms.ValidationError('Espaços não são permitidos nesse campo')
+            else:
+                return nome
+
+Para aparecer e mensagem de erro, vamos na spasta template/usuario/cadasstro.html
+abaixo do trecho de for vamos fazer outrro for:
+
+</div>
+                        {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+ Vamos tirar a validação de senha que estava na pasta views e colocar na mesma pasta usuario/Forms.py - colocaremmos o codigo abaixo:
+
+def clean_senha_2(self):
+        senha_1 = self.cleaned_data.get('senha_1')
+        senha_2 = self.cleaned_data.get('senha_2')
+
+        if senha_1 and senha_2:
+            if senha_1 != senha_2:
+                raise forms.ValidationError('Senhas não são iguais')
+            else:
+                return senha_2
+
+
+Vamos criar um arquivo com tipos de messages
+vamos criar um arquivO em template/partials
+
+        _alertas.html
+
+                {% if messages %}
+                {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                        {{message}}
+                        </div>
+                {% endfor %}
+                {% endif %}
+
+
+VAMOS COLOCAR O CODIGO abaixo EM EM LOGIN E Cadastro
+        {% include 'galeria/partials/_alertas' %}
 
 
 
+ DENTRO DA PASTA SETTINGS
+        from django.contrib.messages import constants as messages
+        MESSAGE_TAGS = {
+        messages.ERROR: 'danger',
+        messages.SUCCESS: 'success'
+        }
+
+VAMOS ORGANIZAR OS arquivos
+
+colocar os aplicativos galeria e usuario em uma pasta apps
+
+vamos colocar o arquivo( base.html ) em uma pasta chamada shared(comprtilhada)
+
+Nos arquivos login.html e cadastro.html que alteramos há pouco,
+ tínhamos a referência ao Bootstrap no cabeçalho. 
+ Ele era responsável pela estilização dessas páginas, mas não queremos mais utilizá-lo.
+Em "setup > static > styles > style.css", vamos acrescentar algumas estilizações personalizadas para os formulários.
+
+Ao final deste arquivo, após a classe .alert-danger, vamos adicionar o seguinte trecho:
 
 
 
-
-
-
-
-
-       
