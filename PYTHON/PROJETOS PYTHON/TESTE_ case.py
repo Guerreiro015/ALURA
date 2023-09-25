@@ -30,6 +30,14 @@ def semana(dia):
 for i in range(0,10):
    semana(i)
 
+def taxa(x,y):
+   return x*y
+
+taxa2 = lambda x,y: x*y
+
+print(taxa(5,20))
+print (taxa2(5,20))
+
 
 
 
