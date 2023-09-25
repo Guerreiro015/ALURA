@@ -6,7 +6,7 @@
         <div class="cabecalho__busca">
             <div class="busca__fundo">
                 <form action="{% url 'buscar' %}">
-                    <input class="busca__input" type="text" name="buscar"  style="color:#D9D9D9; margin-bottom: 5px;" placeholder="O que você procura?">
+                    <input class="busca__input" type="text" name="buscar"  style="color:#D9D9D9; margin-bottom: 5px;" placeholder="Digite o nome do Planeta, Galáxia ou Estrela para busca?">
                     <button type="submit">
                      <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" style="color:#1d4abc;" alt="ícone de search">
                     </button>
@@ -19,8 +19,8 @@
             <nav class="menu-lateral__navegacao">
                 <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
                 <a href="{% url 'login' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}">Login</a>
-                <a href="{% url 'cadastro' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Cadastro</a>
+                <a href="{% url 'cadastro' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Cadastro de Usuário</a>
                 <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Logout</a>
-                <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - ativo.png' %}"> Imagem</a>
+                <a href="{% url 'nova_imagem' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - ativo.png' %}"> Incluir Imagem</a>
             </nav>
         </section>
