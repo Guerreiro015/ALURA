@@ -455,5 +455,165 @@ Em "setup > static > styles > style.css", vamos acrescentar algumas estilizaçõ
 
 Ao final deste arquivo, após a classe .alert-danger, vamos adicionar o seguinte trecho:
 
+_______________________________________________________________________________________________
+_______________________________________________________________________________________________
 
+
+
+vamos adicionar mais uma função no site
+vamos criar a opção de Nova Imagem no arquivo menu.html
+
+ <a href="{% url 'nova_imagem' %}"><img src="{% static '/assets/ícones/1x/ 'colocar imagem.png' %}"> Nova Imagem</a>
+
+ No ariivo galeria\urls
+    path('nova-imagem', nova_imagem, name='nova_imagem'),
+    path('editar-imagem', editar_imagem, name='editar_imagem'),
+    path('deletar-imagem', deletar_imagem, name='deletar_imagem'),
+
+No fim do código do arquivo galeria\views.py, criaremos a estrutura para as três views.
+
+        def nova_imagem(request):
+        pass
+
+        def editar_imagem(request):
+        pass
+
+        def deletar_imagem(request):
+        pass
+
+Vamos criar um formulario para as fotos
+O Django tem um recurso para nos ajudar a fazer formulários baseados em models.
+ Ele encontra os models existentes e cria um formulário com base neles.
+Só precisamos informar qual model deve ser usado para o formulário.
+
+Para isso, criar arquivo galeria\forms.py, começaremos fazendo imports da biblioteca de forms e do model de fotografia.
+
+        from django import forms
+
+        from apps.galeria.models import Fotografia
+
+
+
+        class FotografiaForms(forms.ModelForm):
+        class Meta:
+                model = Fotografia
+                exclude = ['publicada',]
+                labels = {
+            'descricao':'Descrição',
+            'data_fotografia': 'Data de registro',
+            'usuario': 'Usuário',
+        }
+
+                widgets = {
+                        'nome': forms.TextInput(attrs={'class':'form-control'}),
+                        'legenda': forms.TextInput(attrs={'class':'form-control'}),
+                        'categoria': forms.Select(attrs={'class':'form-control'}),
+                        'descricao': forms.Textarea(attrs={'class':'form-control'}),
+                        'foto': forms.FileInput(attrs={'class':'form-control'}),
+                        'data_fotografia': forms.DateInput(
+                                format = '%d/%m/%Y',
+                                attrs={
+                                'type':'date',
+                                'class':'form-control'
+                                }
+                        ),
+                        'usuario': forms.Select(attrs={'class':'form-control'}),
+                        }
+
+ No arquivo nova_imagem.html aterar a linha - form action
+   <form action="{% url 'nova_imagem' %}" method="POST" enctype="multipart/form-data">
+
+e  nome do botoao
+   button type="submit" class="btn btn-success col-12" style="padding: top 5px;"> Gravar Imagem</button>
+
+No arquivo views alterar alinha 
+        form = FotografiaForms(request.POST, request.FILES)
+ 
+
+Na pasta imagem.html acrescentar os botoes abaixo:
+
+        <div>
+           <a href="{% url 'editar_imagem'  fotografia.id %}"> <button  class="btn btn-success col-12" style="padding: top 5px;">Editar Inagem</button></a>
+           <a href="{% url 'deletar_imagem' %}"> <button  class="btn btn-danger col-12" style="padding: top 5px;">Deletar Imagem</button></a>
+        </div>
+
+        class="btn btn-success = cria um botão verde
+        class="btn btn-success = cria um botão vermelho
+
+pasta galeria\urls  - alterar
+         path('editar-imagem/<int:foto_id>', editar_imagem, name='editar_imagem'),
+
+na Pasta galeria\views
+  def editar_imagem(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    form = FotografiaForms(instance=fotografia)
+
+    return render(request, 'galeria/editar_imagem.html', {'form':form})
+
+vamos criar um arquivo  editar_imagem.html
+
+Vamos clonar o arquivo nova_imagem
+
+Na pasta galeria/views
+
+def editar_imagem(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    form = FotografiaForms(instance=fotografia)
+
+    if request.method == 'POST':
+        form = FotografiaForms(request.POST, request.FILES, instance=fotografia)
+        if form.is_valid():
+            print(request.POST)
+            form.save()
+            messages.success(request, 'Fotografia editada com sucesso')
+            return redirect('index')
+
+    return render(request, 'galeria/editar_imagem.html', {'form':form, 'foto_id': foto_id})
+
+no arquivo editar_imagem.html
+alteramos a linha
+<form action="{% url 'editar_imagem' foto_id %}" method="POST" enctype="multipart/form-data">
+
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+deletar_imagem
+no arquivo imagem
+        <a href="{% url 'editar_imagem'  fotografia.id %}"> <button  class="btn btn-success col-12" style="padding: top 5px;">Editar Imagem</button></a>
+        <a href="{% url 'deletar_imagem'  fotografia.id %}"> <button  class="btn btn-danger col-12" style="padding: top 5px;">Deletar Imagem</button></a>
+
+no arquivO url
+
+    path('editar-imagem/<int:foto_id>', editar_imagem, name='editar_imagem'),
+
+    path('deletar-imagem/<int:foto_id>', deletar_imagem, name='deletar_imagem'),        
+
+ no arquivO views
+
+ def deletar_imagem(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    fotografia.delete()
+    messages.success(request, 'Deleção feita com sucesso!')
+    return redirect('index')
+
+___________________________________________________________________________________________________________
+FILTRO 
+
+No arquivo index - Vamos alterar as tags
+
+                <li class="tags__tag"><a href="{% url 'filtro' 'Nebulosa' %}" class="btn" style="color: #C9C9C9;">Nebulosa</a></li>
+                <li class="tags__tag"><a href="{% url 'filtro' 'Estrela' %}" class="btn" style="color: #C9C9C9;">Estrela</a></li>
+                <li class="tags__tag"><a href="{% url 'filtro' 'Galáxia' %}" class="btn" style="color: #C9C9C9;">Galáxia</a></li>
+                <li class="tags__tag"><a href="{% url 'filtro' 'Planeta' %}" class="btn" style="color: #C9C9C9;">Planeta</a></li>
+        
+
+vamos alterar o arquivo url - criar um novo path
+        path('filtro/<str:categoria>', filtro, name='filtro'),
+
+No arquivO views vamos criar a função filtro
+
+def filtro(request,categoria):
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicar=True, categoria=categoria)
+# Estamos pegando todo banco de dados e filtrando por categoria
+
+    return render(request, 'galeria/index.html', {"cards": fotografias})
 
