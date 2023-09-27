@@ -3,6 +3,7 @@ from flask import Flask,render_template
 from flask import request,redirect,flash
 
 
+
 # criar a 1 pagina no site
 # route -> caminho a seguir
 # função -> O que vai ser exibido no site
@@ -74,3 +75,4 @@ def autenticar2():
 
 if __name__ == __name__:  
   app.run(debug=True) # Colocando o true o site atusliza as informaões automoaticamnte
+  
