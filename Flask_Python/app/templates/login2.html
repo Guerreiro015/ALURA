@@ -4,8 +4,17 @@
 
 
    {% set mensagens = get_flashed_messages() %}
-   {%if mensagens%}
-      <div></div>
+   {% if mensagens %}
+      <div>
+         {% for msg in mensagens %}
+ <!-- Usamos a tag <li> para criar uma lista-->        
+         <ul>
+            <li>
+               {{ msg }} 
+            </li>
+         </ul>
+         {% endfor %}
+      </div>
    {%endif%}
    
  <form action="/autenticar2" method="post">

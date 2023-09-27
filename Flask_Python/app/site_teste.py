@@ -29,6 +29,15 @@ def cliente(nome_cliente):
    # para executarmos um variavel python no html colocamos ela entre duas chaves{{variavel}}
 
 
+
+@app.route('/nome_cliente', methods=['GET'])
+def nome_cliente():
+   nome_cliente=request.args.get('nome_cliente')
+   return cliente(nome_cliente)
+
+
+
+
 @app.route('/usuario2')
 def usuario2():
    nome="FAISCA"
@@ -66,7 +75,8 @@ def autenticar2():
    if usuario=='antonio' and senha=='123':
       return f'USUÁRIO: {usuario} e SENHA: {senha}'
    else:
-      flash('dados invalidos')
+      flash('Dados inválidos')
+      flash('Usuário ou senha errada')
       return redirect('/login2')
       #IMPORTANTE para uso do flash
       #temos que definir uma palavra secerta no arquivo
