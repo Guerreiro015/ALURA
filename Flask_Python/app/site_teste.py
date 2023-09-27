@@ -1,5 +1,7 @@
 from asyncio import DefaultEventLoopPolicy
 from flask import Flask,render_template
+from flask import request,redirect,flash
+
 
 # criar a 1 pagina no site
 # route -> caminho a seguir
@@ -35,6 +37,40 @@ def usuario2():
       'esposa': 'Francisca'
    }
    return render_template('usuario2.html', nome=nome,dados=dados)
+
+
+@app.route('/login')
+def login():
+   return render_template('login.html')
+
+# usando methodo get
+@app.route('/autenticar', methods=['GET','POST'])
+def autenticar():
+   usuario = request.args.get('usuario')
+   senha = request.args.get('senha')
+   return f'USUÁRIO: {usuario} e SENHA: {senha}'
+
+@app.route('/login2')
+def login2():
+   return render_template('login2.html')
+
+# usando methodo post
+@app.route('/autenticar2', methods=['POST'])
+def autenticar2():
+   usuario = request.form.get('usuario') # troca o args(argumentos) por form(formulario)
+   senha = request.form.get('senha')
+   if usuario=='antonio' and senha=='123':
+      return f'USUÁRIO: {usuario} e SENHA: {senha}'
+   else:
+      flash('dados invalidos')
+      return redirect('/login2')
+      #IMPORTANTE para uso do flash
+      #temos que definir uma palavra secerta no arquivo
+
+   
+
+
+
 
 if __name__ == __name__:  
   app.run(debug=True) # Colocando o true o site atusliza as informaões automoaticamnte
