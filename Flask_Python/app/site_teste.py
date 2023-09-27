@@ -10,6 +10,7 @@ from flask import request,redirect,flash
 # vamos usar servirdor heroko gratis
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'base-chave-nova'
 
 @app.route("/") #Decorate logo acima da função
 def homepage():
@@ -50,6 +51,8 @@ def autenticar():
    usuario = request.args.get('usuario')
    senha = request.args.get('senha')
    return f'USUÁRIO: {usuario} e SENHA: {senha}'
+
+
 
 @app.route('/login2')
 def login2():

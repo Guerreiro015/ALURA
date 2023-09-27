@@ -2,7 +2,12 @@
 
 {%block conteudo%}
 
-  
+
+   {% set mensagens = get_flashed_messages() %}
+   {%if mensagens%}
+      <div></div>
+   {%endif%}
+   
  <form action="/autenticar2" method="post">
 
     USUÁRIO 2: <input type="text" name = 'usuario'> <br/>
@@ -12,4 +17,5 @@
  </form>
  
 
-{%endblock%}
+
+{% endblock %}
