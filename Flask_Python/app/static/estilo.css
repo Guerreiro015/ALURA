@@ -23,8 +23,27 @@
     top: 80px;
     left: 80px;
 }
-.texto_color{
+.texto{
+    background: #61eb8f;
+    font-style: italic;
+    color: #e01313;
+    font-weight: bold;
     font-size: 20px;
-    color: #25056a;
+    
+}
+
+.icone {
+    width: 20px;
+    height: 20px 
+}
+
+.botao {
+    background-color: #052de0 ;
+    color: #cecbda;
+    font-weight: bold;
+    font-style: italic;
+    width: 100px;
+    line-height: 20px;
+   
     
 }
