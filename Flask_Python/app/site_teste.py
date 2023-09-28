@@ -30,9 +30,9 @@ def cliente(nome_cliente):
 
 
 
-@app.route('/nome_cliente', methods=['GET'])
+@app.route('/nome_cliente', methods=['POST'])
 def nome_cliente():
-   nome_cliente=request.args.get('nome_cliente')
+   nome_cliente=request.form.get('nome_cliente')
    return cliente(nome_cliente)
 
 
