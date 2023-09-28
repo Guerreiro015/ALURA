@@ -10,20 +10,23 @@
 </head>
 <body>
     
+    <img class="banner_imagem" src="{{url_for('static',filename='/imagem/banner.png') }}" >
+    <h1 class="banner__titulo">Criação de site com FLASK!</h1>
+   
+    
     <nav>
         
-        <a href="/"> <img class="icone" src="{{url_for('static',filename='/imagem/menu.png') }}"> Página Inicial </a><br/>
-        <a href="/contatos">  <img class="icone" src="{{url_for('static',filename='/imagem/guardar.png') }}"> Contatos </a><br/>
-        <a href="/usuario2">  <img class="icone" src="{{url_for('static',filename='/imagem/Novas.png') }}"> Usuários </a><br/>
-        <a href="/cliente">  <img class="icone" src="{{url_for('static',filename='/imagem/Adicionar.png') }}">Cliente </a><br/>
-        <a href="/login">  <img class="icone" src="{{url_for('static',filename='/imagem/ver.png') }}">LOGIN </a><br/>
-        <a href="/login2">  <img class="icone" src="{{url_for('static',filename='/imagem/Foto1.png') }}">LOGIN 2 </a><br/>
+        <a href="/"> <img class="icone" src="{{url_for('static',filename='/imagem/menu.png') }}"> Página Inicial </a>
+        <a href="/contatos">  <img class="icone" src="{{url_for('static',filename='/imagem/guardar.png') }}"> Contatos </a>
+        <a href="/usuario2">  <img class="icone" src="{{url_for('static',filename='/imagem/Novas.png') }}"> Usuários </a>
+        <a href="/cliente">  <img class="icone" src="{{url_for('static',filename='/imagem/Adicionar.png') }}">Cliente </a>
+        <a href="/login">  <img class="icone" src="{{url_for('static',filename='/imagem/ver.png') }}">LOGIN </a>
+        <a href="/login2">  <img class="icone" src="{{url_for('static',filename='/imagem/Foto1.png') }}">LOGIN 2 </a>
         
     </nav>
     
-        <img class="imgretangulo" src="{{url_for('static',filename='/imagem/banner.png') }}" >
-        <h2> O Melhor estilo</h2>       
-    </p>
+
+
 </body>
 {%block conteudo%}
 {%endblock%}
