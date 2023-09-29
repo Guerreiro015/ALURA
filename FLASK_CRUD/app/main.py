@@ -1,18 +1,23 @@
-from asyncio import DefaultEventLoopPolicy
-from flask import Flask,render_template
-from flask import request,redirect,flash
-
-
-
-# criar a 1 pagina no site
-# route -> caminho a seguir
-# função -> O que vai ser exibido no site
-# vamos usar servirdor heroko gratis
+from flask import Flask
+from database import db
+from flask import render_template
+from flask_migrate import Migrate
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'base-chave-nova'
+db.init_app(app)
+conexao = 'sqlite:///meubanco.sqlite'
 
-@app.route("/") #Decorate logo acima da função
+app.config['SECRET_KEY'] = 'base-chave-nova'
+app.config['SQLALCHEMY_DATABASE_URL'] = conexao
+app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
+
+Migrate = Migrate(app,db)
+
+
+
+
+
+@app.route("/") 
 def homepage():
     return render_template('index.html')
 

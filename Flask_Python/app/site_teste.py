@@ -73,7 +73,8 @@ def autenticar2():
    usuario = request.form.get('usuario') # troca o args(argumentos) por form(formulario)
    senha = request.form.get('senha')
    if usuario=='antonio' and senha=='123':
-      return f'USUÁRIO: {usuario} e SENHA: {senha}'
+      flash('Usuário Logado com Sucesso')
+      return redirect('/login2')
    else:
       flash('Dados inválidos')
       flash('Usuário ou senha errada')
