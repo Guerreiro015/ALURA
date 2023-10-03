@@ -1,35 +1,36 @@
 from flask import Flask, render_template, request, redirect, session,flash
 from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-app = Flask(__name__)
-app.secret_key='alura'
+app = Flask(__name__) #instanciando Flask
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jogoteca.db' #define um caminho para o arquivo de db, na pasta do projeto
 
-app.config['SQLALCHEMY_DATABASE_URI'] = \
-    '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(
-        SGBD = 'mysql+mysqlconnector',
-        usuario = 'root',
-        senha = 'Lucas@0108',
-        servidor = '127.0.0.1',
-        database = 'jogoteca'
-    )
+app.secret_key = 'alura'
 
-db=SQLAlchemy(app)
+db = SQLAlchemy(app)
 
-class Jogos(db.Model): 
-   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-   nome = db.Column(db.String(50), nullable=False)
-   categoria = db.Column(db.String(40), nullable=False)
-   console = db.Column(db.String(20), nullable=False)
+class jogos(db.Model): #criando a classe cliente
+  id = db.Column(db.Integer, primary_key=True) 
+  nome = db.Column(db.String(100), nullable=False) 
+  categoria = db.Column(db.String(100), nullable=False)
+  console = db.Column(db.String(100), nullable=False)
+  ano = db.Column(db.String(100), nullable=False)
+
+  def __repr__(self): #função que retorna seu id sempre que é instanciada
+    return '<jogos %r>' % self.id
 
 
-def __repr__(self): 
-   return '<Name %r>' % self.name
+
 
 class Usuarios(db.Model):
+   id = db.Column(db.Integer, primary_key=True) 
    nickname = db.Column(db.String(8), primary_key=True)
    nome = db.Column(db.String(20), nullable=False)
    senha = db.Column(db.String(100), nullable=False)
+
+   def __repr__(self): #função que retorna seu id sempre que é instanciada
+    return '<usuario %r>' % self.id
                         
 
 
@@ -40,12 +41,13 @@ def login():
    return render_template('login.html',titulo='LOGIN')
 
 @app.route('/index')
-def index():
-   lista_jogos = Jogos.query.order_by(Jogos.id)
-   if 'usuario_logado' not in session or session['usuario_logado'] == None:
+def index():   
+  lista_jogos = jogos.query.order_by(jogos.id)
+
+  if 'usuario_logado' not in session or session['usuario_logado'] == None:
         flash('Nenhum Usuário Logado')
         return redirect(url_for('login'))
-   else:
+  else:
         tit="jogos de 2023"
         return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
@@ -64,21 +66,15 @@ def criar():
   categoria=request.form['categoria']
   console=request.form['console']
   ano=request.form['ano']
-  jogar=Jogos(nome,categoria,console,ano)
-  lista_jogos.append(jogar)
+  jogar=jogoteca(nome,categoria,console,ano)
+   #criando novo cliente a partir dos dados
+  novo_jogo = jogos(nome=nome,categoria=categoria, console=console, ano=ano)
+  flash('Jogo adcionado com Sucesso!!')
+  db.session.add(novo_jogo)
+  db.session.commit()
   return redirect(url_for('index'))
 
-# @app.route('/autenticar', methods=['POST'])
-# def autenticar():
-  # usuario=request.form['usuario']
-  # senha=request.form['senha']
-  # if usuario == 'antonio' and senha == '123':
-  #   session['usuario_logado']=request.form['usuario']
-  #   flash(request.form['usuario']+' Logado com Sucesso')
-  #   return redirect(url_for('index'))
-  # else:
-  #   flash(request.form['usuario']+' Não Conseguiu Logar')
-  #   return redirect(url_for('login'))
+
 @app.route('/autenticar', methods=['POST'])
 def autenticar():  
   usuario=Usuarios.query.filter_by(nickname=request.form['usuario']).first()
