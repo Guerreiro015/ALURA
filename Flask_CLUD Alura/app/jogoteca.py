@@ -77,7 +77,8 @@ def criar():
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():  
-  usuario=Usuarios.query.filter_by(nickname=request.form['usuario']).first()
+  usuario = Usuarios.query.get_or_404(id)
+ # usuario=Usuarios.query.filter_by(nickname=request.form['usuario']).first()
   if usuario:
         if request.form['senha'] == usuario.senha:
             session['usuario_logado'] = usuario.nickname
