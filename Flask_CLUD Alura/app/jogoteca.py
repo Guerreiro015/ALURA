@@ -66,7 +66,7 @@ def criar():
   categoria=request.form['categoria']
   console=request.form['console']
   ano=request.form['ano']
-  jogar=jogoteca(nome,categoria,console,ano)
+  #jogar=jogos(nome,categoria,console,ano)
    #criando novo cliente a partir dos dados
   novo_jogo = jogos(nome=nome,categoria=categoria, console=console, ano=ano)
   flash('Jogo adcionado com Sucesso!!')
