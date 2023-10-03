@@ -25,7 +25,7 @@ class jogos(db.Model): #criando a classe cliente
 
 class Usuarios(db.Model):
    id = db.Column(db.Integer, primary_key=True) 
-   nickname = db.Column(db.String(8), primary_key=True)
+   nickname = db.Column(db.String(20))
    nome = db.Column(db.String(20), nullable=False)
    senha = db.Column(db.String(100), nullable=False)
 
@@ -76,13 +76,14 @@ def criar():
 
 
 @app.route('/autenticar', methods=['POST'])
-def autenticar():  
+def autenticar():
+  nome=request.form['nome']
   usuario = Usuarios.query.get_or_404(id)
  # usuario=Usuarios.query.filter_by(nickname=request.form['usuario']).first()
-  if usuario:
+  if nome in usuario.nome:
         if request.form['senha'] == usuario.senha:
-            session['usuario_logado'] = usuario.nickname
-            flash('Usuário '+ usuario.nickname + ' logado com sucesso!')
+            session['usuario_logado'] = usuario.nome
+            flash('Usuário '+ usuario.nome + ' logado com sucesso!')
             return redirect(url_for('index'))
         else:
             flash('Usuário não logado.')
