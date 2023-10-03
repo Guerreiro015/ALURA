@@ -5,13 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key='alura'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = '{SGBD}://{usuario}:{senha}@{servidor},{porta}/{database}'.format(SGBD = 'mysql+mysqlconnector',
-usuario = 'root',
-senha = 'Lucas@0108',
-servidor = 'localhost',
-porta=3306,
-database = 'jogoteca')
-
+app.config['SQLALCHEMY_DATABASE_URI'] = \
+    '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(
+        SGBD = 'mysql+mysqlconnector',
+        usuario = 'root',
+        senha = 'Lucas@0108',
+        servidor = '127.0.0.1',
+        database = 'jogoteca'
+    )
 
 db=SQLAlchemy(app)
 
