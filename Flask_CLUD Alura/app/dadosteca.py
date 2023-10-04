@@ -15,7 +15,7 @@ import sys
 import sqlite3 as lite
 con = lite.connect("jogoteca.db")
 
-dados = ['lucas','lucas','123']
+dados = ['luana','luana','123']
 novos_dados = ['re6','zumbi','ps2','2001']
 
 
@@ -106,6 +106,8 @@ def visualizar_jogos():
              lista_itens.append(row)
        # return lista_itens
         print(lista_itens)
+        prov=lista_itens[1].index('luana')
+        print(lista_itens[prov])
             
 visualizar_jogos()   
 
@@ -122,7 +124,8 @@ def ver_item(id):
         for row in rows:
             lista_itens.append(row)
         #return lista_itens
-        print(lista_itens)
+       # print(lista_itens)
+        
 
 
     
