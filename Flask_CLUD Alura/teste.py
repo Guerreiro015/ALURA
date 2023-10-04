@@ -48,3 +48,11 @@ def inserir_dados(i):
 cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
                  nome TEXT, local TEXT, descricao TEXT, marca TEXT, data_compra DATE, \
                 valor_compra DECIMAL, serie TEXT, imagem TEXT)")
+
+        n=0
+        for row in rows:
+             lista_itens.append(row)
+             print(lista_itens[n])
+             if 'romeu' in row:
+                 print(f'encontrou {row}')
+             n += 1
