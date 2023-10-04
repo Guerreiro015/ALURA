@@ -19,23 +19,36 @@ dados = ['lucas','lucas','123']
 novos_dados = ['re6','zumbi','ps2','2001']
 
 
+#Criar tabela usuarios------------------------------------------------
+def criar_usuario():
+    with con:
+        cur = con.cursor()
+        cur.execute ("CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT,nome, nickname,senha)" )    
 
-#INSERIR DADOS ------------------------------------------------
+criar_usuario()
+
+#Criar tabela usuarios------------------------------------------------
+def criar_jogos():
+    with con:
+        cur = con.cursor()
+        cur.execute( "CREATE TABLE IF NOT EXISTS jogos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome,categoria,console,ano)")
+        
+criar_jogos()
+
+
 def inserir_usuario(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO usuario(id INTEGER PRIMARY KEY AUTOINCREMENT,nome, nickname,senha) VALUES(?,?,?,?)"
+        query = "INSERT INTO usuario(nome, nickname,senha) VALUES(?,?,?)"
         cur.execute(query,i)
-
-inserir_usuario(dados)
+#inserir_usuario(dados)
 
 def inserir_jogos(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO jogos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome,categoria,console,ano) VALUES(?,?,?,?,?)"
+        query = "INSERT INTO jogos(nome,categoria,console,ano) VALUES(?,?,?,?)"
         cur.execute(query,i)
-
-inserir_jogos(novos_dados)  
+#inserir_jogos(novos_dados)  
 
 
 
@@ -59,12 +72,15 @@ def deletar_usuario(i):
         cur = con.cursor()
         query = "DELETE FROM usuario WHERE id=?"
         cur.execute(query, i)
+#deletar_usuario('1')  
 
 def deletar_jogos(i):
     with con:
         cur = con.cursor()
         query = "DELETE FROM jogos WHERE id=?"
         cur.execute(query, i)
+#deletar_jogos('1')  
+
 
 #VER inventário -----------------------------------------------------
 def visualizar_usuario():   

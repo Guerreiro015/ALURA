@@ -43,3 +43,8 @@ def inserir_dados(i):
                            
         cur.execute(query,i)
         con.commit()     
+
+
+cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
+                 nome TEXT, local TEXT, descricao TEXT, marca TEXT, data_compra DATE, \
+                valor_compra DECIMAL, serie TEXT, imagem TEXT)")
