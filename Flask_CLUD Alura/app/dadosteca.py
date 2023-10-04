@@ -3,7 +3,7 @@ from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import sqlite3
-import jogoteca
+from jogoteca import *
 
 
 from tkinter import*
@@ -19,9 +19,9 @@ con = lite.connect("jogoteca.db")
 dados = ['romeu','romeu','123']
 novos_dados = ['re6','zumbi','ps2','2001']
 
-def main():
+
     #Criar tabela usuarios------------------------------------------------
-    def criar_usuario():
+def criar_usuario():
         with con:
             cur = con.cursor()
             cur.execute ("CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT,nome, nickname,senha)" )    
@@ -29,7 +29,7 @@ def main():
     #criar_usuario()
 
     #Criar tabela usuarios------------------------------------------------
-    def criar_jogos():
+def criar_jogos():
         with con:
             cur = con.cursor()
             cur.execute( "CREATE TABLE IF NOT EXISTS jogos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome,categoria,console,ano)")
@@ -37,14 +37,14 @@ def main():
     #criar_jogos()
 
 
-    def inserir_usuario(i):
+def inserir_usuario(i):
         with con:
             cur = con.cursor()
             query = "INSERT INTO usuario(nome, nickname,senha) VALUES(?,?,?)"
             cur.execute(query,i)
     #inserir_usuario(dados)
 
-    def inserir_jogos(i):
+def inserir_jogos(i):
         with con:
             cur = con.cursor()
             query = "INSERT INTO jogos(nome,categoria,console,ano) VALUES(?,?,?,?)"
@@ -54,13 +54,13 @@ def main():
 
 
     #ATUALIZAR DADOS -----------------------------------------------------
-    def atualizar_usuario(i):
+def atualizar_usuario(i):
         with con:
             cur = con.cursor()
             query = '''UPDATE usuario SET nome=?, nickname=?, senha = ?,  WHERE id=?'''
             cur.execute(query,i)
 
-    def atualizar_jogos(i):
+def atualizar_jogos(i):
         with con:
             cur = con.cursor()
             query = '''UPDATE jogos SET nome=?, categoria=?, console = ?, ano=?, WHERE id=?'''
@@ -68,14 +68,14 @@ def main():
 
     #DELETAR DADOS -----------------------------------------------------
 
-    def deletar_usuario(i):
+def deletar_usuario(i):
         with con:
             cur = con.cursor()
             query = "DELETE FROM usuario WHERE id=?"
             cur.execute(query, i)
     #deletar_usuario('6')  
 
-    def deletar_jogos(i):
+def deletar_jogos(i):
         with con:
             cur = con.cursor()
             query = "DELETE FROM jogos WHERE id=?"
@@ -84,7 +84,7 @@ def main():
 
 
     #VER inventário -----------------------------------------------------
-    def visualizar_usuario():   
+def visualizar_usuario():   
         lista_itens = []
         with con:
             cur = con.cursor()
@@ -100,7 +100,7 @@ def main():
                 
     #visualizar_usuario()  
 
-    def visualizar_jogos():   
+def visualizar_jogos():   
         lista_itens = []
         with con:
             cur = con.cursor()
@@ -118,7 +118,7 @@ def main():
 
     #VER ítem no inventário # -----------------------------------------------------
 
-    def ver_usuario(usu):   
+def ver_usuario(usu):   
         lista_itens = []
         with con:
             usuario='none'
@@ -135,5 +135,3 @@ def main():
             return usuario
         
 
-if __name__ == '__main__' : # chamada da funcao principal
-  main()
