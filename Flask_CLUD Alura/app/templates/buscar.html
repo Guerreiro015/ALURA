@@ -1,8 +1,7 @@
 {% extends 'base.html'%}
     {% block conteudo %}
     
-                <tr>
-                    <th>ID</th>
+                <tr>                    
                     <th>NOME</th>
                     <th>CATEGORIA</th>
                     <th>CONSOLE</th>
@@ -20,13 +19,14 @@
                   <td> <input type="text" name="name" id="name" value="{{jogo[1]}}"> </td> 
                   <td> <input type="text" name="name" id="name" value="{{jogo[2]}}"> </td> 
                   <td> <input type="text" name="name" id="name" value="{{jogo[3]}}"> </td> 
-                  <td> <input type="text" name="name" id="name" value="{{jogo[4]}}"> </td> 
-                                   
+                  <td> <input type="text" name="name" id="name" value="{{jogo[4]}}"> </td>                    
+                  
                 </tr>
-                </br/>
-                  <a class=""></a>
-                  <a class="link-success" href="/alterar_jogos" > Alterar </a>
-                  <a class="link-danger" href="/alterar_jogos"> Deletar </a><br/>
+              </br/>
+              
+              <br/>
+              <a class="link-success" href="/index" > Alterar </a>
+              <a class="link-danger" href="/alterar_jogos"> Deletar </a><br/>
                   
 
                 {% endfor %}

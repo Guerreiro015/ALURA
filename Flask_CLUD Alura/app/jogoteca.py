@@ -37,7 +37,7 @@ def buscar_jogos():
        tit="Jogo Encontrado"
        return render_template('buscar.html',jogos=lista_jogos,titulo=tit)
 
-@app.route('/alterar_jogos',methods=['POST'])
+@app.route('/alterar_jogos', methods=['POST'])
 def alterar_jogos(): 
     buscar=request.form['nome'] 
     if buscar=="":
