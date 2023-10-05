@@ -56,3 +56,6 @@ cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
              if 'romeu' in row:
                  print(f'encontrou {row}')
              n += 1
+
+
+             <a href="{{url_for('teste')}}"><input type="button" value="NOME_BOTAO"></a>
