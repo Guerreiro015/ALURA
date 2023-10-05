@@ -8,44 +8,11 @@ from dadosteca import *
 
 
 app = Flask(__name__) #instanciando Flask
-  #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jogoteca.db' #define um caminho para o arquivo de db, na pasta do projeto
+  
 
 app.secret_key = 'alura'
 
-  # db = SQLAlchemy(app)
-
-  # connect to database
-con = sqlite3.connect('jogoteca.db', check_same_thread=False)
   
-  # create cursor object
-cur = con.cursor()
-  
-
-  # class jogos(db.Model): #criando a classe cliente
-  #   id = db.Column(db.Integer, primary_key=True) 
-  #   nome = db.Column(db.String(100), nullable=False) 
-  #   categoria = db.Column(db.String(100), nullable=False)
-  #   console = db.Column(db.String(100), nullable=False)
-  #   ano = db.Column(db.String(100), nullable=False)
-
-  #   def __repr__(self): #função que retorna seu id sempre que é instanciada
-  #     return '<jogos %r>' % self.id
-
-
-
-
-  # class Usuarios(db.Model):
-  #    id = db.Column(db.Integer, primary_key=True) 
-  #    nickname = db.Column(db.String(20))
-  #    nome = db.Column(db.String(20), nullable=False)
-  #    senha = db.Column(db.String(100), nullable=False)
-
-  #    def __repr__(self): #função que retorna seu id sempre que é instanciada
-  #     return '<usuario %r>' % self.id
-                          
-
-
-
 
 @app.route('/')
 def login():
@@ -53,65 +20,61 @@ def login():
 
 @app.route('/index')
 def index():   
-    lista_jogos = 'jogos.query.order_by(jogos.id)'
+    lista_jogos = visualizar_jogos()
 
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-          flash('Nenhum Usuário Logado')
-          return redirect(url_for('login'))
+    tit="jogos de 2023"
+    return render_template('index.html',titulo=tit,jogos=lista_jogos)
+
+@app.route('/buscar_jogos')
+def buscar_jogos(): 
+    buscar=request.form['busca'] 
+    lista_jogos = ver_jogos(buscar)
+    if lista_jogos==[]:
+       flash('Nenhum jogo para buscar!!')
+       return render_template('index.html',titulo=tit,jogos=lista_jogos)
+
     else:
-          tit="jogos de 2023"
-          return render_template('index.html',titulo=tit,jogos=lista_jogos)
+      tit="Jogos Encontrado"
+      return render_template('buscar.html',titulo=tit,jogos=lista_jogos)
+
 
 @app.route('/novo_jogo')
 def novo_jogo():
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:      
-          flash('Nenhum Usuário Logado')
-          return redirect(url_for('login'))
-    else:
-          return render_template('novo_jogo.html', titulo="novo jogo")
+    return render_template('novo_jogo.html', titulo="novo jogo")
 
 
 @app.route('/criar', methods=['POST'])
 def criar():
+   
     nome=request.form['nome']
     categoria=request.form['categoria']
     console=request.form['console']
     ano=request.form['ano']
-    #jogar=jogos(nome,categoria,console,ano)
-    #criando novo cliente a partir dos dados
-    novo_jogo = '(nome=nome,categoria=categoria, console=console, ano=ano)'
+
+    novo_jogo = (nome,categoria,console,ano)
+    inserir_jogos(novo_jogo)
     flash('Jogo adcionado com Sucesso!!')
-    # db.session.add(novo_jogo)
-    # db.session.commit()
     return redirect(url_for('index'))
-
-
+ 
+   
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
     nome=request.form['nome']
-    ver_usuario(nome)
-    usuarios=ver_usuario(nome)
-      
-    if nome == usuarios:
-        print('Table not found!')
-    else:
-        print('Table found!')
+    senha=request.form['senha']
 
+    ver_usuario(nome)
+    logar=ver_usuario(nome)
+      
+    if nome == logar[0] and senha == logar[1]:
+         flash('Logado com Sucesso!!')
+         return redirect(url_for('index'))
+    else:
+         flash('Não foi possível fazer Login!!')
+         return redirect(url_for('login'))
 
   
-    # if nome == usuario:
-    #       if request.form['senha'] == usuario.senha:
-    #           session['usuario_logado'] = usuario.nome
-    #           flash('Usuário '+ usuario.nome + ' logado com sucesso!')
-    #           return redirect(url_for('index'))
-    #       else:
-    #           flash('Usuário não logado.')
-    #           return redirect(url_for('login'))
-    # else:
-    #   flash('Não foi possivel logar.')
-    #   return redirect(url_for('login'))
-
+    
 @app.route('/logout')
 def logout():
     flash('Usuário Desconectado')

@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+    {% block conteudo %}
+
+    
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>CATEGORIA</th>
+                    <th>CONSOLE</th>
+                    <th>ANO</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for jogo in jogos %}
+                
+                <tr>  
+
+                  <td> <input type="text" name="name" id="name" value="{{jogo[1]}}"> </td> 
+                  <td> <input type="text" name="name" id="name" value="{{jogo[2]}}"> </td> 
+                  <td> <input type="text" name="name" id="name" value="{{jogo[3]}}"> </td> 
+                  <td> <input type="text" name="name" id="name" value="{{jogo[4]}}"> </td> 
+                                   
+                </tr>
+                <a href="/alterar_jogos"> ALTERAR JOGO</a>   
+                {% endfor %}
+            
+            </tbody>
+        </table>
+    </div>
+  </body>
+  {%endblock%}
+</html>

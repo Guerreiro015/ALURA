@@ -3,6 +3,7 @@
 
     
                 <tr>
+                    <th>ID</th>
                     <th>NOME</th>
                     <th>CATEGORIA</th>
                     <th>CONSOLE</th>
@@ -11,13 +12,14 @@
             </thead>
             <tbody>
 
-                {% for jogo in jogos %}
+                {% for jogo in jogos %}                
 
                 <tr>                   
-                  <td> {{jogo.nome}} </td>  
-                  <td> {{jogo.categoria}} </td>  
-                  <td> {{jogo.console}} </td>                      
-                  <td> {{jogo.ano}} </td>                      
+                  <td> {{jogo[0]}} </td>  
+                  <td> {{jogo[1]}} </td>  
+                  <td> {{jogo[2]}} </td>  
+                  <td> {{jogo[3]}} </td>                      
+                  <td> {{jogo[4]}} </td>                      
                 </tr>
                     
                 {% endfor %}

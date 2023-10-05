@@ -1,9 +1,10 @@
+
 from flask import Flask, render_template, request, redirect, session,flash
 from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import sqlite3
-from jogoteca import *
+
 
 
 from tkinter import*
@@ -14,10 +15,10 @@ from tkinter import filedialog as fd
 
 import sys
 import sqlite3 as lite
-con = lite.connect("jogoteca.db")
+con = sqlite3.connect("jogoteca.db",check_same_thread=False)
 
 dados = ['romeu','romeu','123']
-novos_dados = ['re6','zumbi','ps2','2001']
+novos_dados = ['Tomb Raider','Aventura','Ps1000','2050']
 
 
     #Criar tabela usuarios------------------------------------------------
@@ -49,7 +50,7 @@ def inserir_jogos(i):
             cur = con.cursor()
             query = "INSERT INTO jogos(nome,categoria,console,ano) VALUES(?,?,?,?)"
             cur.execute(query,i)
-    #inserir_jogos(novos_dados)  
+#inserir_jogos(novos_dados)  
 
 
 
@@ -106,19 +107,18 @@ def visualizar_jogos():
             cur = con.cursor()
             cur.execute("SELECT * FROM jogos")
             rows = cur.fetchall()
-            
+
             for row in rows:
                 lista_itens.append(row)
-                
-        # return lista_itens
-            print(lista_itens)
+            
+            return lista_itens
+            #print(lista_itens)
+  
+#visualizar_jogos()        
+            
         
                 
-    #visualizar_jogos()   
-
-    #VER ítem no inventário # -----------------------------------------------------
-
-def ver_usuario(usu):   
+def ver_usuario(i):   
         lista_itens = []
         with con:
             usuario='none'
@@ -126,12 +126,32 @@ def ver_usuario(usu):
             cur.execute("SELECT * FROM usuario")
             rows = cur.fetchall()
             for row in rows:
-                if usu in row:
-                    usuario=usu
+                if i in row:
+                    usuario=row[1]
+                    senha=row[3]
+                    log=(usuario,senha)
                     break
                 else:
-                    lista_itens.append(row)
+                    log='none'
             
-            return usuario
+            return log
         
+def ver_jogos(i):   
+        lista = []
+        with con:           
+            cur = con.cursor()
+            cur.execute("SELECT * FROM jogos")
+            rows = cur.fetchall()
+            for row in rows:
+                if i in row:
+                   id=row[0]
+                   nome=row[1]
+                   categoria=row[2]
+                   console=row[3]
+                   ano=row[4]
+                   lista=(id,nome,categoria,console,ano)
+                   lista=[lista]
+                   break
+                                 
+            return lista
 
