@@ -51,13 +51,13 @@ def alterar_jogos():
       ano=request.args.get('ano')
       id=request.args.get('id')
 
-      lista=[id,nome,categoria,console,ano,id]
+      lista=(nome,categoria,console,ano,id)
 
       atualizar_jogos(lista)
 
       flash(f'jogo alterado !!')
       tit="Jogos alterado"
-      return render_template('index.html',titulo=tit)
+      return redirect(url_for('index'))
 
 
 @app.route('/novo_jogo')
