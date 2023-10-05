@@ -64,7 +64,7 @@ def atualizar_usuario(i):
 def atualizar_jogos(i):
         with con:
             cur = con.cursor()
-            query = '''UPDATE jogos SET nome=?, categoria=?, console = ?, ano=?, WHERE id=?'''
+            query = '''UPDATE jogos SET nome=?, categoria=?, console = ?, ano = ?, WHERE id=?'''
             cur.execute(query,i)
 
     #DELETAR DADOS -----------------------------------------------------

@@ -7,7 +7,7 @@
                     <th>CONSOLE</th>
                     <th>ANO</th>
              
-             <form method="post">
+             <form method="get">
                   </tr>
             </thead>
             <tbody>
@@ -16,18 +16,19 @@
                 
                 <tr>  
 
-                  <td> <input type="text" name="name" id="name" value="{{jogo[1]}}"> </td> 
-                  <td> <input type="text" name="name" id="name" value="{{jogo[2]}}"> </td> 
-                  <td> <input type="text" name="name" id="name" value="{{jogo[3]}}"> </td> 
-                  <td> <input type="text" name="name" id="name" value="{{jogo[4]}}"> </td>                    
+                  <td> <input type="text" name="id" id="id" value="{{jogo[0]}}"> </td> 
+                  <td> <input type="text" name="nome" id="nome" value="{{jogo[1]}}"> </td> 
+                  <td> <input type="text" name="categoria" id="categoria" value="{{jogo[2]}}"> </td> 
+                  <td> <input type="text" name="console" id="console" value="{{jogo[3]}}"> </td> 
+                  <td> <input type="text" name="ano" id="ano" value="{{jogo[4]}}"> </td>                    
                   
                 </tr>
               </br/>
               
               <br/>
-              <a class="link-success" href="/index" > Alterar </a>
-              <a class="link-danger" href="/alterar_jogos"> Deletar </a><br/>
-                  
+              <a class="link-success" href="{{url_for('alterar_jogos')}}" > Alterar </a>
+              <a class="link-danger" href="{{url_for('alterar_jogos')}}"> Deletar </a><br/>
+             
 
                 {% endfor %}
               </form>
