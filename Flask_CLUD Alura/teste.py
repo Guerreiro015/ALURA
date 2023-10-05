@@ -59,3 +59,12 @@ cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
 
 
              <a href="{{url_for('teste')}}"><input type="button" value="NOME_BOTAO"></a>
+
+<a href="#" class="link-primary">Primary link</a>
+<a href="#" class="link-secondary">Secondary link</a>
+<a href="#" class="link-success">Success link</a>
+<a href="#" class="link-danger">Danger link</a>
+<a href="#" class="link-warning">Warning link</a>
+<a href="#" class="link-info">Info link</a>
+<a href="#" class="link-light">Light link</a>
+<a href="#" class="link-dark">Dark link</a>
