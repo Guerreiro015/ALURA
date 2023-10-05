@@ -1,6 +1,5 @@
 {% extends 'base.html'%}
     {% block conteudo %}
-
     
                 <tr>
                     <th>ID</th>
@@ -8,7 +7,9 @@
                     <th>CATEGORIA</th>
                     <th>CONSOLE</th>
                     <th>ANO</th>
-                </tr>
+             
+             <form>
+                  </tr>
             </thead>
             <tbody>
 
@@ -22,9 +23,13 @@
                   <td> <input type="text" name="name" id="name" value="{{jogo[4]}}"> </td> 
                                    
                 </tr>
-                <a href="/alterar_jogos"> ALTERAR JOGO</a>   
+                </br/>
+                  <button type="submit" class="btn btn-primary btn-success">Alterar </button>
+                  <button type="submit" class="btn btn-primary btn-danger">Deletar </button>
+                 
+
                 {% endfor %}
-            
+              </form>
             </tbody>
         </table>
     </div>

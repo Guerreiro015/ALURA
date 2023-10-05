@@ -1,6 +1,15 @@
 {% extends 'base.html'%}
     {% block conteudo %}
 
+
+    <form  method="post" action="{{url_for('buscar_jogos')}}" >
+      <fieldset>
+       <div class="form-group">
+          <input type="text" id="busca" name="busca" class="form-control">
+       </div>
+       <button type="submit" class="btn btn-primary btn-salvar">Buscar</button>
+     </fieldset>
+    </form>
     
                 <tr>
                     <th>ID</th>

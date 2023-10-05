@@ -25,17 +25,29 @@ def index():
     tit="jogos de 2023"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
-@app.route('/buscar_jogos')
+@app.route('/buscar_jogos', methods=['POST'])
 def buscar_jogos(): 
     buscar=request.form['busca'] 
     lista_jogos = ver_jogos(buscar)
     if lista_jogos==[]:
        flash('Nenhum jogo para buscar!!')
-       return render_template('index.html',titulo=tit,jogos=lista_jogos)
-
+       tit="Não Encontrado"
+       return render_template('index.html',jogos=lista_jogos,titulo=tit)
     else:
-      tit="Jogos Encontrado"
-      return render_template('buscar.html',titulo=tit,jogos=lista_jogos)
+       tit="Jogo Encontrado"
+       return render_template('buscar.html',jogos=lista_jogos,titulo=tit)
+
+@app.route('/alterar_jogos',methods=['POST'])
+def alterar_jogos(): 
+    buscar=request.form['nome'] 
+    if buscar=="":
+       tit='ALTERAR'
+       flash('Nenhum jogo para alterar!!')
+       return render_template('index.html')
+    else:
+      flash(f'jogo alterado {buscar}!!')
+      tit="Jogos alterado"
+      return render_template('index.html',titulo=tit)
 
 
 @app.route('/novo_jogo')
