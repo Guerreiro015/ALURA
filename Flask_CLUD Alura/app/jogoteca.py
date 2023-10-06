@@ -34,10 +34,10 @@ def buscar_jogos():
        tit="Não Encontrado"
        return render_template('index.html',jogos=lista_jogos,titulo=tit)
     else:
-       tit="Jogo Encontrado"
+       tit=f"Jogo Encontrado {buscar}"
        return render_template('buscar.html',jogos=lista_jogos,titulo=tit)
 
-@app.route('/alterar_jogos', methods=['GET'])
+@app.route('/alterar_jogos', methods=['POST'])
 def alterar_jogos(): 
     nome=request.args.get('nome')
     if nome=="":
@@ -45,18 +45,18 @@ def alterar_jogos():
        flash('Nenhum jogo para alterar!!')
        return render_template('index.html')
     else:
-      nome=request.args.get('nome')
-      categoria=request.args.get('categoria')
-      console=request.args.get('console')
-      ano=request.args.get('ano')
-      id=request.args.get('id')
+      nome=request.form['nome']
+      categoria=request.form['categoria']
+      console=request.form['console']
+      ano=request.form['ano']
+      id=request.form['id']
 
-      lista=(nome,categoria,console,ano,id)
+      lista=[(nome,categoria,console,ano,id)]
 
-      atualizar_jogos(lista)
-
-      flash(f'jogo alterado !!')
-      tit="Jogos alterado"
+      print(lista)  
+      #atualizar_jogos(lista)
+      flash(f'jogo  {nome} alterado!!')
+      
       return redirect(url_for('index'))
 
 
