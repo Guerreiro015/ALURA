@@ -51,10 +51,10 @@ def alterar_jogos():
       ano=request.form['ano']
       id=request.form['id']
 
-      lista=[(nome,categoria,console,ano,id)]
+      lista=(nome,categoria,console,ano,id)
 
       print(lista)  
-      #atualizar_jogos(lista)
+      atualizar_jogos(lista)
       flash(f'jogo  {nome} alterado!!')
       
       return redirect(url_for('index'))
