@@ -1,8 +1,6 @@
 {% extends 'base.html'%}
     {% block conteudo %}
-    
 
-   
                 <tr>                    
                     <th>ID</th>
                     <th>NOME</th>
@@ -27,15 +25,12 @@
                   <td> <input type="text" name="ano" id="ano" value="{{jogo[4]}}"> </td>                    
                   
                 </tr>
-              </br/>
+              </br/>              
               
-              <br/>
                <button type='submit' class="btn btn-success">Alterar</button> 
-            
-          <!--  <a class="link-success" href="{{url_for('alterar_jogos')}}" > Alterar </a>
-            <a class="link-danger" href="{{url_for('alterar_jogos')}}"> Deletar </a><br/>
-            -->
+          
             </form>
+            
 
             
                 {% endfor %}

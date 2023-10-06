@@ -22,7 +22,7 @@ def login():
 def index():   
     lista_jogos = visualizar_jogos()
 
-    tit="jogos de 2023"
+    tit="Biblioteca de Jogos"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
 @app.route('/buscar_jogos', methods=['POST'])
