@@ -39,7 +39,7 @@ def buscar_jogos():
 
 @app.route('/alterar_jogos', methods=['POST'])
 def alterar_jogos(): 
-    nome=request.args.get('nome')
+    nome=request.form['nome']
     if nome=="":
        tit='ALTERAR'
        flash('Nenhum jogo para alterar!!')
@@ -58,6 +58,28 @@ def alterar_jogos():
       flash(f'jogo  {nome} alterado!!')
       
       return redirect(url_for('index'))
+    
+
+@app.route('/deletar_jogos', methods=['POST'])
+def deletar_jogos(): 
+    nome=request.form['nome']
+    tit='DELETAR JOGO'
+    if nome=="":
+       
+       flash('Nenhum jogo para DELETAR!!')
+       return render_template('index.html')
+    else:
+     
+      id=request.form['id']
+
+      lista=(id)
+
+      print(lista)  
+      deletar_jogos(lista)
+      flash(f'jogo  {nome} Deletado!!')
+      
+      return redirect(url_for('index'), titulo=tit)
+    
 
 
 @app.route('/novo_jogo')

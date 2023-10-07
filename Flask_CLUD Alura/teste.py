@@ -1,66 +1,20 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="../static/bootstrap.css" >
-<body background="/images/fundo.jpg" bgproperties="fixed">
-(corpo do documento em HTML)
-</body>
-
-def atualizar_dados(i):
-    with con:
-        cur = con.cursor()
-        query = '''UPDATE dados SET 
-                de1=?,ate1=?,ali1=?,par1=?,
-                de2=?,ate2=?,ali2=?,par2=?,
-                de3=?,ate3=?,ali3=?,par3=?,
-                de4=?,ate4=?,ali4=?,par4=?,
-                deir1=?,ateir1=?,aliir1=?,parir1=?,
-                deir2=?,ateir2=?,aliir2=?,parir2=?,
-                deir3=?,ateir3=?,aliir3=?,parir3=?,
-                deir4=?,ateir4=?,aliir4=?,parir4=?,
-                deir5=?,aliir5=?,parir5=?,tetoinss=?,
-                dedudep=?,dedusimp=?'''
-        
-        cur.execute(query,i)
-        con.commit()
-
-def visualizar():   
-    lista_itens = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM dados")
-        linha_dados = cur.fetchall()
-        for i in linha_dados:
-             lista_itens.append(i)
-        return lista_itens
-    #print(lista_itens)#
-            
 
 
-def inserir_dados(i):
-    with con:
-        cur = con.cursor()
-        query = "INSERT INTO dados(de1,ate1,ali1,par1,de2,ate2,ali2,par2,de3,ate3,ali3,par3,de4,ate4,ali4,par4,deir1,ateir1,aliir1,parir1,deir2,ateir2,aliir2,parir2,deir3,ateir3,aliir3,parir3,deir4,ateir4,aliir4,parir4,deir5,aliir5,parir5,tetoinss,dedudep,dedusimp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-                
-                           
-        cur.execute(query,i)
-        con.commit()     
 
 
-cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
-                 nome TEXT, local TEXT, descricao TEXT, marca TEXT, data_compra DATE, \
-                valor_compra DECIMAL, serie TEXT, imagem TEXT)")
+<<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
 
-        n=0
-        for row in rows:
-             lista_itens.append(row)
-             print(lista_itens[n])
-             if 'romeu' in row:
-                 print(f'encontrou {row}')
-             n += 1
+<button type="button" class="btn btn-link">Link</button>
 
 
-             <a href="{{url_for('teste')}}"><input type="button" value="NOME_BOTAO"></a>
-
-<a href="#" class="link-primary">Primary link</a>
+<a href="#" class="link-primary">Primary link</a></br>
 <a href="#" class="link-secondary">Secondary link</a>
 <a href="#" class="link-success">Success link</a>
 <a href="#" class="link-danger">Danger link</a>
@@ -68,3 +22,56 @@ cur.execute("CREATE TABLE inventario(id INTEGER PRIMARY KEY AUTOINCREMENT,\
 <a href="#" class="link-info">Info link</a>
 <a href="#" class="link-light">Light link</a>
 <a href="#" class="link-dark">Dark link</a>
+
+<a class="dropdown-item"  href="/index"> NOVO JOGO</a>
+        <a class="dropdown-item"  href="/index">FAZER LOGIN</a>
+        <a class="dropdown-item"  href="/index"> FAZER LOGOUT</a>
+        <a class="dropdown-item"  href="/index">TESTE</a>
+
+<body> 
+
+              <font face="Arial"> Arial </font> <br />
+              <font face="Courier"> Courier </font> <br />
+              <font face="Georgia"> Georgia </font> <br />
+              <font face="Helvetica"> Helvetica </font> <br />
+              <font face="Times"> Times </font> <br />
+              <font face="Tribuchet"> Trebuchet </font> <br />
+              <font face="Verdana"> Verdana </font> <br />
+                                        
+              <font color="green"><br/>
+              <font color="#FF0000"> Este texto e vermelho </font> <br />
+              <font color="Yellow"> Esse e amarelo </font><body> <br />
+              <font color="red"> Esse e verde </font><br />
+              <font color="blue"> Esse e verde </font><br />
+              <font color="green"> Esse e verde </font><br />
+             </body>
+
+             <body> 
+              <font size="1" > Tamanho desta fonte:  1</font> <br />
+              <font size="2" > Tamanho desta fonte:  2</font> <br />
+              <font size="3"> Tamanho desta fonte:  3</font> <br />
+              <font size="4"> Tamanho desta fonte:  4</font> <br />
+              <font size="5"> Tamanho desta fonte:  5</font> <br />
+              <font size="6"> Tamanho desta fonte:  6</font> <br />
+              <font size="7"> Tamanho desta fonte:  7</font> <br />
+
+
+           </body>
+
+
+           <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+
+ 
+        <a href="/novo_jogo"> NOVO JOGO</a> <br/>
+        <a href="/">FAZER LOGIN</a><br/>
+        <a href="/logout"> FAZER LOGOUT</a><br/> 
