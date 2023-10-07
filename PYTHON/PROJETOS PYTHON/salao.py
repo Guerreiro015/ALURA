@@ -31,7 +31,7 @@ from datetime import date
 from datetime import timedelta
 from datetime import *
 from datetime import datetime
-from dateutil import relativedelta
+#from dateutil import relativedelta
 
 import requests
 import sqlite3

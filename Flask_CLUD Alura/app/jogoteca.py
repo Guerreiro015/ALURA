@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, session,flash
 from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -71,7 +72,7 @@ def deletar_jogos():
      
       id=request.form['id']
 
-      lista=(id)
+      lista=(str(id))
 
       print(lista)  
       excluir_jogos(lista)

@@ -75,3 +75,23 @@
         <a href="/novo_jogo"> NOVO JOGO</a> <br/>
         <a href="/">FAZER LOGIN</a><br/>
         <a href="/logout"> FAZER LOGOUT</a><br/> 
+
+
+colocar coisas no inicio ou final da página
+
+ <div class="fixed-top">...</div>
+<div class="fixed-bottom">...</div>
+
+
+Posicionamento
+Use estes utilitários de atalho, para definir o tipo de posicionamento de um elemento, rapidamente.
+
+Valores comuns
+Apesar de termos classes para definir o tipo de posicionamento, elas não são responsivas.
+
+Copy
+<div class="position-static">...</div>
+<div class="position-relative">...</div>
+<div class="position-absolute">...</div>
+<div class="position-fixed">...</div>
+<div class="position-sticky">...</div>
