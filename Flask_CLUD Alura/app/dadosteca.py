@@ -69,19 +69,6 @@ def atualizar_jogos(i):
     
     #DELETAR DADOS -----------------------------------------------------
 
-def deletar_usuario(i):
-        with con:
-            cur = con.cursor()
-            query = "DELETE FROM usuario WHERE id=?"
-            cur.execute(query, i)
-    #deletar_usuario('6')  
-
-def deletar_jogos(i):
-        with con:
-            cur = con.cursor()
-            query = "DELETE FROM jogos WHERE id=?"
-            cur.execute(query, i)
-    #deletar_jogos('1')  
 
 
     #VER inventário -----------------------------------------------------
@@ -155,3 +142,16 @@ def ver_jogos(i):
                                  
             return lista
 
+def excluir_usuario(i):
+        with con:
+            cur = con.cursor()
+            query = "DELETE FROM usuario WHERE id=?"
+            cur.execute(query, i)
+    #deletar_usuario('6')  
+
+def excluir_jogos(i):
+        with con:
+            cur = con.cursor()
+            query = "DELETE FROM jogos WHERE id=?"
+            cur.execute(query, i)
+    #deletar_jogos('1')  

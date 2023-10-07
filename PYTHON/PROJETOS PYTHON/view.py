@@ -1,81 +1,55 @@
-
-import os
-os.system("cls")
-
-from tkinter import*
-from tkinter import Tk, StringVar, ttk
-from tkinter import messagebox
-from tkinter.commondialog import Dialog
-from tkinter import filedialog as fd
-from PIL import Image, ImageTk
-from tkcalendar import Calendar, DateEntry
-from datetime import date
-# imprtando os outros arquivos
 import sys
 import sqlite3 as lite
-con = lite.connect("dados.bd")
+from datetime import datetime
 
-dados = ['vaso','sala','vaso de planta','PvA','13/03/2023','120',"001002",'c:imagem']
-#novos_dados = ['vaso','Banheiro','vaso de planta','PvA','13/03/2023','120',"001002",'c:imagem',5]
 
-#INSERIR DADOS ------------------------------------------------
-def inserir_dados(i):
+# Criando conexão
+con = lite.connect('dados.db')
+
+# Inserir inventorio
+def inserir_form(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO inventario(nome, local, descricao, marca, data_compra,valor_compra,serie, imagem) VALUES(?,?,?,?,?,?,?,?)"
-        cur.execute(query,i)
-
-        #inserir_dados(i)
-#inserir_dados(dados)
-
-#ATUALIZAR DADOS -----------------------------------------------------
-def atualizar_dados(i):
-    with con:
-        cur = con.cursor()
-        query = '''UPDATE inventario SET nome=?, local=?, descricao = ?, marca=?, data_compra=?,
-        valor_compra=?,serie=?, imagem=? WHERE id=?'''
-        cur.execute(query,i)
-
-
-#DELETAR DADOS -----------------------------------------------------
-
-def deletar_dados(i):
-    with con:
-        cur = con.cursor()
-        query = "DELETE FROM inventario WHERE id=?"
+        query = "INSERT INTO Inventario (nome, local, descricao, marca, data_da_compra, valor_da_compra, serie, imagem) VALUES (?,?,?,?,?,?,?,?)"
         cur.execute(query, i)
 
 
-#VER inventário -----------------------------------------------------
-def visualizar():   
+# Deletar inventorio
+def deletar_form(i):
+    
+    with con:
+        cur = con.cursor()
+        query = "DELETE FROM Inventario WHERE id=?"
+        cur.execute(query, i)
+
+
+# Atualizar inventorio
+def atualizar_form(i):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE Inventario SET nome=?, local=?, descricao=?, marca=?, data_da_compra=?, valor_da_compra=?, serie=?, imagem=? WHERE id=?"
+        cur.execute(query, i)
+
+
+# Ver Inventario
+def ver_form():
     lista_itens = []
     with con:
         cur = con.cursor()
         cur.execute("SELECT * FROM Inventario")
         rows = cur.fetchall()
         for row in rows:
-             lista_itens.append(row)
-        return lista_itens
-    #print(lista_itens)
-            
-visualizar()   
-#VER ítem no inventário -----------------------------------------------------
+            lista_itens.append(row)
+    return lista_itens
 
-def ver_item(id):   
+
+# Ver Iten
+def ver_iten(id):
     lista_itens = []
     with con:
         cur = con.cursor()
         cur.execute("SELECT * FROM Inventario WHERE id=?",(id))
-
-        query = "SELECT * FROM inventario WHERE id?"
-
         rows = cur.fetchall()
         for row in rows:
             lista_itens.append(row)
-        return lista_itens
-
-
-    
-
-
-
+    return lista_itens

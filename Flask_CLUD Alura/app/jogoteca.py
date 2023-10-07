@@ -62,8 +62,7 @@ def alterar_jogos():
 
 @app.route('/deletar_jogos', methods=['POST'])
 def deletar_jogos(): 
-    nome=request.form['nome']
-    tit='DELETAR JOGO'
+    nome=request.form['nome']    
     if nome=="":
        
        flash('Nenhum jogo para DELETAR!!')
@@ -75,10 +74,10 @@ def deletar_jogos():
       lista=(id)
 
       print(lista)  
-      deletar_jogos(lista)
+      excluir_jogos(lista)
       flash(f'jogo  {nome} Deletado!!')
       
-      return redirect(url_for('index'), titulo=tit)
+      return redirect(url_for('index'))
     
 
 
@@ -89,16 +88,20 @@ def novo_jogo():
 
 @app.route('/criar', methods=['POST'])
 def criar():
-   
     nome=request.form['nome']
-    categoria=request.form['categoria']
-    console=request.form['console']
-    ano=request.form['ano']
+    if nome == "":
+        flash('Não foi posível cadastrar jogo - Dados insuficienntes - ')
+        return render_template('novo_jogo.html', titulo="novo jogo")
+    else:
+        nome=request.form['nome']
+        categoria=request.form['categoria']
+        console=request.form['console']
+        ano=request.form['ano']
 
-    novo_jogo = (nome,categoria,console,ano)
-    inserir_jogos(novo_jogo)
-    flash('Jogo adcionado com Sucesso!!')
-    return redirect(url_for('index'))
+        novo_jogo = (nome,categoria,console,ano)
+        inserir_jogos(novo_jogo)
+        flash('Jogo adcionado com Sucesso!!')
+        return redirect(url_for('index'))
  
    
 
@@ -120,9 +123,8 @@ def autenticar():
   
     
 @app.route('/logout')
-def logout():
+def logout():    
     flash('Usuário Desconectado')
-    session['usuario_logado'] = None
     return redirect(url_for('login'))
 
 

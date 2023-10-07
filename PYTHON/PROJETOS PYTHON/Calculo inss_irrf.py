@@ -1,6 +1,7 @@
 import os
 os.system("cls")
 from base_inss import *
+import sqlite3
 
 #CORES--------------------------------------------
 #bg= Preenchimento
