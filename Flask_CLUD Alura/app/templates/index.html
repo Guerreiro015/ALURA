@@ -1,16 +1,18 @@
+
 {% extends 'base.html'%}
     {% block conteudo %}
 
     <thead class="thead-default">
-      <body>
-              
-          
+
+      <body>      
+                
         <a href="/novo_jogo" class="link-success"> NOVO JOGO</a></br>
         <a href="/" class="link-warning">FAZER LOGIN</a></br>  
         <a href="/logout" class="link-danger">FAZER LOGOUT</a></br>
         
       </body>
 
+      
     <form  method="post" action="{{url_for('buscar_jogos')}}" >
       <fieldset>
        <div class="form-group">
@@ -18,8 +20,7 @@
        </div>
        <button type="submit" class="btn btn-primary btn-salvar">Buscar</button>
      </fieldset>
-    </form>
-    
+    </form>    
                 <tr>
                     <th>ID</th>
                     <th>NOME</th>
@@ -49,4 +50,5 @@
     </div>
   </body>
   {%endblock%}
+  
 </html>

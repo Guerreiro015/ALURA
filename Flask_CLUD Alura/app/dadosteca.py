@@ -154,4 +154,8 @@ def excluir_jogos(i):
             cur = con.cursor()
             query = "DELETE FROM jogos WHERE id=?"
             cur.execute(query, i)
-    #deletar_jogos('1')  
+
+
+            #excluir_jogos(('11',))
+
+

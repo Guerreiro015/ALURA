@@ -17,10 +17,12 @@ app.secret_key = 'alura'
 
 @app.route('/')
 def login():
-    return render_template('login.html',titulo='LOGIN')
+    usuario='Nenhum Usuário logado'
+    return render_template('login.html',titulo='Fazer Login',usuario=usuario)
+
 
 @app.route('/index')
-def index():   
+def index():     
     lista_jogos = visualizar_jogos()
 
     tit="Biblioteca de Jogos"
@@ -31,7 +33,7 @@ def buscar_jogos():
     buscar=request.form['busca'] 
     lista_jogos = ver_jogos(buscar)
     if lista_jogos==[]:
-       flash('Nenhum jogo para buscar!!')
+       flash('Jogo nao encontrado!!')
        tit="Não Encontrado"
        return render_template('index.html',jogos=lista_jogos,titulo=tit)
     else:
@@ -75,7 +77,7 @@ def deletar_jogos():
       lista=(str(id))
 
       print(lista)  
-      excluir_jogos(lista)
+      excluir_jogos((lista,)) #Transformando em tupla
       flash(f'jogo  {nome} Deletado!!')
       
       return redirect(url_for('index'))
@@ -88,7 +90,7 @@ def novo_jogo():
 
 
 @app.route('/criar', methods=['POST'])
-def criar():
+def criar():    
     nome=request.form['nome']
     if nome == "":
         flash('Não foi posível cadastrar jogo - Dados insuficienntes - ')
@@ -98,6 +100,7 @@ def criar():
         categoria=request.form['categoria']
         console=request.form['console']
         ano=request.form['ano']
+       
 
         novo_jogo = (nome,categoria,console,ano)
         inserir_jogos(novo_jogo)
@@ -110,13 +113,15 @@ def criar():
 def autenticar():
     nome=request.form['nome']
     senha=request.form['senha']
+    usuario=request.form['nome']
 
     ver_usuario(nome)
     logar=ver_usuario(nome)
       
     if nome == logar[0] and senha == logar[1]:
-         flash('Logado com Sucesso!!')
-         return redirect(url_for('index'))
+         flash(f'Usuário {usuario} Logado com Sucesso!!')
+         
+         return redirect(url_for('index',usuario=usuario))
     else:
          flash('Não foi possível fazer Login!!')
          return redirect(url_for('login'))
