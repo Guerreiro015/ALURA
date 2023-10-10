@@ -23,15 +23,38 @@ conexao = mysql.connector.connect(
 cursor=conexao.cursor()
 
 conexao.commit() # Quando edita/grava/deleta - banco de dados
-#resultado = cursor.fetchall() # ler banco de dados
 
-nome='re5'
-categoria='zumbi'
-console='ps4'
-ano='2006'
 
-comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{nome}","{categoria}","{console}","{ano}")'
+#CREATE
+# nome="re5"
+# categoria="zumbi"
+# console="ps4"
+# ano="2006"
+
+# comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{nome}","{categoria}","{console}","{ano}")'
+# cursor.execute(comando)
+# conexao.commit() # Quando edita/grava/deleta - banco de dados
+
+
+#READ
+
+comando=f'SELECT * FROM jogos'
 cursor.execute(comando)
+resultado = cursor.fetchall() # ler banco de dados
+
+print(resultado)
+
+#UPDATE
+
+nome="re5"
+categoria="ZUMBI"
+console="ps1"
+ano="2000"
+
+comando=f' UPDATE jogos SET nome={nome},categoria={categoria},console'
+
+
+
 
 
 
