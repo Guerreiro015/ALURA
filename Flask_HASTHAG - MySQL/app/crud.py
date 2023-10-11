@@ -25,12 +25,12 @@ conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 # #CREATE
 
-nom='romeu'
-nick='romeu'
-sen='123'
-comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("{nom}", "{nick}", "{sen}")'
-cursor.execute(comando)
-conexao.commit() # Quando edita/grava/deleta - banco de dados
+# nom='romeu'
+# nick='romeu'
+# sen='123'
+# comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("{nom}", "{nick}", "{sen}")'
+# cursor.execute(comando)
+# conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
 ##--------------------<>--------------------------##

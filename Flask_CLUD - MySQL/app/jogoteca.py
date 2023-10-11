@@ -8,11 +8,8 @@ from dadosteca import *
 
 
 
-app = Flask(__name__) #instanciando Flask
-  
-
+app = Flask(__name__) #instanciando Flask  
 app.secret_key = 'alura'
-
   
 
 @app.route('/')

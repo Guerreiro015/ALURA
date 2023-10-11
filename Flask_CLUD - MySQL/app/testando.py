@@ -16,36 +16,31 @@ os.system('cls')
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='Lucasluana@0108',
+    password='Lucas@0108',
     database='jogoteca'
 )
 cursor=conexao.cursor()
 conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
-dados=('Romeu','Rome','123')
-nom=('Romeu')
-nick=('gato')
-sen=('123')
-dados=f'("{nom}","{nick}","{sen}")'
-print(dados)
 
-def inserir_usuarios(i):
-        comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("i")'
-        cursor.execute(comando)
-        conexao.commit() # Quando edita/grava/deleta - banco de dados
-inserir_usuarios(dados)
-
+#DELETE
+busca='i[0]'
+def excluir_usuario(i):    
+    comando = f'DELETE FROM usuarios WHERE nome = "{i}"'
+    cursor.execute(comando)
+    conexao.commit() # edita o banco de dados
+excluir_usuario(busca)
 
   
-def visualizar_jogos():   
-        #READ
+#READ
+def visualizar_usuarios():   
     comando=f'SELECT * FROM usuarios'
     cursor.execute(comando)
     resultado = cursor.fetchall() # ler banco de dados
 
     print(resultado)
-visualizar_jogos()    
+visualizar_usuarios()    
 
 
 cursor.close()

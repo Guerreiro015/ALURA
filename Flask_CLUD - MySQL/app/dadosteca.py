@@ -1,168 +1,142 @@
 
-from flask import Flask, render_template, request, redirect, session,flash
-from flask import Flask, url_for
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import sqlite3
 #pip install mysql-connector-python
 #pip install mysql.connector  
+import os
+os.system('cls')
+
 import mysql.connector
-import sys
-import sqlite3 as lite
 
 import os
 os.system('cls')
 
-
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='Lucasluana@0108',
+    password='Lucas@0108',
     database='jogoteca'
 )
+
 cursor=conexao.cursor()
 conexao.commit() # Quando edita/grava/deleta - banco de dados
 
+#--------------------<>_______________________________________#
 
-con = sqlite3.connect("jogoteca.db",check_same_thread=False)
+nom=('Roma')
+nick=('gato')
+sen=('12345')
+dados=[nom,nick,sen]
+print(dados)
 
-dados = ['romeu','romeu','123']
-novos_dados = ['Tomb Raider','Aventura','Ps1000','2050']
+def inserir_usuarios(i):
+        comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("{i[0]}", "{i[1]}", "{i[2]}")'
+        cursor.execute(comando)
+        conexao.commit() # Quando edita/grava/deleta - banco de dados
+#inserir_usuarios(dados)
 
-
-    #Criar tabela usuarios------------------------------------------------
-def criar_usuario():
-        with con:
-            cur = con.cursor()
-            cur.execute ("CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT,nome, nickname,senha)" )    
-
-    #criar_usuario()
-
-    #Criar tabela usuarios------------------------------------------------
-def criar_jogos():
-        with con:
-            cur = con.cursor()
-            cur.execute( "CREATE TABLE IF NOT EXISTS jogos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome,categoria,console,ano)")
-            
-    #criar_jogos()
-
-
-def inserir_usuario(i):
-        with con:
-            cur = con.cursor()
-            query = "INSERT INTO usuario(nome, nickname,senha) VALUES(?,?,?)"
-            cur.execute(query,i)
-    #inserir_usuario(dados)
+nom="Gran Turismo 6"
+cat="Corrida"
+con="PS5"
+an="2026"
+dados=[nom,cat,con,an]
 
 def inserir_jogos(i):
-        with con:
-            cur = con.cursor()
-            query = "INSERT INTO jogos(nome,categoria,console,ano) VALUES(?,?,?,?)"
-            cur.execute(query,i)
-#inserir_jogos(novos_dados)  
+        comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{i[0]}", "{i[1]}", "{i[2]}", "{i[3]}")'        
+        cursor.execute(comando)
+        conexao.commit() # Quando edita/grava/deleta - banco de dados
+#inserir_jogos(dados)
 
 
+def atualizar_usuarios(i):
+    comando = f'UPDATE usuarios SET nome = "{i[0]}", nickname="{i[1]}", senha="{i[2]}" WHERE id = "{i[3]}" '
+    cursor.execute(comando)
+    conexao.commit() # Quando edita/grava/deleta - banco de dados
+    
+#atualizar_usuarios(dados,'Romeu')
 
-    #ATUALIZAR DADOS -----------------------------------------------------
-def atualizar_usuario(i):
-        with con:
-            cur = con.cursor()
-            query = '''UPDATE usuario SET nome=?, nickname=?, senha = ? WHERE id=?'''
-            cur.execute(query,i)
+
 
 def atualizar_jogos(i):
-        with con:
-            cur = con.cursor()
-            query = '''UPDATE jogos SET nome=?, categoria=?, console=?, ano=? WHERE id=?'''
-            cur.execute(query,i)
+    comando = f'UPDATE jogos SET nome = "{i[0]}", categoria="{i[1]}", console="{i[2]}", ano="{i[3]}" WHERE id = "{i[4]}" '
+    cursor.execute(comando)
+    conexao.commit() # Quando edita/grava/deleta - banco de dados
     
-    #DELETAR DADOS -----------------------------------------------------
+#atualizar_jogos(dados,'ps5')
+    
+#     #DELETAR DADOS -----------------------------------------------------
+busca='i[0]'
+def excluir_usuario(i):    
+    comando = f'DELETE FROM usuarios WHERE nome = "{i}"'
+    cursor.execute(comando)
+    conexao.commit() # edita o banco de dados
+#excluir_usuario(busca)
+
+busca='Clash bandicoot'
+def excluir_jogos(i):    
+    comando = f'DELETE FROM jogos WHERE nome = "{i}"'
+    cursor.execute(comando)
+    conexao.commit() # edita o banco de dados
+#excluir_jogos(busca)
 
 
 
     #VER inventário -----------------------------------------------------
-def visualizar_usuario():   
-        lista_itens = []
-        with con:
-            cur = con.cursor()
-            cur.execute("SELECT * FROM usuario")
-            rows = cur.fetchall()
-
-            for row in rows:
-                lista_itens.append(row)
-            
-            return lista_itens
-            #print(lista_itens)
-        
+def visualizar_usuarios():   
+    comando=f'SELECT * FROM usuarios'
+    cursor.execute(comando)
+    resultado = cursor.fetchall() # ler banco de dados    
+    return resultado
+    
+#visualizar_usuarios()       
                 
-    #visualizar_usuario()  
+   
 
 def visualizar_jogos():   
-        lista_itens = []
-        with con:
-            cur = con.cursor()
-            cur.execute("SELECT * FROM jogos")
-            rows = cur.fetchall()
-
-            for row in rows:
-                lista_itens.append(row)
-            
-            return lista_itens
-            #print(lista_itens)
-  
+    comando=f'SELECT * FROM jogos'
+    cursor.execute(comando)
+    resultado = cursor.fetchall() # ler banco de dados
+   
+    return resultado
 #visualizar_jogos()        
             
         
                 
-def ver_usuario(i):   
-        lista_itens = []
-        with con:
-            usuario='none'
-            cur = con.cursor()
-            cur.execute("SELECT * FROM usuario")
-            rows = cur.fetchall()
-            for row in rows:
-                if i in row:
-                    usuario=row[1]
-                    senha=row[3]
-                    log=(usuario,senha)
-                    break
-                else:
-                    log='none'
+# def ver_usuario(i):   
+#         lista_itens = []
+#         with con:
+#             usuario='none'
+#             cur = con.cursor()
+#             cur.execute("SELECT * FROM usuario")
+#             rows = cur.fetchall()
+#             for row in rows:
+#                 if i in row:
+#                     usuario=row[1]
+#                     senha=row[3]
+#                     log=(usuario,senha)
+#                     break
+#                 else:
+#                     log='none'
             
-            return log
+#             return log
         
-def ver_jogos(i):   
-        lista = []
-        with con:           
-            cur = con.cursor()
-            cur.execute("SELECT * FROM jogos")
-            rows = cur.fetchall()
-            for row in rows:
-                if i in row:
-                   id=row[0]
-                   nome=row[1]
-                   categoria=row[2]
-                   console=row[3]
-                   ano=row[4]
-                   lista=(id,nome,categoria,console,ano)
-                   lista=[lista]
-                   break
+# def ver_jogos(i):   
+#         lista = []
+#         with con:           
+#             cur = con.cursor()
+#             cur.execute("SELECT * FROM jogos")
+#             rows = cur.fetchall()
+#             for row in rows:
+#                 if i in row:
+#                    id=row[0]
+#                    nome=row[1]
+#                    categoria=row[2]
+#                    console=row[3]
+#                    ano=row[4]
+#                    lista=(id,nome,categoria,console,ano)
+#                    lista=[lista]
+#                    break
                                  
-            return lista
+#             return lista
 
-def excluir_usuario(i):
-        with con:
-            cur = con.cursor()
-            query = "DELETE FROM usuario WHERE id=?"
-            cur.execute(query, i)
-    #deletar_usuario('6')  
-
-def excluir_jogos(i):
-        with con:
-            cur = con.cursor()
-            query = "DELETE FROM jogos WHERE id=?"
-            cur.execute(query, i)
 
 
 cursor.close()
