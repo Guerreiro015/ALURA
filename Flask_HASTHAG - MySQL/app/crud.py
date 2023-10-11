@@ -1,10 +1,8 @@
-from flask import Flask, render_template, request, redirect, session,flash
-from flask import Flask, url_for
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import sqlite3
 #pip install mysql-connector-python
 #pip install mysql.connector  
+import os
+os.system('cls')
+
 import mysql.connector
 
 
@@ -15,7 +13,7 @@ import mysql.connector
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='Lucasluana@0108',
+    password='Lucas@0108',
     database='jogoteca'
 
 )
@@ -25,37 +23,64 @@ cursor=conexao.cursor()
 conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
-#CREATE
-# nome="re5"
-# categoria="zumbi"
-# console="ps4"
-# ano="2006"
+# #CREATE
+
+nom='romeu'
+nick='romeu'
+sen='123'
+comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("{nom}", "{nick}", "{sen}")'
+cursor.execute(comando)
+conexao.commit() # Quando edita/grava/deleta - banco de dados
+
+
+##--------------------<>--------------------------##
+
+
+# nome="Genshi Impact"
+# categoria="Mundo aberto"
+# console="PC"
+# ano="2021"
 
 # comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{nome}","{categoria}","{console}","{ano}")'
 # cursor.execute(comando)
 # conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
-#READ
 
+#UPDATE
+# busca="RE6"
+# nom="Gran Turismo 2"
+# cat="Corrida"
+# con="PS2"
+# an="2019"
+
+# comando = f'UPDATE jogos SET nome = "{nom}", categoria="{cat}", console="{con}", ano="{an}" WHERE nome = "{busca}" '
+# cursor.execute(comando)
+# conexao.commit() # Quando edita/grava/deleta - banco de dados
+
+
+# DELETE
+# busca = "RE3"
+# comando = f'DELETE FROM jogos WHERE nome = "{busca}"'
+# cursor.execute(comando)
+# conexao.commit() # edita o banco de dados
+
+
+
+#READ
 comando=f'SELECT * FROM jogos'
 cursor.execute(comando)
 resultado = cursor.fetchall() # ler banco de dados
 
 print(resultado)
 
-#UPDATE
+##--------------------<>--------------------------##
 
-nome="re5"
-categoria="ZUMBI"
-console="ps1"
-ano="2000"
+comando=f'SELECT * FROM usuarios'
+cursor.execute(comando)
+resultado = cursor.fetchall() # ler banco de dados
 
-comando=f' UPDATE jogos SET nome={nome},categoria={categoria},console'
-
-
-
-
+print(resultado)
 
 
 
