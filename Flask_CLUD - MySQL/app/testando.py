@@ -24,24 +24,32 @@ conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
 
-#DELETE
-busca='i[0]'
-def excluir_usuario(i):    
-    comando = f'DELETE FROM usuarios WHERE nome = "{i}"'
-    cursor.execute(comando)
-    conexao.commit() # edita o banco de dados
-excluir_usuario(busca)
 
-  
 #READ
-def visualizar_usuarios():   
-    comando=f'SELECT * FROM usuarios'
+def visualizar_jogos():   
+    comando=f'SELECT * FROM jogos'
     cursor.execute(comando)
     resultado = cursor.fetchall() # ler banco de dados
-
-    print(resultado)
-visualizar_usuarios()    
-
+   
+    return resultado
+#visualizar_jogos()        
+            
+        
+                
+def ver_usuario(i):           
+        comando=f'SELECT * FROM jogos'
+        cursor.execute(comando)
+        resultado = cursor.fetchall() # ler banco de dados
+        for row in resultado:
+            if i in row:
+                usuario=row[1]
+                senha=row[3]
+                log=(usuario,senha)
+                break
+            else:
+                log='none'
+                
+            return log
 
 cursor.close()
 conexao.close()

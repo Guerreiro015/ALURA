@@ -6,6 +6,14 @@ from datetime import datetime
 import sqlite3
 from dadosteca import *
 
+conexao = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='Lucas@0108',
+    database='jogoteca'
+)
+cursor=conexao.cursor()
+conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
 app = Flask(__name__) #instanciando Flask  
@@ -16,6 +24,24 @@ app.secret_key = 'alura'
 def login():
     usuario='Nenhum Usuário logado'
     return render_template('login.html',titulo='Fazer Login',usuario=usuario)
+
+
+@app.route('/autenticar', methods=['POST'])
+def autenticar():
+    nome=request.form['nome']
+    senha=request.form['senha']
+    usuario=request.form['nome']
+
+    ver_usuario(nome)
+    logar=ver_usuario(nome)
+      
+    if nome == logar[0] and senha == logar[1]:
+         flash(f'Usuário {usuario} Logado com Sucesso!!')
+         
+         return redirect(url_for('index',usuario=usuario))
+    else:
+         flash('Não foi possível fazer Login!!')
+         return redirect(url_for('login'))
 
 
 @app.route('/index')
@@ -102,28 +128,9 @@ def criar():
         novo_jogo = (nome,categoria,console,ano)
         inserir_jogos(novo_jogo)
         flash('Jogo adcionado com Sucesso!!')
-        return redirect(url_for('index'))
- 
+        return redirect(url_for('index')) 
    
-
-@app.route('/autenticar', methods=['POST'])
-def autenticar():
-    nome=request.form['nome']
-    senha=request.form['senha']
-    usuario=request.form['nome']
-
-    ver_usuario(nome)
-    logar=ver_usuario(nome)
-      
-    if nome == logar[0] and senha == logar[1]:
-         flash(f'Usuário {usuario} Logado com Sucesso!!')
-         
-         return redirect(url_for('index',usuario=usuario))
-    else:
-         flash('Não foi possível fazer Login!!')
-         return redirect(url_for('login'))
-
-  
+ 
     
 @app.route('/logout')
 def logout():    

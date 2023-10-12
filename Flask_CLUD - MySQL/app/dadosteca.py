@@ -1,13 +1,8 @@
 
 #pip install mysql-connector-python
 #pip install mysql.connector  
-import os
-os.system('cls')
 
 import mysql.connector
-
-import os
-os.system('cls')
 
 conexao = mysql.connector.connect(
     host='localhost',
@@ -20,24 +15,13 @@ cursor=conexao.cursor()
 conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 #--------------------<>_______________________________________#
-
-nom=('Roma')
-nick=('gato')
-sen=('12345')
-dados=[nom,nick,sen]
-print(dados)
-
+dados=('Romeu','romeu','123')
 def inserir_usuarios(i):
         comando =f'INSERT INTO usuarios(nome,nickname,senha) VALUES("{i[0]}", "{i[1]}", "{i[2]}")'
         cursor.execute(comando)
         conexao.commit() # Quando edita/grava/deleta - banco de dados
 #inserir_usuarios(dados)
 
-nom="Gran Turismo 6"
-cat="Corrida"
-con="PS5"
-an="2026"
-dados=[nom,cat,con,an]
 
 def inserir_jogos(i):
         comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{i[0]}", "{i[1]}", "{i[2]}", "{i[3]}")'        
@@ -63,7 +47,7 @@ def atualizar_jogos(i):
 #atualizar_jogos(dados,'ps5')
     
 #     #DELETAR DADOS -----------------------------------------------------
-busca='i[0]'
+busca='Faisca'
 def excluir_usuario(i):    
     comando = f'DELETE FROM usuarios WHERE nome = "{i}"'
     cursor.execute(comando)
@@ -84,7 +68,7 @@ def visualizar_usuarios():
     comando=f'SELECT * FROM usuarios'
     cursor.execute(comando)
     resultado = cursor.fetchall() # ler banco de dados    
-    return resultado
+    print (resultado)
     
 #visualizar_usuarios()       
                 
@@ -100,23 +84,21 @@ def visualizar_jogos():
             
         
                 
-# def ver_usuario(i):   
-#         lista_itens = []
-#         with con:
-#             usuario='none'
-#             cur = con.cursor()
-#             cur.execute("SELECT * FROM usuario")
-#             rows = cur.fetchall()
-#             for row in rows:
-#                 if i in row:
-#                     usuario=row[1]
-#                     senha=row[3]
-#                     log=(usuario,senha)
-#                     break
-#                 else:
-#                     log='none'
-            
-#             return log
+def ver_usuario(i):           
+    comando=f'SELECT * FROM usuarios'
+    cursor.execute(comando)
+    resultado = cursor.fetchall() # ler banco de dados
+    for row in resultado:
+        if i in row:
+            usuario=row[1]
+            senha=row[3]
+            log=(usuario,senha)                 
+            break
+        else:
+            log='none'
+                
+        
+#ver_usuario('Romeu')
         
 # def ver_jogos(i):   
 #         lista = []
