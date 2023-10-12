@@ -1,19 +1,11 @@
 
-from flask import Flask, render_template, request, redirect, session,flash
+from flask import Flask, render_template, request, redirect, session,flash,send_from_directory
 from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import sqlite3
+import mysql.connector
 from dadosteca import *
-
-conexao = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='Lucas@0108',
-    database='jogoteca'
-)
-cursor=conexao.cursor()
-conexao.commit() # Quando edita/grava/deleta - banco de dados
 
 
 app = Flask(__name__) #instanciando Flask  
@@ -31,8 +23,7 @@ def autenticar():
     nome=request.form['nome']
     senha=request.form['senha']
     usuario=request.form['nome']
-
-    ver_usuario(nome)
+    
     logar=ver_usuario(nome)
       
     if nome == logar[0] and senha == logar[1]:
@@ -123,6 +114,8 @@ def criar():
         categoria=request.form['categoria']
         console=request.form['console']
         ano=request.form['ano']
+        arquivo=request.files['arquivo']
+        arquivo.save(f'static/uploads/{arquivo.filename}')
        
 
         novo_jogo = (nome,categoria,console,ano)
@@ -137,6 +130,10 @@ def logout():
     flash('Usuário Desconectado')
     return redirect(url_for('login'))
 
+
+@app.route('/uploads/<nome_arquivo>')
+def imagem(nome_arquivo):
+    return send_from_directory('uploads', nome_arquivo)
 
 
 

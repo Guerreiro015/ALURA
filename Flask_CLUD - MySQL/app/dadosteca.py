@@ -4,6 +4,7 @@
 
 import mysql.connector
 
+
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
@@ -82,47 +83,69 @@ def visualizar_jogos():
     return resultado
 #visualizar_jogos()        
             
-        
+
+
+
+#      con = lite.connect("INSS.bd")
+
+# cursor=conexao.cursor()
+# #ATUALIZAR DADOS -----------------------------------------------------
+# def atualizar_dados(i):
+#     with con:
+#         cur = con.cursor()   
                 
-def ver_usuario(i):           
-    comando=f'SELECT * FROM usuarios'
-    cursor.execute(comando)
-    resultado = cursor.fetchall() # ler banco de dados
-    for row in resultado:
-        if i in row:
-            usuario=row[1]
-            senha=row[3]
-            log=(usuario,senha)                 
-            break
-        else:
-            log='none'
-                
-        
+def ver_usuario(i): 
+    conexao = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='Lucas@0108',
+    database='jogoteca'
+)
+
+   
+    with conexao:
+        cursor=conexao.cursor()          
+        comando=f'SELECT * FROM usuarios'
+        cursor.execute(comando)
+        resultado = cursor.fetchall() # ler banco de dados
+        for row in resultado:
+            if i in row:
+                usuario=row[1]
+                senha=row[3]
+                log=(usuario,senha)                 
+                break
+            else:
+                log='none'
+        return log            
+            
 #ver_usuario('Romeu')
         
-# def ver_jogos(i):   
-#         lista = []
-#         with con:           
-#             cur = con.cursor()
-#             cur.execute("SELECT * FROM jogos")
-#             rows = cur.fetchall()
-#             for row in rows:
-#                 if i in row:
-#                    id=row[0]
-#                    nome=row[1]
-#                    categoria=row[2]
-#                    console=row[3]
-#                    ano=row[4]
-#                    lista=(id,nome,categoria,console,ano)
-#                    lista=[lista]
-#                    break
-                                 
-#             return lista
+def ver_jogos(i): 
+    conexao = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='Lucas@0108',
+    database='jogoteca'
+)
+   
+    with conexao:
+        cursor=conexao.cursor()          
+        comando=f'SELECT * FROM jogos'
+        cursor.execute(comando)
+        resultado = cursor.fetchall() # ler banco de dados
+        lista=()
+        for row in resultado:
+            if i in row: 
+                lista=(row,)             
+                break
+            else:
+                lista=[]
+        return lista          
 
 
 
-cursor.close()
-conexao.close()
+# cursor.close()
+# conexao.close()
 
             #excluir_jogos(('11',))
 
