@@ -66,3 +66,13 @@ td {
     margin-left: 1em;
     margin-bottom: 1em;
 }
+
+.imag{
+    width: 10%;
+    height: 10%;
+}
+
+.myBackground {
+    background-image: url(/static/imagem/Banner.png);
+    color: white
+}

@@ -42,17 +42,11 @@ def index():
     tit="Biblioteca de Jogos"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
-@app.route('/buscar_jogos', methods=['POST'])
-def buscar_jogos(): 
-    buscar=request.form['busca'] 
-    lista_jogos = ver_jogos(buscar)
-    if lista_jogos==[]:
-       flash('Jogo nao encontrado!!')
-       tit="Não Encontrado"
-       return render_template('index.html',jogos=lista_jogos,titulo=tit)
-    else:
-       tit=f"Jogo Encontrado {buscar}"
-       return render_template('buscar.html',jogos=lista_jogos,titulo=tit)
+@app.route('/editar_jogos/<int:id>')
+def editar_jogos(id):    
+    lista_jogos = ver_jogos(id)   
+    tit=f"ALTERAR"
+    return render_template('editar.html',jogos=lista_jogos,titulo=tit)
 
 @app.route('/alterar_jogos', methods=['POST'])
 def alterar_jogos(): 
@@ -66,9 +60,17 @@ def alterar_jogos():
       categoria=request.form['categoria']
       console=request.form['console']
       ano=request.form['ano']
+      detalhe=request.form['detalhe']                
       id=request.form['id']
+      
+      arquivo=request.files['arquivo']
+      if arquivo == "":
+        foto=request.form['foto']  
+      else:  
+        arquivo.save(f'app/uploads/{arquivo.filename}')
+        foto=f'uploads/{arquivo.filename}'
 
-      lista=(nome,categoria,console,ano,id)
+      lista=(nome,categoria,console,ano,foto,detalhe,id)
 
       print(lista)  
       atualizar_jogos(lista)
@@ -77,22 +79,11 @@ def alterar_jogos():
       return redirect(url_for('index'))
     
 
-@app.route('/deletar_jogos', methods=['POST'])
-def deletar_jogos(): 
-    nome=request.form['nome']    
-    if nome=="":
-       
-       flash('Nenhum jogo para DELETAR!!')
-       return render_template('index.html')
-    else:
-     
-      id=request.form['id']
-
-      lista=(str(id))
-
-      print(lista)  
-      excluir_jogos((lista,)) #Transformando em tupla
-      flash(f'jogo  {nome} Deletado!!')
+@app.route('/deletar_jogos/<int:id>')
+def deletar_jogos(id): 
+      
+      excluir_jogos(id)
+      flash(f'jogo Deletado!!')
       
       return redirect(url_for('index'))
     
@@ -104,7 +95,7 @@ def novo_jogo():
 
 
 @app.route('/criar', methods=['POST'])
-def criar():    
+def criar():
     nome=request.form['nome']
     if nome == "":
         flash('Não foi posível cadastrar jogo - Dados insuficienntes - ')
@@ -114,11 +105,13 @@ def criar():
         categoria=request.form['categoria']
         console=request.form['console']
         ano=request.form['ano']
+        detalhe=request.form['detalhe']
         arquivo=request.files['arquivo']
-        arquivo.save(f'static/uploads/{arquivo.filename}')
+        arquivo.save(f'app/uploads/{arquivo.filename}')
+        foto=f'uploads/{arquivo.filename}'
        
 
-        novo_jogo = (nome,categoria,console,ano)
+        novo_jogo = (nome,categoria,console,ano,foto,detalhe)
         inserir_jogos(novo_jogo)
         flash('Jogo adcionado com Sucesso!!')
         return redirect(url_for('index')) 
@@ -134,6 +127,7 @@ def logout():
 @app.route('/uploads/<nome_arquivo>')
 def imagem(nome_arquivo):
     return send_from_directory('uploads', nome_arquivo)
+
 
 
 

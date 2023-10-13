@@ -9,46 +9,46 @@
         <a href="/novo_jogo" class="link-success"> NOVO JOGO</a></br>
         <a href="/" class="link-warning">FAZER LOGIN</a></br>  
         <a href="/logout" class="link-danger">FAZER LOGOUT</a></br>
-        
-      </body>
 
-      
-    <form  method="post" action="{{url_for('buscar_jogos')}}" >
-      <fieldset>
-       <div class="form-group">
-          <input type="text" id="busca" name="busca" class="form-control" placeholder="Digite o nome de um jogo para procurar">
-       </div>
-       <button type="submit" class="btn btn-primary btn-salvar">Buscar</button>
-     </fieldset>
-    </form>    
+      </body>      
+   
                 <tr>
                     <th>ID</th>
                     <th>NOME</th>
                     <th>CATEGORIA</th>
                     <th>CONSOLE</th>
                     <th>ANO</th>
+                    <th>Arquivo</th>
+                    <th>FOTO</th>
+                    <th>ACÃO</th>                    
                 </tr>
             </thead>
             <tbody>
 
                 {% for jogo in jogos %}                
 
-                <tr>                   
+                <tr> 
+                                    
                   <td> {{jogo[0]}} </td>  
                   <td> {{jogo[1]}} </td>  
                   <td> {{jogo[2]}} </td>  
                   <td> {{jogo[3]}} </td>                      
-                  <td> {{jogo[4]}} </td>                      
+                  <td> {{jogo[4]}} </td>                   
+                  <td> {{jogo[5]}} </td>
+                  <td> <img src="{{jogo[5]}}" width="50"   height="50" ></td> 
+
+                  <td> <a href="{{url_for('editar_jogos',id=jogo[0])}}" class="text-primary"> Detalhes</a> </br>        
+                    <a href="{{url_for('editar_jogos',id=jogo[0])}}" class="link-success"> Editar</a>  </br>         
+                    <a href="{{url_for('deletar_jogos',id=jogo[0])}}" class="link-danger"> Deletar</a> </td>                   
+
                 </tr>
-                    
-                {% endfor %}           
-
-
                 
+                {% endfor %}     
+
             </tbody>
         </table>
-    </div>
-  </body>
+    
+    </body>
   {%endblock%}
   
 </html>

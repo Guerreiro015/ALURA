@@ -25,7 +25,7 @@ def inserir_usuarios(i):
 
 
 def inserir_jogos(i):
-        comando =f'INSERT INTO jogos(nome,categoria,console,ano) VALUES("{i[0]}", "{i[1]}", "{i[2]}", "{i[3]}")'        
+        comando =f'INSERT INTO jogos(nome,categoria,console,ano,foto,detalhe) VALUES("{i[0]}", "{i[1]}", "{i[2]}", "{i[3]}", "{i[4]}", "{i[5]}")'        
         cursor.execute(comando)
         conexao.commit() # Quando edita/grava/deleta - banco de dados
 #inserir_jogos(dados)
@@ -41,7 +41,7 @@ def atualizar_usuarios(i):
 
 
 def atualizar_jogos(i):
-    comando = f'UPDATE jogos SET nome = "{i[0]}", categoria="{i[1]}", console="{i[2]}", ano="{i[3]}" WHERE id = "{i[4]}" '
+    comando = f'UPDATE jogos SET nome = "{i[0]}", categoria="{i[1]}", console="{i[2]}", ano="{i[3]}", foto="{i[4]}", foto="{i[5]} WHERE id = "{i[6]}" '
     cursor.execute(comando)
     conexao.commit() # Quando edita/grava/deleta - banco de dados
     
@@ -57,7 +57,7 @@ def excluir_usuario(i):
 
 busca='Clash bandicoot'
 def excluir_jogos(i):    
-    comando = f'DELETE FROM jogos WHERE nome = "{i}"'
+    comando = f'DELETE FROM jogos WHERE id = "{i}"'
     cursor.execute(comando)
     conexao.commit() # edita o banco de dados
 #excluir_jogos(busca)

@@ -4,14 +4,17 @@
 
 </head>
 <body>    
+  <thead class="thead-default"></thead>
+
       <form action='/criar' method="post" enctype="multipart/form-data">
         <fieldset>
           <!--   Inserir imagem  -->
-          
+      
           <figure class="img-thumbnail col-md-4">
-            <img class="img-fluid" src="{{ url_for('imagem', nome_arquivo='capa_padrao.jpg') }}">
+            <img class="img-fluid " src="{{ url_for('imagem', nome_arquivo='capa_padrao.jpg') }}">
+
             <figcaption>
-              <label  class="fileContainer">
+              <label class="fileContainer">>
                 
                 <input type="file" name="arquivo" accept=".jpg" >
 
@@ -42,7 +45,13 @@
             <input type="text" id="ano" name="ano" class="form-control">
           </div>
           
-          <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+          <div class="form-group">
+            <label for="foto">foto</label>
+            <input type="text" id="foto" name="foto" class="form-control">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary btn-salvar buttons">Salvar</button>
         </fieldset>
       </form>
     </div>
