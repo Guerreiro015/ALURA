@@ -5,7 +5,7 @@
 
         
          {% for jogo in jogos %}
-        <div class="bg-primary">         
+        <div class="page">         
          <table>
           <tr>
             <td> 
@@ -14,13 +14,13 @@
 
               <figure class="img-thumbnail col-md-12">
 
-                <img class="img-fluid " src="/{{jogo.foto}}" width="600"></td>
+                <img class="img-fluid " src="/{{jogo.foto}}" width="450"></td>
     
                                
-              </br>
+              
               <td> 
                 <div class="form-group">
-                  <font  color="yellow" size="5"><label for="exampleInputPassword1"> Id </label></font>
+                  <font  color="blue" size="4"><label for="exampleInputPassword1"> Id </label>
                   <input type="text" class="form-control" name="id" id="id" value="{{jogo.id}}"  size="80" >
                 </div>
                 
@@ -52,21 +52,21 @@
                 <div class="form-group">
                   <label for="exampleInputPassword1">Detalhes</label>
                   <input type="text" class="form-control" name="obs" id="obs" value="{{jogo.obs}}" >
-                </div>  </br> 
+                </div>  </br></br>
                 
-                <figcaption>
-                  <label class="form-group">
-                    
-                    <input type="file" name="arquivo" accept=".jpg" >
-    
-                  </label>
-                </figcaption>
-    
-              </figure>                 
-
-               
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Escolher Capa</label>
+                  <figcaption>
+                    <label class="form-group">
+                      
+                      <input type="file" name="arquivo" accept=".jpg" >
+      
+                    </label>
+                  </figcaption>
+                </div>  </font>
+                
               </br/>               
-              <center> </br></br>
+              <center> 
                 <button type="submit" class="btn btn-success" >Salvar Alterações</button>
                 <a href="/index" class="btn btn-danger" >VOLTAR</a><br/>   
               </center>             

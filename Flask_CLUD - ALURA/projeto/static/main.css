@@ -47,11 +47,11 @@ body {
 }
 
 .formLogin input {
-    padding: 15px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    margin-top: 5px;
+    margin-top: 3px;
     border-radius: 4px;
     transition: all linear 160ms;
     outline: none;
@@ -110,5 +110,31 @@ body {
 }
 
 .text-input{
-    width:300px
+    width:400px
   }
+
+  .btn_verde {
+    background-color: #06af3e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.form-left {
+    background-color: #0625af;
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+

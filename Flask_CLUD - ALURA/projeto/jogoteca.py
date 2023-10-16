@@ -56,11 +56,13 @@ app.secret_key = 'alura'
 def login():    
     return render_template('login.html')
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/cadastro_usuarios')
 def cadastro_usuarios():    
     return render_template('cadastro_usuarios.html')
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
@@ -78,7 +80,31 @@ def autenticar():
     else:
          flash('Não foi possível fazer Login!!')
          return render_template('login.html')
+    
+#---------------------------------------------<>--------------------------------------------------    
 
+@app.route('/autenticar_cadastro', methods=['POST'])
+def autenticar_cadastro():
+    nome=request.form['nome']
+    nome=request.form['nickname']
+    senha=request.form['senha']
+    senha2=request.form['senha2']
+    usuario=request.form['nome']
+    if senha != senha2:
+        flash('Senhas não conferem, tente colocar senhas iguais!!')
+        return render_template('cadastro_usuarios.html')
+    else:
+
+        dados=session.query(usuarios).all()
+        
+        if nome not in dados[0].nome:
+            
+            flash(f'Usuário {usuario} cadastrado com Sucesso!!')            
+            return redirect(url_for('login',usuario=usuario))
+        else:
+            flash('Usuario já Existe!!')
+            return render_template('login.html')
+    #---------------------------------------------<>--------------------------------------------------     
 
 @app.route('/index')
 def index():
@@ -88,12 +114,14 @@ def index():
     tit="Biblioteca de Jogos"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/editar_jogos/<int:id>')
 def editar_jogos(id):
     dados=session.query(jogos).filter(jogos.id==id)   
     tit=f"ALTERAR"
     return render_template('editar.html',jogos=dados,titulo=tit)
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/detalhes/<int:id>')
 def detalhes(id):  
@@ -101,6 +129,7 @@ def detalhes(id):
     tit=f"DETALHES DO JOGO"
     return render_template('detalhes.html',jogos=dados,titulo=tit)
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/alterar_jogos', methods=['POST'])
 def alterar_jogos(): 
@@ -131,6 +160,7 @@ def alterar_jogos():
       
       return redirect(url_for('index'))
     
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/deletar_jogos/<int:id>')
 def deletar_jogos(id): 
@@ -141,11 +171,13 @@ def deletar_jogos(id):
       return redirect(url_for('index'))
     
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/novo_jogo')
 def novo_jogo():
     return render_template('novo_jogo.html', titulo="novo jogo")
 
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/criar', methods=['POST'])
 def criar():
@@ -170,19 +202,20 @@ def criar():
         flash('Jogo adcionado com Sucesso!!')
         return redirect(url_for('index')) 
    
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/uploads/<nome_arquivo>')
 def imagem(nome_arquivo):
     return send_from_directory('uploads', nome_arquivo)
 
-
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/logout')
 def logout():    
     flash('Usuário Desconectado')
     return redirect(url_for('login'))
 
-
+#---------------------------------------------<>--------------------------------------------------   
 
 
 session.close()  

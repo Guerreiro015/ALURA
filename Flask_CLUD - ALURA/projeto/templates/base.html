@@ -8,23 +8,15 @@
     <link href="static/main.css"rel="stylesheet">
     
     <title>Jogoteca</title>
-  </head>
- 
-    
-    
-      <div class="body">
-
-       
+   </head>       
         
-          {% with messages = get_flashed_messages() %}
-                    {% if messages %} 
-                        <ul id="messages" class="text-primary">
-                        {% for message in messages %}
-                            <li class="text-white bg-dark">{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-          {% endwith %}        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
       
 
         <div class="page-header">  
@@ -43,7 +35,7 @@
                   <a href="/index" class="p-3 mb-2 bg-secondary text-white"> PAGINA INICIAL</a><br/>
                   <a href="/novo_jogo" class="p-3 mb-2 bg-primary text-white"> Cadastrar Novo Jogo</a></br>
                   <a href="/" class="p-3 mb-2 bg-success text-white">Trocar de Usuário</a>        
-                  <a href="/logar" class="p-3 mb-2 bg-danger text-white">Sair da Biblioteca</a> 
+                  <a href="/" class="p-3 mb-2 bg-danger text-white">Sair da Biblioteca</a> 
                 <div>
                 </body>   
                 
