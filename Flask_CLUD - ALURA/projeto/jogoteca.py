@@ -86,24 +86,29 @@ def autenticar():
 @app.route('/autenticar_cadastro', methods=['POST'])
 def autenticar_cadastro():
     nome=request.form['nome']
-    nome=request.form['nickname']
+    nickname=request.form['nickname']
     senha=request.form['senha']
     senha2=request.form['senha2']
+
     usuario=request.form['nome']
+    dados=session.query(usuarios).all()
+
+    if nome == "" or nickname =="" or senha =="":
+        flash('Preencha todos os campos!!')
+        return render_template('cadastro_usuarios.html')
+
+    if nome in dados[0].nome:            
+        flash('Usuario já Existe!!')
+        return render_template('cadastro_usuarios.html')
+
     if senha != senha2:
         flash('Senhas não conferem, tente colocar senhas iguais!!')
         return render_template('cadastro_usuarios.html')
-    else:
-
-        dados=session.query(usuarios).all()
-        
-        if nome not in dados[0].nome:
-            
-            flash(f'Usuário {usuario} cadastrado com Sucesso!!')            
-            return redirect(url_for('login',usuario=usuario))
-        else:
-            flash('Usuario já Existe!!')
-            return render_template('login.html')
+    
+    
+    else:        
+        flash(f'Usuário {usuario} cadastrado com Sucesso!!')            
+        return redirect(url_for('login',usuario=usuario))
     #---------------------------------------------<>--------------------------------------------------     
 
 @app.route('/index')
@@ -113,6 +118,17 @@ def index():
 
     tit="Biblioteca de Jogos"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
+
+#---------------------------------------------<>--------------------------------------------------   
+
+
+@app.route('/usuario')
+def usuario():
+    dados=session.query(usuarios).all()     
+    lista_usuarios = dados
+
+    tit="USUARIOS"
+    return render_template('usuarios.html',titulo=tit,usuarios=lista_usuarios)
 
 #---------------------------------------------<>--------------------------------------------------   
 
