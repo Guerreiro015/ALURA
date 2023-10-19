@@ -63,6 +63,13 @@ def cadastro_usuarios():
     return render_template('cadastro_usuarios.html')
 
 #---------------------------------------------<>--------------------------------------------------   
+#---------------------------------------------<>--------------------------------------------------   
+
+@app.route('/calculo')
+def calculo():    
+    return render_template('calculo.html')
+
+#---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
@@ -116,7 +123,7 @@ def index():
     dados=session.query(jogos).all()     
     lista_jogos = dados
 
-    tit="Biblioteca de Jogos"
+    tit="imposto de renda"
     return render_template('index.html',titulo=tit,jogos=lista_jogos)
 
 #---------------------------------------------<>--------------------------------------------------   

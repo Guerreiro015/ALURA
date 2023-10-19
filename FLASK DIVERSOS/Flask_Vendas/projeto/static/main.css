@@ -138,3 +138,41 @@ body {
 
 }
 
+.gallery_product
+{
+    margin-bottom: 30px;
+}
+.gallery_product .title{
+  color:#fff;
+  margin: 0;
+  position:relative;
+  bottom:50px;
+  left:10px;
+}
+.gallery_product .title small{
+  display:block;
+}
+
+.dados {
+    bottom: 10px;
+    right: 10px;
+}
+
+.text {
+    font-family: "Arial Bold", Arial;
+    font-weight: 500;
+    font-size: 22px;
+    color: #ffffff !important;
+}
+
+.img-ds {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .texto-ds {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    color: white;
+  }
