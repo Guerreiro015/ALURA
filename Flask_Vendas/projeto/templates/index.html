@@ -2,46 +2,29 @@
 {% extends 'base.html'%}
     {% block conteudo %}
 
-    <thead class="thead-default">
-
-   
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                    <th>CATEGORIA</th>
-                    <th>CONSOLE</th>
-                    <th>ANO</th>
-                    <th>Arquivo</th>
-                    <th>FOTO</th>
-                    <th>ACÃO</th>                    
-                </tr>
-            </thead>
-            <tbody>
+                <ul class="cards__lista">               
+           
 
                 {% for jogo in jogos %}                
+                <li class="card">
+                                                 
+                    <div class="card__info"> <img src="{{jogo.foto}}" width="80"   height="100" > 
+                    <p class="card__titulo" > Nome:       {{jogo.nome}}  </p> 
+                    <p class="card__descricao"> Categoria:  {{jogo.categoria}}   </p> 
+                    <p class="card__categoria"> Console:    {{jogo.console}}   </p>                     
+                    <p class="card__categoria"> Ano:        {{jogo.ano}}     </p>
+                    </div>      
 
-                <tr> 
-                                    
-                  <td> {{jogo.id}} </td>  
-                  <td> {{jogo.nome}} </td>  
-                  <td> {{jogo.categoria}} </td>  
-                  <td> {{jogo.console}} </td>                      
-                  <td> {{jogo.ano}} </td>                   
-                  <td> {{jogo.foto}} </td>
-                  <td> <img src="{{jogo.foto}}" width="50"   height="50" ></td> 
-
-                  <td> <a href="{{url_for('detalhes',id=jogo.id)}}" class="text-primary"> Detalhes</a> </br>        
-                    <a href="{{url_for('editar_jogos',id=jogo.id)}}" class="link-success"> Editar</a>  </br>         
-                    <a href="{{url_for('deletar_jogos',id=jogo.id)}}" class="link-danger"> Deletar</a> </td>                   
-
-                </tr>
                 
+                </li>    
                 {% endfor %}     
+                   
+                                                                                 
+            </ul>
+        </div>
+    </section>
 
-            </tbody>
-        </table>
-    
-    </body>
   {%endblock%}
   
 </html>
+
