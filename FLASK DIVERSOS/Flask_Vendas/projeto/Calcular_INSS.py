@@ -19,12 +19,12 @@ from sqlalchemy import Column,String,Integer
 
 
 engine = ce('mysql://root:lucas0108@localhost:3306/base')
-base=declarative_base()
+bases=declarative_base()
 session=sessionmaker(bind=engine)
 session=session()
 
 
-class usuarios(base):
+class usuarios(bases):
    __tablename__= "usuarios"
 
    id = Column(Integer, primary_key=True, autoincrement=True)
@@ -65,13 +65,12 @@ def autenticar():
     usuario=request.form['nome']
     
     dados=session.query(usuarios).all()
-      
-    if nome == dados[0].nome and senha == dados[0].senha:
-         
-         flash(f'Usuário {usuario} Logado com Sucesso!!')
-         
-         return redirect(url_for('index',usuario=usuario))
-    else:
+
+    for dado in dados:      
+       if nome == dado[0].nome and senha == dado[0].senha:         
+          flash(f'Usuário {usuario} Logado com Sucesso!!')         
+          return redirect(url_for('index',usuario=usuario))          
+       else:
          flash('Não foi possível fazer Login!!')
          return render_template('login.html')
     
@@ -107,11 +106,10 @@ def autenticar_cadastro():
 
 @app.route('/index')
 def index():
-    dados=session.query(usuarios).all()     
-    lista = dados
+    dados=session.query(usuarios).all()         
 
     tit="imposto de renda"
-    return render_template('index.html',titulo=tit,dados=lista)
+    return render_template('index.html',titulo=tit,dados=dados)
 
 #---------------------------------------------<>--------------------------------------------------   
 
