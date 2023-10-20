@@ -14,15 +14,16 @@ def criar_bd(banco,tabela):
             
 
       comando= f'''CREATE TABLE IF NOT EXISTS {tabela} (
-    id int(11) NOT NULL, 
+    id int(11) NOT NULL  AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
-    nickname VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
     senha VARCHAR(45) NOT NULL,
+    empresa VARCHAR(45) NOT NULL,
     PRIMARY KEY(id) )'''
 
       cursor.execute(comando)
 
-criar_bd('base','escola') # Instanciando a criação do banco de dados
+criar_bd('base','inss') # Instanciando a criação do banco de dados
 # base = nome do banco de dados
 # escola = nome da tabela dentro do banco de dados
 

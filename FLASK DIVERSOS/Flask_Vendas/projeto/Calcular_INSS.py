@@ -29,7 +29,8 @@ class usuarios(base):
 
    id = Column(Integer, primary_key=True, autoincrement=True)
    nome = Column(String(45), nullable=False)
-   nickname = Column(String(45), nullable=False)
+   email = Column(String(45), nullable=False)
+   empresa = Column(String(45), nullable=False)
    senha = Column(String(45), nullable=False)
    
 class jogos(base):
