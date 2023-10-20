@@ -18,7 +18,7 @@ from sqlalchemy import Column,String,Integer
 #pip install PyMySQL
 
 
-engine = ce('mysql://root:lucas0108@localhost:3306/jogoteca')
+engine = ce('mysql://root:lucas0108@localhost:3306/base')
 base=declarative_base()
 session=sessionmaker(bind=engine)
 session=session()
@@ -29,22 +29,9 @@ class usuarios(base):
 
    id = Column(Integer, primary_key=True, autoincrement=True)
    nome = Column(String(45), nullable=False)
-   nickname = Column(String(45), nullable=False)
+   email = Column(String(45), nullable=False)
+   empresa = Column(String(45), nullable=False)
    senha = Column(String(45), nullable=False)
-   
-class jogos(base):
-   __tablename__= "jogos"
-
-   id = Column(Integer, primary_key=True, autoincrement=True)
-   nome = Column(String(45), nullable=False)
-   categoria = Column(String(45), nullable=False)
-   console = Column(String(45), nullable=False)   
-   ano = Column(String(45), nullable=False)   
-   foto = Column(String(45), nullable=False)   
-   obs = Column(String(200), nullable=False)   
-   
-
-
 
 
 
@@ -73,7 +60,7 @@ def calculo():
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
-    nome=request.form['nome']
+    nome=request.form['nome']    
     senha=request.form['senha']
     usuario=request.form['nome']
     
@@ -93,14 +80,14 @@ def autenticar():
 @app.route('/autenticar_cadastro', methods=['POST'])
 def autenticar_cadastro():
     nome=request.form['nome']
-    nickname=request.form['nickname']
+    email=request.form['email']
     senha=request.form['senha']
     senha2=request.form['senha2']
 
     usuario=request.form['nome']
     dados=session.query(usuarios).all()
 
-    if nome == "" or nickname =="" or senha =="":
+    if nome == "" or email == "" or senha == "" or email == "":
         flash('Preencha todos os campos!!')
         return render_template('cadastro_usuarios.html')
 
@@ -120,11 +107,11 @@ def autenticar_cadastro():
 
 @app.route('/index')
 def index():
-    dados=session.query(jogos).all()     
-    lista_jogos = dados
+    dados=session.query(usuarios).all()     
+    lista = dados
 
     tit="imposto de renda"
-    return render_template('index.html',titulo=tit,jogos=lista_jogos)
+    return render_template('index.html',titulo=tit,dados=lista)
 
 #---------------------------------------------<>--------------------------------------------------   
 
@@ -132,104 +119,38 @@ def index():
 @app.route('/usuario')
 def usuario():
     dados=session.query(usuarios).all()     
-    lista_usuarios = dados
+    lista = dados
 
     tit="USUARIOS"
-    return render_template('usuarios.html',titulo=tit,usuarios=lista_usuarios)
+    return render_template('usuarios.html',titulo=tit,usuarios=lista)
 
 #---------------------------------------------<>--------------------------------------------------   
 
-@app.route('/editar_jogos/<int:id>')
-def editar_jogos(id):
-    dados=session.query(jogos).filter(jogos.id==id)   
-    tit=f"ALTERAR"
-    return render_template('editar.html',jogos=dados,titulo=tit)
-#---------------------------------------------<>--------------------------------------------------   
-
-@app.route('/detalhes/<int:id>')
-def detalhes(id):  
-    dados=session.query(jogos).filter(jogos.id==id)  
-    tit=f"DETALHES DO JOGO"
-    return render_template('detalhes.html',jogos=dados,titulo=tit)
-
-#---------------------------------------------<>--------------------------------------------------   
-
-@app.route('/alterar_jogos', methods=['POST'])
+@app.route('/alterar_jogos/<int:id>')
 def alterar_jogos(): 
+    id=request.form['id']   
     nome=request.form['nome']
-    if nome=="":
-       tit='ALTERAR'
-       flash('Nenhum jogo para alterar!!')
-       return render_template('index.html')
-    else:
-      id=request.form['id']        
-      nome=request.form['nome']
-      categoria=request.form['categoria']
-      console=request.form['console']
-      ano=request.form['ano']
-      obs=request.form['obs']
-      timestamp=time.time()
-      arquivo=request.files['arquivo']
-      if not arquivo:
-        foto=request.form['foto']      
-      else:                 
-        arquivo.save(f'projeto/uploads/{arquivo.filename}-{timestamp}')
-        foto=f'uploads/{arquivo.filename}-{timestamp}' 
+    email=request.form['email']
+    empresa=request.form['empresa'] 
+    senha=request.form['senha']
+    
 
-      session.query(jogos).filter(jogos.id==id).update({'nome': nome,'categoria': categoria,'console': console,'ano': ano,'foto':foto,'obs': obs })
-      session.commit()  
+    session.query(usuarios).filter(usuario.id==id).update({'nome': nome,'email': email,'empresa': empresa,'senha': senha })
+    session.commit()  
       
-      flash(f'jogo  {nome} alterado!!')
+    flash(f'Úsuario {nome} alterado!!')
       
-      return redirect(url_for('index'))
+    return redirect(url_for('index'))
     
 #---------------------------------------------<>--------------------------------------------------   
 
 @app.route('/deletar_jogos/<int:id>')
-def deletar_jogos(id): 
-      
-      session.query(jogos).filter(jogos.id==id).delete()
+def deletar_jogos(id):       
+      session.query(usuario).filter(usuario.id==id).delete()
       session.commit() 
       flash(f'Jogo Deletado !!')
       return redirect(url_for('index'))
     
-
-#---------------------------------------------<>--------------------------------------------------   
-
-@app.route('/novo_jogo')
-def novo_jogo():
-    return render_template('novo_jogo.html', titulo="novo jogo")
-
-#---------------------------------------------<>--------------------------------------------------   
-
-@app.route('/criar', methods=['POST'])
-def criar():
-    nome=request.form['nome']
-    if nome == "":
-        flash('Não foi posível cadastrar jogo - Dados insuficienntes - ')
-        return render_template('novo_jogo.html', titulo="novo jogo")
-    else:
-        nome=request.form['nome']
-        categoria=request.form['categoria']
-        console=request.form['console']
-        ano=request.form['ano']
-        obs=request.form['obs']
-        timestamp=time.time()
-        arquivo=request.files['arquivo']
-        arquivo.save(f'projeto/uploads/{arquivo.filename}-{timestamp}')
-        foto=f'uploads/{arquivo.filename}-{timestamp}'
-               
-        dados=jogos(nome=nome, categoria=categoria, console=console, ano=ano, foto=foto, obs=obs) #instanciando
-        session.add(dados) #inserindo
-        session.commit() # gravando
-        flash('Jogo adcionado com Sucesso!!')
-        return redirect(url_for('index')) 
-   
-#---------------------------------------------<>--------------------------------------------------   
-
-@app.route('/uploads/<nome_arquivo>')
-def imagem(nome_arquivo):
-    return send_from_directory('uploads', nome_arquivo)
 
 #---------------------------------------------<>--------------------------------------------------   
 

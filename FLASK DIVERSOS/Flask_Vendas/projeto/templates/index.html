@@ -38,31 +38,22 @@
                 <tr>
                     <th>ID</th>
                     <th>NOME</th>
-                    <th>CATEGORIA</th>
-                    <th>CONSOLE</th>
-                    <th>ANO</th>
-                    <th>Arquivo</th>
-                    <th>FOTO</th>
-                    <th>ACÃO</th>                    
+                    <th>E-MAIL</th>
+                    <th>EMPRESA>
+                    <th>SENHA</th>                                   
                 </tr>
             </thead>
             <tbody>
 
-                {% for jogo in jogos %}                
+                {% for usuario in usuarios %}                
 
                 <tr> 
                                     
-                  <td> {{jogo.id}} </td>  
-                  <td> {{jogo.nome}} </td>  
-                  <td> {{jogo.categoria}} </td>  
-                  <td> {{jogo.console}} </td>                      
-                  <td> {{jogo.ano}} </td>                   
-                  <td> {{jogo.foto}} </td>
-                  <td> <img src="{{jogo.foto}}" width="50"   height="50" ></td> 
-
-                  <td> <a href="{{url_for('detalhes',id=jogo.id)}}" class="text-primary"> Detalhes</a> </br>        
-                    <a href="{{url_for('editar_jogos',id=jogo.id)}}" class="link-success"> Editar</a>  </br>         
-                    <a href="{{url_for('deletar_jogos',id=jogo.id)}}" class="link-danger"> Deletar</a> </td>                   
+                  <td> {{usuario.id}} </td>  
+                  <td> {{usuario.nome}} </td>  
+                  <td> {{usuario.email}} </td>  
+                  <td> {{usuario.empresa}} </td>                      
+                  <td> {{usuario.senha}} </td>                                                   
 
                 </tr>
                 
