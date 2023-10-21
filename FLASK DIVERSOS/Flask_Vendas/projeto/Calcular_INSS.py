@@ -65,12 +65,15 @@ def autenticar():
     usuario=request.form['nome']
     
     dados=session.query(usuarios).all()
-
-    for dado in dados:      
-       if nome == dado[0].nome and senha == dado[0].senha:         
+    x=0
+    for dado in dados:            
+       if nome == dado.nome and senha == dado.senha: 
+          x=0        
           flash(f'Usuário {usuario} Logado com Sucesso!!')         
-          return redirect(url_for('index',usuario=usuario))          
-       else:
+          return redirect(url_for('index',dados=dados))           
+       else: 
+          x +=1           
+    if x > 0:
          flash('Não foi possível fazer Login!!')
          return render_template('login.html')
     
@@ -80,6 +83,7 @@ def autenticar():
 def autenticar_cadastro():
     nome=request.form['nome']
     email=request.form['email']
+    empresa=request.form['empresa']
     senha=request.form['senha']
     senha2=request.form['senha2']
 
@@ -88,6 +92,10 @@ def autenticar_cadastro():
 
     if nome == "" or email == "" or senha == "" or email == "":
         flash('Preencha todos os campos!!')
+        return render_template('cadastro_usuarios.html')
+    
+    if not "@" in email or not ".com" in email:
+        flash('E-mail digitado não é válido!!')
         return render_template('cadastro_usuarios.html')
 
     if nome in dados[0].nome:            
@@ -101,10 +109,19 @@ def autenticar_cadastro():
     
     else:        
         flash(f'Usuário {usuario} cadastrado com Sucesso!!')            
+        dados=usuarios(nome=nome, email=email, empresa=empresa, senha=senha, nome=nome) #instanciando
+        session.add(dados) #inserindo
+        session.commit() # gravando
+        flash('Jogo adcionado com Sucesso!!')      
         return redirect(url_for('login',usuario=usuario))
-    #---------------------------------------------<>--------------------------------------------------     
+
+    
+
+    #---------------------------------------------<>--------------------------------------------------   
+
 
 @app.route('/index')
+    #---------------------------------------------<>--------------------------------------------------   
 def index():
     dados=session.query(usuarios).all()         
 
@@ -124,30 +141,30 @@ def usuario():
 
 #---------------------------------------------<>--------------------------------------------------   
 
-@app.route('/alterar_jogos/<int:id>')
-def alterar_jogos(): 
-    id=request.form['id']   
-    nome=request.form['nome']
-    email=request.form['email']
-    empresa=request.form['empresa'] 
-    senha=request.form['senha']
+# @app.route('/alterar_jogos/<int:id>')
+# def alterar_jogos(): 
+#     id=request.form['id']   
+#     nome=request.form['nome']
+#     email=request.form['email']
+#     empresa=request.form['empresa'] 
+#     senha=request.form['senha']
     
 
-    session.query(usuarios).filter(usuario.id==id).update({'nome': nome,'email': email,'empresa': empresa,'senha': senha })
-    session.commit()  
+#     session.query(usuarios).filter(usuario.id==id).update({'nome': nome,'email': email,'empresa': empresa,'senha': senha })
+#     session.commit()  
       
-    flash(f'Úsuario {nome} alterado!!')
+#     flash(f'Úsuario {nome} alterado!!')
       
-    return redirect(url_for('index'))
+#     return redirect(url_for('index'))
     
 #---------------------------------------------<>--------------------------------------------------   
 
-@app.route('/deletar_jogos/<int:id>')
-def deletar_jogos(id):       
-      session.query(usuario).filter(usuario.id==id).delete()
-      session.commit() 
-      flash(f'Jogo Deletado !!')
-      return redirect(url_for('index'))
+# @app.route('/deletar_jogos/<int:id>')
+# def deletar_jogos(id):       
+#       session.query(usuario).filter(usuario.id==id).delete()
+#       session.commit() 
+#       flash(f'Jogo Deletado !!')
+#       return redirect(url_for('index'))
     
 
 #---------------------------------------------<>--------------------------------------------------   
